@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light col-md-11">
+  <div class="navbar-brand col-md-2">
+    {{ user?.firstname }} {{ user?.userDetailById.lastname }}
+  </div>
+  <button class="btn btn-danger" (click)="logout()">Logout</button>
+
+  <div class="col-md-10 d-flex flex-wrap justify-content-around">
+    <!-- Calculateur -->
+    <button class="btn btn-primary m-2" (click)="openCalculModal()">
+      <i class="bi bi-calculator-fill"></i>
+    </button>
+
+    <!-- Recherche Client Id -->
+    <div class="input-group m-2" style="width: 250px;">
+      <input type="text" class="form-control" placeholder="Client Id" [(ngModel)]="clientId">
+      <div class="input-group-append">
+        <button class="btn btn-primary" [routerLink]="['./client/', clientId]" (click)="resetForm()">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Recherche Marin Id -->
+    <div class="input-group m-2" style="width: 250px;">
+      <input type="text" class="form-control" placeholder="Marin Id" [(ngModel)]="marinId">
+      <div class="input-group-append">
+        <button class="btn btn-primary" [routerLink]="['./sailor/', marinId]" (click)="resetForm()">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Recherche Job Id -->
+    <div class="input-group m-2" style="width: 250px;">
+      <input type="text" class="form-control" placeholder="Job Id" [(ngModel)]="jobId">
+      <div class="input-group-append">
+        <button class="btn btn-primary" [routerLink]="['./job/', jobId]" (click)="resetForm()">
+          <i class="bi bi-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <div class="list-group">
+        <a routerLinkActive="active" routerLink="dashboard" class="list-group-item">Tableau de bord</a>
+        <a routerLinkActive="active" routerLink="management" class="list-group-item">Utilisateurs</a>
+        <a routerLinkActive="active" routerLink="follow-up" class="list-group-item">Missions</a>
+        <a routerLinkActive="active" routerLink="chat" class="list-group-item">Conversations</a>
+        <a routerLinkActive="active" routerLink="approval" class="list-group-item">
+          Validations<span class="badge badge-primary">{{ waitingDocsNumber }}</span>
+        </a>
+        <a routerLinkActive="active" routerLink="data" class="list-group-item">Données</a>
+        <a routerLinkActive="active" routerLink="chess" class="list-group-item">Chess</a>
+        <a routerLinkActive="active" routerLink="notations" class="list-group-item">Notes</a>
+        <a href="https://captnboat-algo-checker-grinn-tech.vercel.app/" class="list-group-item">Algo</a>
+        <!-- Commentaires pour liens non utilisés -->
+        <!-- <a routerLinkActive="active" routerLink="kpi" class="list-group-item">KPI</a>
+             <a routerLinkActive="active" routerLink="search-skipper" class="list-group-item">Search Skipper</a>
+             <a routerLinkActive="active" routerLink="admin-plus" class="list-group-item">Admin +</a> -->
+      </div>
+    </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

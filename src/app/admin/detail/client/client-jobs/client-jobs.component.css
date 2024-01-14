@@ -1,0 +1,30 @@
+.nested-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.nested-table div {
+  display: table-row;
+}
+
+.nested-table div:last-child {
+  border-bottom: none;
+}
+
+.nested-table div::before {
+  content: "";
+  display: table-cell;
+  width: 30%;
+  padding: 5px;
+}
+
+.nested-table div:last-child::before {
+  border-bottom: none;
+}
+
+.nested-table div span {
+  display: table-cell;
+  padding: 5px;
+}

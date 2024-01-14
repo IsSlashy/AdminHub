@@ -1,0 +1,34 @@
+<div class="container mt-10">
+  <div class="tabs--missions-header">
+    <div class="tabs--missions-filters">
+      <button class="btn btn-outline-primary btn--tabs-filter" [class.active]="activeTab === 'published'" type="button" (click)="selectPublished()">En Ligne{{publishedCount}}</button>
+      <button class="btn btn-outline-primary btn--tabs-filter" [class.active]="activeTab === 'paid'" type="button" (click)="selectPaid()">Pourvues {{assignedCount}}</button>
+      <button class="btn btn-outline-primary btn--tabs-filter" [class.active]="activeTab === 'confirmed'" type="button" (click)="selectConfirmed()">Terminées {{confirmdedCount}}</button>
+      <button class="btn btn-outline-primary btn--tabs-filter" [class.active]="activeTab === 'canceled'" type="button" (click)="selectCanceled()">Annulées {{canceledCount}}</button>
+    </div>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Bateau</th>
+      <th>Date</th>
+      <th>Lieux</th>
+      <th>Jobs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ad of ads">
+      <td><img style="  max-width: 75px;max-height: 75px;" src="{{ad.boat.boatPictures.nodes[0]?.url}}"> </td>
+      <td> {{ad.boat.model.name}} <br> {{ad.boat.model.boatType}} </td>
+      <td> {{ad.startDate}} <br> {{ad.endDate}} </td>
+      <td> {{ad.harborByStartHarbor.nameFr}} <br> {{ad.harborByEndHarbor.nameFr}} </td>
+      <td>
+        <div class="nested-table">
+          <div *ngFor="let job of ad.jobs.nodes" style="cursor: pointer;" routerLink="/admin/job/{{job.id}}">{{ job.position }} - {{job.realPrice}} - {{job.jobStatus}} </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

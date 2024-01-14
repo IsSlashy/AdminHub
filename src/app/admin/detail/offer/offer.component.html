@@ -1,0 +1,156 @@
+<form [formGroup]="offerForm">
+  <div class="form-row">
+    <div class="col">
+      <label>Le token</label>
+      {{offerForm.value.token}}
+    </div>
+  </div>
+
+  <button class="btn-primary" (click)="rePublish()"  data-toggle="tooltip" data-placement="top" title="Annule l'offre et republie le job">Republier Job</button>
+
+  <div style="padding: 2px;">
+    <h5>Contrat client</h5>
+    <div class="row">
+      <div class="col">
+        <button class="btn-primary" (click)="sendEmailPayOffer()">Email payer marin</button>
+      </div>
+      <div class="col">
+        <button class="btn-primary" (click)="copyUrlContract()">Copier url page signature contrat</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Prix (en euro)</mat-label>
+        <input matInput type="number" formControlName="price">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Prix chess maritime (en euro)</mat-label>
+        <input matInput type="number" formControlName="chessRemuneration">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Type de contrat</mat-label>
+        <mat-select formControlName="contractType">
+          <mat-option value="FREELANCE" matTooltip="Offer en cours">Freelance</mat-option>
+          <mat-option value="EMPLOYEE" matTooltip="Offer en cours">Employee</mat-option>
+          <mat-option value="CHESS_MARITIME" matTooltip="Offer en cours">Chess Maritime</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="PENDING" matTooltip="Offer en cours">Pending</mat-option>
+          <mat-option value="PAID" matTooltip="Offre payé">Paid</mat-option>
+          <mat-option value="ACCEPTED" matTooltip="Facture envoyé au client">Accepté</mat-option>
+          <mat-option value="DECLINED" matTooltip="Offer refusé par le client">Declined</mat-option>
+          <mat-option value="CLOSED" matTooltip="Offre expiré">Closed</mat-option>
+          <mat-option value="DRAFT" matTooltip="Contrat non accepté/ non signé">Draft</mat-option>
+          <mat-option value="CANCELED" matTooltip="Offre annulé par le skipper">Canceled</mat-option>
+          <mat-option value="DEPOSIT_PAID" matTooltip="Accompte payé ">Deposit paid</mat-option>
+          <mat-option value="LATE_PAYMENT" matTooltip="Sold non payé">Late payement</mat-option>
+          <mat-option value="ABORTED" matTooltip="Skipper annule après payement">Aborted</mat-option>
+          <!-- <mat-option value="EXPIRED" matTooltip="Descritpion">expired</mat-option> -->
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-radio-group aria-label="Select an option" formControlName="onboardFee">
+        <mat-label>Frais a bord</mat-label>
+        <mat-radio-button [value]="'OWNER'">Client</mat-radio-button>
+        <mat-radio-button [value]="'SKIPPER'">Marin</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <mat-radio-group aria-label="Select an option" formControlName="travelFee">
+        <mat-label>Frais de déplacement</mat-label>
+        <mat-radio-button [value]="'OWNER'">Client</mat-radio-button>
+        <mat-radio-button [value]="'SKIPPER'">Marin</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Frais de déplacement(en euro)</mat-label>
+        <input matInput type="number" formControlName="travelFeeExpenses">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Id demande chess</mat-label>
+        <input matInput type="text" formControlName="idRecordChess">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field >
+        <mat-label>Date d'acceptaion Marin</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="contractAcceptationDateSailor">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field >
+        <mat-label>Date d'acceptaion client</mat-label>
+        <input matInput [matDatepicker]="picker2" formControlName="contractAcceptationDateClient">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>id payement stripe</mat-label>
+        <input matInput type="text" formControlName="paymentIntentId">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>id du transfer stripe (vers le skipper ou chess après confirmation)</mat-label>
+        <input matInput type="text" formControlName="transferId">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field >
+        <mat-label>skipper bloqué jusqu'au</mat-label>
+        <input matInput [matDatepicker]="picker3" formControlName="blockedDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+        <mat-datepicker #picker3></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-radio-group aria-label="Select an option" formControlName="lateUpdate">
+        <mat-label>Skipper modifie conditions</mat-label>
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <button class="btn-primary" (click)="updateOffer()">Update Job</button>
+  <button class="btn-secondary" (click)="goBack()">Retour</button>
+</form>
+
+
+<!-- MODAL CONFIRMED -->
+<app-modal-confirmed />

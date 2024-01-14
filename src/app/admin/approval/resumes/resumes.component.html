@@ -1,0 +1,160 @@
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link pointer" routerLinkActive="active"  (click)="selectTable('WAITING')">Waiting</a>
+  </li>
+  <li class="nav-item pointer">
+    <a class="nav-link" routerLinkActive="active" (click)="selectTable('INVALID')">Refused</a>
+  </li>
+  <li class="nav-item pointer">
+    <a class="nav-link" routerLinkActive="active"  (click)="selectTable('VALID')">Validate</a>
+  </li>
+  <li class="nav-item pointer">
+    <a class="nav-link" routerLinkActive="active"  (click)="getNoResume()">Pas de CV</a>
+  </li>
+</ul>
+
+<div *ngIf="type === 'RESUME'" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Titulaire</th>
+          <th>Document</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor: pointer;" *ngFor="let resume of searchDocObject?.resumes?.nodes" >
+          <td routerLink="{{'/admin/sailor/'+resume.user.id+'/profil'}}">
+            {{resume?.user?.firstname}}
+            {{resume?.user?.userDetailById?.lastname}}
+            </td>
+          <td >
+            <img matTooltip="Visualiser" (click)="openModal(resume)" class="icon--action cursor width35px" src="assets/images/icon-doc.svg" alt="Voir">
+            <img matTooltip="Accepter" (click)="validation(resume)" class="icon--action cursor width35px" src="assets/images/icon-tick.svg" alt="Accepter">
+           </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="type === 'NORESUME'" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Titulaire</th>
+          <th>UPLOAD CV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="cursor: pointer;" *ngFor="let user of searchDocObject?.users?.nodes" >
+          <td routerLink="{{'/admin/sailor/'+user.id+'/profil'}}">
+            {{user?.firstname}}
+            {{user?.userDetailById?.lastname}} 
+          </td>
+          <td>
+            <div>
+              <input (change)="handleFileInput($event,user.id)" type="file">
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+
+
+
+  
+<!-- Modal (popup) -->
+<div class="table-responsive">
+  <form [formGroup]="modifyForm">
+  <!-- Modal (popup) -->
+  <div id="myModal" class="modal">
+    <div class="modal-content large-modal">
+      <span class="close" (click)="closeModal('myModal')">&times;</span>
+      <h2>Ajout de CV</h2>
+      <div class="content">
+       
+        <div class="form-group">
+          <p>Titulaire:
+            {{ selectedResume?.user?.firstname }}
+             {{ selectedResume?.user?.userDetailById?.lastname }}
+            </p>
+        </div>
+  
+
+        <div class="container">
+          <div class="row bottom-10">
+            <div class="col-sm">
+              <button class="button" (click)="openDocUrl(urlDocument)"> Voir</button>
+            </div>
+            <div class="col-sm">
+              <div class="custom-file col-sm">
+                <input type="file" class="custom-file-input" id="inputFile" (change)="handleFileInput($event,selectedResume.user.id)" >
+                <label class="custom-file-label" for="inputFile">document</label>
+              </div>            
+            </div>
+          </div>
+          <div class="row">
+              <iframe  height="400" width="400" [src]="urlDocument" frameborder="0"></iframe>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+              <button (click)="downloadImage(urlDocument)" class="button">Télécharger</button>
+            </div>
+            <div class="col-sm">
+              <button (click)="validation(selectedResume)" class="button">Valider</button>
+            </div>
+            <div class="col-sm">
+              <button (click)="openRejectModal()"  class="button">Refuser</button>
+            </div>
+            <div class="col-sm">
+              <button (click)="deleteResume()" class="button">Supprimer</button>
+            </div>
+
+        </div>
+        <button (click)="closeModal('myModal')">Fermer</button>
+      </div>
+    </div>
+  </div>
+</form>
+</div>
+
+
+
+<!-- REJECTED MODAL -->
+<div class="modal-rejected modal" id="modal-rejected">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h4 class="modal-title">Refuser le document</h4>
+      <button type="button" class="close" aria-label="Close" (click)="closeModal('modal-rejected')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+    <div class="row">
+      <div class="col-md-9">
+        <mat-select (selectionChange)="onReasonSelected($event.value)" >
+          <mat-option value="NOT_ANONYME">Votre CV doit être anonymisé</mat-option>
+          <mat-option value="FORMATION_MARITIME">Les attestations de formation doivent être enregistrées auprès des affaires maritimes et ne permettent pas de travailler. Merci de nous fournir un titre émit par les affaires maritimes.</mat-option>
+          <mat-option value="RECYCLE">Votre "document type" nécessite d'être recyclé</mat-option>
+          <mat-option value="ALGORITHME_PROBLEM">Votre document n'est pas encore pris en charge par notre algorithme, nous travaillons à développer celui-ci.</mat-option>
+          <mat-option value="NOT_UPLOAD">Votre document n'a pas été correctement uploadé. En cas de problème vous pouvez nous l'envoyer à l'adresse contact@captnboat.com.</mat-option>
+          <mat-option value="AUTRE">Autre</mat-option>
+        </mat-select>
+        <div *ngIf="reason === 'AUTRE'">
+          <input id="autre" type="text">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="closeModal('modal-rejected')">Close</button>
+      <button type="button" class="btn btn-primary" (click)="invalidate()">Confirmer</button>
+    </div>
+  </div>
+</div>
+</div>

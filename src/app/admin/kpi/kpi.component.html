@@ -1,0 +1,35 @@
+<!-- KPI.component.html -->
+
+<div class="kpi-container">
+  <h1>KPI</h1>
+
+  <!-- Sélection de la date de paiement -->
+  <div class="date-section">
+      <label for="payment-date">Date de paiement (Date d'assignement):</label>
+      <input type="date" id="payment-date">
+  </div>
+
+  <!-- Section de la rétro commission -->
+  <div class="retrocommission-section">
+      <h2>Rétro Commission</h2>
+
+      <!-- Onglet de statut pour ajouter la valeur de la rétro commission -->
+      <div class="stat-tab">
+          <label for="retro-com-type">Type:</label>
+          <select id="retro-com-type">
+              <option value="">--Sélectionnez un type--</option>
+              <option value="apporteur">Rétro com apporteur d'affaire</option>
+              <!-- Vous pouvez ajouter d'autres options ici -->
+          </select>
+
+          <label for="society">Précisez la société:</label>
+          <input type="text" id="society" placeholder="Nom de la société">
+
+          <label for="amount">Indiquez le montant:</label>
+          <input type="number" id="amount" placeholder="Montant de la commission">
+      </div>
+  </div>
+
+  <!-- Bouton de soumission (si nécessaire) -->
+  <button class="submit-btn">Valider</button>
+</div>

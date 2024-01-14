@@ -1,0 +1,94 @@
+/* Container général pour le chat */
+.chat-container {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Panel de contacts */
+.contact-panel {
+  width: 30%; /* Vous pouvez ajuster cette valeur selon vos préférences */
+  background-color: #f7f7f7;
+  overflow-y: auto;
+}
+.card--opportunity-summary{
+  max-width: 350px;
+}
+.contact {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-bottom: 1px solid #e5e5e5;
+  transition: background-color 0.3s;
+}
+
+.contact:hover {
+  background-color: #f0f0f0;
+}
+.notResponse{
+  background-color: rgb(180, 180, 180);
+}
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: #e0e0e0; /* Couleur placeholder, vous pouvez remplacer par une image ou une autre couleur */
+}
+
+.contact-name {
+  font-weight: bold;
+}
+
+/* Boîte de chat */
+.chat-box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.message {
+  margin-bottom: 10px;
+}
+
+.sender {
+  font-weight: bold;
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chat-input button:hover {
+  background-color: #0056b3;
+}

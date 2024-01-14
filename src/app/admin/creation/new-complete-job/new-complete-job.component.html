@@ -1,0 +1,216 @@
+<h1>{{owner?.firstname}} {{owner?.userDetailById.lastname}}</h1>
+
+<form [formGroup]="jobForm">
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Owner Id</mat-label>
+        <input matInput text="text" formControlName="ownerId">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Bateau</mat-label>
+        <mat-select id="boat-id" (selectionChange)="changeBoat($event)">
+          <mat-option *ngFor="let boat of boatsSelect" [value]="boat">
+            {{boat.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field id="select" class="matFormLong">
+        <mat-label for="coast-distance" id="coastDistance">Éloignement des côtes</mat-label>
+        <mat-select style="height: 30px;" placeholder="Eloignement des cotes" id="coastDistance" formControlName="coastDistance">
+          <mat-option [value]=2> - 2 Nm </mat-option>
+          <mat-option [value]=6> - 6 Nm </mat-option>
+          <mat-option [value]=20> - 20 Nm  </mat-option>
+          <mat-option [value]=60> - 60 Nm </mat-option>
+          <mat-option [value]=150> - 150 Nm </mat-option>
+          <mat-option [value]=200> - 200 Nm </mat-option>
+          <mat-option [value]=250> + 200 Nm </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field >
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label>Prot de départ</label>
+      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="updateHarbours($event,true)" ></app-autocomplete-harbor>
+    </div>
+    <div class="col">
+      <label>Prot d'arrivée</label>
+      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="updateHarbours($event, false)" ></app-autocomplete-harbor>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Type de mission</mat-label>
+        <mat-select formControlName="adType">
+          <mat-option value="DELIVERY">Convoyage</mat-option>
+          <mat-option value="CHARTER">Charter</mat-option>
+          <mat-option value="SUPPORT">Accompagnement</mat-option>
+          <mat-option value="COACHING">Coaching</mat-option>
+          <mat-option value="RIVER">Fluvial</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="matFormLong select_material">
+        <mat-label for="langues" class="label control-label">Langues parlées</mat-label>
+        <mat-select id="totalMilles" formControlName="spokenLanguages" multiple>
+          <mat-option *ngFor="let langue of languages " [value]="langue.id"> {{langue.name}} </mat-option>
+        </mat-select>
+       </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label>Description</label>
+      <mat-form-field class="w-100">
+        <textarea matInput class="form-control" id="floatingTextarea2" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Poste</mat-label>
+        <mat-select formControlName="positionType">
+          <mat-option value="SKIPPER" >Skipper / Capitaine</mat-option>
+          <mat-option value="HOTESSE" >Hôtesse / Steward</mat-option>
+          <mat-option value="HOTESSE_COOK" >Hôtesse Cook</mat-option>
+          <mat-option value="SECOND" >Second</mat-option>
+          <mat-option value="MATELOT" >Matelot</mat-option>
+          <mat-option value="CHEF" >Chef</mat-option>
+          <mat-option value="MECANICIEN" >Mecanicien</mat-option>
+          <mat-option value="CHEF_DE_QUART" >Chef de quart</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Pourcentage commission</mat-label>
+        <input matInput type="number" formControlName="commissionRate">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Type de contrat</mat-label>
+        <mat-select formControlName="contractType">
+          <mat-option value="FREELANCE" >Freelance</mat-option>
+          <mat-option value="EMPLOYEE" >Enrolé</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-radio-group aria-label="Select an option" formControlName="monthlyRemuneration">
+        <mat-label>Type de rémunération</mat-label>
+        <mat-radio-button [value]="true">Mensuelle</mat-radio-button>
+        <mat-radio-button [value]="false">Total</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Prix initial (en euro)</mat-label>
+        <input matInput type="number" formControlName="initialPrice">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Remuneration chess</mat-label>
+        <input matInput type="number" formControlName="chessRemuneration">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">dépense a bord</label>
+      <mat-radio-group aria-label="Select an option" formControlName="onboardFee">
+        <mat-radio-button [value]="'SKIPPER'">Skipper</mat-radio-button>
+        <mat-radio-button [value]="'OWNER'">Onwer</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <label for="phone">frais de transport</label>
+      <mat-radio-group aria-label="Select an option" formControlName="travelFee">
+        <mat-radio-button [value]="'SKIPPER'">Skipper</mat-radio-button>
+        <mat-radio-button [value]="'OWNER'">Onwer</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Possibilité de dormir à bord la veille de l'embarquement</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="sleepOnBoardNightBefore">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <label for="phone">Possibilité de dormir à bord le soir du débarquement</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="sleepOnBoardLastNight">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field id="select" class="matFormLong">
+        <mat-label for="coast-distance" >couchage</mat-label>
+        <mat-select style="height: 30px;"  formControlName="sleeping">
+          <mat-option value="POINTE_AVANT"> Pointe avant </mat-option>
+          <mat-option value="CABINE_PERSO"> Cabine personnelle </mat-option>
+          <mat-option value="CABINE_PARTAGE"> Cabine partagée  </mat-option>
+          <mat-option value="CARRE"> Carré </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <label for="phone">Envoyer l'email opportunité au skipper ?</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="sendEmail">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Restriction de candidature</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="reserved">
+        <mat-radio-button value="ALL">Sans restriction</mat-radio-button>
+        <mat-radio-button value="APPROVED">Skipper approved et favoris</mat-radio-button>
+        <mat-radio-button value="FAVOURITES">Skipper favoris</mat-radio-button>
+        <mat-radio-button value="RESERVED">Skipper trouvé</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <button class="btn btn-primary"(click)="createJob()">Créer la mission</button>
+</form>

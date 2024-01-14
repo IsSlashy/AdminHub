@@ -1,0 +1,28 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nom</th>
+      <th>Offres: Prix - Contrat - Frais - Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sailor of sailors">
+      <td><img style="  max-width: 75px;max-height: 75px;" src="{{sailor.avatar}}"> </td>
+      <td routerLink="/admin/sailor/{{sailor.id}}/profil" > {{sailor.firstname}} <br> {{sailor.lastname}} </td>
+      <td>
+        <div class="nested-table">
+          <div *ngFor="let ofr of sailor.offers" style="cursor: pointer;" >
+            <div routerLink="/admin/offer/{{ofr?.id}}">
+              {{ ofr?.realPrice }} - {{ofr?.contractType}} - {{ofr?.travelFeeExpenses}} - {{ofr?.status}}
+            </div>
+            <button class="btn btn-primary" (click)="copyUrlContract(ofr)">Copier contrat</button>
+          </div>
+        </div>
+      </td>
+      <td>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>

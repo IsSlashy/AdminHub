@@ -1,0 +1,34 @@
+<h2>Marins Favoris</h2>
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>User Status</th>
+        <th>Actions</th> <!-- Colonne pour les actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sailor of favoris">
+        <td>{{ sailor.firstname }}</td>
+        <td>{{ sailor.lastname }}</td>
+        <td>{{ sailor.email }}</td>
+        <td>{{ sailor.phoneNumber }}</td>
+        <td>{{ sailor.userStatus }}</td>
+        <td>
+          <!-- Bouton de suppression pour chaque marin -->
+          <button (click)="deleteFavourite(sailor.id)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section pour ajouter un marin aux favoris -->
+<div class="add-favourite">
+  <input type="text" [(ngModel)]="newFavouriteId" placeholder="ID du marin">
+  <button (click)="addFavourite(newFavouriteId)">Ajouter aux favoris</button>
+</div>

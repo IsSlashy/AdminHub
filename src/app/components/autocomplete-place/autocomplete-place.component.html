@@ -1,0 +1,19 @@
+<div>
+  <mat-form-field>
+    <mat-label class="align--all-row" ><span for="place" class="label control-label">Place</span> <span class="label">*</span></mat-label>
+  <input
+    matInput
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="fetchSuggestions()"
+      placeholder="Search..."
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete" >
+      <mat-option class="suggestion" *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+        {{ suggestion.name }} - {{ suggestion.pays }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  </div>

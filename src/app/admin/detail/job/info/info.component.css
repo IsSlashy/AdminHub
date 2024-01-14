@@ -1,0 +1,13 @@
+.mat-elevation-z8 {
+  margin: 10px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-header-cell, td.mat-cell {
+  text-align: left;
+  padding: 8px;
+}

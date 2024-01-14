@@ -1,0 +1,21 @@
+.iconpencil{
+    position: relative;
+    overflow: hidden;
+}
+.inputpencil{
+    position: absolute;
+    font-size: 50px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.gallery-upload--item{
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+.gallery-upload{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}

@@ -1,0 +1,250 @@
+<form [formGroup]="billingForm">
+  <div class="form-row">
+    <div class="col"><h1>Client</h1></div>
+    <div class="col"><a *ngIf="job?.ad.ownerIdClient"class="btn btn-primary" routerLink='/admin/client/{{job.ad.ownerIdClient}}/profil'>Compte client</a></div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="matFormLong" >
+        <mat-label for="registrationNumber" class="label control-label">Langue d'émission de la facture</mat-label>
+        <mat-select id="language" formControlName="language">
+          <mat-option *ngFor="let language of languagesStripe" [value]="language.value">
+            {{language.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <button *ngIf="job?.jobStatus === 'ASSIGNED' || job?.jobStatus === 'CONFIRMED'" class="btn btn-primary col-md-2 mr-4" (click)="generateContractPdf()">Générer le contrat</button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>client type</mat-label>
+        <mat-select formControlName="clientType">
+          <mat-option value="PARTICULIER">Propriétaire particulier</mat-option>
+          <mat-option value="LOCATAIRE_DE_BATEAU">Locataire</mat-option>
+          <mat-option value="LOUEUR">Loueur pro</mat-option>
+          <mat-option value="PLATEFORM_DE_LOCATION">Agence de location</mat-option>
+          <mat-option value="CHANTIER">Chantier</mat-option>
+          <mat-option value="BROOKER">Broker</mat-option>
+          <mat-option value="AUTRE">Autre</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col">
+      <label for="phone">Contrat client</label>
+      <a>{{job?.finalOffer?.clientContract}}</a>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Prénom</label>
+      <input type="text" class="form-control" formControlName="firstname">
+    </div>
+    <div class="col">
+      <label for="phone">Nom</label>
+      <input type="text" class="form-control" formControlName="lastname">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">numéro de téléphone</label>
+      <input type="text" class="form-control" formControlName="phoneNumber">
+    </div>
+    <div class="col">
+      <label for="phone">email</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">siret</label>
+      <input type="text" class="form-control" formControlName="siret">
+    </div>
+    <div class="col">
+      <label for="phone">Nom de la siciété</label>
+      <input type="text" class="form-control" formControlName="corporateName">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <app-google-places-autocomplete
+      [setAddresse]="billingForm.value.address"
+      (selectedAddress)="handleAddressChange($event)"/>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <label for="phone">Nom du bateau</label>
+        <input type="text" class="form-control" formControlName="boatName">
+      </div>
+      <div class="col">
+        <mat-form-field class="matFormLong" id="select">
+          <mat-label>Pavillon</mat-label>
+          <mat-select id="country" formControlName="flagId" >
+            <mat-option *ngFor="let country of countries" [value]="country.id">
+              {{country.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div  class="row">
+      <div class="col">
+        <label for="phone">Immatriculation</label>
+        <input type="text" class="form-control" formControlName="Immatriculation">
+      </div>
+    </div>
+  </div>
+  <h1>(Les informations du marin et de la mission sont mise a jours au moment du payement, donc si les informations sont vide c'est que le payement n'a pas encore été effectué)</h1>
+  <h1>Marin</h1>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Status marin</label>
+      <div class="form-check">
+        <input type="radio" class="btn-check" name="sailorStatus" value="PARTICULAR" formControlName="sailorStatus" id="Particulier">
+        <label class="btn btn-primary" for="Particulier">Particulier</label>
+
+        <input type="radio" class="btn-check" name="sailorStatus" value="PROFESSIONAL" formControlName="sailorStatus" id="Professionnel">
+        <label class="btn btn-primary" for="Professionnel">Professionnel</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Prénom</label>
+      <input type="text" class="form-control" formControlName="sailorFirstname">
+    </div>
+    <div class="col">
+      <label for="phone">Nom</label>
+      <input type="text" class="form-control" formControlName="sailorLastname">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">numéro de téléphone</label>
+      <input type="text" class="form-control" formControlName="sailorPhoneNumber">
+    </div>
+    <div class="col">
+      <label for="phone">email</label>
+      <input type="text" class="form-control" formControlName="sailorEmail">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <!-- <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="startDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+    </div>
+    <div class="col">
+      <app-google-places-autocomplete
+      [setAddresse]="billingForm.value.sailorAddress"
+      (selectedAddress)="handleSailorAddressChange($event)"/>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">numéro de téléphone</label>
+      <input type="text" class="form-control" formControlName="sailorPhoneNumber">
+    </div>
+    <div class="col">
+      <label for="phone">email</label>
+      <input type="text" class="form-control" formControlName="sailorEmail">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">siret</label>
+      <input type="text" class="form-control" formControlName="sailorSiret">
+    </div>
+    <div class="col">
+      <label for="phone">Nom de la société</label>
+      <input type="text" class="form-control" formControlName="sailorCorporateName">
+    </div>
+  </div>
+  <h1>Mission</h1>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Type de mission</mat-label>
+        <mat-select formControlName="adType">
+          <mat-option value="DELIVERY">Convoyage</mat-option>
+          <mat-option value="CHARTER">Charter</mat-option>
+          <mat-option value="SUPPORT">Accompagnement</mat-option>
+          <mat-option value="COACHING">Coaching</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Poste</mat-label>
+        <mat-select formControlName="position">
+          <mat-option value="SKIPPER" >Skipper / Capitaine</mat-option>
+          <mat-option value="HOTESSE" >Hôtesse / Steward</mat-option>
+          <mat-option value="HOTESSE_COOK" >Hôtesse Cook</mat-option>
+          <mat-option value="SECOND" >Second</mat-option>
+          <mat-option value="MATELOT" >Matelot</mat-option>
+          <mat-option value="CHEF" >Chef</mat-option>
+          <mat-option value="MECANICIEN" >Mecanicien</mat-option>
+          <mat-option value="CHEF_DE_QUART" >Chef de quart</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <!-- <mat-form-field formControlName="startDate">
+        <mat-label>Date de départ</mat-label>
+        <mat-datepicker formControlName="startDate"></mat-datepicker>
+      </mat-form-field> -->
+    </div>
+    <div class="col">
+      <!-- <mat-form-field formControlName="endDate">
+        <mat-label>Date d'arrivée</mat-label>
+        <mat-datepicker formControlName="endDate"></mat-datepicker>
+      </mat-form-field> -->
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Port de départ (actuel: {{billingForm.value.startHarbor}})</label>
+      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="startHarborSelection($event)" ></app-autocomplete-harbor>
+    </div>
+    <div class="col">
+      <label for="phone">Port d'arrivée' (actuel: {{billingForm.value.endHarbor}})</label>
+      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="endHarborSelection($event)" ></app-autocomplete-harbor>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Model (actuel: {{billingForm.value.model}})</label>
+      <app-autocomplete-model style="min-width: 350px;" (onModelSelected)="handleModelSelection($event)" ></app-autocomplete-model>
+    </div>
+    <div class="col">
+      <label for="phone">Immatriculation</label>
+      <input type="text" class="form-control" formControlName="registrationNumber">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Prix</label>
+      <input type="text" class="form-control" formControlName="price">
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="updateBilling()">Update Client</button>
+</form>
+
+<app-modal-confirmed />

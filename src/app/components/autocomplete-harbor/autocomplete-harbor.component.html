@@ -1,0 +1,18 @@
+<mat-form-field class="formfield">
+  <mat-label *ngIf="whichHarbor ==='start'" for="port-de-depart" id="startHarbor" class="control-label label">Port de départ</mat-label>
+  <mat-label *ngIf="whichHarbor ==='end'" for="port-darrivee" id="endHarbor" class="control-label label">Port d'arrivée</mat-label>
+  <input
+class="width"
+matInput
+type="text"
+[(ngModel)]="searchTerm"
+(input)="fetchSuggestions()"
+placeholder="Search..."
+[matAutocomplete]="auto"
+/>
+  <mat-autocomplete #auto="matAutocomplete" >
+    <mat-option  *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">
+      {{ suggestion.name }} / {{ suggestion.region }} / {{ suggestion.country }} <span [ngClass]="['flag-icon', 'flag-icon-' + suggestion?.iso_code.toLocaleLowerCase()  ,'flag-icon-squared']"></span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

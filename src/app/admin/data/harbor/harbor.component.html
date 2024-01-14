@@ -1,0 +1,29 @@
+<app-autocomplete-harbor (onPortSelected)="onSelectharbor($event)"></app-autocomplete-harbor>
+
+<form [formGroup]="harborForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Nom du port (FR)</label>
+    <input matInput formControlName="nameFr">
+  </div>
+  <div class="form-group">
+    <label>Nom du port (EN)</label>
+    <input matInput formControlName="nameEn">
+  </div>
+
+  <app-autocomplete-place (onPlaceSelected)="selectPlace($event)"></app-autocomplete-place>
+
+  <div class="form-group">
+    <label>Latitude</label>
+    <input matInput formControlName="lat">
+  </div>
+  <div class="form-group">
+    <label>Longitude</label>
+    <input matInput formControlName="lng">
+  </div>
+  <div class="button-group">
+    <button type="submit">Modifier/Ajouter</button>
+    <button type="button" (click)="resetForm()">Réinitialiser</button>
+  </div>
+</form>
+<app-modal-confirmed></app-modal-confirmed>
+

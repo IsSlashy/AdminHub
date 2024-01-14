@@ -1,0 +1,48 @@
+/* Styles globaux */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container général */
+.row {
+  margin-right: 0; /* Enlève la marge droite par défaut des rows de Bootstrap */
+  margin-left: 0; /* Enlève la marge gauche par défaut des rows de Bootstrap */
+}
+
+/* Styles pour la barre latérale */
+.col-md-2 {
+  padding-right: 0; /* Enlève le padding droit par défaut des colonnes Bootstrap */
+  padding-left: 25px; /* Ajoute un padding gauche pour éloigner légèrement la barre latérale du bord gauche */
+}
+
+.list-group {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.list-group-item {
+  border: none;
+  padding: 15px 20px;
+  color: #555;
+  transition: background-color 0.3s;
+}
+
+.list-group-item:hover, .list-group-item[routerLinkActive="active"] {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.list-group-item[routerLinkActive="active"] {
+  font-weight: 600;
+}
+
+/* Styles pour la barre de navigation */
+.navbar {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}

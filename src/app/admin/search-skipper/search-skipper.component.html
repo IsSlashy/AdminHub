@@ -1,0 +1,34 @@
+<!-- search-skipper.component.html -->
+
+<div class="search-container">
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+      <input type="text" placeholder="Recherchez un skipper..." class="search-input"/>
+      <button class="search-button">Rechercher</button>
+  </div>
+
+  <!-- Tableau de résultats -->
+  <div class="results-table">
+      <table>
+          <thead>
+              <tr>
+                  <th>Nom</th>
+                  <th>Âge</th>
+                  <th>Expérience</th>
+                  <th>Localisation</th>
+                  <!-- Ajoutez d'autres en-têtes de colonnes selon les informations nécessaires -->
+              </tr>
+          </thead>
+          <tbody>
+              <!-- Ceci est un exemple de ligne, vous remplirez ces données avec GraphQL -->
+              <tr>
+                  <td>Jean Dupont</td>
+                  <td>35 ans</td>
+                  <td>10 ans</td>
+                  <td>Paris</td>
+              </tr>
+              <!-- Répétez les lignes pour chaque résultat ou utilisez une boucle selon votre framework/frontend -->
+          </tbody>
+      </table>
+  </div>
+</div>

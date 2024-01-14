@@ -1,0 +1,343 @@
+<form [formGroup]="adForm">
+  <h3>Les structures</h3>
+  <div style="display: flex; flex-direction:row; flex-wrap: wrap; max-width: 800px; padding: 10px;">
+    <div *ngFor="let structure of job?.structures.nodes">
+      <div>{{ structure.name }}, </div>
+    </div>
+  </div>
+
+  <h1>Bateau</h1>
+  <div routerLink="{{'/admin/boat/'+adForm.value.boatId}}" class="btn-primary col-sm-2 pointer">Modifier ce bateau</div>
+  <mat-form-field class="col-mx-3">
+    <mat-select placeholder="Choisir un bateau" id="boat" formControlName="boatId" >
+      <mat-option *ngFor="let boat of job?.ad?.boat?.owner?.boatsByOwnerId?.nodes" [value]="boat.id" (click)="changeBoat(boat)">
+        {{boat?.name}} ({{boat?.model?.name}})
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="col">
+    <mat-form-field>
+      <mat-label>Model</mat-label>
+      <input matInput  value="{{boat?.model.name}}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <input matInput  value="{{boat?.model.boatType}}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Longueur</mat-label>
+      <input matInput  value="{{boat?.model.hullLength}}" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tonnage</mat-label>
+      <input matInput  value="{{boat?.model.grossTonnage}}" readonly>
+    </mat-form-field>
+  </div>
+  <h1>Ad</h1>
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Type de mission</mat-label>
+        <mat-select formControlName="adType">
+          <mat-option value="DELIVERY">Convoyage</mat-option>
+          <mat-option value="CHARTER">Charter</mat-option>
+          <mat-option value="SUPPORT">Accompagnement</mat-option>
+          <mat-option value="COACHING">Coaching</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field id="select" class="matFormLong">
+        <mat-label for="coast-distance" id="coastDistance">Éloignement des côtes</mat-label>
+        <mat-select style="height: 30px;" placeholder="Eloignement des cotes" id="coastDistance" formControlName="coastDistance">
+          <mat-option [value]=2> - 2 Nm </mat-option>
+          <mat-option [value]=6> - 6 Nm </mat-option>
+          <mat-option [value]=20> - 20 Nm  </mat-option>
+          <mat-option [value]=60> - 60 Nm </mat-option>
+          <mat-option [value]=150> - 150 Nm </mat-option>
+          <mat-option [value]=200> - 200 Nm </mat-option>
+          <mat-option [value]=250> + 200 Nm </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-radio-group aria-label="Select an option" formControlName="commercialActivity">
+        <mat-label>Commercial activity</mat-label>
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="form-row" >
+    <div class="col">
+      <mat-form-field class="w-100">
+        <mat-label>Description</mat-label>
+        <textarea matInput class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Distance</mat-label>
+        <input matInput type="number" formControlName="distance">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Port de départ (actuel: {{adForm.value.startHarborName}})</label>
+      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="startHarborSelection($event)" ></app-autocomplete-harbor>
+    </div>
+    <div class="col">
+      <label for="phone">Port d'arrivée' (actuel: {{adForm.value.endHarborName}})</label>
+      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="endHarborSelection($event)" ></app-autocomplete-harbor>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Temps estimé</mat-label>
+        <input matInput type="number" class="form-control" formControlName="estimatedDays">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Nombre de passagé</mat-label>
+        <input matInput type="number" class="form-control" formControlName="passengerNumber">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Owner Id client</mat-label>
+        <input matInput type="text" class="form-control" formControlName="ownerIdClient">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label for="languages" class="label control-label">Langue(s) souhaitée(s)</mat-label>
+        <mat-select formControlName="languages" placeholder="Langue(s) parlée(s)" multiple>
+          <mat-option *ngFor="let langue of languages" [value]="langue.id" >
+            {{langue.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+
+  <button class="btn-primary" (click)="updateAd()" >Update Mission</button>
+</form>
+<h1>Job</h1>
+<form [formGroup]="jobForm">
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">civilityPref</label>
+      <mat-radio-group aria-label="Select an option" formControlName="civilityPref">
+        <mat-radio-button [value]="'FEMALE'">Femme</mat-radio-button>
+        <mat-radio-button [value]="'MALE'">Homme</mat-radio-button>
+        <mat-radio-button>Peu Importe</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <label for="phone">Premium service</label>
+      <mat-radio-group aria-label="Select an option" formControlName="premiumService">
+        <mat-radio-button [value]="true">oui</mat-radio-button>
+        <mat-radio-button [value]="false">non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="matFormLong" id="select">
+        <mat-label>Commercial</mat-label>
+        <mat-select id="nationality" formControlName="commercial1Id" >
+          <mat-option  [value]="null">
+            Supprimer commercial
+          </mat-option>
+          <mat-option *ngFor="let com of commercials" [value]="com.id">
+            {{ com.firstname }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Pourcentage commission</mat-label>
+        <input matInput type="number" class="form-control" formControlName="commissionRate">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field id="select" class="matFormLong">
+        <mat-label for="coast-distance" >type de contrat </mat-label>
+        <mat-select style="height: 30px;" placeholder="Eloignement des cotes"  formControlName="contractType">
+          <mat-option value="FREELANCE"> freelance </mat-option>
+          <mat-option value="EMPLOYEE"> employee </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="col">
+    <mat-form-field id="select">
+      <p>Job Status</p>
+      <mat-select id="type" formControlName="jobStatus">
+        <mat-option value="PUBLISHED">PUBLISHED</mat-option>
+        <mat-option value="RATED">RATED</mat-option>
+        <mat-option value="CONFIRMED">CONFIRMED</mat-option>
+        <mat-option value="DONE" >DONE</mat-option>
+        <mat-option value="ABORTED">ABORTED</mat-option>
+        <mat-option value="CANCELED">CANCELED</mat-option>
+        <mat-option value="ASSIGNED" >ASSIGNED</mat-option>
+        <mat-option value="PENDING" >PENDING</mat-option>
+        <mat-option value="ABORTED" >CLOSED</mat-option>
+        <mat-option value="OPEN" >OPEN</mat-option>
+        <mat-option value="DRAFT" >DRAFT</mat-option>
+        <mat-option value="PENDING" >CLAIMED</mat-option>
+        <mat-option value="CLOSED" >CLOSED</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field >
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field >
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>prix initial (en euro)</mat-label>
+        <input matInput type="number" class="form-control" formControlName="initialPrice">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field>
+        <mat-label>chess remuneration</mat-label>
+        <input matInput type="number" class="form-control" formControlName="chessRemuneration">
+      </mat-form-field>
+    </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Rémunération TTC</mat-label>
+          <input matInput type="number" formControlName="remuneration" readonly>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field>
+          <mat-label>Commission</mat-label>
+          <input matInput type="number" formControlName="fee">
+        </mat-form-field>
+      </div>
+    </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">rémuneration Mensuelle</label>
+      <mat-radio-group aria-label="Select an option" formControlName="monthlyRemuneration">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <label for="phone">Commission mensuelle</label>
+      <mat-radio-group aria-label="Select an option" formControlName="monthlyCommission">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">dépense a bord</label>
+      <mat-radio-group aria-label="Select an option" formControlName="onboardFee">
+        <mat-radio-button [value]="'OWNER'">Client</mat-radio-button>
+        <mat-radio-button [value]="'SKIPPER'">Marin</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <label for="phone">frais de transport</label>
+      <mat-radio-group aria-label="Select an option" formControlName="travelFee">
+        <mat-radio-button [value]="'OWNER'">Client</mat-radio-button>
+        <mat-radio-button [value]="'SKIPPER'">Marin</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field id="select" class="matFormLong">
+        <mat-label for="coast-distance" id="position">position</mat-label>
+        <mat-select style="height: 30px;" placeholder="Eloignement des cotes"  formControlName="position">
+          <mat-option value="SKIPPER"> skipper </mat-option>
+          <mat-option value="HOTESSE"> hottesse </mat-option>
+          <mat-option value="MATELOT"> Matelot </mat-option>
+          <mat-option value="SECOND"> Second </mat-option>
+          <mat-option value="CHEF"> Chef </mat-option>
+          <mat-option value="MECANICIEN"> Mecanicien </mat-option>
+          <mat-option value="CHEF_DE_QUART"> Chef de quart </mat-option>
+          <mat-option value="HOTESSE_COOK"> Hotesse cook </mat-option>
+          <mat-option value="STEW_COOK"> Stew cook </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field id="select" class="matFormLong">
+        <mat-label for="coast-distance" >couchage</mat-label>
+        <mat-select style="height: 30px;"  formControlName="sleeping">
+          <mat-option value="POINTE_AVANT"> Pointe avant </mat-option>
+          <mat-option value="CABINE_PERSO"> Cabine personnelle </mat-option>
+          <mat-option value="CABINE_PARTAGE"> Cabine partagée  </mat-option>
+          <mat-option value="CARRE"> Carré </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Possibilité de dormir à bord la veille de l'embarquement</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="sleepOnBoardNightBefore">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="col">
+      <label for="phone">Possibilité de dormir à bord le soir du débarquement</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="sleepOnBoardLastNight">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Restriction de candidature</label><br>
+      <mat-radio-group aria-label="Select an option" formControlName="reserved">
+        <mat-radio-button value="ALL">Sans restriction</mat-radio-button>
+        <mat-radio-button value="APPROVED">Skipper approved et favoris</mat-radio-button>
+        <mat-radio-button value="FAVOURITES">Skipper favoris</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <button class="btn-primary" (click)="updateJob()" >Update Job</button>
+</form>
+<!-- MODAL CONFIRMED -->
+<app-modal-confirmed />

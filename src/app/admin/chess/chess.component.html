@@ -1,0 +1,32 @@
+
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <p class="nav-link pointer" (click)="watting()" [class.active]="tabWatting">En attente</p>
+  </li>
+  <li class="nav-item">
+    <p class="nav-link pointer" (click)="done()" [class.active]="!tabWatting">Envoyé</p>
+  </li>
+</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Marin</th>
+      <th>Client</th>
+      <th>Date</th>
+      <th>Lieux</th>
+      <th>Prix chess</th>
+      <th>id chess</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="cursor: pointer;" *ngFor="let offer of offers" routerLink="{{offer.id}}">
+      <td>{{offer.sailor.firstname}} {{offer.sailor.userDetailById.lastname}}</td>
+      <td>{{offer.job.billing?.firstname}} {{offer.job.billing?.lastname}}</td>
+      <td>{{offer.job.startDate}} - {{offer.job.endDate}}</td>
+      <td>{{offer.job.ad.harborByStartHarbor.nameFr}} - {{offer.job.ad.harborByEndHarbor.nameFr}}</td>
+      <td>{{offer.chessRemuneration}}</td>
+      <td>{{offer.idRecordChess}}</td>
+    </tr>
+  </tbody>
+</table>
+

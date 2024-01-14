@@ -1,0 +1,220 @@
+<h1>Client</h1>
+<form [formGroup]="billingForm">
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>client type</mat-label>
+        <mat-select formControlName="clientType">
+          <mat-option value="PARTICULIER">Propriétaire particulier</mat-option>
+          <mat-option value="LOCATAIRE_DE_BATEAU">Locataire</mat-option>
+          <mat-option value="LOUEUR">Loueur pro</mat-option>
+          <mat-option value="PLATEFORM_DE_LOCATION">Agence de location</mat-option>
+          <mat-option value="CHANTIER">Chantier</mat-option>
+          <mat-option value="BROOKER">Broker</mat-option>
+          <mat-option value="AUTRE">Autre</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-primary" (click)="sendApiChess()">Envoyer la demande</button>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Prénom</label>
+      <input type="text" class="form-control" formControlName="firstname">
+    </div>
+    <div class="col">
+      <label for="phone">Nom</label>
+      <input type="text" class="form-control" formControlName="lastname">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">numéro de téléphone</label>
+      <input type="text" class="form-control" formControlName="phoneNumber">
+    </div>
+    <div class="col">
+      <label for="phone">email</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">addresse</label>
+      <app-google-places-autocomplete
+           [setAddresse]="billingForm.value.address"
+           (selectedAddress)="handleAddressChange($event)"/>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Model (actuel: {{offer?.job.billing.model?.name}})</label>
+      <app-autocomplete-model style="min-width: 350px;" (onModelSelected)="handleModelSelection($event)" ></app-autocomplete-model>
+    </div>
+    <div class="col">
+      <label for="phone">Immatriculation</label>
+      <input type="text" class="form-control" formControlName="registrationNumber">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Nom du bateau</label>
+      <input type="text" class="form-control" formControlName="boatName">
+    </div>
+    <div class="col">
+      <label for="phone">Pavillon</label>
+      <mat-form-field class="matFormLong" id="select">
+        <mat-select id="country" formControlName="flagId" >
+          <mat-option *ngFor="let country of countries" [value]="country.id">
+            {{country?.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="updateClient()">Update Client</button>
+</form>
+<form [formGroup]="missionForm">
+  <h1>Mission</h1>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Port de départ</label>
+      <input type="text" class="form-control" formControlName="startHarbor">
+    </div>
+    <div class="col">
+      <label for="phone">Port d'arrivée</label>
+      <input type="text" class="form-control" formControlName="endHarbor">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Remu chess</label>
+      <input type="text" class="form-control" formControlName="price">
+    </div>
+    <div class="col">
+      <label for="phone">Catégorie enim</label>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Position</label>
+      <input type="text" class="form-control" formControlName="position">
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col">
+      <label for="phone">Date de début</label>
+      {{offer?.job.startDate}}
+    </div>
+    <div class="col">
+      <label for="phone">Date de fin</label>
+      {{offer?.job.endDate}}
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary">Update Client</button>
+</form>
+<form [formGroup]="sailorForm">
+  <h1>Sailor</h1>
+  <h2>(attention les informations sont mise a jours sur le profil du skipper ici)</h2>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Prenom</label>
+      <input type="text" class="form-control" formControlName="firstname">
+    </div>
+    <div class="col">
+      <label for="phone">Nom</label>
+      <input type="text" class="form-control" formControlName="lastname">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Date de naissance</label>
+      <input type="text" class="form-control" formControlName="birthday">
+    </div>
+    <div class="col">
+      <label for="phone">nationalité</label>
+      <!--<input type="text" class="form-control" formControlName="nationality"> -->
+      <mat-form-field class="matFormLong" id="select">
+        <mat-select id="nationality" formControlName="nationality" >
+          <mat-option *ngFor="let nationality of nationalities" [value]="nationality.id">
+            {{nationality?.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">lieu de naissance</label>
+      <input type="text" class="form-control" formControlName="birthPlace">
+    </div>
+    <div class="col">
+      <label for="phone">Pays de naissance</label>
+      <input type="text" class="form-control" formControlName="birthCountry">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">N° Secu</label>
+      <input type="text" class="form-control" formControlName="socialNumber">
+    </div>
+    <div class="col">
+      <label for="phone">RIB</label>
+      <input type="text" class="form-control" formControlName="rib">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">addresse</label>
+      <app-google-places-autocomplete
+           [setAddresse]="sailorForm.value.personalAddress"
+           (selectedAddress)="handleAddressSailorChange($event)"/>
+    </div>
+    <div class="col">
+      <label for="phone">numéro de téléphone</label>
+      <input type="text" class="form-control" formControlName="phoneNumber">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">email</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="col">
+      <label for="phone">ID Marin</label>
+      <input type="text" class="form-control" formControlName="sailorNumber">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+       <label for="phone">tax domicil</label>
+      <!--<input type="text" class="form-control" formControlName="taxDom"> -->
+      <mat-form-field class="matFormLong" id="select">
+        <mat-select id="country" formControlName="taxDom" >
+          <mat-option *ngFor="let country of countries" [value]="country.id">
+            {{country?.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <label for="phone">civility</label>
+      <input type="text" class="form-control" formControlName="civility">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">main Doc: </label>
+      <a href="{{offer?.job.billing.mainDocumentUrl}}" target="_blank">{{offer?.job.billing.mainDocumentUrl}}</a>
+    </div>
+    <div class="col">
+      <label for="phone">CG: </label>
+      <a href="{{offer?.clientContract}}" target="_blank">{{offer?.clientContract}}</a>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="updateSailor()">Update Sailor</button>
+</form>
+
+<!-- MODAL CONFIRMED -->
+<app-modal-confirmed />

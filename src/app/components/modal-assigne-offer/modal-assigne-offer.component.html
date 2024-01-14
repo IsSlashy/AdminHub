@@ -1,0 +1,23 @@
+<h2 mat-dialog-title class="center">Sélectionnez une offre</h2>
+<mat-dialog-content class="mat-typography">
+  <div style="width: 1000px">
+    <mat-form-field style="min-width: 100%;" appearance="fill">
+      <mat-label>Offre</mat-label>
+      <mat-select (selectionChange)="selectOffer($event)">
+        <mat-option *ngFor="let offer of offers" [value]="offer">
+          {{offer.status}} - {{offer.sailor.firstname}} {{offer.sailor.userDetailById.lastname}} {{offer.sailor.id}} {{offer.realPrice}}€ {{offer.status}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <ng-container *ngIf="offer">
+      <h3>Detail de l'offre</h3>
+      <p>Prix total: {{ offer?.realPrice }} €</p>
+      <p>Remuneration Marin: {{ offer?.remuneration }} €</p>
+      <p>Frais de transport: {{ offer?.travelFeeExpenses }}</p>
+    </ng-container>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="btn btn-primary col-md-2 mr-4 float-left" (click)="assigne()">Assigner</button>
+  <button mat-button (click)="onNoClick()">Fermer</button>
+</mat-dialog-actions>

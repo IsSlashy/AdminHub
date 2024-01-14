@@ -1,0 +1,17 @@
+<button class="btn-primary pointer"  routerLink="{{'/admin/creation/boat/'+userId}}">Créer un bateau</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nom</th>
+      <th>model</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="cursor: pointer;" *ngFor="let boat of boats" routerLink="/admin/boat/{{boat.id}}">
+      <td><img style="  max-width: 75px;max-height: 75px;" src="{{boat.boatPictures.nodes[0]?.url}}"> </td>
+      <td> {{boat.name}} </td>
+      <td> {{boat.model.name}} </td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,16 @@
+.suggestion:hover {
+  cursor: pointer;
+  background-color:#BBBBBB;
+  overflow: visible;
+}
+::ng-deep .cdk-overlay-pane {
+/* Do you changes here */
+  min-width:500px;
+}
+.width{
+position: fixed;
+max-width:300px;
+min-width: 100%;
+z-index: 3;
+overflow: visible;
+}

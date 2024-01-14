@@ -1,0 +1,215 @@
+<form [formGroup]="profilForm" (ngSubmit)="updatePref()">
+  <button (click)="goToUrl('profil')" class="btn btn-primary">
+   Voir le profil public
+  </button>
+
+  <div class="form-floating">
+    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" formControlName="profileDescription" style="height: 100px"></textarea>
+    <label for="floatingTextarea2">Description</label>
+  </div>
+  <form [formGroup]="profilForm" (ngSubmit)="updatePref()">
+
+    <div *ngIf="userProfileImageUrl">
+      <img [src]="userProfileImageUrl" alt="Photo de profil" class="profile-img">
+    </div>
+
+  </form>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">Localisation</label>
+      {{user?.placeByLocalisation?.parentPlace?.name}}, {{user?.placeByLocalisation?.name}}
+    </div>
+    <div class="col">
+      <mat-form-field id="select">
+        <mat-label>Total Milles Nautiques parcourus</mat-label>
+        <mat-select id="totalMilles" formControlName="nauticalExperience">
+          <mat-option value="_2000"> &lt; 2 000 Nm</mat-option>
+          <mat-option value="_5000"> &lt; 5 000 Nm</mat-option>
+          <mat-option value="_10000"> &lt; 10 000 Nm</mat-option>
+          <mat-option value="_15000"> &lt; 15 000 Nm</mat-option>
+          <mat-option value="_20000"> &lt; 20 000 Nm</mat-option>
+          <mat-option value="_25000"> &lt; 25 000 Nm</mat-option>
+          <mat-option value="_30000"> &lt; 30 000 Nm</mat-option>
+          <mat-option value="_35000"> &gt; 35 000 Nm</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <h2>Type de bateau accepté</h2>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Multicoques" autocomplete="off"
+           [checked]="profilForm.get('boatType')!.value?.includes('MULTIHULL')"
+           (change)="updateBoatType('MULTIHULL')">
+    <label class="btn btn-outline-primary" for="Multicoques">Multicoques</label>
+
+    <input type="checkbox" class="btn-check" id="motorboat" autocomplete="off"
+           [checked]="profilForm.get('boatType')!.value?.includes('MOTORBOAT')"
+           (change)="updateBoatType('MOTORBOAT')">
+    <label class="btn btn-outline-primary" for="motorboat">Bateau à moteur</label>
+
+    <input type="checkbox" class="btn-check" id="Voilier" autocomplete="off"
+           [checked]="profilForm.get('boatType')!.value?.includes('SAILBOAT')"
+           (change)="updateBoatType('SAILBOAT')">
+    <label class="btn btn-outline-primary" for="Voilier">Voilier</label>
+  </div>
+
+  <h2>Type de mission accepté</h2>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Convoyage" autocomplete="off"
+           [checked]="profilForm.get('adType')!.value?.includes('DELIVERY')"
+           (change)="updateAdType('DELIVERY')">
+    <label class="btn btn-outline-primary" for="Convoyage">Convoyage</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Coaching" autocomplete="off"
+           [checked]="profilForm.get('adType')!.value?.includes('COACHING')"
+           (change)="updateAdType('COACHING')">
+    <label class="btn btn-outline-primary" for="Coaching">Coaching</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Accompagnement" autocomplete="off"
+           [checked]="profilForm.get('adType')!.value?.includes('SUPPORT')"
+           (change)="updateAdType('SUPPORT')">
+    <label class="btn btn-outline-primary" for="Accompagnement">Accompagnement</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Charter" autocomplete="off"
+           [checked]="profilForm.get('adType')!.value?.includes('CHARTER')"
+           (change)="updateAdType('CHARTER')">
+    <label class="btn btn-outline-primary" for="Charter">Charter</label>
+  </div>
+
+  <h2>Type de position accepté</h2>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Skipper" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('SKIPPER')"
+           (change)="updatePositionType('SKIPPER')">
+    <label class="btn btn-outline-primary" for="Skipper">Skipper / Capitaine</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Hôtesse" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('HOTESSE')"
+           (change)="updatePositionType('HOTESSE')">
+    <label class="btn btn-outline-primary" for="Hôtesse">Hôtesse / Steward</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Cook" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('HOTESSE_COOK')"
+           (change)="updatePositionType('HOTESSE_COOK')">
+    <label class="btn btn-outline-primary" for="Cook">Hôtesse Cook / Steward Cook</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Matelot" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('MATELOT')"
+           (change)="updatePositionType('MATELOT')">
+    <label class="btn btn-outline-primary" for="Matelot">Matelot</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Second" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('SECOND')"
+           (change)="updatePositionType('SECOND')">
+    <label class="btn btn-outline-primary" for="Second">Second</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Cuisinier" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('CHEF')"
+           (change)="updatePositionType('CHEF')">
+    <label class="btn btn-outline-primary" for="Cuisinier">Cuisinier</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Mecanicien" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('MECANICIEN')"
+           (change)="updatePositionType('MECANICIEN')">
+    <label class="btn btn-outline-primary" for="Mecanicien">Mécanicien</label>
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+    <input type="checkbox" class="btn-check" id="Chef" autocomplete="off"
+           [checked]="profilForm.get('positionType')!.value?.includes('CHEF_DE_QUART')"
+           (change)="updatePositionType('CHEF_DE_QUART')">
+    <label class="btn btn-outline-primary" for="Chef">Chef de quart</label>
+  </div>
+
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">taille maximum</label>
+      <input type="number" class="form-control" formControlName="maxBoatLength">
+    </div>
+    <div class="col">
+      <label for="phone">taille minimum</label>
+      <input type="number" class="form-control" formControlName="minBoatLength">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <label for="phone">passagers maximum</label>
+      <input type="number" class="form-control" formControlName="maxPassenger">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field class="select_material">
+        <mat-label>Visas</mat-label>
+        <mat-select id="totalMilles" formControlName="visa" multiple>
+          <mat-option *ngFor="let visa of visas " [value]="visa.id"> {{visa.name}} </mat-option>
+        </mat-select>
+       </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="matFormLong select_material">
+        <mat-label for="langues" class="label control-label">Langues parlées</mat-label>
+        <mat-select id="totalMilles" formControlName="spokenLanguages" multiple>
+          <mat-option *ngFor="let langue of languages " [value]="langue.id"> {{langue.name}} </mat-option>
+        </mat-select>
+       </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <mat-form-field id="select">
+        <mat-label>Contract Type</mat-label>
+        <mat-select id="contractType" formControlName="contractType">
+          <mat-option value="EMPLOYEE">Enrolé</mat-option>
+          <mat-option value="FREELANCE">Indépendant</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <div class="col">
+        <label for="phone">Tatouages</label>
+        <mat-radio-group aria-label="Select an option" formControlName="tatoo">
+          <mat-radio-button [value]="true">Oui</mat-radio-button>
+          <mat-radio-button [value]="false">Non</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="col">
+      <label for="phone">Fumeur</label>
+      <mat-radio-group aria-label="Select an option" formControlName="smoker">
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col">
+      <div class="col">
+        <label for="phone">Vacciné Covid</label>
+        <mat-radio-group aria-label="Select an option" formControlName="vaccin">
+          <mat-radio-button [value]="true">Oui</mat-radio-button>
+          <mat-radio-button [value]="false">Non</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <button type="submit" class="btn btn-primary btn-lg m-auto">Enregistrer</button>
+  </div>
+</form>
+
+<!-- MODAL CONFIRMED -->
+<app-modal-confirmed />
+
+

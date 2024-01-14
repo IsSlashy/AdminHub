@@ -1,0 +1,57 @@
+<div class="row">
+  <div class="col-md-2">
+    <h1> Détail job:</h1>
+  </div>
+  <div class="col-md-4">
+    <p> {{ job?.jobStatus }} {{job?.ad.harborByStartHarbor.nameFr}} {{job?.startDate  | date: "dd/MM/yyyy" }} </p>
+  </div>
+  <div class="col-md-2">
+    <p> Détail Sailor:</p>
+  </div>
+  <div class="col-md-4">
+    <p *ngIf="job?.jobStatus === 'ASSIGNED'">{{job?.finalOffer?.firstname }} {{job?.finalOffer?.sailor?.userDetailById.lastname}}, com: {{ job?.finalOffer?.fee }} </p>
+  </div>
+</div>
+<div>
+  <div class="col-md-10">
+    <mat-form-field>
+      <mat-label>Action</mat-label>
+      <mat-select>
+        <mat-option (click)="navigate('job')">Ajouter un job</mat-option>
+        <mat-option (click)="navigate('offer')">Créer une offre</mat-option>
+        <mat-option (click)="navigate('notation')">Noter le skipper</mat-option>
+        <mat-option (click)="mailOffer()">Mail opportunité</mat-option>
+        <mat-option (click)="openModalAssigne()">Assigner</mat-option>
+        <mat-option (click)="rePublish(false)">Desassigner</mat-option>
+        <mat-option (click)="rePublish(true)">Republier le job</mat-option>
+        <mat-option (click)="cancelJob()">Annuler le job</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <a class="btn btn-primary col-md-2  mr-4 float-left" [routerLink]="['/admin/client', job?.ad.boat.ownerId]">Voir propriétaire</a>
+    <a class="btn btn-primary col-md-2  mr-4 float-left" target="_blank" [href]="['https://www.captnboat.com/fr/recherche/detail-annonce?id=' + job?.id]">Voir l'annonce</a>
+    <a class="btn btn-primary col-md-2  mr-4 float-left" target="_blank" [href]="['https://captnboat.pipedrive.com/deal/' + job?.pipeDriveId]">Voir pipedrive</a>
+  </div>
+</div>
+<ul class="nav nav-tabs col-md-10" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="info">Info</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="billing">Billing</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="matching">Correspondants</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/chat']" [queryParams]="{jobId: job?.id}">Messages</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" routerLinkActive="active" routerLink="offers">Offres</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <router-outlet></router-outlet>
+</div>
+
+<app-modal-confirmed></app-modal-confirmed>

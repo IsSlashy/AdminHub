@@ -1,0 +1,21 @@
+<div class="spotlight"></div>
+<header class="header"></header>
+<div class="form-container">
+  <div class="form-wrapper">
+    <img src="https://cdn-icons-png.flaticon.com/512/695/695563.png" alt="Icon" class="form-icon" />
+    <label for="Member" class="center-label">Admin Center</label>
+    <div class="form-box">
+      <form class="form" (submit)="connect(); $event.preventDefault()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" id="username" [(ngModel)]="email" name="username" placeholder="Enter username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" placeholder="Enter password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
