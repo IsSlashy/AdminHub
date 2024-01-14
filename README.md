@@ -23,18 +23,15 @@ Clone the Repository:
 
 Open your terminal.
 Clone the AdminHub repository using the following command:
-bash
-git clone https://github.com/IsSlashy/AdminHub.git
+`git clone https://github.com/IsSlashy/AdminHub.git`
 **Navigate to the Project Directory:
 
 After cloning, navigate to the AdminHub project directory:
-bash
-cd AdminHub
+`cd AdminHub`
 Install Dependencies:
 
 Depending on the project's setup, you might need to install dependencies. If it's a Node.js project, for example, you would use:
-bash
-npm install
+`npm install`
 If it's a different stack, adjust this step accordingly based on the project's requirements (e.g., pip install for Python, bundle install for Ruby, etc.).
 Set Up Environment (if required):
 
@@ -42,8 +39,7 @@ If the project requires an environment setup (like a .env file), configure it ac
 Run the Project:
 
 Execute the command to run the project. This might be something like:
-bash
-npm start
+`npm start`
 Again, adjust this command based on the project's stack and documentation.
 Note: These instructions are general guidelines. Please refer to the project's README or documentation for specific setup and running instructions.
 
