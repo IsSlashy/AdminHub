@@ -64,10 +64,13 @@ export class ManagementComponent {
     'commercial',
     'action',
     'preferredConnection',
-    'clientType'
+    'clientType',
   ];
 
-  constructor(private apollo: Apollo, private formBuilder: FormBuilder) {
+  constructor(
+    private apollo: Apollo,
+    private formBuilder: FormBuilder
+  ) {
     this.formControl = this.formBuilder.group({
       firstname: '',
       lastname: '',
@@ -110,7 +113,9 @@ export class ManagementComponent {
       return (
         data.firstname?.toLowerCase().includes(filter.firstname) &&
         data.userDetailById.lastname?.toLowerCase().includes(filter.lastname) &&
-        data.userDetailById.phoneNumber?.toLowerCase().includes(filter.phoneNumber) &&
+        data.userDetailById.phoneNumber
+          ?.toLowerCase()
+          .includes(filter.phoneNumber) &&
         data.userDetailById.email?.toLowerCase().includes(filter.email)
       );
     };
@@ -120,15 +125,17 @@ export class ManagementComponent {
 
   refetch(type: string | null) {
     this.dataSource = new MatTableDataSource<User>(this.users);
-    if (type === null){
-      this.usersQuery.refetch({userCondition:{}})
-    }else {
-      this.usersQuery.refetch({userCondition:{preferredConnection: type}})
+    if (type === null) {
+      this.usersQuery.refetch({ userCondition: {} });
+    } else {
+      this.usersQuery.refetch({ userCondition: { preferredConnection: type } });
     }
   }
-  captnboatUsers(){
-  const users = this.users.filter(user => user.userDetailById.email.includes('@captnboat.com'))
-   this.dataSource = new MatTableDataSource<User>(users);
+  captnboatUsers() {
+    const users = this.users.filter((user) =>
+      user.userDetailById.email.includes('@captnboat.com')
+    );
+    this.dataSource = new MatTableDataSource<User>(users);
   }
 
   getUrl(user: any) {

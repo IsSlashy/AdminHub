@@ -1,6 +1,8 @@
 <select (change)="filterByLanguage($event)">
   <option value="">Toutes les langues</option>
-  <option *ngFor="let language of languages" [value]="language">{{ language }}</option>
+  <option *ngFor="let language of languages" [value]="language">
+    {{ language }}
+  </option>
 </select>
 <!-- Sélecteur pour la disponibilité -->
 <select (change)="filterByAvailability($event)">
@@ -9,32 +11,56 @@
   <option value="non reserver">Non Réservé</option>
 </select>
 <!-- Champ de saisie pour le code postal -->
-<input type="text" placeholder="Code postal" (input)="filterByPostalCode($event)">
+<input
+  type="text"
+  placeholder="Code postal"
+  (input)="filterByPostalCode($event)"
+/>
 
 <!-- Tableau des données -->
 <table mat-table [dataSource]="filteredDataSource" matSort>
   <ng-container matColumnDef="nom">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom Prénom</th>
-    <td mat-cell *matCellDef="let marin" class="pointer" routerLink="/admin/sailor/{{marin.id}}">
-      {{marin.firstname}} {{marin.userDetailById.lastname}}
+    <td
+      mat-cell
+      *matCellDef="let marin"
+      class="pointer"
+      routerLink="/admin/sailor/{{ marin.id }}"
+    >
+      {{ marin.firstname }} {{ marin.userDetailById.lastname }}
     </td>
   </ng-container>
   <ng-container matColumnDef="email">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-    <td mat-cell *matCellDef="let marin" class="pointer" routerLink="/admin/sailor/{{marin.id}}">
-      {{marin.userDetailById.email}}
+    <td
+      mat-cell
+      *matCellDef="let marin"
+      class="pointer"
+      routerLink="/admin/sailor/{{ marin.id }}"
+    >
+      {{ marin.userDetailById.email }}
     </td>
   </ng-container>
   <ng-container matColumnDef="telephone">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Téléphone</th>
-    <td mat-cell *matCellDef="let marin" class="pointer" routerLink="/admin/sailor/{{marin.id}}">
-      {{marin.userDetailById.phoneNumber}}
+    <td
+      mat-cell
+      *matCellDef="let marin"
+      class="pointer"
+      routerLink="/admin/sailor/{{ marin.id }}"
+    >
+      {{ marin.userDetailById.phoneNumber }}
     </td>
   </ng-container>
   <ng-container matColumnDef="zipcode">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Zip</th>
-    <td mat-cell *matCellDef="let marin" class="pointer" routerLink="/admin/sailor/{{marin.id}}">
-      {{marin.userDetailById.personnalAddress?.zipcode}}
+    <td
+      mat-cell
+      *matCellDef="let marin"
+      class="pointer"
+      routerLink="/admin/sailor/{{ marin.id }}"
+    >
+      {{ marin.userDetailById.personnalAddress?.zipcode }}
     </td>
   </ng-container>
   <ng-container matColumnDef="conversation">
@@ -47,5 +73,5 @@
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

@@ -19,12 +19,13 @@ export const GET_USER_SETTINGS = gql`
         emailDocumentExpired
       }
     }
-  }`
+  }
+`;
 
 export const UPDATE_USER_NOTIFICATIONS = gql`
-mutation updateNotification($settinginput: UpdateSettingInput!) {
-  updateSetting(input: $settinginput) {
-    clientMutationId
+  mutation updateNotification($settinginput: UpdateSettingInput!) {
+    updateSetting(input: $settinginput) {
+      clientMutationId
+    }
   }
-}
 `;

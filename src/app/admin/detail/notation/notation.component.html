@@ -1,18 +1,34 @@
 <div *ngIf="notationData">
-
   <form [formGroup]="noteForm" (ngSubmit)="onSubmitNote()">
-
     <!-- Note Compétence -->
     <label for="noteSkill">Note Compétence :</label>
-    <input type="number" id="noteSkill" formControlName="noteSkill" min="0" max="5">
+    <input
+      type="number"
+      id="noteSkill"
+      formControlName="noteSkill"
+      min="0"
+      max="5"
+    />
 
     <!-- Note Respect -->
     <label for="noteRespect">Note Respect :</label>
-    <input type="number" id="noteRespect" formControlName="noteRespect" min="0" max="5">
+    <input
+      type="number"
+      id="noteRespect"
+      formControlName="noteRespect"
+      min="0"
+      max="5"
+    />
 
     <!-- Note Communication -->
     <label for="noteCommunication">Note Communication :</label>
-    <input type="number" id="noteCommunication" formControlName="noteCommunication" min="0" max="5">
+    <input
+      type="number"
+      id="noteCommunication"
+      formControlName="noteCommunication"
+      min="0"
+      max="5"
+    />
 
     <!-- Commentaire -->
     <label for="comment">Modifier le commentaire :</label>
@@ -21,5 +37,4 @@
     <!-- Bouton de soumission -->
     <button type="submit">Mettre à jour</button>
   </form>
-
 </div>

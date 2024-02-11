@@ -52,7 +52,7 @@ export class DocumentsComponent {
   file: File = new File([], '');
   resume: any;
   userStructures: any;
-refusedDegrees: any;
+  refusedDegrees: any;
 
   get degrees() {
     return this.allDoc?.filter(
@@ -73,7 +73,6 @@ refusedDegrees: any;
     );
   }
 
-
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo,
@@ -83,17 +82,19 @@ refusedDegrees: any;
   ngOnInit(): void {
     this.route.parent?.paramMap.subscribe((param) => {
       this.userId = param.get('id');
-      this.subscription = this.apollo.watchQuery<any>({
-        query: SAILOR_DOCS,
-        variables: { userId: this.userId },
-      }).valueChanges.subscribe(({ data }: any) => {
-        console.log('Data reçue:', data);
+      this.subscription = this.apollo
+        .watchQuery<any>({
+          query: SAILOR_DOCS,
+          variables: { userId: this.userId },
+        })
+        .valueChanges.subscribe(({ data }: any) => {
+          console.log('Data reçue:', data);
           this.documentTypes = data.documentTypes?.nodes;
           this.allDoc = data.user.documents?.nodes;
           console.log('Documents reçus:', this.allDoc);
           this.resume = data.user.resumes.nodes[0];
           this.user = data.user.userDetailById;
-          this.userStructures = data.user.structures?.nodes
+          this.userStructures = data.user.structures?.nodes;
           console.log(this.userStructures);
 
           this.options = [];
@@ -122,8 +123,7 @@ refusedDegrees: any;
               map((value) => (typeof value === 'string' ? value : value?.name)),
               map((name) => (name ? this._filter(name) : this.options.slice()))
             );
-        }
-      );
+        });
     });
   }
 
@@ -140,7 +140,7 @@ refusedDegrees: any;
 
   handleFileInput(files: any) {
     this.file = files.target.files[0];
-    console.log('le file', this.file)
+    console.log('le file', this.file);
   }
 
   handleCvInput(files: any) {
@@ -182,7 +182,10 @@ refusedDegrees: any;
               inputresume: {
                 resume: {
                   userId: this.userId,
-                  url: data.generatePresignedPost.url + '/' + data.generatePresignedPost.fields.key,
+                  url:
+                    data.generatePresignedPost.url +
+                    '/' +
+                    data.generatePresignedPost.fields.key,
                 },
               },
             },
@@ -221,10 +224,12 @@ refusedDegrees: any;
             pDocumentId: uuid,
           },
         },
-        refetchQueries: [{
-          query: SAILOR_DOCS,
-          variables: { userId: this.userId,}
-        }],
+        refetchQueries: [
+          {
+            query: SAILOR_DOCS,
+            variables: { userId: this.userId },
+          },
+        ],
       })
       .subscribe(({ data }: any) => {
         console.log('la query a foncitonné');
@@ -264,33 +269,41 @@ refusedDegrees: any;
                 pUserId: this.userId,
                 pDocumentTypeId: this.docSelected.id,
                 pSailorId: this.user.sailorId,
-                pDocumentUrl: data.generatePresignedPost.url + '/' + data.generatePresignedPost.fields.key,
+                pDocumentUrl:
+                  data.generatePresignedPost.url +
+                  '/' +
+                  data.generatePresignedPost.fields.key,
                 pSerial: this.documentForm.value.serial,
-                pExpirationDate: this.documentForm.value.expirationDate? this.documentForm.value.expirationDate.toString().slice(0, 24) + 'UTC': null,
+                pExpirationDate: this.documentForm.value.expirationDate
+                  ? this.documentForm.value.expirationDate
+                      .toString()
+                      .slice(0, 24) + 'UTC'
+                  : null,
               },
             },
           })
           .subscribe(({ data }: any) => {
-
-            this.apollo.mutate({
-              mutation: VALIDE_DOCUMENT,
-              variables: {
-                validedocument: {
-                  pDocumentId: data.addDocument.document.id,
-                },
-              },refetchQueries: [
-                {
-                  query: SAILOR_DOCS,
-                  variables: {
-                    userId: this.userId,
+            this.apollo
+              .mutate({
+                mutation: VALIDE_DOCUMENT,
+                variables: {
+                  validedocument: {
+                    pDocumentId: data.addDocument.document.id,
                   },
                 },
-              ],
-            }).subscribe(({data, loading}:any) => {
-              this.documentForm.reset();
-              this.file = new File([], '');
-            })
-
+                refetchQueries: [
+                  {
+                    query: SAILOR_DOCS,
+                    variables: {
+                      userId: this.userId,
+                    },
+                  },
+                ],
+              })
+              .subscribe(({ data, loading }: any) => {
+                this.documentForm.reset();
+                this.file = new File([], '');
+              });
           });
       });
   }

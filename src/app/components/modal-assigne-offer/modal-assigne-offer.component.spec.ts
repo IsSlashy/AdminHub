@@ -8,7 +8,7 @@ describe('ModalAssigneOfferComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ModalAssigneOfferComponent]
+      declarations: [ModalAssigneOfferComponent],
     });
     fixture = TestBed.createComponent(ModalAssigneOfferComponent);
     component = fixture.componentInstance;

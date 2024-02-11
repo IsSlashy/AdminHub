@@ -2,7 +2,12 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { IBAN_EDIT, SAILOR_FINANCE, STRIPE_FACTURATION, UPDATE_DETAIL_SAILOR } from 'src/graphql/sailor';
+import {
+  IBAN_EDIT,
+  SAILOR_FINANCE,
+  STRIPE_FACTURATION,
+  UPDATE_DETAIL_SAILOR,
+} from 'src/graphql/sailor';
 import { loadStripe } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment';
 import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
@@ -13,7 +18,7 @@ import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/moda
   styleUrls: ['./finance.component.css'],
 })
 export class FinanceComponent {
-  @ViewChild(ModalConfirmedComponent)modalConfirmed!: ModalConfirmedComponent;
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
 
   userId: any;
   user: any;
@@ -67,20 +72,22 @@ export class FinanceComponent {
     });
   } */
 
-  updateUser(){
-    this.apollo.mutate({
-      mutation: UPDATE_DETAIL_SAILOR,
-      variables:{
-        sailorPayload: {
-          id: this.userId,
-          patch: {
-            stripeAccountId: this.financeForm.value.stripeId
-          }
-        }
-      }
-      }).subscribe(({data}: any) => {
-        this.modalConfirmed.openModal()
+  updateUser() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_DETAIL_SAILOR,
+        variables: {
+          sailorPayload: {
+            id: this.userId,
+            patch: {
+              stripeAccountId: this.financeForm.value.stripeId,
+            },
+          },
+        },
       })
+      .subscribe(({ data }: any) => {
+        this.modalConfirmed.openModal();
+      });
   }
 
   async updateIban() {
@@ -144,18 +151,18 @@ export class FinanceComponent {
           })
           .subscribe(
             ({ data }: any) => {
-              this.isLoading =false
+              this.isLoading = false;
               window.open(data.createAccountLink.url, '_blank');
               console.log('la mutation', data);
             },
             (error) => {
-              this.isLoading =false
+              this.isLoading = false;
               console.log('la mutation job a une erreur', error);
             }
           );
       }
     } else {
-      this.isLoading = true
+      this.isLoading = true;
       this.apollo
         .mutate({
           mutation: STRIPE_FACTURATION,
@@ -169,12 +176,12 @@ export class FinanceComponent {
         })
         .subscribe(
           ({ data }: any) => {
-            this.isLoading = false
+            this.isLoading = false;
             window.open(data.createAccountLink.url, '_blank');
             console.log('la mutation', data);
           },
           (error) => {
-            this.isLoading = false
+            this.isLoading = false;
             console.log('la mutation job a une erreur', error);
           }
         );

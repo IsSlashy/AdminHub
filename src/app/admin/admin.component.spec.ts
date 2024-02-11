@@ -12,8 +12,8 @@ describe('AdminComponent', () => {
         AdminComponent, // declare SidebarComponent
       ],
       imports: [
-        RouterTestingModule // import RouterTestingModule
-      ]
+        RouterTestingModule, // import RouterTestingModule
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(AdminComponent);

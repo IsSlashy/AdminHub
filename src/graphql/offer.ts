@@ -19,50 +19,49 @@ export const OFFER = gql`
       blockedDate
       lateUpdate
       token
-      job{
-
+      job {
         id
       }
     }
   }
 `;
 export const OFFER_UPDATE = gql`
-mutation offerUpdate($offerInput: UpdateOfferInput!) {
-  updateOffer(input: $offerInput) {
-    offer{
-      id
+  mutation offerUpdate($offerInput: UpdateOfferInput!) {
+    updateOffer(input: $offerInput) {
+      offer {
+        id
+      }
     }
   }
-}
 `;
 export const OFFER_CREATE = gql`
-mutation offerUpdate($offerInput:  NewOfferAdminInput!) {
-  newOfferAdmin(input: $offerInput) {
-    offer {
-      id
+  mutation offerUpdate($offerInput: NewOfferAdminInput!) {
+    newOfferAdmin(input: $offerInput) {
+      offer {
+        id
+      }
     }
   }
-}
 `;
 export const GENERATE_SIGNATURE = gql`
-mutation signature ($generateSignature: GenerateSignatureInput!) {
-  generateSignature(input: $generateSignature) {
-    url
-  }
-}
-`
-export const INFO_SAILOR = gql`
-query sailor_info ($sailorId: UUID!) {
-  user(id: $sailorId) {
-    id
-    firstname
-    userDetailById{
-      id
-      lastname
+  mutation signature($generateSignature: GenerateSignatureInput!) {
+    generateSignature(input: $generateSignature) {
+      url
     }
   }
-}
-`
+`;
+export const INFO_SAILOR = gql`
+  query sailor_info($sailorId: UUID!) {
+    user(id: $sailorId) {
+      id
+      firstname
+      userDetailById {
+        id
+        lastname
+      }
+    }
+  }
+`;
 export const RE_PUBLISH_JOB = gql`
   query rePublishJob($jobId: UUID!) {
     rePublishJob(input: { pJobId: $jobId }) {
@@ -72,13 +71,12 @@ export const RE_PUBLISH_JOB = gql`
 `;
 
 export const SEND_EMAIL_OFFER = gql`
-mutation sendEmailPayOffer($payOfferinput: SendEmailPayOfferInput!) {
-  sendEmailPayOffer(input: $payOfferinput){
-    boolean
+  mutation sendEmailPayOffer($payOfferinput: SendEmailPayOfferInput!) {
+    sendEmailPayOffer(input: $payOfferinput) {
+      boolean
+    }
   }
-}
-`
-
+`;
 
 export const JOB = gql`
   query job($jobId: UUID!) {

@@ -97,12 +97,12 @@ export const ADMIN_CONVERSATION = gql`
         firstname
         nauticalExperience
         avatarUrl
-        resumes{
-            nodes{
-              id
-              url
-            }
+        resumes {
+          nodes {
+            id
+            url
           }
+        }
         sailorSpokenLanguages {
           nodes {
             userId

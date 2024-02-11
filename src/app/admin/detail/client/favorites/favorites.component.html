@@ -8,7 +8,8 @@
         <th>Email</th>
         <th>Phone Number</th>
         <th>User Status</th>
-        <th>Actions</th> <!-- Colonne pour les actions -->
+        <th>Actions</th>
+        <!-- Colonne pour les actions -->
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,6 @@
 
 <!-- Section pour ajouter un marin aux favoris -->
 <div class="add-favourite">
-  <input type="text" [(ngModel)]="newFavouriteId" placeholder="ID du marin">
+  <input type="text" [(ngModel)]="newFavouriteId" placeholder="ID du marin" />
   <button (click)="addFavourite(newFavouriteId)">Ajouter aux favoris</button>
 </div>

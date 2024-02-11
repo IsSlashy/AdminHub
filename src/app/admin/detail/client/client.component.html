@@ -1,5 +1,13 @@
 <h1>Détail client</h1>
-{{user?.firstname}} {{user?.userDetailById.lastname}} - {{user?.userDetailById.phoneNumber}} <button class="btn btn-primary" [routerLink]="['/admin/creation/complete-job']" [queryParams]="{ownerId: user?.id}" >Créer une mission</button>
+{{ user?.firstname }} {{ user?.userDetailById.lastname }} -
+{{ user?.userDetailById.phoneNumber }}
+<button
+  class="btn btn-primary"
+  [routerLink]="['/admin/creation/complete-job']"
+  [queryParams]="{ ownerId: user?.id }"
+>
+  Créer une mission
+</button>
 <ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
     <a class="nav-link" routerLinkActive="active" routerLink="profil">Profil</a>
@@ -11,16 +19,28 @@
     <a class="nav-link" routerLinkActive="active" routerLink="jobs">Annonces</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="paiments">Paiments</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="paiments"
+      >Paiments</a
+    >
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/chat']" [queryParams]="{userId: user?.id}">Messages</a>
+    <a
+      class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/admin/chat']"
+      [queryParams]="{ userId: user?.id }"
+      >Messages</a
+    >
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="settings">Settings</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="settings"
+      >Settings</a
+    >
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="favoris">Favoris</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="favoris"
+      >Favoris</a
+    >
   </li>
 </ul>
 

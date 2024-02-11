@@ -15,7 +15,7 @@ import { AdminComponent } from './admin.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -66,7 +66,6 @@ import { FavorisComponent } from './detail/client/favorites/favorites.component'
 import { NotationComponent } from './detail/notation/notation.component';
 import { AlertDocumentComponent } from './dashboard/alert-document/alert-document.component';
 
-
 @NgModule({
   declarations: [
     ChessComponent,
@@ -116,7 +115,7 @@ import { AlertDocumentComponent } from './dashboard/alert-document/alert-documen
     SettingsComponent,
     NotationComponent,
     FavorisComponent,
-    AlertDocumentComponent
+    AlertDocumentComponent,
   ],
   imports: [
     CommonModule,
@@ -137,15 +136,9 @@ import { AlertDocumentComponent } from './dashboard/alert-document/alert-documen
     MatPaginatorModule,
     MatTableModule,
     HttpClientModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
-  providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' },
-],
-  exports:[
-    TrainingsComponent,
-    DegreesComponent,
-    ResumesComponent,
-  ]
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }],
+  exports: [TrainingsComponent, DegreesComponent, ResumesComponent],
 })
-export class AdminModule { }
+export class AdminModule {}

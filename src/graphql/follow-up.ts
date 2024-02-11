@@ -37,18 +37,18 @@ export const CANCEL_JOB = gql`
   }
 `;
 export const GET_JOBS = gql`
-query GetJobs($ended: Boolean!, $commercial: UUID, $status: [JobStatusEnum]) {
-  commercials {
-    nodes {
-      id
-      firstname
-      userDetailById {
+  query GetJobs($ended: Boolean!, $commercial: UUID, $status: [JobStatusEnum]) {
+    commercials {
+      nodes {
         id
-        lastname
+        firstname
+        userDetailById {
+          id
+          lastname
+        }
       }
     }
-  }
-  adminJobs(ended: $ended, pCommercialId: $commercial, pJobStatus: $status){
+    adminJobs(ended: $ended, pCommercialId: $commercial, pJobStatus: $status) {
       nodes {
         id
         jobStatus
@@ -58,7 +58,7 @@ query GetJobs($ended: Boolean!, $commercial: UUID, $status: [JobStatusEnum]) {
         createdAt
         contractType
         position
-        commercial1{
+        commercial1 {
           id
         }
         notations {
@@ -89,7 +89,7 @@ query GetJobs($ended: Boolean!, $commercial: UUID, $status: [JobStatusEnum]) {
             id
             firstname
             userDetailById {
-            id
+              id
               lastname
             }
           }
@@ -118,7 +118,7 @@ query GetJobs($ended: Boolean!, $commercial: UUID, $status: [JobStatusEnum]) {
             }
             ownerId
             owner {
-            firstname
+              firstname
               id
               userDetailById {
                 id

@@ -1,30 +1,32 @@
-<app-autocomplete-model (onModelSelected)="onSelect($event)"></app-autocomplete-model>
+<app-autocomplete-model
+  (onModelSelected)="onSelect($event)"
+></app-autocomplete-model>
 
 <form [formGroup]="boatForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label>Nom du bateau</label>
-    <input matInput formControlName="name">
+    <input matInput formControlName="name" />
   </div>
   <div class="form-group">
     <label>Puissance du moteur</label>
-    <input matInput formControlName="enginePower">
+    <input matInput formControlName="enginePower" />
   </div>
   <div class="form-group">
     <label>Longueur de la coque</label>
-    <input matInput formControlName="hullLength">
+    <input matInput formControlName="hullLength" />
   </div>
   <div class="form-group">
     <label>Hauteur sous barrot</label>
-    <input matInput formControlName="headroom">
+    <input matInput formControlName="headroom" />
   </div>
   <div class="form-group">
     <label>Tirant d'eau</label>
-    <input matInput formControlName="draft">
+    <input matInput formControlName="draft" />
   </div>
   <div class="form-group">
     <label>Jauge brute</label>
-    <input matInput formControlName="grossTonnage">
-</div>
+    <input matInput formControlName="grossTonnage" />
+  </div>
   <div class="button-group">
     <button type="submit">Modifier/Ajouter</button>
     <button type="button" (click)="resetForm()">Réinitialiser</button>

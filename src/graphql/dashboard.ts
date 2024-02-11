@@ -138,12 +138,13 @@ export const QUERY_DEVIS = gql`
   }
 `;
 export const CANCEL_OFFER_MUTATION = gql`
-mutation cancelOffer($jobId: String!) {
-  cancelOffer(jobId: $jobId) {
-    id
-    status
+  mutation cancelOffer($jobId: String!) {
+    cancelOffer(jobId: $jobId) {
+      id
+      status
+    }
   }
-}`;
+`;
 
 export const UPDATE_JOB = gql`
   mutation updateJob($jobInput: UpdateJobInput!) {

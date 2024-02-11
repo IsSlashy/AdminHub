@@ -4,13 +4,9 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
 
 const routes: Routes = [];
 
-
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes),
-    AdminRoutingModule
-  ],
+  imports: [RouterModule.forRoot(routes), AdminRoutingModule],
 
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

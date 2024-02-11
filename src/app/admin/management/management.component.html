@@ -6,25 +6,25 @@
   <div class="row">
     <div class="col-md-3">
       <mat-form-field class="w-100">
-        <input matInput formControlName="firstname">
+        <input matInput formControlName="firstname" />
         <mat-label>Firstname</mat-label>
       </mat-form-field>
     </div>
     <div class="col-md-3">
       <mat-form-field class="w-100">
-        <input matInput formControlName="lastname">
+        <input matInput formControlName="lastname" />
         <mat-label>Lastname</mat-label>
       </mat-form-field>
     </div>
     <div class="col-md-3">
       <mat-form-field class="w-100">
-        <input matInput formControlName="phoneNumber" autocomplete="off">
+        <input matInput formControlName="phoneNumber" autocomplete="off" />
         <mat-label>Phone</mat-label>
       </mat-form-field>
     </div>
     <div class="col-md-3">
       <mat-form-field class="w-100">
-        <input matInput formControlName="email" autocomplete="off">
+        <input matInput formControlName="email" autocomplete="off" />
         <mat-label>Email</mat-label>
       </mat-form-field>
     </div>
@@ -36,92 +36,141 @@
 <button class="btn btn-primary" (click)="refetch('CLIENT')">Client</button>
 <button class="btn btn-primary" (click)="captnboatUsers()">Captnboat</button>
 
-  <table  mat-table [dataSource]="dataSource" matSort  class="table table-bordered table-striped">
-    <tbody>
-      <ng-container matColumnDef="infos">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Infos</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" [routerLink]="getUrl(user)"><br>
-          création: {{user.createdAt | date:'dd/MM/YYYY' }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="preferredConnection">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type de Marin</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" [routerLink]="getUrl(user)">
-          {{ user.preferredConnection }}
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="clientType">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Type de Client</th>
-        <td mat-cell *matCellDef="let user">{{ user.clientType }}</td>
-      </ng-container>
-      <ng-container matColumnDef="firstname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Firstname</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" [routerLink]="getUrl(user)">
-          {{ user.firstname }}<br>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="lastname">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> name</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" [routerLink]="getUrl(user)">
-          {{ user.userDetailById.lastname }}<br>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" [routerLink]="getUrl(user)">
-          {{ user.userDetailById.phoneNumber }}<br>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> email</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" [routerLink]="getUrl(user)">
-          {{ user.userDetailById.email }}<br>
-        </td>
-      </ng-container>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="table table-bordered table-striped"
+>
+  <tbody>
+    <ng-container matColumnDef="infos">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Infos</th>
+      <td
+        mat-cell
+        *matCellDef="let user"
+        class="pointer"
+        [routerLink]="getUrl(user)"
+      >
+        <br />
+        création: {{ user.createdAt | date: 'dd/MM/YYYY' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="preferredConnection">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type de Marin</th>
+      <td
+        mat-cell
+        *matCellDef="let user"
+        class="pointer"
+        [routerLink]="getUrl(user)"
+      >
+        {{ user.preferredConnection }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="clientType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Type de Client</th>
+      <td mat-cell *matCellDef="let user">{{ user.clientType }}</td>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</th>
+      <td
+        mat-cell
+        *matCellDef="let user"
+        class="pointer"
+        [routerLink]="getUrl(user)"
+      >
+        {{ user.firstname }}<br />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>name</th>
+      <td
+        mat-cell
+        *matCellDef="let user"
+        class="pointer"
+        [routerLink]="getUrl(user)"
+      >
+        {{ user.userDetailById.lastname }}<br />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+      <td
+        mat-cell
+        *matCellDef="let user"
+        class="pointer"
+        [routerLink]="getUrl(user)"
+      >
+        {{ user.userDetailById.phoneNumber }}<br />
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>email</th>
+      <td
+        mat-cell
+        *matCellDef="let user"
+        class="pointer"
+        [routerLink]="getUrl(user)"
+      >
+        {{ user.userDetailById.email }}<br />
+      </td>
+    </ng-container>
 
-      <ng-container matColumnDef="commercial">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Commercial</th>
-        <td  mat-cell *matCellDef="let user">
-          <mat-form-field style="width: 150px;">
-            <mat-label>Commercial 1</mat-label>
-            <mat-select [ngModel]="user.commercialId" (ngModelChange)="updateCommercial($event, user.id)">
-              <mat-option  [value]="null">
-                Supprimer commercial
-              </mat-option>
-              <mat-option *ngFor="let com of commercials" [value]="com.id">
-                {{ com.firstname }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </td>
-      </ng-container>
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action</th>
-        <td  mat-cell *matCellDef="let user" class="pointer" >
-          <mat-form-field>
-            <mat-label>Action</mat-label>
-            <mat-select>
-              <mat-option (click)="password(user.userDetailById.email)">MDP oublié</mat-option>
-              <mat-option (click)="email(user.id)">Validate Email</mat-option>
-              <mat-option (click)="approved(user)">Captnboat Approuved</mat-option>
-              <mat-option (click)="blacklisted(user)">Blacklister</mat-option>
-              <mat-option *ngIf="user.preferredConnection === 'SAILOR'" (click)="deleteSailor(user.id)">Supprimer le compte</mat-option>
-              <mat-option *ngIf="user.preferredConnection === 'CLIENT'" (click)="deleteClient(user.id)">Supprimer le compte</mat-option>
-
-            </mat-select>
-          </mat-form-field>
-        </td>
-      </ng-container>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-    </tbody>
-  </table>
-  <mat-paginator
-    [pageSize]="10"
-    [length]="users.length"
-    [pageSizeOptions]="[10, 25, 50]"
-    showFirstLastButtons></mat-paginator>
-  <!-- <mat-paginator #paginator
+    <ng-container matColumnDef="commercial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Commercial</th>
+      <td mat-cell *matCellDef="let user">
+        <mat-form-field style="width: 150px">
+          <mat-label>Commercial 1</mat-label>
+          <mat-select
+            [ngModel]="user.commercialId"
+            (ngModelChange)="updateCommercial($event, user.id)"
+          >
+            <mat-option [value]="null"> Supprimer commercial </mat-option>
+            <mat-option *ngFor="let com of commercials" [value]="com.id">
+              {{ com.firstname }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+      <td mat-cell *matCellDef="let user" class="pointer">
+        <mat-form-field>
+          <mat-label>Action</mat-label>
+          <mat-select>
+            <mat-option (click)="password(user.userDetailById.email)"
+              >MDP oublié</mat-option
+            >
+            <mat-option (click)="email(user.id)">Validate Email</mat-option>
+            <mat-option (click)="approved(user)"
+              >Captnboat Approuved</mat-option
+            >
+            <mat-option (click)="blacklisted(user)">Blacklister</mat-option>
+            <mat-option
+              *ngIf="user.preferredConnection === 'SAILOR'"
+              (click)="deleteSailor(user.id)"
+              >Supprimer le compte</mat-option
+            >
+            <mat-option
+              *ngIf="user.preferredConnection === 'CLIENT'"
+              (click)="deleteClient(user.id)"
+              >Supprimer le compte</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </tbody>
+</table>
+<mat-paginator
+  [pageSize]="10"
+  [length]="users.length"
+  [pageSizeOptions]="[10, 25, 50]"
+  showFirstLastButtons
+></mat-paginator>
+<!-- <mat-paginator #paginator
   [length]="users.length"
   (page)="onPageChange($event)"
   [pageSize]="10"

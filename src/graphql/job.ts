@@ -13,7 +13,7 @@ export const PREVIEW_JOB = gql`
           id
           nameFr
         }
-        boat{
+        boat {
           id
           ownerId
         }
@@ -153,42 +153,42 @@ export const GENERATE_CONTRACT = gql`
 `;
 
 export const CORRESPONDANT = gql`
-query correspondant($jobId: UUID!) {
-  usersForJob(jobId: $jobId) {
-    nodes {
-      id
-      firstname
-      avatarUrl
-      sailorSpokenLanguages {
-        nodes {
-          language {
-            name
+  query correspondant($jobId: UUID!) {
+    usersForJob(jobId: $jobId) {
+      nodes {
+        id
+        firstname
+        avatarUrl
+        sailorSpokenLanguages {
+          nodes {
+            language {
+              name
+            }
           }
         }
-      }
-      userDetailById {
-        id
-        lastname
-        email
-        phoneNumber
-        personnalAddress {
-          zipcode
+        userDetailById {
+          id
+          lastname
+          email
+          phoneNumber
+          personnalAddress {
+            zipcode
+          }
+          reserved
         }
-        reserved
       }
     }
   }
-}
 `;
 
 export const OPEN_CONV = gql`
-mutation conv($openConv: OpenConversationAdminInput!) {
-  openConversationAdmin(input: $openConv){
-    conversation{
-      id
+  mutation conv($openConv: OpenConversationAdminInput!) {
+    openConversationAdmin(input: $openConv) {
+      conversation {
+        id
+      }
     }
   }
-}
 `;
 
 export const JOB = gql`

@@ -3,19 +3,32 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { CANCEL_OFFER, CANDIDATE_JOB, GET_FAVORITES_JOBS, GET_SKIPPER_ASSIGNED_JOBS, GET_SKIPPER_CONFIRMED_JOBS, OPPORTUNITIES } from 'src/graphql/sailor';
+import {
+  CANCEL_OFFER,
+  CANDIDATE_JOB,
+  GET_FAVORITES_JOBS,
+  GET_SKIPPER_ASSIGNED_JOBS,
+  GET_SKIPPER_CONFIRMED_JOBS,
+  OPPORTUNITIES,
+} from 'src/graphql/sailor';
 
 @Component({
   selector: 'app-sailor-jobs',
   templateUrl: './sailor-jobs.component.html',
-  styleUrls: ['./sailor-jobs.component.css']
+  styleUrls: ['./sailor-jobs.component.css'],
 })
 export class SailorJobsComponent {
-
   userId: any;
   jobs: any;
   dataSource!: MatTableDataSource<any>;
-  displayedColumns: string[] = ["photo", "bateau", "date", "place", "contract", "actions"];
+  displayedColumns: string[] = [
+    'photo',
+    'bateau',
+    'date',
+    'place',
+    'contract',
+    'actions',
+  ];
   pageIndex: number = 0;
   set matPaginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
@@ -31,24 +44,22 @@ export class SailorJobsComponent {
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo
-  ){}
+  ) {}
 
   ngOnInit() {
-    this.route.parent?.paramMap.subscribe( param => {
-      this.userId = param.get('id')
-      this.selectOpportunities()
-    })
+    this.route.parent?.paramMap.subscribe((param) => {
+      this.userId = param.get('id');
+      this.selectOpportunities();
+    });
   }
 
-
-
   selectOpportunities() {
-    this.activeTab = 'opportunities'
+    this.activeTab = 'opportunities';
     this.apollo
       .query({
         query: OPPORTUNITIES,
-        variables:{
-          userId: this.userId
+        variables: {
+          userId: this.userId,
         },
         fetchPolicy: 'network-only',
       })
@@ -58,35 +69,38 @@ export class SailorJobsComponent {
         this.favoriteCount = data.user?.jobsFavorites?.totalCount;
         this.opportunitiesCount = data.user?.jobsForUser?.totalCount;
         this.assignedCount = data.user?.jobsAsSailorAssigned?.totalCount;
-        this.confirmdedCount =
-          data.user?.jobsAsSailorConfirmed?.totalCount;
-        this.candidateCount =
-          data.user?.sailorJobsCandidated?.totalCount;
+        this.confirmdedCount = data.user?.jobsAsSailorConfirmed?.totalCount;
+        this.candidateCount = data.user?.sailorJobsCandidated?.totalCount;
       });
   }
   cancelOffer(offerId: string) {
-    this.apollo.mutate({
-      mutation: CANCEL_OFFER,
-      variables: {
-        cancelofferinput: {
-          pOfferId: offerId // Utilisez pOfferId ici au lieu de offerId
+    this.apollo
+      .mutate({
+        mutation: CANCEL_OFFER,
+        variables: {
+          cancelofferinput: {
+            pOfferId: offerId, // Utilisez pOfferId ici au lieu de offerId
+          },
+        },
+      })
+      .subscribe(
+        ({ data }) => {
+          console.log('Offre annulée', data);
+          // Mise à jour de l'interface utilisateur après l'annulation
+        },
+        (error) => {
+          console.error("Erreur lors de l'annulation de l'offre", error);
+          // Gestion des erreurs
         }
-      }
-    }).subscribe(({ data }) => {
-      console.log('Offre annulée', data);
-      // Mise à jour de l'interface utilisateur après l'annulation
-    }, (error) => {
-      console.error('Erreur lors de l\'annulation de l\'offre', error);
-      // Gestion des erreurs
-    });
+      );
   }
   selectCandidateJob() {
-    this.activeTab = 'candidateJob'
+    this.activeTab = 'candidateJob';
     this.apollo
       .query({
         query: CANDIDATE_JOB,
-        variables:{
-          userId: this.userId
+        variables: {
+          userId: this.userId,
         },
         fetchPolicy: 'network-only',
       })
@@ -98,29 +112,28 @@ export class SailorJobsComponent {
   }
 
   selectConfirmededJob() {
-    this.activeTab = 'confirmedJob'
+    this.activeTab = 'confirmedJob';
     this.apollo
       .query({
         query: GET_SKIPPER_CONFIRMED_JOBS,
-        variables:{
-          userId: this.userId
+        variables: {
+          userId: this.userId,
         },
       })
       .subscribe(({ data, loading }: any) => {
         this.jobs = data.user.jobsAsSailorConfirmed.nodes;
         this.dataSource = data.user.jobsAsSailorConfirmed.nodes;
-        this.confirmdedCount =
-          data.user.jobsAsSailorConfirmed?.totalCount;
+        this.confirmdedCount = data.user.jobsAsSailorConfirmed?.totalCount;
       });
   }
 
   selectAssignededJob() {
-    this.activeTab ='assignedJob'
+    this.activeTab = 'assignedJob';
     this.apollo
       .query({
         query: GET_SKIPPER_ASSIGNED_JOBS,
-        variables:{
-          userId: this.userId
+        variables: {
+          userId: this.userId,
         },
       })
       .subscribe(({ data, loading }: any) => {
@@ -131,12 +144,12 @@ export class SailorJobsComponent {
   }
 
   selectFavoriteJob() {
-    this.activeTab = 'favoriteJob'
+    this.activeTab = 'favoriteJob';
     this.apollo
       .query({
         query: GET_FAVORITES_JOBS,
-        variables:{
-          userId: this.userId
+        variables: {
+          userId: this.userId,
         },
       })
       .subscribe(({ data, loading }: any) => {
@@ -145,5 +158,4 @@ export class SailorJobsComponent {
         this.favoriteCount = data.user.jobsFavorites?.totalCount;
       });
   }
-
 }

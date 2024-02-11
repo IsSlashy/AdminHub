@@ -8,11 +8,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr style="cursor: pointer;" *ngFor="let job of jobs" routerLink="/admin/job/{{job.id}}">
-      <td> {{job.realPrice}}</td>
-      <td> {{job.ad.adType}}</td>
-      <td> {{job.position}}, {{job.startDate}} - {{job.endDate}}</td>
-      <td> {{job.finalOffer?.contractAcceptationDateClient | date :'dd/MM/y'}}</td>
+    <tr
+      style="cursor: pointer"
+      *ngFor="let job of jobs"
+      routerLink="/admin/job/{{ job.id }}"
+    >
+      <td>{{ job.realPrice }}</td>
+      <td>{{ job.ad.adType }}</td>
+      <td>{{ job.position }}, {{ job.startDate }} - {{ job.endDate }}</td>
+      <td>
+        {{ job.finalOffer?.contractAcceptationDateClient | date: 'dd/MM/y' }}
+      </td>
     </tr>
   </tbody>
 </table>

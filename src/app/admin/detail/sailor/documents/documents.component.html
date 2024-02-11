@@ -1,13 +1,29 @@
 <h1>CV</h1>
-<p> <a [href]="resume?.url" target="_blank">{{resume?.url}}</a> - {{resume?.status}}</p>
+<p>
+  <a [href]="resume?.url" target="_blank">{{ resume?.url }}</a> -
+  {{ resume?.status }}
+</p>
 <div class="mb-3">
   <label for="formFile" class="form-label">Modifier</label>
-  <input class="form-control" (change)="handleCvInput($event)" type="file" id="formFile">
+  <input
+    class="form-control"
+    (change)="handleCvInput($event)"
+    type="file"
+    id="formFile"
+  />
 </div>
 <h3>les structures</h3>
-<div style="display: flex; flex-direction:row; flex-wrap: wrap; max-width: 800px; padding: 10px;">
-  <div  *ngFor="let structure of userStructures">
-      <div>{{structure.name}} , </div>
+<div
+  style="
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 800px;
+    padding: 10px;
+  "
+>
+  <div *ngFor="let structure of userStructures">
+    <div>{{ structure.name }} ,</div>
   </div>
 </div>
 <h1>Formations manquantes</h1>
@@ -26,11 +42,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let element of degrees">
-      <td><strong>{{ element.documentType.name }}</strong></td>
+      <td>
+        <strong>{{ element.documentType.name }}</strong>
+      </td>
       <td>{{ element.missingTrainings.certificat }}</td>
       <td>{{ element.missingTrainings.radio }}</td>
       <td>{{ element.missingTrainings.commercial }}</td>
-      <td>{{ element.missingTrainings.medical }}<br/></td>
+      <td>{{ element.missingTrainings.medical }}<br /></td>
       <td>{{ element.missingTrainings.mention }}</td>
       <td>{{ element.missingTrainings.security }}</td>
       <td>{{ element.missingTrainings.other }}</td>
@@ -42,26 +60,66 @@
 <form [formGroup]="documentForm" (ngSubmit)="addDocument()">
   <div class="form-row">
     <mat-form-field>
-      <mat-label for="degree1-name" class="label control-label">Type de document *</mat-label>
+      <mat-label for="degree1-name" class="label control-label"
+        >Type de document *</mat-label
+      >
       <!-- <mat-label>Document</mat-label> -->
-      <input type="text"  matInput formControlName="documentType" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="changeDocument($event)" [displayWith]="displayFn">
-        <mat-option *ngFor="let document of filteredOptions | async"   [value]="document">
-          {{document.name}} <span *ngIf="document.shortName !== undefined" [ngClass]="['flag-icon', 'flag-icon-' + document.shortName  ,'flag-icon-squared']"></span>
+      <input
+        type="text"
+        matInput
+        formControlName="documentType"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="changeDocument($event)"
+        [displayWith]="displayFn"
+      >
+        <mat-option
+          *ngFor="let document of filteredOptions | async"
+          [value]="document"
+        >
+          {{ document.name }}
+          <span
+            *ngIf="document.shortName !== undefined"
+            [ngClass]="[
+              'flag-icon',
+              'flag-icon-' + document.shortName,
+              'flag-icon-squared'
+            ]"
+          ></span>
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <input type="text" name="email" formControlName="serial" placeholder="N° Titre">
+    <input
+      type="text"
+      name="email"
+      formControlName="serial"
+      placeholder="N° Titre"
+    />
     <mat-form-field *ngIf="docSelected?.expiration">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="expirationDate">
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="expirationDate"
+      />
       <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <div class="mb-3">
       <label for="formFile" class="form-label">Justificatif</label>
-      <input class="form-control" (change)="handleFileInput($event)" type="file" id="formFile" #field>
+      <input
+        class="form-control"
+        (change)="handleFileInput($event)"
+        type="file"
+        id="formFile"
+        #field
+      />
     </div>
   </div>
   <button type="submit">Ajouter le document</button>
@@ -81,12 +139,18 @@
   </thead>
   <tbody>
     <tr *ngFor="let degree of degrees">
-      <td> {{degree.documentType.name}} </td>
-      <td> {{degree.serial}} </td>
-      <td> {{degree.expirationDate |date :'dd/MM/yyyy'}} </td>
-      <td> {{degree.status}} </td>
-      <td><a [href]="degree.documentUrl" target="_blank"><i class="bi bi-file-earmark-text-fill"></i></a></td>
-      <td><i class="bi bi-trash-fill pointer" (click)="delete(degree.id)"></i></td>
+      <td>{{ degree.documentType.name }}</td>
+      <td>{{ degree.serial }}</td>
+      <td>{{ degree.expirationDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ degree.status }}</td>
+      <td>
+        <a [href]="degree.documentUrl" target="_blank"
+          ><i class="bi bi-file-earmark-text-fill"></i
+        ></a>
+      </td>
+      <td>
+        <i class="bi bi-trash-fill pointer" (click)="delete(degree.id)"></i>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -104,20 +168,32 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let training of trainings" >
-      <td> {{training.documentType.name}} </td>
-      <td> {{training.serial}} </td>
-      <td> {{training.expirationDate |date :'dd/MM/yyyy'}} </td>
-      <td> {{training.status}} </td>
-      <td><a [href]="training.documentUrl" target="_blank"><i class="bi bi-file-earmark-text-fill"></i></a></td>
-      <td><i style="cursor: pointer;" class="bi bi-trash-fill" (click)="delete(training.id)"></i></td>
+    <tr *ngFor="let training of trainings">
+      <td>{{ training.documentType.name }}</td>
+      <td>{{ training.serial }}</td>
+      <td>{{ training.expirationDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ training.status }}</td>
+      <td>
+        <a [href]="training.documentUrl" target="_blank"
+          ><i class="bi bi-file-earmark-text-fill"></i
+        ></a>
+      </td>
+      <td>
+        <i
+          style="cursor: pointer"
+          class="bi bi-trash-fill"
+          (click)="delete(training.id)"
+        ></i>
+      </td>
     </tr>
   </tbody>
 </table>
 
 <h1>Documents Invalides</h1>
-<p *ngIf="invalid_doc.length === 0">Aucun document invalide.</p> <!-- Bloc conditionnel déplacé ici -->
-<table class="table table-striped" *ngIf="invalid_doc.length > 0"> <!-- Affiche le tableau seulement s'il y a des documents invalides -->
+<p *ngIf="invalid_doc.length === 0">Aucun document invalide.</p>
+<!-- Bloc conditionnel déplacé ici -->
+<table class="table table-striped" *ngIf="invalid_doc.length > 0">
+  <!-- Affiche le tableau seulement s'il y a des documents invalides -->
   <thead>
     <tr>
       <th>Diplôme</th>
@@ -129,10 +205,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let doc of invalid_doc">
-      <td> {{ doc.documentType.name }} </td>
-      <td> {{ doc.serial }} </td>
-      <td> {{ doc.expirationDate | date :'dd/MM/yyyy' }} </td>
-      <td> {{ doc.status }} </td>
+      <td>{{ doc.documentType.name }}</td>
+      <td>{{ doc.serial }}</td>
+      <td>{{ doc.expirationDate | date: 'dd/MM/yyyy' }}</td>
+      <td>{{ doc.status }}</td>
       <td>
         <a *ngIf="doc.documentUrl" [href]="doc.documentUrl" target="_blank">
           <i class="bi bi-file-earmark-text-fill"></i>

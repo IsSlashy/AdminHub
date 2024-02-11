@@ -3,17 +3,23 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
-import { USER_CLIENT, UPDATE_USER, UPDATE_USER_DETAIL, GENERATE_URL, USER_AVATAR_UPLOAD } from 'src/graphql/client';
+import {
+  USER_CLIENT,
+  UPDATE_USER,
+  UPDATE_USER_DETAIL,
+  GENERATE_URL,
+  USER_AVATAR_UPLOAD,
+} from 'src/graphql/client';
 
 @Component({
   selector: 'app-client-personal',
   templateUrl: './client-personal.component.html',
-  styleUrls: ['./client-personal.component.css']
+  styleUrls: ['./client-personal.component.css'],
 })
 export class ClientPersonalComponent {
-onStatusChange() {
-  console.log('Statut changé en:', this.userForm.value.userStatus);
-}
+  onStatusChange() {
+    console.log('Statut changé en:', this.userForm.value.userStatus);
+  }
   @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
   @ViewChild('imageInput') imageInput!: ElementRef;
   userForm: FormGroup;
@@ -46,15 +52,16 @@ onStatusChange() {
   }
 
   ngOnInit() {
-    this.route.parent?.paramMap.subscribe(param => {
+    this.route.parent?.paramMap.subscribe((param) => {
       const userId = param.get('id');
       if (userId) {
-        this.apollo.query({ query: USER_CLIENT, variables: { userId } })
+        this.apollo
+          .query({ query: USER_CLIENT, variables: { userId } })
           .subscribe(({ data }: any) => {
             this.user = data.user;
             this.nationalities = data.nationalities.nodes;
             this.languages = data.languages.nodes;
-            this.commercials = data.commercials.nodes
+            this.commercials = data.commercials.nodes;
             this.initFormWithUserData();
           });
       }
@@ -79,7 +86,6 @@ onStatusChange() {
     });
   }
 
-
   openImageUpload() {
     this.imageInput.nativeElement.click();
   }
@@ -87,86 +93,107 @@ onStatusChange() {
   onImageChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      this.apollo.mutate({
-        mutation: GENERATE_URL,
-        variables: { keyInput: { key: file.name } },
-      }).subscribe(async ({ data }: any) => {
-        const formData = new FormData();
-        formData.append('Content-Type', file.type);
-        Object.entries(data.generatePresignedPost.fields).forEach(([k, value]) => {
-          formData.append(k, value as string);
-        });
-        formData.append('file', file);
+      this.apollo
+        .mutate({
+          mutation: GENERATE_URL,
+          variables: { keyInput: { key: file.name } },
+        })
+        .subscribe(async ({ data }: any) => {
+          const formData = new FormData();
+          formData.append('Content-Type', file.type);
+          Object.entries(data.generatePresignedPost.fields).forEach(
+            ([k, value]) => {
+              formData.append(k, value as string);
+            }
+          );
+          formData.append('file', file);
 
-        try {
-          await fetch(data.generatePresignedPost.url, {
-            method: 'POST',
-            body: formData,
-          });
-          const imageUrl = data.generatePresignedPost.url + '/' + data.generatePresignedPost.fields.key;
-          this.updateUserAvatar(imageUrl);
-        } catch (error) {
-          console.error("Erreur lors de l'envoi de l'image:", error);
-        }
-      });
+          try {
+            await fetch(data.generatePresignedPost.url, {
+              method: 'POST',
+              body: formData,
+            });
+            const imageUrl =
+              data.generatePresignedPost.url +
+              '/' +
+              data.generatePresignedPost.fields.key;
+            this.updateUserAvatar(imageUrl);
+          } catch (error) {
+            console.error("Erreur lors de l'envoi de l'image:", error);
+          }
+        });
     }
   }
   updateUserAvatar(imageUrl: string) {
     const userInput = { id: this.user.id, patch: { avatarUrl: imageUrl } };
-    this.apollo.mutate({
-      mutation: USER_AVATAR_UPLOAD,
-      variables: { pfpupload: userInput }
-    }).subscribe(() => {
-      // Créer une nouvelle instance de l'objet user avec la nouvelle URL de l'avatar
-      this.user = { ...this.user, avatarUrl: imageUrl };
-      console.log('Avatar mis à jour');
-    }, error => {
-      console.error("Erreur lors de la mise à jour de l'avatar:", error);
-    });
+    this.apollo
+      .mutate({
+        mutation: USER_AVATAR_UPLOAD,
+        variables: { pfpupload: userInput },
+      })
+      .subscribe(
+        () => {
+          // Créer une nouvelle instance de l'objet user avec la nouvelle URL de l'avatar
+          this.user = { ...this.user, avatarUrl: imageUrl };
+          console.log('Avatar mis à jour');
+        },
+        (error) => {
+          console.error("Erreur lors de la mise à jour de l'avatar:", error);
+        }
+      );
   }
 
-
   updateUser() {
-    this.apollo.mutate({
-      mutation: UPDATE_USER,
-      variables: {
-        userPayload: {
-          id: this.user.id,
-          patch: {
-            firstname: this.userForm.value.firstname,
-            birthday: this.userForm.value.birthday,
-            civility: this.userForm.value.civility,
-            nationality1Id: this.userForm.value.nationality,
-            nativeLanguageId: this.userForm.value.nativeLanguage,
-            favoriteCurrency: this.userForm.value.favoriteCurrency,
-            userStatus: this.userForm.value.userStatus,
-            pipeDriveId: this.userForm.value.pipeDriveId,
-            commissionRate: this.userForm.value.commissionRate,
-            commercialId: this.userForm.value.commercialId
-          }
-        }
-      }
-    }).subscribe(({ data }: any) => {
-      this.apollo.mutate({
-        mutation: UPDATE_USER_DETAIL,
+    this.apollo
+      .mutate({
+        mutation: UPDATE_USER,
         variables: {
-          userDetailPayload: {
+          userPayload: {
             id: this.user.id,
             patch: {
-              phoneNumber: this.userForm.value.phoneNumber,
-              lastname: this.userForm.value.lastname,
-              email: this.userForm.value.email
-            }
-          }
+              firstname: this.userForm.value.firstname,
+              birthday: this.userForm.value.birthday,
+              civility: this.userForm.value.civility,
+              nationality1Id: this.userForm.value.nationality,
+              nativeLanguageId: this.userForm.value.nativeLanguage,
+              favoriteCurrency: this.userForm.value.favoriteCurrency,
+              userStatus: this.userForm.value.userStatus,
+              pipeDriveId: this.userForm.value.pipeDriveId,
+              commissionRate: this.userForm.value.commissionRate,
+              commercialId: this.userForm.value.commercialId,
+            },
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) => {
+          this.apollo
+            .mutate({
+              mutation: UPDATE_USER_DETAIL,
+              variables: {
+                userDetailPayload: {
+                  id: this.user.id,
+                  patch: {
+                    phoneNumber: this.userForm.value.phoneNumber,
+                    lastname: this.userForm.value.lastname,
+                    email: this.userForm.value.email,
+                  },
+                },
+              },
+            })
+            .subscribe(
+              ({ data }: any) => {
+                this.modalConfirmed.openModal();
+                console.log('le update job reussi');
+              },
+              (error) => {
+                console.log('error update details', error);
+              }
+            );
+        },
+        (error) => {
+          console.log('update user error', error);
         }
-      }).subscribe(({ data }: any) => {
-        this.modalConfirmed.openModal();
-        console.log('le update job reussi');
-      }, (error) => {
-        console.log('error update details', error);
-      });
-    }, (error) => {
-      console.log('update user error', error);
-    });
+      );
   }
 }

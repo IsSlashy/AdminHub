@@ -2,7 +2,6 @@ import gql from 'graphql-tag';
 
 export const USER = gql`
   query sailor_personal($userId: UUID!) {
-
     user(id: $userId) {
       id
       firstname
@@ -356,13 +355,13 @@ export const CANCELED = gql`
   }
 `;
 export const GENERATE_URL = gql`
-mutation generateUrl ($keyInput: GeneratePresignedPostInput!) {
-  generatePresignedPost(input: $keyInput) {
-    url
-    fields
+  mutation generateUrl($keyInput: GeneratePresignedPostInput!) {
+    generatePresignedPost(input: $keyInput) {
+      url
+      fields
+    }
   }
-}
-`
+`;
 export const USER_CLIENT = gql`
   query client($userId: UUID!) {
     nationalities(orderBy: NAME_ASC) {
@@ -420,43 +419,46 @@ export const UPDATE_USER = gql`
   }
 `;
 export const UPDATE_USER_DETAIL = gql`
-mutation update_user_detail_client($userDetailPayload: UpdateUserDetailInput!) {
-  updateUserDetail(input: $userDetailPayload) {
-    userDetail {
-      id
+  mutation update_user_detail_client(
+    $userDetailPayload: UpdateUserDetailInput!
+  ) {
+    updateUserDetail(input: $userDetailPayload) {
+      userDetail {
+        id
+      }
     }
   }
-}
 `;
 export const CLIENT_PAIMENTS = gql`
   query clientPaiments($userId: UUID!) {
-  user(id: $userId){
-    jobsAsClientPaid{
-      nodes{
-        id
-        realPrice
-        position
-        startDate
-        endDate
-        finalOffer{
+    user(id: $userId) {
+      jobsAsClientPaid {
+        nodes {
           id
-          contractAcceptationDateClient
-        }
-        ad{
-          id
-          adType
+          realPrice
+          position
+          startDate
+          endDate
+          finalOffer {
+            id
+            contractAcceptationDateClient
+          }
+          ad {
+            id
+            adType
+          }
         }
       }
     }
   }
-}
 `;
 export const USER_AVATAR_UPLOAD = gql`
-mutation user_pfp_upload($pfpupload: UpdateUserInput!) {
-  updateUser(input: $pfpupload) {
-    user {
-      id
-      avatarUrl
+  mutation user_pfp_upload($pfpupload: UpdateUserInput!) {
+    updateUser(input: $pfpupload) {
+      user {
+        id
+        avatarUrl
+      }
     }
   }
-}`;
+`;

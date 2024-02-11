@@ -13,7 +13,7 @@
   background-color: #f7f7f7;
   overflow-y: auto;
 }
-.card--opportunity-summary{
+.card--opportunity-summary {
   max-width: 350px;
 }
 .contact {
@@ -27,7 +27,7 @@
 .contact:hover {
   background-color: #f0f0f0;
 }
-.notResponse{
+.notResponse {
   background-color: rgb(180, 180, 180);
 }
 .profile-picture {

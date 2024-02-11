@@ -1,21 +1,21 @@
 <a>Photo de profil</a>
 <form [formGroup]="userForm" (ngSubmit)="updateUser()">
   <div *ngIf="user && user.avatarUrl">
-    <img [src]="user.avatarUrl" alt="Photo de profil" class="profile-img">
+    <img [src]="user.avatarUrl" alt="Photo de profil" class="profile-img" />
     <!-- Ajout du bouton pour modifier la photo -->
     <button type="button" (click)="openImageUpload()">Modifier</button>
   </div>
 </form>
-<input type="file" #imageInput hidden (change)="onImageChange($event)">
+<input type="file" #imageInput hidden (change)="onImageChange($event)" />
 <form [formGroup]="userForm">
   <div class="form-row">
     <div class="col">
       <label for="phone">Prénom</label>
-      <input type="text" class="form-control" formControlName="firstname">
+      <input type="text" class="form-control" formControlName="firstname" />
     </div>
     <div class="col">
       <label for="phone">Nom</label>
-      <input type="text" class="form-control" formControlName="lastname">
+      <input type="text" class="form-control" formControlName="lastname" />
     </div>
   </div>
   <div class="form-row">
@@ -28,26 +28,29 @@
     </div>
     <div class="col">
       <label for="phone">Date de naissance</label>
-      <input type="text" class="form-control" formControlName="birthday">
+      <input type="text" class="form-control" formControlName="birthday" />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <label for="phone">Email</label>
-      <input type="text" class="form-control" formControlName="email">
+      <input type="text" class="form-control" formControlName="email" />
     </div>
     <div class="col">
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="form-control" formControlName="phoneNumber">
+      <input type="text" class="form-control" formControlName="phoneNumber" />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <label for="phone">nationalité</label>
       <mat-form-field class="matFormLong" id="select">
-        <mat-select id="nationality" formControlName="nationality" >
-          <mat-option *ngFor="let nationality of nationalities" [value]="nationality.id">
-            {{nationality.name}}
+        <mat-select id="nationality" formControlName="nationality">
+          <mat-option
+            *ngFor="let nationality of nationalities"
+            [value]="nationality.id"
+          >
+            {{ nationality.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -55,9 +58,9 @@
     <div class="col">
       <label for="phone">langue préféré</label>
       <mat-form-field class="matFormLong" id="select">
-        <mat-select id="nativeLanguage" formControlName="nativeLanguage" >
+        <mat-select id="nativeLanguage" formControlName="nativeLanguage">
           <mat-option *ngFor="let language of languages" [value]="language.id">
-            {{language.name}}
+            {{ language.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -67,11 +70,11 @@
     <div class="col">
       <label for="phone">Devis préféré</label>
       <mat-form-field class="matFormLong" id="select">
-        <mat-select formControlName="favoriteCurrency"  >
-          <mat-option  value="EUR">EUR</mat-option>
-          <mat-option  value="USD">USD</mat-option>
-          <mat-option  value="GBP">GBP</mat-option>
-          <mat-option  value="UND">UND</mat-option>
+        <mat-select formControlName="favoriteCurrency">
+          <mat-option value="EUR">EUR</mat-option>
+          <mat-option value="USD">USD</mat-option>
+          <mat-option value="GBP">GBP</mat-option>
+          <mat-option value="UND">UND</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -81,10 +84,8 @@
     <div class="col">
       <mat-form-field class="matFormLong" id="select">
         <mat-label>Commercial</mat-label>
-        <mat-select id="nationality" formControlName="commercialId" >
-          <mat-option  [value]="null">
-            Supprimer commercial
-          </mat-option>
+        <mat-select id="nationality" formControlName="commercialId">
+          <mat-option [value]="null"> Supprimer commercial </mat-option>
           <mat-option *ngFor="let com of commercials" [value]="com.id">
             {{ com.firstname }}
           </mat-option>
@@ -94,7 +95,10 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Modifier le Statut de l'Utilisateur</mat-label>
-        <mat-select formControlName="userStatus" (selectionChange)="onStatusChange()">
+        <mat-select
+          formControlName="userStatus"
+          (selectionChange)="onStatusChange()"
+        >
           <mat-option value="REGISTERED">Enregistré</mat-option>
           <mat-option value="VALIDATED">Validé</mat-option>
           <mat-option value="BANNED">Banni</mat-option>
@@ -106,22 +110,26 @@
   <div class="form-row">
     <div class="col">
       <label for="phone">email</label>
-      <input type="text" class="form-control" formControlName="email">
+      <input type="text" class="form-control" formControlName="email" />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <label for="phone">Pipe id</label>
-      <input type="text" class="form-control" formControlName="pipeDriveId">
+      <input type="text" class="form-control" formControlName="pipeDriveId" />
     </div>
     <div class="col">
       <label for="phone">Taux de commission en %</label>
-      <input type="number" class="form-control" formControlName="commissionRate">
+      <input
+        type="number"
+        class="form-control"
+        formControlName="commissionRate"
+      />
     </div>
   </div>
 </form>
 
-<button class="btn-primary" (click)="updateUser()" >Update Client</button>
+<button class="btn-primary" (click)="updateUser()">Update Client</button>
 
 <!-- MODAL CONFIRMED -->
-<app-modal-confirmed><app-modal-confirmed/>
+<app-modal-confirmed><app-modal-confirmed /> </app-modal-confirmed>

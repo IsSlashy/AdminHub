@@ -39,27 +39,30 @@ export const ALL_NOTATIONS = gql`
         }
       }
     }
-  }`
-
-export const NOTATION_Query= gql`
-query NOTATION_Query ($notationid: UUID!) {
-  notation(id: $notationid) {
-    id
-    noteSkill
-    noteRespect
-    noteCommunication
-    comment
   }
-}`
+`;
 
-export const NOTATION_Mutation = gql`
-mutation NOTATION_Mutation  ($notationinput: UpdateNotationInput!) {
-  updateNotation(input: $notationinput) {
-    notation{
+export const NOTATION_Query = gql`
+  query NOTATION_Query($notationid: UUID!) {
+    notation(id: $notationid) {
+      id
       noteSkill
       noteRespect
       noteCommunication
       comment
     }
   }
-}`;
+`;
+
+export const NOTATION_Mutation = gql`
+  mutation NOTATION_Mutation($notationinput: UpdateNotationInput!) {
+    updateNotation(input: $notationinput) {
+      notation {
+        noteSkill
+        noteRespect
+        noteCommunication
+        comment
+      }
+    }
+  }
+`;

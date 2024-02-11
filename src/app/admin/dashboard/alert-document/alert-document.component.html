@@ -1,13 +1,25 @@
 <button (click)="toggleDisplay()">
-  {{ showingExpired ? 'Voir Documents Expirant Bientôt' : 'Voir Documents Expirés' }}
+  {{
+    showingExpired
+      ? 'Voir Documents Expirant Bientôt'
+      : 'Voir Documents Expirés'
+  }}
 </button>
 
 <div class="document-section">
-  <h2>{{ showingExpired ? 'Documents expirés' : 'Documents expirant bientôt' }}</h2>
+  <h2>
+    {{ showingExpired ? 'Documents expirés' : 'Documents expirant bientôt' }}
+  </h2>
   <ul>
-    <li *ngFor="let doc of paginatedDocuments" class="{{ showingExpired ? 'expired' : 'expiring-soon' }}" (click)="redirectToSailorProfile(doc.user.id)">
+    <li
+      *ngFor="let doc of paginatedDocuments"
+      class="{{ showingExpired ? 'expired' : 'expiring-soon' }}"
+      (click)="redirectToSailorProfile(doc.user.id)"
+    >
       <span>{{ doc.user.firstname }}</span>
-      <span class="expiration-date">Expiration: {{ doc.expirationDate | date:'shortDate' }}</span>
+      <span class="expiration-date"
+        >Expiration: {{ doc.expirationDate | date: 'shortDate' }}</span
+      >
     </li>
   </ul>
 </div>
@@ -19,7 +31,10 @@
 
   <span>Page {{ currentPage }} sur {{ totalPages }}</span>
 
-  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+  <button
+    (click)="changePage(currentPage + 1)"
+    [disabled]="currentPage === totalPages"
+  >
     <i class="arrow right"></i>
   </button>
 </div>

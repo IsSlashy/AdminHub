@@ -21,7 +21,7 @@ import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/moda
   styleUrls: ['./new-complete-job.component.css'],
 })
 export class NewCompleteJobComponent {
-  @ViewChild(ModalConfirmedComponent)modalConfirmed!: ModalConfirmedComponent;
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
 
   jobForm: FormGroup = this.formBuilder.group({
     ownerId: ['', []],
@@ -60,7 +60,6 @@ export class NewCompleteJobComponent {
   languages: any = new Array<any>();
   countries: any = new Array<any>();
   boatsSelect: any = new Array<any>();
-
 
   estimatePriceQuery!: QueryRef<any>;
   private estimatePriceSubscription!: Subscription;
@@ -271,7 +270,7 @@ export class NewCompleteJobComponent {
 
   changeBoat(e: any) {
     this.boat = e.value;
-    this.jobForm.patchValue({boatId: e.value.id})
+    this.jobForm.patchValue({ boatId: e.value.id });
     this.estimationParam.autoPilote = this.boat.equipmentsList.some(
       (equipment: any) => equipment.name === 'autopilot'
     )
@@ -281,7 +280,7 @@ export class NewCompleteJobComponent {
     this.estimationParam.boatType = this.boat.model.boatType;
     this.estimationParam.hullLength = this.boat.model.hullLength;
 
-    this.chessParam.boatFlag = this.boat.flag.id
+    this.chessParam.boatFlag = this.boat.flag.id;
     this.chessPriceQuery.refetch(this.chessParam);
   }
 
@@ -375,7 +374,6 @@ export class NewCompleteJobComponent {
       return;
     }
 
-
     const toLocalISO = (dateString: string | number | Date) => {
       const date = new Date(dateString);
       const offset = date.getTimezoneOffset() * 60000;
@@ -384,54 +382,69 @@ export class NewCompleteJobComponent {
 
     const startDateISO = toLocalISO(startDateValue);
     const endDateISO = toLocalISO(endDateValue);
-    this.apollo.mutate({
-      mutation: CREATE_AD,
-      variables: {
-        adInput: {
-          adType: this.jobForm.value.adType,
-          boatId: this.jobForm.value.boatId,
-          coastDistance: this.jobForm.value.coastDistance,
-          distance: this.jobForm.value.distance,
-          endHarbor: this.jobForm.value.endHarbor,
-          estimatedDays: this.jobForm.value.estimatedDays,
-          spokenLanguage: this.jobForm.value.spokenLanguages,
-          startDate: startDateISO,
-          endDate: endDateISO,
-          startHarbor: this.jobForm.value.startHarbor,
-          description: this.jobForm.value.description
-        }
-      }
-    }).subscribe(({ data }: any) => {
-      console.log('Ad created with ID:', data.createCompleteAd.ad.id);
-
-      this.apollo.mutate({
-        mutation: CREATE_JOB,
+    this.apollo
+      .mutate({
+        mutation: CREATE_AD,
         variables: {
-          jobInput: {
-            adId: data.createCompleteAd.ad.id,
+          adInput: {
+            adType: this.jobForm.value.adType,
+            boatId: this.jobForm.value.boatId,
+            coastDistance: this.jobForm.value.coastDistance,
+            distance: this.jobForm.value.distance,
+            endHarbor: this.jobForm.value.endHarbor,
+            estimatedDays: this.jobForm.value.estimatedDays,
+            spokenLanguage: this.jobForm.value.spokenLanguages,
             startDate: startDateISO,
-            positionType: this.jobForm.value.positionType,
-            commissionRate: this.jobForm.value.commissionRate,
             endDate: endDateISO,
-            initialPrice: this.jobForm.value.initialPrice * 100,
-            travelFee: this.jobForm.value.travelFee,
-            chessRemuneration: this.jobForm.value.chessRemuneration,
-            onboardFee: this.jobForm.value.onboardFee,
-            contractType: this.jobForm.value.contractType,
-            isCaptain: false,
-            sendEmail: this.jobForm.value.sendEmail,
-            reserved: this.jobForm.value.reserved
-          }
+            startHarbor: this.jobForm.value.startHarbor,
+            description: this.jobForm.value.description,
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) => {
+          console.log('Ad created with ID:', data.createCompleteAd.ad.id);
+
+          this.apollo
+            .mutate({
+              mutation: CREATE_JOB,
+              variables: {
+                jobInput: {
+                  adId: data.createCompleteAd.ad.id,
+                  startDate: startDateISO,
+                  positionType: this.jobForm.value.positionType,
+                  commissionRate: this.jobForm.value.commissionRate,
+                  endDate: endDateISO,
+                  initialPrice: this.jobForm.value.initialPrice * 100,
+                  travelFee: this.jobForm.value.travelFee,
+                  chessRemuneration: this.jobForm.value.chessRemuneration,
+                  onboardFee: this.jobForm.value.onboardFee,
+                  contractType: this.jobForm.value.contractType,
+                  isCaptain: false,
+                  sendEmail: this.jobForm.value.sendEmail,
+                  reserved: this.jobForm.value.reserved,
+                },
+              },
+            })
+            .subscribe(
+              ({ data }: any) => {
+                console.log(
+                  'Job created with ID:',
+                  data.createCompleteJobAdmin.job.id
+                );
+                this.router.navigate([
+                  'admin/job/' + data.createCompleteJobAdmin.job.id,
+                ]);
+              },
+              (error) => {
+                console.error('Error creating job:', error);
+                this.modalConfirmed.modalRejected();
+              }
+            );
+        },
+        (error) => {
+          console.error('Error creating ad:', error);
         }
-      }).subscribe(({ data }: any) => {
-        console.log('Job created with ID:', data.createCompleteJobAdmin.job.id);
-        this.router.navigate(['admin/job/' + data.createCompleteJobAdmin.job.id]);
-      }, (error) => {
-        console.error('Error creating job:', error);
-        this.modalConfirmed.modalRejected();
-      });
-    }, (error) => {
-      console.error('Error creating ad:', error);
-    });
+      );
   }
 }

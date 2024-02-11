@@ -82,7 +82,11 @@ export class OfferComponent {
   }
 
   copyUrlContract() {
-    const contentToCopy = 'https://captnboat.com/fr/contrat-client?id='+ this.offer.id + '&token=' + this.offer.token;
+    const contentToCopy =
+      'https://captnboat.com/fr/contrat-client?id=' +
+      this.offer.id +
+      '&token=' +
+      this.offer.token;
     console.log(contentToCopy);
     navigator.clipboard.writeText(contentToCopy);
   }

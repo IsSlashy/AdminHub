@@ -1,26 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item pointer">
-      <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/approval/degree']">Degree<span class="badge badge-primary">{{ waitingDegrees }}</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link pointer" routerLinkActive="active" [routerLink]="['/admin/approval/training']">Training<span class="badge badge-primary">{{ waitingTraining }}</span></a>
-    </li>
-    <li class="nav-item pointer">
-      <a class="nav-link" routerLinkActive="active"  [routerLink]="['/admin/approval/resume']">Resumé<span class="badge badge-primary">{{ waitingResume }}</span></a>
-    </li>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item pointer">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          [routerLink]="['/admin/approval/degree']"
+          >Degree<span class="badge badge-primary">{{
+            waitingDegrees
+          }}</span></a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link pointer"
+          routerLinkActive="active"
+          [routerLink]="['/admin/approval/training']"
+          >Training<span class="badge badge-primary">{{
+            waitingTraining
+          }}</span></a
+        >
+      </li>
+      <li class="nav-item pointer">
+        <a
+          class="nav-link"
+          routerLinkActive="active"
+          [routerLink]="['/admin/approval/resume']"
+          >Resumé<span class="badge badge-primary">{{ waitingResume }}</span></a
+        >
+      </li>
+    </ul>
 
-  </ul>
-
-
-  <!-- Navbar for Training -->
-  <!--
+    <!-- Navbar for Training -->
+    <!--
     <div *ngIf="currentNavbar !== 'Approved' && currentNavbar !== 'Canceled' " class="navbar" style="margin-top: 20px;">
     <a href="#" (click)="selectTable('WAITING', $event)">Waiting</a>
     <a href="#" (click)="selectTable('INVALID', $event)">Refused</a>
@@ -29,9 +46,7 @@
   </div>
 -->
 
-
-
-  <!-- <div *ngIf="currentNavbar === 'DEGREE'">
+    <!-- <div *ngIf="currentNavbar === 'DEGREE'">
     <app-degrees></app-degrees>
   </div>
   <div *ngIf="currentNavbar === 'TRAINING'">
@@ -40,6 +55,6 @@
   <div *ngIf="currentNavbar === 'RESUME' ">
     <app-resumes ></app-resumes>
   </div> -->
-  <router-outlet></router-outlet>
-</body>
+    <router-outlet></router-outlet>
+  </body>
 </html>

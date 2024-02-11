@@ -24,12 +24,12 @@ export const BOAT = gql`
       aisUrl
       commercialUsage
       mmsiNumber
-      boatPictures{
-      nodes{
-        id
-        resizedImages
+      boatPictures {
+        nodes {
+          id
+          resizedImages
+        }
       }
-    }
     }
   }
 `;
@@ -52,18 +52,18 @@ export const CREATE_BOAT_PICTURE = gql`
   }
 `;
 export const DELETE_BOAT_PICTURE = gql`
-  mutation deleteBOatPicture($boatPicture:DeleteBoatPictureInput!){
-    deleteBoatPicture(input:$boatPicture){
+  mutation deleteBOatPicture($boatPicture: DeleteBoatPictureInput!) {
+    deleteBoatPicture(input: $boatPicture) {
       clientMutationId
     }
   }
-`
+`;
 export const UPDATE_BOAT = gql`
-mutation update_boat($boatPatch:  UpdateBoatInput!) {
-  updateBoat(input: $boatPatch){
-  	boat{
-    	id
+  mutation update_boat($boatPatch: UpdateBoatInput!) {
+    updateBoat(input: $boatPatch) {
+      boat {
+        id
+      }
     }
   }
-}
 `;

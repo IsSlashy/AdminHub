@@ -1,71 +1,113 @@
+<mat-form-field class="matFormLong" id="selectJobStatus">
+  <mat-label>Job Status</mat-label>
+  <mat-select
+    id="nationality"
+    multiple="multiple"
+    [(ngModel)]="jobStatus"
+    (valueChange)="updateStatus($event)"
+  >
+    <mat-option value="PUBLISHED">PUBLISHED</mat-option>
+    <mat-option value="CONFIRMED">CONFIRMED</mat-option>
+    <mat-option value="DONE">DONE</mat-option>
+    <mat-option value="ABORTED">ABORTED</mat-option>
+    <mat-option value="CANCELED">CANCELED</mat-option>
+    <mat-option value="ASSIGNED">ASSIGNED</mat-option>
+    <mat-option value="PENDING">PENDING</mat-option>
+    <mat-option value="CLOSED">CLOSED</mat-option>
+    <mat-option value="OPEN">OPEN</mat-option>
+    <mat-option value="DRAFT">DRAFT</mat-option>
+    <mat-option value="CLAIMED">CLAIMED</mat-option>
+  </mat-select>
+</mat-form-field>
 
-  <mat-form-field class="matFormLong" id="selectJobStatus">
-    <mat-label>Job Status</mat-label>
-    <mat-select id="nationality" multiple="multiple" [(ngModel)]="jobStatus" (valueChange)="updateStatus($event)">
-      <mat-option value="PUBLISHED">PUBLISHED</mat-option>
-      <mat-option value="CONFIRMED">CONFIRMED</mat-option>
-      <mat-option value="DONE">DONE</mat-option>
-      <mat-option value="ABORTED">ABORTED</mat-option>
-      <mat-option value="CANCELED">CANCELED</mat-option>
-      <mat-option value="ASSIGNED">ASSIGNED</mat-option>
-      <mat-option value="PENDING">PENDING</mat-option>
-      <mat-option value="CLOSED">CLOSED</mat-option>
-      <mat-option value="OPEN">OPEN</mat-option>
-      <mat-option value="DRAFT">DRAFT</mat-option>
-      <mat-option value="CLAIMED">CLAIMED</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-<table  mat-table [dataSource]="dataSource" matSort  class="table table-bordered table-striped">
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="table table-bordered table-striped"
+>
   <tbody>
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" routerLink="/admin/job/{{job.id}}">
-        {{job.startDate | date:'dd/MM/YYYY'}} - {{job.endDate | date:'dd/MM/YYYY'}}<br>
-        Créé le : {{job.createdAt | date:'dd/MM/YYYY'}}
+      <td
+        mat-cell
+        *matCellDef="let job"
+        class="pointer"
+        routerLink="/admin/job/{{ job.id }}"
+      >
+        {{ job.startDate | date: 'dd/MM/YYYY' }} -
+        {{ job.endDate | date: 'dd/MM/YYYY' }}<br />
+        Créé le : {{ job.createdAt | date: 'dd/MM/YYYY' }}
       </td>
     </ng-container>
     <ng-container matColumnDef="poste">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Poste</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" routerLink="/admin/job/{{job.id}}">
-        {{job.position}}
+      <td
+        mat-cell
+        *matCellDef="let job"
+        class="pointer"
+        routerLink="/admin/job/{{ job.id }}"
+      >
+        {{ job.position }}
       </td>
     </ng-container>
     <ng-container matColumnDef="port">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Port</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" routerLink="/admin/job/{{job.id}}">
-        Départ: {{job.ad.harborByStartHarbor?.nameFr}}<br>
-        Arrivé: {{job.ad.harborByEndHarbor.nameFr}}
+      <td
+        mat-cell
+        *matCellDef="let job"
+        class="pointer"
+        routerLink="/admin/job/{{ job.id }}"
+      >
+        Départ: {{ job.ad.harborByStartHarbor?.nameFr }}<br />
+        Arrivé: {{ job.ad.harborByEndHarbor.nameFr }}
       </td>
     </ng-container>
     <ng-container matColumnDef="model">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Model</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" routerLink="/admin/job/{{job.id}}">
-        {{job.ad.boat.model.name}}
+      <td
+        mat-cell
+        *matCellDef="let job"
+        class="pointer"
+        routerLink="/admin/job/{{ job.id }}"
+      >
+        {{ job.ad.boat.model.name }}
       </td>
     </ng-container>
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" routerLink="/admin/job/{{job.id}}">
-        {{job.jobStatus}}
+      <td
+        mat-cell
+        *matCellDef="let job"
+        class="pointer"
+        routerLink="/admin/job/{{ job.id }}"
+      >
+        {{ job.jobStatus }}
       </td>
     </ng-container>
     <ng-container matColumnDef="client">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Client</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" routerLink="/admin/client/{{job.ad?.boat?.owner?.id}}/profil">
-        Propriétaire: {{job.ad.boat.owner.firstname}} {{job.ad.boat.owner.userDetailById.lastname}}<br>
-        Client: {{job.billing?.firstname}} {{job.billing?.lastname}}
+      <td
+        mat-cell
+        *matCellDef="let job"
+        class="pointer"
+        routerLink="/admin/client/{{ job.ad?.boat?.owner?.id }}/profil"
+      >
+        Propriétaire: {{ job.ad.boat.owner.firstname }}
+        {{ job.ad.boat.owner.userDetailById.lastname }}<br />
+        Client: {{ job.billing?.firstname }} {{ job.billing?.lastname }}
       </td>
     </ng-container>
     <ng-container matColumnDef="commercial">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Commercial</th>
-      <td  mat-cell *matCellDef="let job" class="pointer" >
-        <mat-form-field style="width: 150px;">
+      <td mat-cell *matCellDef="let job" class="pointer">
+        <mat-form-field style="width: 150px">
           <mat-label>Commercial 1</mat-label>
-          <mat-select [ngModel]="job.commercial1?.id" (ngModelChange)="updateCommercial($event, job.id)">
-            <mat-option  [value]="null">
-              Supprimer commercial
-            </mat-option>
+          <mat-select
+            [ngModel]="job.commercial1?.id"
+            (ngModelChange)="updateCommercial($event, job.id)"
+          >
+            <mat-option [value]="null"> Supprimer commercial </mat-option>
             <mat-option *ngFor="let com of commercials" [value]="com.id">
               {{ com.firstname }}
             </mat-option>
@@ -74,12 +116,12 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="notification">
-      <th mat-header-cell *matHeaderCellDef> Notification </th>
+      <th mat-header-cell *matHeaderCellDef>Notification</th>
       <td mat-cell *matCellDef="let job">
-        <span *ngIf="job.unreadMessagesCount > 0" style="color: red;">
+        <span *ngIf="job.unreadMessagesCount > 0" style="color: red">
           {{ job.unreadMessagesCount }}
         </span>
-        <span *ngIf="job.unreadApplicationsCount > 0" style="color: blue;">
+        <span *ngIf="job.unreadApplicationsCount > 0" style="color: blue">
           {{ job.unreadApplicationsCount }}
         </span>
       </td>
@@ -87,19 +129,23 @@
 
     <ng-container matColumnDef="link">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Liens</th>
-      <td  mat-cell *matCellDef="let job" class="pointer">
-        <button class="btn btn-primary" (click)="openDetail(job.id)" >Voir l'annonce</button>
+      <td mat-cell *matCellDef="let job" class="pointer">
+        <button class="btn btn-primary" (click)="openDetail(job.id)">
+          Voir l'annonce
+        </button>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </tbody>
 </table>
-<mat-paginator #paginator
-[length]="jobs.length"
-(page)="onPageChange($event)"
-[pageSize]="10"
-showFirstLastButtons>
+<mat-paginator
+  #paginator
+  [length]="jobs.length"
+  (page)="onPageChange($event)"
+  [pageSize]="10"
+  showFirstLastButtons
+>
 </mat-paginator>
 
 <app-modal-confirmed></app-modal-confirmed>

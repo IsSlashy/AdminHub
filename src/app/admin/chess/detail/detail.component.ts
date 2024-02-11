@@ -22,7 +22,7 @@ interface AddressData {
   styleUrls: ['./detail.component.css'],
 })
 export class DetailComponent {
-  @ViewChild(ModalConfirmedComponent)modalConfirmed!: ModalConfirmedComponent;
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
 
   nationalities: any;
   countries: any;
@@ -46,7 +46,7 @@ export class DetailComponent {
     socialNumber: [null, []],
     rib: [null, []],
     personalAddress: [null, []],
-    personalAddressId:[null,[]],
+    personalAddressId: [null, []],
     addressId: [null, []],
     phoneNumber: [null, []],
     email: [null, []],
@@ -201,12 +201,15 @@ export class DetailComponent {
               },
             },
           })
-          .subscribe(({ data }: any) => {
-            this.modalConfirmed.openModal()
-          }, (err: any) => {
-            console.log(err);
-            this.modalConfirmed.modalRejected()
-          })
+          .subscribe(
+            ({ data }: any) => {
+              this.modalConfirmed.openModal();
+            },
+            (err: any) => {
+              console.log(err);
+              this.modalConfirmed.modalRejected();
+            }
+          );
       });
   }
 
@@ -230,26 +233,33 @@ export class DetailComponent {
           },
         },
       })
-      .subscribe(({ data }: any) => {
-        this.modalConfirmed.openModal()
-      }, (err: any) => {
-        console.log(err);
-        this.modalConfirmed.modalRejected()
-      })
+      .subscribe(
+        ({ data }: any) => {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) => {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
   }
 
-  sendApiChess(){
-
-    this.apollo.mutate({
-      mutation: RECORD_CHESS,
-      variables:{
-        jobId: this.offer.job.id
-      }
-    }).subscribe(({ data }: any) => {
-      this.modalConfirmed.openModal()
-    }, (err: any) => {
-      console.log(err);
-      this.modalConfirmed.modalRejected()
-    })
+  sendApiChess() {
+    this.apollo
+      .mutate({
+        mutation: RECORD_CHESS,
+        variables: {
+          jobId: this.offer.job.id,
+        },
+      })
+      .subscribe(
+        ({ data }: any) => {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) => {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
   }
 }

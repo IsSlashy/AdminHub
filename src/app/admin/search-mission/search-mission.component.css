@@ -38,7 +38,8 @@
   border-collapse: collapse;
 }
 
-.results-table th, .results-table td {
+.results-table th,
+.results-table td {
   padding: 10px;
   border: 1px solid #e0e0e0;
   text-align: left;

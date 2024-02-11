@@ -8,7 +8,7 @@ describe('AutocompleteHarborComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AutocompleteHarborComponent]
+      declarations: [AutocompleteHarborComponent],
     });
     fixture = TestBed.createComponent(AutocompleteHarborComponent);
     component = fixture.componentInstance;

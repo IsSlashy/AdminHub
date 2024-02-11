@@ -3,7 +3,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
-import { CHESS_PRICE, CREATE_JOB, ESTIMATED_PRICE, GET_AD } from 'src/graphql/creation';
+import {
+  CHESS_PRICE,
+  CREATE_JOB,
+  ESTIMATED_PRICE,
+  GET_AD,
+} from 'src/graphql/creation';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,10 +17,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./new-job.component.css'],
 })
 export class NewJobComponent {
-  @ViewChild(ModalConfirmedComponent)modalConfirmed!: ModalConfirmedComponent;
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
 
   jobForm: FormGroup = this.formBuilder.group({
-    adId:[null, []],
+    adId: [null, []],
     positionType: [null, []],
     commissionRate: [18, []],
     contractType: [null, []],
@@ -100,59 +105,61 @@ export class NewJobComponent {
       this.jobForm.patchValue({ adId: param.get('adId') });
     });
 
-    this.apollo.query({
-      query: GET_AD,
-      variables: {
-        adInput : this.jobForm.value.adId,
-      }
-    }).subscribe(({data}:any) =>{
-      this.ad = data.ad
-      this.autoPilot = data.ad.boat.boatEquipments.nodes.some(
-        (el: any) => el.equipment.name === 'PILOTE_AUTO'
-      );
-      this.estimationParam.estimatedTime = data.ad.estimatedDays;
-      this.estimationParam.adType = data.ad.adType;
-      this.estimationParam.distance = data.ad.distance;
-      this.estimationParam.hullLength = data.ad.boat.model.hullLength;
-      this.estimationParam.boatType = data.ad.boat.model.boatType;
-      this.estimationParam.autoPilote = this.autoPilot;
-      this.estimationParam.endHarborLattitude = data.ad.harborByEndHarbor.lat;
-      this.estimationParam.endHarborLongitude = data.ad.harborByEndHarbor.lng;
-      this.estimationParam.startHarborLattitude = data.ad.harborByStartHarbor.lat;
-      this.estimationParam.startHarborLongitude = data.ad.harborByStartHarbor.lng;
+    this.apollo
+      .query({
+        query: GET_AD,
+        variables: {
+          adInput: this.jobForm.value.adId,
+        },
+      })
+      .subscribe(({ data }: any) => {
+        this.ad = data.ad;
+        this.autoPilot = data.ad.boat.boatEquipments.nodes.some(
+          (el: any) => el.equipment.name === 'PILOTE_AUTO'
+        );
+        this.estimationParam.estimatedTime = data.ad.estimatedDays;
+        this.estimationParam.adType = data.ad.adType;
+        this.estimationParam.distance = data.ad.distance;
+        this.estimationParam.hullLength = data.ad.boat.model.hullLength;
+        this.estimationParam.boatType = data.ad.boat.model.boatType;
+        this.estimationParam.autoPilote = this.autoPilot;
+        this.estimationParam.endHarborLattitude = data.ad.harborByEndHarbor.lat;
+        this.estimationParam.endHarborLongitude = data.ad.harborByEndHarbor.lng;
+        this.estimationParam.startHarborLattitude =
+          data.ad.harborByStartHarbor.lat;
+        this.estimationParam.startHarborLongitude =
+          data.ad.harborByStartHarbor.lng;
 
-      this.chessParam.adType = data.ad.adType;
-      this.chessParam.boatFlag = data.ad.boat.flag.id;
-      this.chessParam.startHarbor = data.ad.harborByStartHarbor.id;
-      this.chessParam.endHarbor = data.ad.harborByEndHarbor.id;
-      this.chessParam.coastDistance = data.ad.coastDistance;
-      this.chessParam.estimatedDays = data.ad.estimatedDays;
+        this.chessParam.adType = data.ad.adType;
+        this.chessParam.boatFlag = data.ad.boat.flag.id;
+        this.chessParam.startHarbor = data.ad.harborByStartHarbor.id;
+        this.chessParam.endHarbor = data.ad.harborByEndHarbor.id;
+        this.chessParam.coastDistance = data.ad.coastDistance;
+        this.chessParam.estimatedDays = data.ad.estimatedDays;
 
-      this.estimatePriceQuery = this.apollo.watchQuery<any>({
-        query: ESTIMATED_PRICE,
-        fetchPolicy: 'network-only',
-        variables: this.estimationParam,
-      });
-
-      this.estimatePriceSubscription =
-        this.estimatePriceQuery.valueChanges.subscribe(({ data }) => {
-          this.jobForm.patchValue({ initialPrice: data.estimatedPrice });
+        this.estimatePriceQuery = this.apollo.watchQuery<any>({
+          query: ESTIMATED_PRICE,
+          fetchPolicy: 'network-only',
+          variables: this.estimationParam,
         });
 
-
-      this.chessPriceQuery = this.apollo.watchQuery<any>({
-        query: CHESS_PRICE,
-        variables: this.chessParam,
-      });
-
-      this.chessPriceSubscription = this.chessPriceQuery.valueChanges.subscribe(
-        ({ data }) => {
-          this.jobForm.patchValue({
-            chessRemuneration: data.apiCalculeRemuChess,
+        this.estimatePriceSubscription =
+          this.estimatePriceQuery.valueChanges.subscribe(({ data }) => {
+            this.jobForm.patchValue({ initialPrice: data.estimatedPrice });
           });
-        }
-      );
-    })
+
+        this.chessPriceQuery = this.apollo.watchQuery<any>({
+          query: CHESS_PRICE,
+          variables: this.chessParam,
+        });
+
+        this.chessPriceSubscription =
+          this.chessPriceQuery.valueChanges.subscribe(({ data }) => {
+            this.jobForm.patchValue({
+              chessRemuneration: data.apiCalculeRemuChess,
+            });
+          });
+      });
     this.jobForm.get('monthlyRemuneration')?.valueChanges.subscribe((val) => {
       this.jobForm.value.monthlyRemuneration = val;
 
@@ -207,7 +214,7 @@ export class NewJobComponent {
     this.chessParam.duration = this.daysCalcul;
 
     if (this.daysCalcul > 365) {
-      this.jobForm.patchValue({monthlyRemuneration: true})
+      this.jobForm.patchValue({ monthlyRemuneration: true });
     }
   }
 
@@ -230,16 +237,19 @@ export class NewJobComponent {
             isCaptain: false,
             sendEmail: this.jobForm.value.sendEmail,
             monthlyRemuneration: this.jobForm.value.monthlyRemuneration,
-            reserved: this.jobForm.value.reserved
+            reserved: this.jobForm.value.reserved,
           },
         },
       })
-      .subscribe(({ data }: any) => {
-        this.router.navigate([
-          'admin/job/' + data.createCompleteJobAdmin.job.id,
-        ]);
-      }, (err) =>{
-        this.modalConfirmed.modalRejected()
-      });
+      .subscribe(
+        ({ data }: any) => {
+          this.router.navigate([
+            'admin/job/' + data.createCompleteJobAdmin.job.id,
+          ]);
+        },
+        (err) => {
+          this.modalConfirmed.modalRejected();
+        }
+      );
   }
 }

@@ -1,29 +1,29 @@
 import gql from 'graphql-tag';
 
 export const JOBS_OFFERS = gql`
-query jobsOffer($jobId: UUID!) {
-  job(id: $jobId) {
-    id
-    offers(orderBy: SAILOR_ID_ASC) {
-      nodes {
-        id
-        realPrice
-        remuneration
-        travelFeeExpenses
-        status
-        sailor {
+  query jobsOffer($jobId: UUID!) {
+    job(id: $jobId) {
+      id
+      offers(orderBy: SAILOR_ID_ASC) {
+        nodes {
           id
-          firstname
-          userDetailById {
+          realPrice
+          remuneration
+          travelFeeExpenses
+          status
+          sailor {
             id
-            lastname
+            firstname
+            userDetailById {
+              id
+              lastname
+            }
           }
         }
       }
+      jobStatus
     }
-    jobStatus
   }
-}
 `;
 
 export const VALIDE_PAYMENT = gql`

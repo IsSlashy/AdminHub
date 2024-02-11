@@ -20,22 +20,22 @@ export class ModalAssigneOfferComponent {
     const jobId = data.jobId;
 
     this.apollo
-    .query({
-      query: JOBS_OFFERS,
-      variables: {
-        jobId: jobId,
-      },
-    })
-    .subscribe(({ data }: any) => {
-      console.log(data);
-      this.offers = data.job.offers.nodes;
-    });
+      .query({
+        query: JOBS_OFFERS,
+        variables: {
+          jobId: jobId,
+        },
+      })
+      .subscribe(({ data }: any) => {
+        console.log(data);
+        this.offers = data.job.offers.nodes;
+      });
   }
 
   assigne() {
     if (!this.offer) {
-        console.error('Aucune offre n\'a été sélectionnée!');
-        return;
+      console.error("Aucune offre n'a été sélectionnée!");
+      return;
     }
 
     this.apollo
@@ -43,7 +43,6 @@ export class ModalAssigneOfferComponent {
         mutation: VALIDE_PAYMENT,
         variables: {
           offerId: this.offer.id,
-
         },
       })
       .subscribe(({ data, loading }: any) => {

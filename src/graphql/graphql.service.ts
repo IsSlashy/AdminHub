@@ -4,15 +4,15 @@ import gql from 'graphql-tag';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GraphqlService {
-
-  constructor(private apollo: Apollo) { }
+  constructor(private apollo: Apollo) {}
 
   searchDatabase(query: string) {
-return this.apollo.query({
-  query: gql`
+    return this.apollo
+      .query({
+        query: gql`
     query Search($query: String!) {
       search(query: $query) {
         name
@@ -21,9 +21,10 @@ return this.apollo.query({
       }
     }
   `,
-  variables: {
-    query: query
-  }
-}).pipe(map(result => result.data));
+        variables: {
+          query: query,
+        },
+      })
+      .pipe(map((result) => result.data));
   }
 }

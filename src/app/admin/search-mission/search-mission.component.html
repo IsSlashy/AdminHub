@@ -3,7 +3,11 @@
 <div class="search-container">
   <!-- Barre de recherche -->
   <div class="search-bar">
-    <input type="text" placeholder="Recherchez une mission..." class="search-input" />
+    <input
+      type="text"
+      placeholder="Recherchez une mission..."
+      class="search-input"
+    />
     <button class="search-button">Rechercher</button>
   </div>
 
@@ -21,20 +25,23 @@
       </thead>
       <tbody>
         <tr *ngFor="let job of jobs">
-          <td class="pointer" routerLink="/admin/job/{{job.id}}">
-            {{job.createdAt}} - {{job.jobStatus}} <br>
-            {{job.ad.boat.owner.firstname}} - {{job.ad.boat.owner.userDetailById.lastname}}<br>
-            {{job.ad.boat.owner.userDetailById.email}} - {{job.ad.boat.owner.userDetailById.phoneNumber}}
+          <td class="pointer" routerLink="/admin/job/{{ job.id }}">
+            {{ job.createdAt }} - {{ job.jobStatus }} <br />
+            {{ job.ad.boat.owner.firstname }} -
+            {{ job.ad.boat.owner.userDetailById.lastname }}<br />
+            {{ job.ad.boat.owner.userDetailById.email }} -
+            {{ job.ad.boat.owner.userDetailById.phoneNumber }}
           </td>
           <td>
-            {{job.billing.firstname}} - {{job.billing.lastname}}<br>
-            {{job.billing.email}}<br>
-            {{job.billing.phoneNumber}}
+            {{ job.billing.firstname }} - {{ job.billing.lastname }}<br />
+            {{ job.billing.email }}<br />
+            {{ job.billing.phoneNumber }}
           </td>
           <td>
-            {{job.finalOffer.sailor.firstname}} - {{job.finalOffer.sailor.userDetailById.lastname}} <br>
-            {{job.finalOffer.sailor.userDetailById.email}}<br>
-            {{job.finalOffer.sailor.userDetailById.phoneNumber}}
+            {{ job.finalOffer.sailor.firstname }} -
+            {{ job.finalOffer.sailor.userDetailById.lastname }} <br />
+            {{ job.finalOffer.sailor.userDetailById.email }}<br />
+            {{ job.finalOffer.sailor.userDetailById.phoneNumber }}
           </td>
           <td>10/09/2023</td>
           <td>Marseille</td>

@@ -3,65 +3,90 @@
   <div class="form-row">
     <div class="col">
       <label for="phone">Nom</label>
-      <input type="text" class="form-control" formControlName="name">
+      <input type="text" class="form-control" formControlName="name" />
     </div>
     <div class="col">
       <label for="phone">Immatriculation</label>
-      <input type="text" class="form-control" formControlName="registrationNumber">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="registrationNumber"
+      />
     </div>
   </div>
 
   <div class="form-row">
     <mat-form-field class="matFormLong" id="select">
       <mat-label>Pavillon</mat-label>
-      <mat-select id="country" formControlName="flagId" >
+      <mat-select id="country" formControlName="flagId">
         <mat-option *ngFor="let country of countries" [value]="country.id">
-          {{country.name}}
+          {{ country.name }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <div class="col">
-      <label for="phone">Model (actuel: {{boatForm.value.model}})</label>
-      <app-autocomplete-model style="min-width: 350px;" (onModelSelected)="handleModelSelection($event)" ></app-autocomplete-model>
+      <label for="phone">Model (actuel: {{ boatForm.value.model }})</label>
+      <app-autocomplete-model
+        style="min-width: 350px"
+        (onModelSelected)="handleModelSelection($event)"
+      ></app-autocomplete-model>
     </div>
   </div>
 
   <div class="form-row">
     <div class="col">
-      <label for="phone">Port de départ (actuel: {{boatForm.value.homeHarbor}})</label>
-      <app-autocomplete-harbor style="min-width: 350px;" (onPortSelected)="startHarborSelection($event)" ></app-autocomplete-harbor>
+      <label for="phone"
+        >Port de départ (actuel: {{ boatForm.value.homeHarbor }})</label
+      >
+      <app-autocomplete-harbor
+        style="min-width: 350px"
+        (onPortSelected)="startHarborSelection($event)"
+      ></app-autocomplete-harbor>
     </div>
     <div class="col">
       <label for="phone">AIS url</label>
-      <input type="text" class="form-control" formControlName="aisUrl">
+      <input type="text" class="form-control" formControlName="aisUrl" />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <label for="phone">commercialUsage</label>
-      <mat-radio-group aria-label="Select an option" formControlName="commercialUsage">
-        <mat-radio-button [value]='true'>Oui</mat-radio-button>
-        <mat-radio-button [value]='false'>Non</mat-radio-button>
+      <mat-radio-group
+        aria-label="Select an option"
+        formControlName="commercialUsage"
+      >
+        <mat-radio-button [value]="true">Oui</mat-radio-button>
+        <mat-radio-button [value]="false">Non</mat-radio-button>
       </mat-radio-group>
     </div>
     <div class="col">
       <label for="phone">mmsiNumber</label>
-      <input type="text" class="form-control" formControlName="mmsiNumber">
+      <input type="text" class="form-control" formControlName="mmsiNumber" />
     </div>
   </div>
-  <button type="button" class="btn btn-primary" (click)="updateBoat()">Update Bateau</button>
+  <button type="button" class="btn btn-primary" (click)="updateBoat()">
+    Update Bateau
+  </button>
   <h1>Photos</h1>
   <label class="file-input-label">
     <i class="bi bi-pencil pointer hoverColor icon-large"></i>
-    <input type="file" (change)="fileChangeEvent($event)">
+    <input type="file" (change)="fileChangeEvent($event)" />
   </label>
-  <div *ngFor="let picture of this.boat?.boatPictures?.nodes; let index = index">
+  <div
+    *ngFor="let picture of this.boat?.boatPictures?.nodes; let index = index"
+  >
     <div>
-        <i  class="bi bi-trash-fill pointer hoverColor icon-large" (click)="deletePic(picture)"></i>
+      <i
+        class="bi bi-trash-fill pointer hoverColor icon-large"
+        (click)="deletePic(picture)"
+      ></i>
     </div>
-    <img *ngIf="picture.resizedImages" src="{{picture?.resizedImages[1]?.url}}" alt="">
+    <img
+      *ngIf="picture.resizedImages"
+      src="{{ picture?.resizedImages[1]?.url }}"
+      alt=""
+    />
   </div>
-
 </form>
 
 <!-- MODAL CONFIRMED -->

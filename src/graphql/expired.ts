@@ -1,27 +1,26 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 export const GET_VALID_DOCUMENTS = gql`
-query GetValidDocuments {
-    Expired: documents(condition: {status: EXPIRED}) {
-    nodes {
-      id
-      expirationDate
-      user {
+  query GetValidDocuments {
+    Expired: documents(condition: { status: EXPIRED }) {
+      nodes {
         id
-        firstname
+        expirationDate
+        user {
+          id
+          firstname
+        }
+      }
+    }
+    Valid: documents(condition: { status: VALID }) {
+      nodes {
+        id
+        expirationDate
+        user {
+          id
+          firstname
+        }
       }
     }
   }
-  Valid: documents(condition: {status: VALID}) {
-    nodes {
-      id
-      expirationDate
-      user {
-        id
-        firstname
-
-      }
-    }
-  }
-}
 `;

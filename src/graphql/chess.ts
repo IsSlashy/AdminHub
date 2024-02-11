@@ -167,7 +167,7 @@ export const UPDATE_BILLING = gql`
 
 export const RECORD_CHESS = gql`
   mutation recordChess($jobId: UUID!) {
-    recordChess(input: {jobId: $jobId}) {
+    recordChess(input: { jobId: $jobId }) {
       clientMutationId
     }
   }

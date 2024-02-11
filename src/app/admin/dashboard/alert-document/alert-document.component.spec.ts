@@ -8,7 +8,7 @@ describe('AlertDocumentComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AlertDocumentComponent]
+      declarations: [AlertDocumentComponent],
     });
     fixture = TestBed.createComponent(AlertDocumentComponent);
     component = fixture.componentInstance;

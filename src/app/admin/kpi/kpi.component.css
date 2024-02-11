@@ -7,12 +7,14 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.date-section, .retrocommission-section {
+.date-section,
+.retrocommission-section {
   margin-bottom: 20px;
   padding: 20px;
   background-color: #ffffff;
@@ -24,7 +26,10 @@ label {
   margin-bottom: 10px;
 }
 
-input[type="date"], select, input[type="text"], input[type="number"] {
+input[type='date'],
+select,
+input[type='text'],
+input[type='number'] {
   width: 100%;
   padding: 10px;
   margin-bottom: 20px;

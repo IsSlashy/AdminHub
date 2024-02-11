@@ -1,10 +1,8 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-data',
   templateUrl: './data.component.html',
   styleUrls: ['./data.component.css'],
-  })
-  export class DataComponent{
-
-  }
+})
+export class DataComponent {}

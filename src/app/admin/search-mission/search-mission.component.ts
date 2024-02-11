@@ -4,18 +4,14 @@ import { Apollo } from 'apollo-angular';
 @Component({
   selector: 'app-search-mission',
   templateUrl: './search-mission.component.html',
-  styleUrls: ['./search-mission.component.css']
+  styleUrls: ['./search-mission.component.css'],
 })
 export class SearchMissionComponent {
+  jobs: Array<any> = new Array<any>();
 
-  jobs : Array<any> = new Array<any>();
+  constructor(private apollo: Apollo) {}
 
-  constructor(
-    private apollo: Apollo
-  ){}
-
-
-  commercialChange(e: any,com: any,job: any){
+  commercialChange(e: any, com: any, job: any) {
     /* switch(com) {
       case 'com1':
         this.apollo.mutate({
@@ -56,5 +52,4 @@ export class SearchMissionComponent {
       default:
     } */
   }
-
 }

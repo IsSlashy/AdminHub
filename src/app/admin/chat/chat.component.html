@@ -1,18 +1,28 @@
 <div class="body row">
   <div class="container p-0 col-9">
     <form [formGroup]="searchForm">
-      <div style="display: flex; flex-direction: row; justify-content: space-around;">
+      <div
+        style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        "
+      >
         <mat-form-field class="example-full-width">
           <mat-label>Job Id</mat-label>
-          <input matInput placeholder="Id" formControlName="pJobId">
+          <input matInput placeholder="Id" formControlName="pJobId" />
         </mat-form-field>
         <mat-form-field class="example-full-width">
           <mat-label>User Id</mat-label>
-          <input matInput placeholder="Id" formControlName="pUserId">
+          <input matInput placeholder="Id" formControlName="pUserId" />
         </mat-form-field>
         <mat-form-field class="matFormLong" id="selectJobStatus">
           <mat-label>Job Status</mat-label>
-          <mat-select id="nationality" multiple="multiple" formControlName="pJobStatus" >
+          <mat-select
+            id="nationality"
+            multiple="multiple"
+            formControlName="pJobStatus"
+          >
             <mat-option value="PUBLISHED">PUBLISHED</mat-option>
             <mat-option value="CONFIRMED">CONFIRMED</mat-option>
             <mat-option value="DONE">DONE</mat-option>
@@ -26,25 +36,27 @@
             <mat-option value="CLAIMED">CLAIMED</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field style="width: 150px;">
+        <mat-form-field style="width: 150px">
           <mat-label>Commercial</mat-label>
           <mat-select formControlName="pCommercial">
-            <mat-option  [value]="null">
-              Tous
-            </mat-option>
+            <mat-option [value]="null"> Tous </mat-option>
             <mat-option *ngFor="let com of commercials" [value]="com.id">
               {{ com.firstname }}
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button class="btn btn-primary" (click)="search()" ><i class="bi bi-search"></i></button>
+        <button class="btn btn-primary" (click)="search()">
+          <i class="bi bi-search"></i>
+        </button>
       </div>
     </form>
 
     <div class="card">
       <div class="row g-0">
-        <div class="col-12 col-lg-5 col-xl-3 border-right" style="overflow: auto; max-height: 85vh;">
-
+        <div
+          class="col-12 col-lg-5 col-xl-3 border-right"
+          style="overflow: auto; max-height: 85vh"
+        >
           <!-- <div class="px-4 d-none d-md-block">
             <div class="d-flex align-items-center">
               <div class="flex-grow-1">
@@ -53,81 +65,183 @@
             </div>
           </div> -->
 
-          <div *ngFor="let conv of conversations" (click)="loadChat(conv.id)"
-          [ngClass]="{
-            'active': conv.id === conversation?.id, 'disabled': conv.conversationStatus === 'ARCHIVED' || conv.isOtherArchived === true,
-            'notResponse': conv.lastMessage?.user?.preferredConnection !== 'CLIENT'
-          }"
-          class="list-group-item list-group-item-action border-0 pointer">
+          <div
+            *ngFor="let conv of conversations"
+            (click)="loadChat(conv.id)"
+            [ngClass]="{
+              active: conv.id === conversation?.id,
+              disabled:
+                conv.conversationStatus === 'ARCHIVED' ||
+                conv.isOtherArchived === true,
+              notResponse:
+                conv.lastMessage?.user?.preferredConnection !== 'CLIENT'
+            }"
+            class="list-group-item list-group-item-action border-0 pointer"
+          >
             <!-- <div class="badge bg-success float-right">5</div> -->
             <div class="d-flex align-items-start">
-              <img [src]="conv.sailor?.avatarUrl" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
+              <img
+                [src]="conv.sailor?.avatarUrl"
+                class="rounded-circle mr-1"
+                alt="Vanessa Tucker"
+                width="40"
+                height="40"
+              />
               <div class="flex-grow-1 ml-3">
-                {{conv.sailor?.firstname}} {{conv.sailor?.userDetailById.lastname}}
-                <div class="small"> {{conv.lastMessage.createdAt | date: "dd/MM/yyyy":"fr"}} - {{ conv.lastMessage.type }} </div>
+                {{ conv.sailor?.firstname }}
+                {{ conv.sailor?.userDetailById.lastname }}
+                <div class="small">
+                  {{ conv.lastMessage.createdAt | date: 'dd/MM/yyyy' : 'fr' }} -
+                  {{ conv.lastMessage.type }}
+                </div>
               </div>
             </div>
           </div>
-          <button class="btn btn-primary" (click)="loadConv()">Charger plus de conv</button>
-          <hr class="d-block d-lg-none mt-1 mb-0">
+          <button class="btn btn-primary" (click)="loadConv()">
+            Charger plus de conv
+          </button>
+          <hr class="d-block d-lg-none mt-1 mb-0" />
         </div>
         <div class="col-12 col-lg-7 col-xl-9">
-          <div *ngIf="conversation" class="py-2 px-4 border-bottom d-none d-lg-block">
+          <div
+            *ngIf="conversation"
+            class="py-2 px-4 border-bottom d-none d-lg-block"
+          >
             <div class="d-flex justify-content-between">
-              <button class="btn btn-primary" (click)="archiveConv(conversation.id, conversation?.job?.ad?.boat?.owner?.id)" >Arch Client: {{ conversation?.archive.includes(conversation?.job?.ad?.boat?.owner?.id) }}</button>
-              <button class="btn btn-primary" (click)="archiveConv(conversation.id, conversation?.sailor?.id)" >Arch Marin: {{ conversation?.archive.includes(conversation?.sailor?.id) }}</button>
+              <button
+                class="btn btn-primary"
+                (click)="
+                  archiveConv(
+                    conversation.id,
+                    conversation?.job?.ad?.boat?.owner?.id
+                  )
+                "
+              >
+                Arch Client:
+                {{
+                  conversation?.archive.includes(
+                    conversation?.job?.ad?.boat?.owner?.id
+                  )
+                }}
+              </button>
+              <button
+                class="btn btn-primary"
+                (click)="archiveConv(conversation.id, conversation?.sailor?.id)"
+              >
+                Arch Marin:
+                {{ conversation?.archive.includes(conversation?.sailor?.id) }}
+              </button>
             </div>
           </div>
 
           <div class="position-relative">
-            <div class="chat-messages p-4" style="overflow: auto; max-height: 70vh;">
-              <ng-container *ngFor="let message of conversation?.messagesList" >
-                <div *ngIf="message.type === 'USER'" class="chat-message-left pb-4">
-                  <div style="width: 100%;display: flex;flex-direction: row-reverse;">
-                    <i style="cursor: pointer;" class="bi bi-trash"  (click)="deleteMessage(message.id)"></i>
+            <div
+              class="chat-messages p-4"
+              style="overflow: auto; max-height: 70vh"
+            >
+              <ng-container *ngFor="let message of conversation?.messagesList">
+                <div
+                  *ngIf="message.type === 'USER'"
+                  class="chat-message-left pb-4"
+                >
+                  <div
+                    style="
+                      width: 100%;
+                      display: flex;
+                      flex-direction: row-reverse;
+                    "
+                  >
+                    <i
+                      style="cursor: pointer"
+                      class="bi bi-trash"
+                      (click)="deleteMessage(message.id)"
+                    ></i>
                   </div>
                   <div>
-                    <div class="text-muted small text-nowrap mt-2">{{ message.createdAt | date: "short":"fr" }}</div>
-                  </div>
-
-                  <div style="display: flex; align-items: center;">
-                    <img [src]="message.user?.avatarUrl" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
-                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                      <div class="font-weight-bold mb-1">{{ message.user.firstname }}</div>
-                      <div>{{ message.content }}</div>
+                    <div class="text-muted small text-nowrap mt-2">
+                      {{ message.createdAt | date: 'short' : 'fr' }}
                     </div>
                   </div>
 
-                </div>
-
-                <div *ngIf="message.type === 'ADMIN'" class="chat-message-right pb-4">
-                  <div>
-                    <div class="text-muted small text-nowrap mt-2">{{ message.createdAt | date: "short":"fr" }}</div>
-                  </div>
-                  <div style="display: flex; align-items: center;">
-                  <img [src]="message.user?.avatarUrl" class="rounded-circle mr-1" alt="Sharon Lessman" width="40" height="40">
+                  <div style="display: flex; align-items: center">
+                    <img
+                      [src]="message.user?.avatarUrl"
+                      class="rounded-circle mr-1"
+                      alt="Sharon Lessman"
+                      width="40"
+                      height="40"
+                    />
                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-                      <div class="font-weight-bold mb-1">{{ message.user.firstname }}</div>
+                      <div class="font-weight-bold mb-1">
+                        {{ message.user.firstname }}
+                      </div>
                       <div>{{ message.content }}</div>
                     </div>
                   </div>
                 </div>
 
-                <div *ngIf="message.type !== 'ADMIN' && message.type !== 'USER'" class="alert alert-info info-message text-center pointer">
+                <div
+                  *ngIf="message.type === 'ADMIN'"
+                  class="chat-message-right pb-4"
+                >
+                  <div>
+                    <div class="text-muted small text-nowrap mt-2">
+                      {{ message.createdAt | date: 'short' : 'fr' }}
+                    </div>
+                  </div>
+                  <div style="display: flex; align-items: center">
+                    <img
+                      [src]="message.user?.avatarUrl"
+                      class="rounded-circle mr-1"
+                      alt="Sharon Lessman"
+                      width="40"
+                      height="40"
+                    />
+                    <div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
+                      <div class="font-weight-bold mb-1">
+                        {{ message.user.firstname }}
+                      </div>
+                      <div>{{ message.content }}</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  *ngIf="message.type !== 'ADMIN' && message.type !== 'USER'"
+                  class="alert alert-info info-message text-center pointer"
+                >
                   <strong class="info-title">{{ message.type }}</strong>
-                  <p>{{ message.createdAt | date: "short":"fr" }}</p>
+                  <p>{{ message.createdAt | date: 'short' : 'fr' }}</p>
                   <p *ngIf="message.type !== 'OFFER'">{{ message?.content }}</p>
-                    <div  *ngIf="message.type === 'OFFER'" [routerLink]="['/admin/offer', message.offer.id]">
-                      <p class="info-content">Status: {{ message.offer.status }},
-                        Type : {{message.offer.contractType}},
-                        Prix: {{ message.offer.realPrice }}
-                        <ng-container *ngIf="message.offer.travelFeeExpenses !== null">
-                          et {{message.offer?.travelFeeExpenses}} € de frais de déplacement
-                        </ng-container>
-                      </p>
-                      <button class="btn btn-primary" (click)="sendOffer(message)">Mail offre</button>
-                      <button *ngIf="message.offer?.status === 'PENDING'" class="btn btn-primary" (click)="cancelOffer(message.offer.id)">annuler l'offre</button>
-                    </div>
+                  <div
+                    *ngIf="message.type === 'OFFER'"
+                    [routerLink]="['/admin/offer', message.offer.id]"
+                  >
+                    <p class="info-content">
+                      Status: {{ message.offer.status }}, Type :
+                      {{ message.offer.contractType }}, Prix:
+                      {{ message.offer.realPrice }}
+                      <ng-container
+                        *ngIf="message.offer.travelFeeExpenses !== null"
+                      >
+                        et {{ message.offer?.travelFeeExpenses }} € de frais de
+                        déplacement
+                      </ng-container>
+                    </p>
+                    <button
+                      class="btn btn-primary"
+                      (click)="sendOffer(message)"
+                    >
+                      Mail offre
+                    </button>
+                    <button
+                      *ngIf="message.offer?.status === 'PENDING'"
+                      class="btn btn-primary"
+                      (click)="cancelOffer(message.offer.id)"
+                    >
+                      annuler l'offre
+                    </button>
+                  </div>
                 </div>
 
                 <!-- <div class="chat-message-right pb-4">
@@ -146,49 +260,84 @@
 
           <div class="flex-grow-0 py-3 px-4 border-top">
             <div *ngIf="conversation" class="input-group">
-              <button class="btn btn-primary" (click)="sendMessage(true)" >msg Admin</button>
-              <textarea type="text" class="form-control" [formControl]="messageForm" placeholder="Type your message"></textarea>
-              <button class="btn btn-primary" (click)="sendMessage(false)" >msg Prorio</button>
+              <button class="btn btn-primary" (click)="sendMessage(true)">
+                msg Admin
+              </button>
+              <textarea
+                type="text"
+                class="form-control"
+                [formControl]="messageForm"
+                placeholder="Type your message"
+              ></textarea>
+              <button class="btn btn-primary" (click)="sendMessage(false)">
+                msg Prorio
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xl-3" >
+  <div class="col-xl-3">
     <div *ngIf="conversation">
-      <div >
-        <div style="cursor: pointer" [routerLink]="['../job', conversation.job.id]">
-          <img style="max-width: 100%;" [src]="conversation?.job.ad.boat.boatPictures.nodes[0].url" alt=" - Bateau Capt'n Boat">
-          Prix initial: {{conversation.job.initialPrice / 100}} - Commission: {{conversation.job.commissionRate}} % <br>
-          langues: {{jobLanguages}}<br>
-          {{conversation?.job.startDate | date: "dd/MM/yyyy"}} - {{conversation?.job.ad.harborByStartHarbor.nameFr}} <br>
-          {{conversation?.job.endDate | date: "dd/MM/yyyy"}} - {{conversation?.job.ad.harborByEndHarbor.nameFr}} <br>
+      <div>
+        <div
+          style="cursor: pointer"
+          [routerLink]="['../job', conversation.job.id]"
+        >
+          <img
+            style="max-width: 100%"
+            [src]="conversation?.job.ad.boat.boatPictures.nodes[0].url"
+            alt=" - Bateau Capt'n Boat"
+          />
+          Prix initial: {{ conversation.job.initialPrice / 100 }} - Commission:
+          {{ conversation.job.commissionRate }} % <br />
+          langues: {{ jobLanguages }}<br />
+          {{ conversation?.job.startDate | date: 'dd/MM/yyyy' }} -
+          {{ conversation?.job.ad.harborByStartHarbor.nameFr }} <br />
+          {{ conversation?.job.endDate | date: 'dd/MM/yyyy' }} -
+          {{ conversation?.job.ad.harborByEndHarbor.nameFr }} <br />
         </div>
         <div class="card--skipper-profile pt-2 pointer">
           <strong>Marin:</strong>
-          <button class="btn-primary"  [routerLink]="['../sailor', conversation.sailor.id]">Profil</button>
-          <button class="btn-primary" (click)="openCv(conversation.sailor)">CV</button> <br>
-          {{conversation?.sailor.firstname}} - {{conversation?.sailor.userDetailById?.lastname}} <br>
-          langues: {{sailorLanguages}}<br>
-          {{conversation?.sailor.userDetailById?.phoneNumber}} <br>
-          {{conversation?.sailor.userDetailById?.email}} <br>
+          <button
+            class="btn-primary"
+            [routerLink]="['../sailor', conversation.sailor.id]"
+          >
+            Profil
+          </button>
+          <button class="btn-primary" (click)="openCv(conversation.sailor)">
+            CV
+          </button>
+          <br />
+          {{ conversation?.sailor.firstname }} -
+          {{ conversation?.sailor.userDetailById?.lastname }} <br />
+          langues: {{ sailorLanguages }}<br />
+          {{ conversation?.sailor.userDetailById?.phoneNumber }} <br />
+          {{ conversation?.sailor.userDetailById?.email }} <br />
         </div>
-        <div class="card--skipper-profile pt-2 pointer" [routerLink]="['../client', conversation.job.ad.boat.owner.id]">
-          <strong>Propriétaire:</strong> <br>
-          {{conversation?.job.ad.boat.owner.firstname}} {{conversation?.job.ad.boat.owner.userDetailById?.lastname}} <br>
-          {{conversation?.job.ad.boat.owner.userDetailById?.phoneNumber}} <br>
-          {{conversation?.job.ad.boat.owner.userDetailById?.email}} <br>
+        <div
+          class="card--skipper-profile pt-2 pointer"
+          [routerLink]="['../client', conversation.job.ad.boat.owner.id]"
+        >
+          <strong>Propriétaire:</strong> <br />
+          {{ conversation?.job.ad.boat.owner.firstname }}
+          {{ conversation?.job.ad.boat.owner.userDetailById?.lastname }} <br />
+          {{ conversation?.job.ad.boat.owner.userDetailById?.phoneNumber }}
+          <br />
+          {{ conversation?.job.ad.boat.owner.userDetailById?.email }} <br />
         </div>
-        <div class="card--skipper-profile pt-2 pointer" [routerLink]="['../client', conversation.job.ad.ownerIdClient]">
-          <strong>Client:</strong> <br>
-          {{conversation?.billing?.firstname}} {{conversation?.billing?.userDetailById?.lastname}} <br>
-          {{conversation?.billing?.userDetailById?.phoneNumber}} <br>
-          {{conversation?.billing?.userDetailById?.email}} <br>
+        <div
+          class="card--skipper-profile pt-2 pointer"
+          [routerLink]="['../client', conversation.job.ad.ownerIdClient]"
+        >
+          <strong>Client:</strong> <br />
+          {{ conversation?.billing?.firstname }}
+          {{ conversation?.billing?.userDetailById?.lastname }} <br />
+          {{ conversation?.billing?.userDetailById?.phoneNumber }} <br />
+          {{ conversation?.billing?.userDetailById?.email }} <br />
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

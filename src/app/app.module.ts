@@ -16,8 +16,6 @@ import { KPIComponent } from './admin/kpi/kpi.component';
 import { AdminPlusComponent } from './admin/admin-plus/admin-plus.component';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +39,6 @@ import { FormsModule } from '@angular/forms';
     MatTableModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

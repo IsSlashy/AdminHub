@@ -1,7 +1,11 @@
 import { Component, ViewChild, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Apollo, QueryRef } from 'apollo-angular';
-import { COMMERCIAL_JOBS, UPDATE_JOB, CANCEL_OFFER_MUTATION } from 'src/graphql/dashboard';
+import {
+  COMMERCIAL_JOBS,
+  UPDATE_JOB,
+  CANCEL_OFFER_MUTATION,
+} from 'src/graphql/dashboard';
 import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { PageEvent } from '@angular/material/paginator';
@@ -10,7 +14,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.css']
+  styleUrls: ['./jobs.component.css'],
 })
 export class JobsComponent implements OnDestroy {
   @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
@@ -21,10 +25,31 @@ export class JobsComponent implements OnDestroy {
   private jobsSub!: Subscription;
 
   dataSource!: MatTableDataSource<any>; // Utilisation du type any pour le dataSource
-  displayedColumns: string[] = ["date", "poste", "port", "model", "status", "client", "commercial", "link", "notification"];
+  displayedColumns: string[] = [
+    'date',
+    'poste',
+    'port',
+    'model',
+    'status',
+    'client',
+    'commercial',
+    'link',
+    'notification',
+  ];
   pageIndex: number = 0;
 
-  jobStatus: Array<String> | null = ['PUBLISHED', 'CONFIRMED', 'DONE', 'ABORTED', 'ASSIGNED', 'PENDING', 'OPEN', 'DRAFT', 'CLOSED', 'CLAIMED'];
+  jobStatus: Array<String> | null = [
+    'PUBLISHED',
+    'CONFIRMED',
+    'DONE',
+    'ABORTED',
+    'ASSIGNED',
+    'PENDING',
+    'OPEN',
+    'DRAFT',
+    'CLOSED',
+    'CLAIMED',
+  ];
   searchForm: FormGroup = this.formBuilder.group({
     jobStatus: [null, []],
     first: [20, []],
@@ -39,7 +64,7 @@ export class JobsComponent implements OnDestroy {
   ngOnInit(): void {
     this.jobsQuery = this.apollo.watchQuery({
       query: COMMERCIAL_JOBS,
-      variables: { jobStatus: this.jobStatus }
+      variables: { jobStatus: this.jobStatus },
     });
 
     this.jobsSub = this.jobsQuery.valueChanges.subscribe(({ data }: any) => {
@@ -63,27 +88,33 @@ export class JobsComponent implements OnDestroy {
   }
 
   updateCommercial(e: any, jobId: string) {
-    this.apollo.mutate({
-      mutation: UPDATE_JOB,
-      variables: {
-        jobInput: {
-          id: jobId,
-          patch: {
-            commercial1Id: e
-          }
+    this.apollo
+      .mutate({
+        mutation: UPDATE_JOB,
+        variables: {
+          jobInput: {
+            id: jobId,
+            patch: {
+              commercial1Id: e,
+            },
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) => {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) => {
+          console.error(err);
+          this.modalConfirmed.modalRejected();
         }
-      }
-    }).subscribe(({ data }: any) => {
-      this.modalConfirmed.openModal();
-    }, (err: any) => {
-      console.error(err);
-      this.modalConfirmed.modalRejected();
-    });
+      );
   }
 
   openDetail(id: string) {
-    const url = 'https://www.captnboat.com/fr/recherche/detail-annonce?id=' + id;
-    window.open(url, "_blank");
+    const url =
+      'https://www.captnboat.com/fr/recherche/detail-annonce?id=' + id;
+    window.open(url, '_blank');
   }
 
   ngOnDestroy() {

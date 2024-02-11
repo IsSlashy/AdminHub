@@ -8,12 +8,14 @@ import { JOB_OFFERS } from 'src/graphql/job'; // Importez la requête GraphQL de
   templateUrl: './offers.component.html',
   styleUrls: ['./offers.component.css'],
 })
-
 export class OffersComponent implements OnInit {
   jobId: string | null = '';
   sailors: any[] = []; // Liste de sailors et leurs offres
 
-  constructor(private route: ActivatedRoute, private apollo: Apollo) {}
+  constructor(
+    private route: ActivatedRoute,
+    private apollo: Apollo
+  ) {}
 
   ngOnInit() {
     this.route.parent?.paramMap.subscribe((param) => {
@@ -49,24 +51,29 @@ export class OffersComponent implements OnInit {
                 id: offer.id,
                 realPrice: offer.realPrice,
                 contractType: offer.contractType,
-                travelFeeExpenses: offer.travelFeeExpenses? offer.travelFeeExpenses: 0,
+                travelFeeExpenses: offer.travelFeeExpenses
+                  ? offer.travelFeeExpenses
+                  : 0,
                 status: offer.status,
-                token: offer.token
+                token: offer.token,
               });
             }
           });
 
           this.sailors = Array.from(sailorMap.values());
-          console.log('les sailor', this.sailors)
+          console.log('les sailor', this.sailors);
         });
     });
   }
 
-
-  copyUrlContract(offer:any) {
+  copyUrlContract(offer: any) {
     console.log(offer);
 
-    const contentToCopy = 'https://captnboat.com/fr/contrat-client?id='+ offer.id + '&token=' + offer.token;
+    const contentToCopy =
+      'https://captnboat.com/fr/contrat-client?id=' +
+      offer.id +
+      '&token=' +
+      offer.token;
     console.log(contentToCopy);
     navigator.clipboard.writeText(contentToCopy);
   }

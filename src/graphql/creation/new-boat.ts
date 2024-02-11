@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 export const CREATE_BOAT = gql`
   mutation CreateBoat($boatinput: CreateCompleteBoatInput!) {
     createCompleteBoat(input: $boatinput) {
@@ -43,6 +43,5 @@ export const DATA_BOAT = gql`
         id
       }
     }
-
   }
 `;

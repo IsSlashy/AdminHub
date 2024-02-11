@@ -8,7 +8,7 @@ describe('SearchSkipperComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SearchSkipperComponent]
+      declarations: [SearchSkipperComponent],
     });
     fixture = TestBed.createComponent(SearchSkipperComponent);
     component = fixture.componentInstance;

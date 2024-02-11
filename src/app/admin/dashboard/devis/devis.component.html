@@ -9,47 +9,47 @@
     </tr>
   </thead>
   <tbody>
-    <tr style="cursor: pointer;" *ngFor="let devi of devis">
+    <tr style="cursor: pointer" *ngFor="let devi of devis">
       <td>
-        créé le {{devi.createdAt | date :'dd/MM/yyyy'}}<br>
-        {{devi.startHarbor?.nameFr}} -> {{devi.endHarbor?.nameFr}} <br>
-        {{devi.startDate | date :'dd/MM/yyyy'}} - {{devi.endDate | date :'dd/MM/yyyy'}}  <br>
-        {{devi.duration}} jours <br>
-        {{devi.language}} <br>
-    </td>
-      <td>
-        {{devi.model}} <br>
-        {{devi.hulllength}} m
+        créé le {{ devi.createdAt | date: 'dd/MM/yyyy' }}<br />
+        {{ devi.startHarbor?.nameFr }} -> {{ devi.endHarbor?.nameFr }} <br />
+        {{ devi.startDate | date: 'dd/MM/yyyy' }} -
+        {{ devi.endDate | date: 'dd/MM/yyyy' }} <br />
+        {{ devi.duration }} jours <br />
+        {{ devi.language }} <br />
       </td>
       <td>
-        {{devi.adType}} <br>
-        {{devi.position}} <br>
-        {{devi.status}}
+        {{ devi.model }} <br />
+        {{ devi.hulllength }} m
       </td>
       <td>
-        {{devi.firstName}} <br>
-        {{devi.lastName}} <br>
-        {{devi.email}} <br>
-        {{devi.phoneNumber}} <br>
-        {{devi.clientType}} <br>
+        {{ devi.adType }} <br />
+        {{ devi.position }} <br />
+        {{ devi.status }}
+      </td>
+      <td>
+        {{ devi.firstName }} <br />
+        {{ devi.lastName }} <br />
+        {{ devi.email }} <br />
+        {{ devi.phoneNumber }} <br />
+        {{ devi.clientType }} <br />
         <span *ngIf="devis.Registered">compte créé</span>
         <span *ngIf="!devis.Registered">compte non créé</span>
       </td>
       <td>
-        <mat-form-field style="width: 150px;">
+        <mat-form-field style="width: 150px">
           <mat-label>Commercial 1</mat-label>
-          <mat-select [ngModel]="devi.commercial?.id" (ngModelChange)="updateDevise($event, devi.id)">
-            <mat-option  [value]="null">
-              Supprimer commercial
-            </mat-option>
+          <mat-select
+            [ngModel]="devi.commercial?.id"
+            (ngModelChange)="updateDevise($event, devi.id)"
+          >
+            <mat-option [value]="null"> Supprimer commercial </mat-option>
             <mat-option *ngFor="let com of commercials" [value]="com.id">
               {{ com.firstname }}
             </mat-option>
-
-
           </mat-select>
         </mat-form-field>
-     </td>
+      </td>
     </tr>
   </tbody>
 </table>

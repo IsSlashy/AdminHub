@@ -6,14 +6,14 @@ export const environment = {
   production: false,
   api_url: 'https://api-int.captnboat.com/graphql',
   ws_url: 'wss://api-int.captnboat.com/graphql',
-  stripe_key:'pk_test_d3ZIHCwuBx3cBRJoC2t3LMpO',
+  stripe_key: 'pk_test_d3ZIHCwuBx3cBRJoC2t3LMpO',
   harbors_algolia: 'dev_harbors',
   places_algolia: 'dev_places',
   boats_algolia: 'dev_boats',
   regions_algolia: 'regions',
   STRIPE_URL: 'http://js.stripe.com/v3/',
   algolia_id: 'RRJ3LLXC46',
-  algolia_key: 'f55797750da636098ac235e799838922'
+  algolia_key: 'f55797750da636098ac235e799838922',
 };
 
 /*

@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ConnectionComponent } from './connection.component';
-import { ApolloTestingModule, ApolloTestingController } from 'apollo-angular/testing';
+import {
+  ApolloTestingModule,
+  ApolloTestingController,
+} from 'apollo-angular/testing';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
@@ -13,7 +16,7 @@ describe('ConnectionComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ConnectionComponent],
       imports: [ApolloTestingModule],
-      providers: [Apollo]
+      providers: [Apollo],
     });
     fixture = TestBed.createComponent(ConnectionComponent);
     component = fixture.componentInstance;
@@ -55,10 +58,10 @@ describe('ConnectionComponent', () => {
           token: 'test-token',
           user: {
             id: '1',
-            username: 'testuser'
-          }
-        }
-      }
+            username: 'testuser',
+          },
+        },
+      },
     });
 
     expect(op.operation.variables['email']).toEqual('test@gmail.com');

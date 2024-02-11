@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-alert-document',
   templateUrl: './alert-document.component.html',
-  styleUrls: ['./alert-document.component.css']
+  styleUrls: ['./alert-document.component.css'],
 })
 export class AlertDocumentComponent implements OnInit {
   expiredDocuments: any[] = [];
@@ -15,22 +15,31 @@ export class AlertDocumentComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 10;
 
-  constructor(private apollo: Apollo, private router: Router) {}
+  constructor(
+    private apollo: Apollo,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.apollo.watchQuery({
-      query: GET_VALID_DOCUMENTS
-    }).valueChanges.subscribe(({ data }: { data: any }) => {
-      this.expiredDocuments = data?.Expired?.nodes ?? [];
-      this.classifyValidDocuments(data?.Valid?.nodes ?? []);
-    });
+    this.apollo
+      .watchQuery({
+        query: GET_VALID_DOCUMENTS,
+      })
+      .valueChanges.subscribe(({ data }: { data: any }) => {
+        this.expiredDocuments = data?.Expired?.nodes ?? [];
+        this.classifyValidDocuments(data?.Valid?.nodes ?? []);
+      });
   }
 
   classifyValidDocuments(validDocuments: any[]) {
     const today = new Date();
-    const soonExpireThreshold = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 365);
+    const soonExpireThreshold = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + 365
+    );
 
-    this.soonToExpireDocuments = validDocuments.filter(doc => {
+    this.soonToExpireDocuments = validDocuments.filter((doc) => {
       const expirationDate = new Date(doc.expirationDate);
       return expirationDate >= today && expirationDate < soonExpireThreshold;
     });
@@ -51,7 +60,9 @@ export class AlertDocumentComponent implements OnInit {
   }
 
   get totalDocuments() {
-    return this.showingExpired ? this.expiredDocuments.length : this.soonToExpireDocuments.length;
+    return this.showingExpired
+      ? this.expiredDocuments.length
+      : this.soonToExpireDocuments.length;
   }
 
   get totalPages() {

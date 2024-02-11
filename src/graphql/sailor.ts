@@ -5,8 +5,8 @@ export const USER = gql`
     user(id: $userId) {
       id
       firstname
-      userPreference{
-        positions{
+      userPreference {
+        positions {
           position
         }
       }
@@ -20,25 +20,25 @@ export const USER = gql`
 `;
 export const SAILOR_PERSONNAL = gql`
   query sailor_personal($userId: UUID!) {
-  nationalities(orderBy: NAME_ASC) {
-    nodes {
-      name
-      id
+    nationalities(orderBy: NAME_ASC) {
+      nodes {
+        name
+        id
+      }
     }
-  }
-  languages(orderBy: NAME_ASC) {
-    nodes {
-      name
-      id
+    languages(orderBy: NAME_ASC) {
+      nodes {
+        name
+        id
+      }
     }
-  }
-  countries {
-    nodes {
-      name
-      id
+    countries {
+      nodes {
+        name
+        id
+      }
     }
-  }
-  commercials {
+    commercials {
       nodes {
         id
         firstname
@@ -48,44 +48,43 @@ export const SAILOR_PERSONNAL = gql`
         }
       }
     }
-  user(id: $userId) {
-    id
-    existsCancelRequest
-    firstname
-    civility
-    birthday
-    userStatus
-    favoriteCurrency
-    resizedImages
-    nationality1Id
-    nativeLanguageId
-    userStatus
-    commercialId
-    userDetailById {
+    user(id: $userId) {
       id
-      email
-      lastname
-      phoneNumber
-      sailorNumber
-      birthCountry
-      birthPlace
-      birthName
-      rib
-      socialSecurityNumber
-      taxDomicil
-      personnalAddress {
+      existsCancelRequest
+      firstname
+      civility
+      birthday
+      userStatus
+      favoriteCurrency
+      resizedImages
+      nationality1Id
+      nativeLanguageId
+      userStatus
+      commercialId
+      userDetailById {
         id
-        formattedAddress
+        email
+        lastname
+        phoneNumber
+        sailorNumber
+        birthCountry
+        birthPlace
+        birthName
+        rib
+        socialSecurityNumber
+        taxDomicil
+        personnalAddress {
+          id
+          formattedAddress
+        }
+      }
+    }
+    users {
+      nodes {
+        avatarUrl
       }
     }
   }
-  users {
-    nodes {
-      avatarUrl
-    }
-  }
-}
-
 `;
 
 export const SAILOR_DOCS = gql`
@@ -95,8 +94,8 @@ export const SAILOR_DOCS = gql`
       userDetailById {
         sailorId
       }
-      structures{
-        nodes{
+      structures {
+        nodes {
           id
           name
         }
@@ -190,16 +189,16 @@ export const ADD_DOCUMENT = gql`
   }
 `;
 export const VALIDE_DOCUMENT = gql`
-mutation ValideDoc($validedocument:  ValidateDocumentInput!) {
-  validateDocument(input: $validedocument) {
-    clientMutationId
-    document {
-      id
-      status
+  mutation ValideDoc($validedocument: ValidateDocumentInput!) {
+    validateDocument(input: $validedocument) {
+      clientMutationId
+      document {
+        id
+        status
+      }
     }
   }
-}
-`
+`;
 export const UPLOAD_RESUME = gql`
   mutation upload_resume($inputresume: CreateResumeInput!) {
     createResume(input: $inputresume) {
@@ -375,17 +374,15 @@ export const OPPORTUNITIES = gql`
           endDate
           price
           monthlyRemuneration
-          conversations(
-      condition: { sailorId:$userId}
-    ) {
-      nodes {
-        id
-        lastOffer {
-          status
-          id
-        }
-      }
-    }
+          conversations(condition: { sailorId: $userId }) {
+            nodes {
+              id
+              lastOffer {
+                status
+                id
+              }
+            }
+          }
           offerPending {
             id
           }
@@ -441,13 +438,13 @@ export const OPPORTUNITIES = gql`
   }
 `;
 export const CANCEL_OFFER = gql`
-mutation canceloffer($cancelofferinput: CancelOfferInput!) {
-  cancelOffer(input: $cancelofferinput) {
-    offer {
-      status
+  mutation canceloffer($cancelofferinput: CancelOfferInput!) {
+    cancelOffer(input: $cancelofferinput) {
+      offer {
+        status
+      }
     }
   }
-}
 `;
 
 export const CANDIDATE_JOB = gql`

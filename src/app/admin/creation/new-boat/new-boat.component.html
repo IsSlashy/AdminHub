@@ -1,139 +1,261 @@
-
 <div class="container">
-    <form action="" [formGroup]="boatForm">
+  <form action="" [formGroup]="boatForm">
     <div>
-        <div class="row">
-            <div class="col-md-12">
-              <h2 class="h3" i18n="@@new-boat">Ajouter un nouveau bateau</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="h3" i18n="@@new-boat">Ajouter un nouveau bateau</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div
+              class="input--error"
+              *ngIf="isSubmitted && boatForm.controls['name'].errors"
+              i18n="@@required"
+            >
+              Ce champ est obligatoire
             </div>
+            <mat-form-field class="matFormLong">
+              <mat-label
+                for="boat-name"
+                id="name"
+                class="label"
+                i18n="@@boat-name"
+                >Nom du bateau</mat-label
+              >
+              <input
+                matInput
+                id="boat-name"
+                name="boat-name"
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="name"
+              />
+            </mat-form-field>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <div class="input--error" *ngIf="isSubmitted && boatForm.controls['name'].errors" i18n="@@required">Ce champ est obligatoire</div>
-                <mat-form-field class="matFormLong">
-                  <mat-label for="boat-name" id="name" class="label" i18n="@@boat-name">Nom du bateau</mat-label>
-                  <input matInput id="boat-name" name="boat-name" type="text" placeholder="" value="" formControlName="name">
-                </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <div id="modelId" class="input--field select medium">
+              <div class="align--all-row">
+                <label for="model" class="control-label" i18n="@@model"
+                  >Modèle</label
+                >
+                <span class="label">*</span>
               </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <div id="modelId" class="input--field select medium">
-                  <div class="align--all-row">
-                    <label for="model" class="control-label" i18n="@@model">Modèle</label>
-                    <span class="label">*</span>
-                  </div>
-                  <div *ngIf="isSubmitted && boatForm.controls['modelId'].errors" class="input--error" i18n="@@required">Ce champ est obligatoire</div>
-                  <div class="searchbox">
-                    <app-autocomplete-model style="min-width: 350px;" (onModelSelected)="handleModelSelection($event)"></app-autocomplete-model>
-                  </div>
-                </div>
+              <div
+                *ngIf="isSubmitted && boatForm.controls['modelId'].errors"
+                class="input--error"
+                i18n="@@required"
+              >
+                Ce champ est obligatoire
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <div id="flagId" class="input--field select medium">
-                  <div *ngIf="isSubmitted && boatForm.controls['flagId'].errors" class="input--error" i18n="@@required">Ce champ est obligatoire</div>
-                  <mat-form-field class="matFormLong">
-                    <mat-label class="align--all-row">
-                      <span id="nationality" for="nationality" class="label control-label" i18n="@@flag">Pavillon</span>
-                      <span class="label">*</span>
-                    </mat-label>
-                    <input type="text" aria-label="Number" matInput [formControl]="myControlFlags" [matAutocomplete]="auto3" id="flag">
-                    <mat-autocomplete #auto3="matAutocomplete" (optionSelected)="changeFlag($event)" [displayWith]="displayFlag">
-                      <mat-option *ngFor="let country of filteredFlags | async" [value]="country">
-                        {{ country.name }}
-                      </mat-option>
-                    </mat-autocomplete>
-                  </mat-form-field>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <mat-form-field class="matFormLong">
-                  <mat-label id="registrationNumber" for="registration-number" id="registration-number" i18n="@@registrationNumber" class="label">Immatriculation</mat-label>
-                  <input matInput id="votre-immatriculation" name="votre-immatriculation-sup" type="text" placeholder="" value="" formControlName="registrationNumber">
-                </mat-form-field>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <span id="isPro" class="radio-group-label" i18n="@@autoPilot-button">Mon bateau dispose d'un autopilot ?</span>
-                <div class="input--error" *ngIf="isSubmitted && boatForm.controls['autoPilot'].errors" i18n="@@required">Ce champ est obligatoire</div>
-                <div class="form-check">
-                  <label class="form-check-label" for="autoPilot-yes">
-                    <input class="form-check-input" id="autoPilot-yes" name="autoPilot" [value]="true" type="radio" formControlName="autoPilot">
-                    <span i18n="@@value-yes">Oui</span>
-                  </label>
-                </div>
-                <div class="form-check">
-                  <label class="form-check-label" for="autoPilot-no">
-                    <input class="form-check-input" id="autoPilot-no" name="autoPilot" [value]="false" type="radio" formControlName="autoPilot">
-                    <span i18n="@@value-no">Non</span>
-                  </label>
-                </div>
+              <div class="searchbox">
+                <app-autocomplete-model
+                  style="min-width: 350px"
+                  (onModelSelected)="handleModelSelection($event)"
+                ></app-autocomplete-model>
               </div>
             </div>
           </div>
-  
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div id="flagId" class="input--field select medium">
+              <div
+                *ngIf="isSubmitted && boatForm.controls['flagId'].errors"
+                class="input--error"
+                i18n="@@required"
+              >
+                Ce champ est obligatoire
+              </div>
+              <mat-form-field class="matFormLong">
+                <mat-label class="align--all-row">
+                  <span
+                    id="nationality"
+                    for="nationality"
+                    class="label control-label"
+                    i18n="@@flag"
+                    >Pavillon</span
+                  >
+                  <span class="label">*</span>
+                </mat-label>
+                <input
+                  type="text"
+                  aria-label="Number"
+                  matInput
+                  [formControl]="myControlFlags"
+                  [matAutocomplete]="auto3"
+                  id="flag"
+                />
+                <mat-autocomplete
+                  #auto3="matAutocomplete"
+                  (optionSelected)="changeFlag($event)"
+                  [displayWith]="displayFlag"
+                >
+                  <mat-option
+                    *ngFor="let country of filteredFlags | async"
+                    [value]="country"
+                  >
+                    {{ country.name }}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <mat-form-field class="matFormLong">
+              <mat-label
+                id="registrationNumber"
+                for="registration-number"
+                id="registration-number"
+                i18n="@@registrationNumber"
+                class="label"
+                >Immatriculation</mat-label
+              >
+              <input
+                matInput
+                id="votre-immatriculation"
+                name="votre-immatriculation-sup"
+                type="text"
+                placeholder=""
+                value=""
+                formControlName="registrationNumber"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <span id="isPro" class="radio-group-label" i18n="@@autoPilot-button"
+              >Mon bateau dispose d'un autopilot ?</span
+            >
+            <div
+              class="input--error"
+              *ngIf="isSubmitted && boatForm.controls['autoPilot'].errors"
+              i18n="@@required"
+            >
+              Ce champ est obligatoire
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="autoPilot-yes">
+                <input
+                  class="form-check-input"
+                  id="autoPilot-yes"
+                  name="autoPilot"
+                  [value]="true"
+                  type="radio"
+                  formControlName="autoPilot"
+                />
+                <span i18n="@@value-yes">Oui</span>
+              </label>
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="autoPilot-no">
+                <input
+                  class="form-check-input"
+                  id="autoPilot-no"
+                  name="autoPilot"
+                  [value]="false"
+                  type="radio"
+                  formControlName="autoPilot"
+                />
+                <span i18n="@@value-no">Non</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="dashboard--section">
-              <h4 class="h4" i18n="@@add-picture">Ajouter des photos :</h4>
-              <p class="input--help" i18n="@@formatsAccepted">Formats acceptés : .png, .jpg, .webp .jpeg</p>
-              <div *ngIf="isSubmitted && file.name === ''"></div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div *ngIf="!file === false" class="gallery-upload--add">
-                    <input type="file" name="gallery-upload" (change)="handleFileInput($event)" id="gallery-upload">
-                    <span class="icobutton">
-                      <svg class="icon icon-gallery-upload">
-                        <use xlink:href="#icon-gallery-upload"></use>
-                      </svg>
-                    </span>
-                    <label for="gallery-upload" class="sr-only" i18n="@@add-boat">Ajouter un bateau</label>
-                  </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="dashboard--section">
+            <h4 class="h4" i18n="@@add-picture">Ajouter des photos :</h4>
+            <p class="input--help" i18n="@@formatsAccepted">
+              Formats acceptés : .png, .jpg, .webp .jpeg
+            </p>
+            <div *ngIf="isSubmitted && file.name === ''"></div>
+            <div class="row">
+              <div class="col-md-6">
+                <div *ngIf="!file === false" class="gallery-upload--add">
+                  <input
+                    type="file"
+                    name="gallery-upload"
+                    (change)="handleFileInput($event)"
+                    id="gallery-upload"
+                  />
+                  <span class="icobutton">
+                    <svg class="icon icon-gallery-upload">
+                      <use xlink:href="#icon-gallery-upload"></use>
+                    </svg>
+                  </span>
+                  <label for="gallery-upload" class="sr-only" i18n="@@add-boat"
+                    >Ajouter un bateau</label
+                  >
                 </div>
-                <div class="row">
-                  <div class="gallery-upload">
-                    <div *ngFor="let picture of pictures" class="gallery-upload--item">
-                      <img style="max-width: 150px;max-height: 100px;" [src]="picture" type="file">
-                      <div class="file btn btn-lg btn-primary iconpencil">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                          </svg>
-                        <input (change)="modifImage($event)" class="inputpencil" type="file" name="text-id" id="text-id" />
-                        </div>
+              </div>
+              <div class="row">
+                <div class="gallery-upload">
+                  <div
+                    *ngFor="let picture of pictures"
+                    class="gallery-upload--item"
+                  >
+                    <img
+                      style="max-width: 150px; max-height: 100px"
+                      [src]="picture"
+                      type="file"
+                    />
+                    <div class="file btn btn-lg btn-primary iconpencil">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-pencil-square"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+                        />
+                      </svg>
+                      <input
+                        (change)="modifImage($event)"
+                        class="inputpencil"
+                        type="file"
+                        name="text-id"
+                        id="text-id"
+                      />
                     </div>
-                    <div class="gallery-upload--item"></div>
                   </div>
+                  <div class="gallery-upload--item"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
-  
-  
-      <button class="btn-primary pointer" type="submit" (click)="createBoat()" >
-        <span class="button--label" i18n="@@save">Enregistrer</span>
-      </button>
-    </form>
     </div>
 
+    <button class="btn-primary pointer" type="submit" (click)="createBoat()">
+      <span class="button--label" i18n="@@save">Enregistrer</span>
+    </button>
+  </form>
+</div>
 
-
-    <!-- <div class="modal" id="modal--cropper">
+<!-- <div class="modal" id="modal--cropper">
         <div class="modal-content">
           <div class="modal-body">
             <p i18n="@@confirm">Confirmer</p>

@@ -6,27 +6,27 @@ import { USER } from 'src/graphql/client';
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrls: ['./client.component.css']
+  styleUrls: ['./client.component.css'],
 })
 export class ClientComponent {
-
-  user:any
+  user: any;
   constructor(
     private route: ActivatedRoute,
     private apollo: Apollo
-  ){}
+  ) {}
 
-  ngOnInit(){
-    this.route.paramMap.subscribe(param => {
-      this.apollo.query({
-        query: USER,
-        variables: {
-          userId: param.get('id')
-        }
-      }).subscribe(({data}: any) => {
-        this.user = data.user
-      })
-    })
+  ngOnInit() {
+    this.route.paramMap.subscribe((param) => {
+      this.apollo
+        .query({
+          query: USER,
+          variables: {
+            userId: param.get('id'),
+          },
+        })
+        .subscribe(({ data }: any) => {
+          this.user = data.user;
+        });
+    });
   }
-
 }

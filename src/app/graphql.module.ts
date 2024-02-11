@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { APOLLO_OPTIONS } from 'apollo-angular';
-import { ApolloClientOptions,  split,  InMemoryCache,  ApolloLink,} from '@apollo/client/core';
+import {
+  ApolloClientOptions,
+  split,
+  InMemoryCache,
+  ApolloLink,
+} from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 import { setContext } from '@apollo/client/link/context';
 import { WebSocketLink } from '@apollo/client/link/ws';
@@ -19,16 +24,16 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   }));
 
   const auth = setContext((operation, context) => {
-    const token = localStorage.getItem("access-token");
+    const token = localStorage.getItem('access-token');
 
     if (token === null) {
       console.log('le token est null');
       return {};
     } else {
-      const decoded: any = token === '' ? null :  jwt_decode(token)
-      if ((Date.now()/1000 >= decoded.exp)) {
+      const decoded: any = token === '' ? null : jwt_decode(token);
+      if (Date.now() / 1000 >= decoded.exp) {
         localStorage.removeItem('access-token');
-        return {}
+        return {};
       } else {
         return {
           headers: {
@@ -43,8 +48,8 @@ export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   // Create a WebSocket link:
   const token = localStorage.getItem('access-token');
   const ws = new WebSocketLink({
-  uri: environment.ws_url,
-  //uri: `ws://localhost:5678/graphql`,
+    uri: environment.ws_url,
+    //uri: `ws://localhost:5678/graphql`,
     options: {
       reconnect: true,
       connectionParams: {

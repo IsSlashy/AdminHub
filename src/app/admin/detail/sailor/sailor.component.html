@@ -1,12 +1,17 @@
-<h1>Marin {{user?.userPreference?.positions?.position}}</h1>
-<button class="btn-primary" (click)="copyInformation()">Copier les informations</button>
-{{user?.firstname}} {{user?.userDetailById.lastname}} - {{user?.userDetailById.phoneNumber}}
+<h1>Marin {{ user?.userPreference?.positions?.position }}</h1>
+<button class="btn-primary" (click)="copyInformation()">
+  Copier les informations
+</button>
+{{ user?.firstname }} {{ user?.userDetailById.lastname }} -
+{{ user?.userDetailById.phoneNumber }}
 <ul class="nav nav-tabs" role="tablist">
   <li class="nav-item">
     <a class="nav-link" routerLinkActive="active" routerLink="profil">Profil</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="documents">Documents</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="documents"
+      >Documents</a
+    >
   </li>
   <li class="nav-item">
     <a class="nav-link" routerLinkActive="active" routerLink="perso">Perso</a>
@@ -15,13 +20,23 @@
     <a class="nav-link" routerLinkActive="active" routerLink="jobs">Jobs</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" routerLink="finance">Finance</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="finance"
+      >Finance</a
+    >
   </li>
   <li class="nav-item">
-    <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/chat']" [queryParams]="{userId: user?.id}">Messages</a>
+    <a
+      class="nav-link"
+      routerLinkActive="active"
+      [routerLink]="['/admin/chat']"
+      [queryParams]="{ userId: user?.id }"
+      >Messages</a
+    >
   </li>
   <li class="nav-item">
-  <a class="nav-link" routerLinkActive="active" routerLink="settings" >Settings</a>
+    <a class="nav-link" routerLinkActive="active" routerLink="settings"
+      >Settings</a
+    >
   </li>
 </ul>
 

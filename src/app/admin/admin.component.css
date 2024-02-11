@@ -31,12 +31,13 @@ body {
   transition: background-color 0.3s;
 }
 
-.list-group-item:hover, .list-group-item[routerLinkActive="active"] {
+.list-group-item:hover,
+.list-group-item[routerLinkActive='active'] {
   background-color: #f0f0f0;
   color: #333;
 }
 
-.list-group-item[routerLinkActive="active"] {
+.list-group-item[routerLinkActive='active'] {
   font-weight: 600;
 }
 

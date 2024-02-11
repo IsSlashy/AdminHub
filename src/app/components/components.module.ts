@@ -16,7 +16,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { CalculesComponent } from './calcules/calcules.component';
 
-
 @NgModule({
   declarations: [
     GooglePlacesAutocompleteComponent,
@@ -26,7 +25,6 @@ import { CalculesComponent } from './calcules/calcules.component';
     ModalConfirmedComponent,
     ModalAssigneOfferComponent,
     CalculesComponent,
-
   ],
   imports: [
     CommonModule,
@@ -36,7 +34,7 @@ import { CalculesComponent } from './calcules/calcules.component';
     MatSelectModule,
     FormsModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [
     GooglePlacesAutocompleteComponent,
@@ -44,7 +42,7 @@ import { CalculesComponent } from './calcules/calcules.component';
     AutocompleteHarborComponent,
     AutocompletePlaceComponent,
     ModalConfirmedComponent,
-    CalculesComponent
-  ]
+    CalculesComponent,
+  ],
 })
-export class ComponentsModule { }
+export class ComponentsModule {}

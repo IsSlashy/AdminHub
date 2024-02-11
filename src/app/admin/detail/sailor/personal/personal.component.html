@@ -2,14 +2,13 @@
   <div class="form-row">
     <div class="col">
       <label for="phone">Prénom</label>
-      <input type="text" class="form-control" formControlName="firstName">
+      <input type="text" class="form-control" formControlName="firstName" />
     </div>
     <div class="col">
       <label for="phone">Nom</label>
-      <input type="text" class="form-control" formControlName="lastName">
+      <input type="text" class="form-control" formControlName="lastName" />
     </div>
   </div>
-
 
   <div class="form-row">
     <div class="col">
@@ -22,9 +21,12 @@
     <div class="col">
       <mat-form-field>
         <mat-label>Date de naissance</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="birthDay">
+        <input matInput [matDatepicker]="picker" formControlName="birthDay" />
         <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
@@ -32,20 +34,23 @@
   <div class="form-row">
     <div class="col">
       <label for="phone">Email</label>
-      <input type="text" class="form-control" formControlName="email">
+      <input type="text" class="form-control" formControlName="email" />
     </div>
     <div class="col">
       <label for="phone">Numéro de téléphone</label>
-      <input type="text" class="form-control" formControlName="phoneNumber">
+      <input type="text" class="form-control" formControlName="phoneNumber" />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <mat-form-field class="matFormLong" id="select">
         <mat-label>nationalité</mat-label>
-        <mat-select id="nationality" formControlName="nationality" >
-          <mat-option *ngFor="let nationality of nationalities" [value]="nationality.id">
-            {{nationality.name}}
+        <mat-select id="nationality" formControlName="nationality">
+          <mat-option
+            *ngFor="let nationality of nationalities"
+            [value]="nationality.id"
+          >
+            {{ nationality.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -53,9 +58,9 @@
     <div class="col">
       <mat-form-field class="matFormLong" id="select">
         <mat-label>langue préféré</mat-label>
-        <mat-select id="nativeLanguage" formControlName="nativeLanguage" >
+        <mat-select id="nativeLanguage" formControlName="nativeLanguage">
           <mat-option *ngFor="let language of languages" [value]="language.id">
-            {{language.name}}
+            {{ language.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -65,11 +70,11 @@
     <div class="col">
       <mat-form-field class="matFormLong" id="select">
         <mat-label>Devis préféré</mat-label>
-        <mat-select formControlName="favoriteCurrency"  >
-          <mat-option  value="EUR">EUR</mat-option>
-          <mat-option  value="USD">USD</mat-option>
-          <mat-option  value="GBP">GBP</mat-option>
-          <mat-option  value="UND">UND</mat-option>
+        <mat-select formControlName="favoriteCurrency">
+          <mat-option value="EUR">EUR</mat-option>
+          <mat-option value="USD">USD</mat-option>
+          <mat-option value="GBP">GBP</mat-option>
+          <mat-option value="UND">UND</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -80,10 +85,8 @@
       <div class="col">
         <mat-form-field class="matFormLong" id="select">
           <mat-label>Commercial</mat-label>
-          <mat-select id="nationality" formControlName="commercialId" >
-            <mat-option  [value]="null">
-              Supprimer commercial
-            </mat-option>
+          <mat-select id="nationality" formControlName="commercialId">
+            <mat-option [value]="null"> Supprimer commercial </mat-option>
             <mat-option *ngFor="let com of commercials" [value]="com.id">
               {{ com.firstname }}
             </mat-option>
@@ -105,40 +108,45 @@
   </div>
   <div class="col">
     <label for="phone">Numéro Marin</label>
-    <input type="text" class="form-control" formControlName="sailorNumber">
+    <input type="text" class="form-control" formControlName="sailorNumber" />
   </div>
   <div class="form-row">
     <div class="col">
       <label for="phone">birthCountry</label>
-      <input type="text" class="form-control" formControlName="birthCountry">
+      <input type="text" class="form-control" formControlName="birthCountry" />
     </div>
     <div class="col">
       <label for="phone">birthPlace</label>
-      <input type="text" class="form-control" formControlName="birthPlace">
+      <input type="text" class="form-control" formControlName="birthPlace" />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <label for="phone">iban</label>
-      <input type="text" class="form-control" formControlName="rib">
+      <input type="text" class="form-control" formControlName="rib" />
     </div>
     <div class="col">
       <label for="phone">secu</label>
-      <input type="text" class="form-control" formControlName="socialSecurityNumber">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="socialSecurityNumber"
+      />
     </div>
   </div>
   <div class="form-row">
     <div class="col">
       <app-google-places-autocomplete
-      [setAddresse]="personalForm.value.formattedAddress"
-      (selectedAddress)="handleAddressChange($event)"/>
+        [setAddresse]="personalForm.value.formattedAddress"
+        (selectedAddress)="handleAddressChange($event)"
+      />
     </div>
     <div class="col">
       <mat-form-field class="matFormLong" id="select">
         <mat-label>tax domicil</mat-label>
-        <mat-select id="country" formControlName="taxDomicil" >
+        <mat-select id="country" formControlName="taxDomicil">
           <mat-option *ngFor="let country of countries" [value]="country.id">
-            {{country.name}}
+            {{ country.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -147,15 +155,15 @@
   <div class="form-row">
     <div class="col">
       <label for="phone">birthName</label>
-      <input type="text" class="form-control" formControlName="birthName">
+      <input type="text" class="form-control" formControlName="birthName" />
     </div>
   </div>
   <div class="form-row">
-    <button type="submit" class="btn btn-primary btn-lg m-auto">Enregistrer</button>
+    <button type="submit" class="btn btn-primary btn-lg m-auto">
+      Enregistrer
+    </button>
   </div>
-
 </form>
-
 
 <!-- MODAL CONFIRMED -->
 <app-modal-confirmed />

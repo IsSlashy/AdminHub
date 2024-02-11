@@ -6,7 +6,7 @@ import {
   CANCEL_JOB,
   RE_PUBLISH_JOB,
   ADMIN_MAIL_OPPORTUNITY,
-  VALIDATE_JOB
+  VALIDATE_JOB,
 } from 'src/graphql/job';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -15,7 +15,6 @@ import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAssigneOfferComponent } from 'src/app/components/modal-assigne-offer/modal-assigne-offer.component';
-
 
 @Component({
   selector: 'app-follow-up',
@@ -66,9 +65,10 @@ export class FollowUpComponent {
   paidPrice: number = 0;
 
   constructor(
-    private apollo: Apollo, private formBuilder: FormBuilder,
-    public dialog: MatDialog) {
-
+    private apollo: Apollo,
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog
+  ) {
     this.dataSource = new MatTableDataSource<any>(this.jobs);
 
     this.formControl = this.formBuilder.group({
@@ -131,7 +131,6 @@ export class FollowUpComponent {
     this.currentDate = date.toISOString().slice(0, -5);
   }
 
-
   applyFilter(filterValue: any) {
     this.dataSource.filterPredicate = (data: any, filter: any) => {
       return (
@@ -187,12 +186,12 @@ export class FollowUpComponent {
       );
   }
 
-  openModalAssigne(jobId: string){
+  openModalAssigne(jobId: string) {
     const dialogRef = this.dialog.open(ModalAssigneOfferComponent, {
-      data: {jobId: jobId},
+      data: { jobId: jobId },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
   }
@@ -258,12 +257,15 @@ export class FollowUpComponent {
         variables: {
           jobId: id,
         },
-      }).subscribe(({ data }: any) => {
-        this.modalConfirmed.openModal();
+      })
+      .subscribe(
+        ({ data }: any) => {
+          this.modalConfirmed.openModal();
         },
         (err: any) => {
           console.log(err);
           this.modalConfirmed.modalRejected();
-      });
+        }
+      );
   }
 }

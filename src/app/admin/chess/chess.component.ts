@@ -6,39 +6,41 @@ import { OFFER_CHESS } from 'src/graphql/chess';
 @Component({
   selector: 'app-chess',
   templateUrl: './chess.component.html',
-  styleUrls: ['./chess.component.css']
+  styleUrls: ['./chess.component.css'],
 })
 export class ChessComponent {
-  offers : any = new Array<any>();
-  tabWatting: boolean = true
+  offers: any = new Array<any>();
+  tabWatting: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
-    private apollo: Apollo){
-  }
+    private apollo: Apollo
+  ) {}
 
   ngOnInit(): void {
     this.loadOffers(false);
   }
 
-  watting(){
+  watting() {
     this.tabWatting = true;
     this.loadOffers(false);
   }
 
-  done(){
+  done() {
     this.tabWatting = false;
     this.loadOffers(true);
   }
 
-  loadOffers(done: boolean){
-    this.apollo.query({
-      query: OFFER_CHESS,
-      variables: { done: done }
-    }).subscribe(({data}: any) => {
-      this.offers = data.chessOffers.nodes;
-      this.sortOffersByDate();
-    });
+  loadOffers(done: boolean) {
+    this.apollo
+      .query({
+        query: OFFER_CHESS,
+        variables: { done: done },
+      })
+      .subscribe(({ data }: any) => {
+        this.offers = data.chessOffers.nodes;
+        this.sortOffersByDate();
+      });
   }
 
   sortOffersByDate() {

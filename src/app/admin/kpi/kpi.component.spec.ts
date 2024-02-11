@@ -8,7 +8,7 @@ describe('KPIComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [KPIComponent]
+      declarations: [KPIComponent],
     });
     fixture = TestBed.createComponent(KPIComponent);
     component = fixture.componentInstance;

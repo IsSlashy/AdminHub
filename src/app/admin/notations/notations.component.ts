@@ -9,19 +9,24 @@ import { ALL_NOTATIONS } from 'src/graphql/notations';
 @Component({
   selector: 'app-notations',
   templateUrl: './notations.component.html',
-  styleUrls: ['./notations.component.css']
+  styleUrls: ['./notations.component.css'],
 })
 export class NotationsComponent {
-
   paramForm: FormGroup = this.formBuilder.group({
     jobId: [null, []],
-    userId: [null, []]
-  })
+    userId: [null, []],
+  });
 
-  notations:Array<any> = new Array<any>()
-  dataSource!: MatTableDataSource<any>
+  notations: Array<any> = new Array<any>();
+  dataSource!: MatTableDataSource<any>;
   pageIndex: number = 0;
-  displayedColumns: string[] = [ "marin", "client", "job", "note", "commentaire"];
+  displayedColumns: string[] = [
+    'marin',
+    'client',
+    'job',
+    'note',
+    'commentaire',
+  ];
   set matPaginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
   }
@@ -36,23 +41,25 @@ export class NotationsComponent {
     this.route.queryParamMap.subscribe((params) => {
       this.paramForm.patchValue({
         jobId: params.get('jobId'),
-        userId: params.get('userId')
-      })
-      this.apollo.watchQuery({
-        query: ALL_NOTATIONS,
-        variables: {}
-      }).valueChanges.subscribe(({data}: any) => {
-        this.notations = data.notations.nodes;
-        this.dataSource = new MatTableDataSource(this.notations);
+        userId: params.get('userId'),
+      });
+      this.apollo
+        .watchQuery({
+          query: ALL_NOTATIONS,
+          variables: {},
+        })
+        .valueChanges.subscribe(({ data }: any) => {
+          this.notations = data.notations.nodes;
+          this.dataSource = new MatTableDataSource(this.notations);
 
-        console.log('les data', data)
-      })
-    })
+          console.log('les data', data);
+        });
+    });
   }
 
   onPageChange(event: PageEvent) {
     const startIndex = event.pageIndex * event.pageSize;
-    this.pageIndex = event.pageIndex
+    this.pageIndex = event.pageIndex;
     const endIndex = startIndex + event.pageSize;
     this.dataSource.data = this.notations.slice(startIndex, endIndex);
   }

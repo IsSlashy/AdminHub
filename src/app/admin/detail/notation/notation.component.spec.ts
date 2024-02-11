@@ -8,7 +8,7 @@ describe('NotationComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NotationComponent]
+      declarations: [NotationComponent],
     });
     fixture = TestBed.createComponent(NotationComponent);
     component = fixture.componentInstance;

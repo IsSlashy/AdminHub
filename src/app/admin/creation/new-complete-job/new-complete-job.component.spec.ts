@@ -8,7 +8,7 @@ describe('NewCompleteJobComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NewCompleteJobComponent]
+      declarations: [NewCompleteJobComponent],
     });
     fixture = TestBed.createComponent(NewCompleteJobComponent);
     component = fixture.componentInstance;

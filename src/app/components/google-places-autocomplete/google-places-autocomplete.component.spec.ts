@@ -8,7 +8,7 @@ describe('GooglePlacesAutocompleteComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [GooglePlacesAutocompleteComponent]
+      declarations: [GooglePlacesAutocompleteComponent],
     });
     fixture = TestBed.createComponent(GooglePlacesAutocompleteComponent);
     component = fixture.componentInstance;

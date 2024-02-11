@@ -1,18 +1,28 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from "@angular/core";
-import algoliasearch from "algoliasearch";
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
+import algoliasearch from 'algoliasearch';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-autocomplete-harbor',
   templateUrl: './autocomplete-harbor.component.html',
-  styleUrls: ['./autocomplete-harbor.component.css']
+  styleUrls: ['./autocomplete-harbor.component.css'],
 })
 export class AutocompleteHarborComponent {
-  private readonly client = algoliasearch("RRJ3LLXC46", "f55797750da636098ac235e799838922");
+  private readonly client = algoliasearch(
+    'RRJ3LLXC46',
+    'f55797750da636098ac235e799838922'
+  );
   private readonly index = this.client.initIndex(environment.harbors_algolia);
   searchTerm: any;
   suggestions: any;
-  selectedSuggestion: string = "";
+  selectedSuggestion: string = '';
 
   constructor(private elementRef: ElementRef) {}
 
@@ -24,7 +34,7 @@ export class AutocompleteHarborComponent {
     }
   }
   @Output() onPortSelected = new EventEmitter<any>();
-  @Input() whichHarbor : string = '';
+  @Input() whichHarbor: string = '';
   fetchSuggestions(): void {
     if (this.searchTerm.length > 0) {
       this.index.search(this.searchTerm).then((response) => {
@@ -39,6 +49,5 @@ export class AutocompleteHarborComponent {
     this.searchTerm = suggestion.name;
     this.suggestions = []; // Réinitialiser la liste des suggestions
     this.onPortSelected.emit(suggestion);
-
   }
 }

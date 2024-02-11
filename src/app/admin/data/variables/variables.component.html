@@ -2,16 +2,15 @@
   <div class="form-row">
     <div class="col">
       <form [formGroup]="editForm" (ngSubmit)="update_Variable()">
-
         <section>
           <h2>General Information</h2>
           <mat-form-field appearance="outline">
             <mat-label>Accident</mat-label>
-            <input matInput formControlName="accident">
+            <input matInput formControlName="accident" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Brut Jour</mat-label>
-            <input matInput formControlName="brutJour">
+            <input matInput formControlName="brutJour" />
           </mat-form-field>
         </section>
 
@@ -19,19 +18,19 @@
           <h2>Catégories 3</h2>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 3 base</mat-label>
-            <input matInput formControlName="categorie3Base">
+            <input matInput formControlName="categorie3Base" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 3 jours</mat-label>
-            <input matInput formControlName="categorie3Jour">
+            <input matInput formControlName="categorie3Jour" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 3 ans</mat-label>
-            <input matInput formControlName="categorie3An">
+            <input matInput formControlName="categorie3An" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 3 L</mat-label>
-            <input matInput formControlName="categorie3L">
+            <input matInput formControlName="categorie3L" />
           </mat-form-field>
         </section>
 
@@ -39,19 +38,19 @@
           <h2>Catégories 6</h2>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 6 base</mat-label>
-            <input matInput formControlName="categorie6Base">
+            <input matInput formControlName="categorie6Base" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 6 jours</mat-label>
-            <input matInput formControlName="categorie6Jour">
+            <input matInput formControlName="categorie6Jour" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 6 ans</mat-label>
-            <input matInput formControlName="categorie6An">
+            <input matInput formControlName="categorie6An" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 6 L</mat-label>
-            <input matInput formControlName="categorie6L">
+            <input matInput formControlName="categorie6L" />
           </mat-form-field>
         </section>
 
@@ -59,19 +58,19 @@
           <h2>Catégories 8</h2>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 8 base</mat-label>
-            <input matInput formControlName="categorie8Base">
+            <input matInput formControlName="categorie8Base" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 8 jours</mat-label>
-            <input matInput formControlName="categorie8Jour">
+            <input matInput formControlName="categorie8Jour" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 8 ans</mat-label>
-            <input matInput formControlName="categorie8An">
+            <input matInput formControlName="categorie8An" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 8 L</mat-label>
-            <input matInput formControlName="categorie8L">
+            <input matInput formControlName="categorie8L" />
           </mat-form-field>
         </section>
 
@@ -79,19 +78,19 @@
           <h2>Catégories 12</h2>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 12 jours</mat-label>
-            <input matInput formControlName="categorie12Jour">
+            <input matInput formControlName="categorie12Jour" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 12 base</mat-label>
-            <input matInput formControlName="categorie12Base">
+            <input matInput formControlName="categorie12Base" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 12 ans</mat-label>
-            <input matInput formControlName="categorie12An">
+            <input matInput formControlName="categorie12An" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Catégorie 12 L</mat-label>
-            <input matInput formControlName="categorie12L">
+            <input matInput formControlName="categorie12L" />
           </mat-form-field>
         </section>
 
@@ -99,32 +98,34 @@
           <h2>Additional Information</h2>
           <mat-form-field appearance="outline">
             <mat-label>Col DGH</mat-label>
-            <input matInput formControlName="colDGH">
+            <input matInput formControlName="colDGH" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Col Enim</mat-label>
-            <input matInput formControlName="colEnim">
+            <input matInput formControlName="colEnim" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Mort</mat-label>
-            <input matInput formControlName="death">
+            <input matInput formControlName="death" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Maladie</mat-label>
-            <input matInput formControlName="disease">
+            <input matInput formControlName="disease" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Repas</mat-label>
-            <input matInput formControlName="meal">
+            <input matInput formControlName="meal" />
           </mat-form-field>
           <mat-form-field appearance="outline">
             <mat-label>Rapatriement</mat-label>
-            <input matInput formControlName="rapatriation">
+            <input matInput formControlName="rapatriation" />
           </mat-form-field>
         </section>
 
         <div class="update-button-container">
-          <button type="button" class="reset-button" (click)="resetForm()">Réinitialiser</button>
+          <button type="button" class="reset-button" (click)="resetForm()">
+            Réinitialiser
+          </button>
           <button type="submit" class="update-button">Mettre à jour</button>
         </div>
       </form>

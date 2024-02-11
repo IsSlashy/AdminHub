@@ -1,58 +1,132 @@
 <form [formGroup]="notificationForm">
-
   <div class="notification--optin">
     <label for="emailNewMessage">Notification pour un nouveau message</label>
-    <input type="checkbox" id="emailNewMessage" formControlName="emailNewMessage" [checked]="notifications?.emailNewMessage" (change)="updateNotif()" />
+    <input
+      type="checkbox"
+      id="emailNewMessage"
+      formControlName="emailNewMessage"
+      [checked]="notifications?.emailNewMessage"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
     <label for="emailNewMission">Notification pour une nouvelle mission</label>
-    <input type="checkbox" id="emailNewMission" formControlName="emailNewMission" [checked]="notifications?.emailNewMission" (change)="updateNotif()" />
+    <input
+      type="checkbox"
+      id="emailNewMission"
+      formControlName="emailNewMission"
+      [checked]="notifications?.emailNewMission"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
-    <label for="dailyNewMission">Notification quotidienne pour une nouvelle mission</label>
-    <input type="checkbox" id="dailyNewMission" formControlName="dailyNewMission" [checked]="notifications?.dailyNewMission" (change)="updateNotif()" />
+    <label for="dailyNewMission"
+      >Notification quotidienne pour une nouvelle mission</label
+    >
+    <input
+      type="checkbox"
+      id="dailyNewMission"
+      formControlName="dailyNewMission"
+      [checked]="notifications?.dailyNewMission"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
-    <label for="weeklyNewMission">Notification hebdomadaire pour une nouvelle mission</label>
-    <input type="checkbox" id="weeklyNewMission" formControlName="weeklyNewMission" [checked]="notifications?.weeklyNewMission" (change)="updateNotif()" />
+    <label for="weeklyNewMission"
+      >Notification hebdomadaire pour une nouvelle mission</label
+    >
+    <input
+      type="checkbox"
+      id="weeklyNewMission"
+      formControlName="weeklyNewMission"
+      [checked]="notifications?.weeklyNewMission"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
     <label for="emailJobAccepted">Notification pour une mission acceptée</label>
-    <input type="checkbox" id="emailJobAccepted" formControlName="emailJobAccepted" [checked]="notifications?.emailJobAccepted" (change)="updateNotif()" />
+    <input
+      type="checkbox"
+      id="emailJobAccepted"
+      formControlName="emailJobAccepted"
+      [checked]="notifications?.emailJobAccepted"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
     <label for="emailOfferRefused">Notification pour une offre refusée</label>
-    <input type="checkbox" id="emailOfferRefused" formControlName="emailOfferRefused" [checked]="notifications?.emailOfferRefused" (change)="updateNotif()" />
+    <input
+      type="checkbox"
+      id="emailOfferRefused"
+      formControlName="emailOfferRefused"
+      [checked]="notifications?.emailOfferRefused"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
     <label for="emailNotation">Notification pour une nouvelle notation</label>
-    <input type="checkbox" id="emailNotation" formControlName="emailNotation" [checked]="notifications?.emailNotation" (change)="updateNotif()" />
+    <input
+      type="checkbox"
+      id="emailNotation"
+      formControlName="emailNotation"
+      [checked]="notifications?.emailNotation"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
     <label for="emailNewOffer">Notification pour une nouvelle offre</label>
-    <input type="checkbox" id="emailNewOffer" formControlName="emailNewOffer" [checked]="notifications?.emailNewOffer" (change)="updateNotif()" />
+    <input
+      type="checkbox"
+      id="emailNewOffer"
+      formControlName="emailNewOffer"
+      [checked]="notifications?.emailNewOffer"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
-    <label for="emailDocumentRefused">Notification pour un document refusé</label>
-    <input type="checkbox" id="emailDocumentRefused" formControlName="emailDocumentRefused" [checked]="notifications?.emailDocumentRefused" (change)="updateNotif()" />
+    <label for="emailDocumentRefused"
+      >Notification pour un document refusé</label
+    >
+    <input
+      type="checkbox"
+      id="emailDocumentRefused"
+      formControlName="emailDocumentRefused"
+      [checked]="notifications?.emailDocumentRefused"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
-    <label for="emailJobConfirmed">Notification pour une mission confirmée</label>
-    <input type="checkbox" id="emailJobConfirmed" formControlName="emailJobConfirmed" [checked]="notifications?.emailJobConfirmed" (change)="updateNotif()" />
+    <label for="emailJobConfirmed"
+      >Notification pour une mission confirmée</label
+    >
+    <input
+      type="checkbox"
+      id="emailJobConfirmed"
+      formControlName="emailJobConfirmed"
+      [checked]="notifications?.emailJobConfirmed"
+      (change)="updateNotif()"
+    />
   </div>
 
   <div class="notification--optin">
-    <label for="emailDocumentExpired">Notification pour un document expiré</label>
-    <input type="checkbox" id="emailDocumentExpired" formControlName="emailDocumentExpired" [checked]="notifications?.emailDocumentExpired" (change)="updateNotif()" />
+    <label for="emailDocumentExpired"
+      >Notification pour un document expiré</label
+    >
+    <input
+      type="checkbox"
+      id="emailDocumentExpired"
+      formControlName="emailDocumentExpired"
+      [checked]="notifications?.emailDocumentExpired"
+      (change)="updateNotif()"
+    />
   </div>
-
 </form>

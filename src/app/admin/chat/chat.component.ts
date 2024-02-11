@@ -61,13 +61,12 @@ export class ChatComponent {
       this.conversationsQuery = this.apollo.watchQuery({
         query: ADMIN_CONVERSATIONS,
         variables: this.searchForm.value,
-      })
+      });
 
-      this.conversationsQuery
-        .valueChanges.subscribe(({ data }: any) => {
-          this.conversations = data.conversationsAdmin.nodes;
-          this.commercials = data.commercials.nodes;
-        });
+      this.conversationsQuery.valueChanges.subscribe(({ data }: any) => {
+        this.conversations = data.conversationsAdmin.nodes;
+        this.commercials = data.commercials.nodes;
+      });
     });
 
     this.conversationQuery = this.apollo.watchQuery<any>({
@@ -214,26 +213,27 @@ export class ChatComponent {
             variables: { conversationInput: this.conversation.id },
           },
         ],
-      }).subscribe(({ data, loading }: any) => {});
+      })
+      .subscribe(({ data, loading }: any) => {});
   }
 
   cancelOffer(offerId: string) {
-    this.apollo.mutate({
-      mutation: CANCEL_APPLICATION,
-      variables:{
-        cancelOfferInput: {
-          pOfferId: offerId
-        }
-      },
-      refetchQueries:[
-        {
-          query: ADMIN_CONVERSATION,
-          variables: { conversationInput: this.conversation.id },
-        }
-      ]
-    }).subscribe(({data}: any) => {
-
-    })
+    this.apollo
+      .mutate({
+        mutation: CANCEL_APPLICATION,
+        variables: {
+          cancelOfferInput: {
+            pOfferId: offerId,
+          },
+        },
+        refetchQueries: [
+          {
+            query: ADMIN_CONVERSATION,
+            variables: { conversationInput: this.conversation.id },
+          },
+        ],
+      })
+      .subscribe(({ data }: any) => {});
   }
 
   archiveConv(convId: string, userId: string) {
@@ -252,7 +252,8 @@ export class ChatComponent {
             variables: { conversationInput: this.chatId },
           },
         ],
-      }).subscribe(({ data }: any) => {});
+      })
+      .subscribe(({ data }: any) => {});
   }
 
   loadConv() {
@@ -264,7 +265,7 @@ export class ChatComponent {
   search() {
     this.conversationsQuery.refetch(this.searchForm.value);
   }
-  openCv(cv:any){
-    window.open(cv.resumes.nodes[0].url)
+  openCv(cv: any) {
+    window.open(cv.resumes.nodes[0].url);
   }
 }
