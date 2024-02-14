@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, UntypedFormBuilder } from '@angular/forms';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Apollo } from 'apollo-angular';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import {
@@ -20,6 +19,7 @@ import {
   UPDATE_USER,
   VALIDE_DOCUMENT,
 } from 'src/graphql/approval';
+import { DataServiceService } from '../../services/data-service.service';
 
 export interface User {
   name: string;
@@ -61,45 +61,36 @@ export class DegreesComponent {
     private cdRef: ChangeDetectorRef,
     private formBuilder: UntypedFormBuilder,
     private apollo: Apollo,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private dataService: DataServiceService
   ) {}
 
   ngOnInit() {
-    this.apollo
-      .query({
-        query: GET_DOCUMENTS,
-      })
-      .subscribe(({ data, loading }: any) => {
-        data.documentTypes.nodes.forEach((element: any) => {
-          const user: User = {
-            name: element.name,
-            id: element.id,
-            shortName: element.country?.shortName,
-          };
-          this.options.push(user);
-        });
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(''),
-          map((value) => (typeof value === 'string' ? value : value.name)),
-          map((name) => (name ? this._filter(name) : this.options.slice()))
-        );
+    this.dataService.getDocuments().subscribe(({ data, loading }: any) => {
+      data.documentTypes.nodes.forEach((element: any) => {
+        const user: User = {
+          name: element.name,
+          id: element.id,
+          shortName: element.country?.shortName,
+        };
+        this.options.push(user);
       });
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map((value) => (typeof value === 'string' ? value : value.name)),
+        map((name) => (name ? this._filter(name) : this.options.slice()))
+      );
+    });
 
     //GET degrees
 
-    this.subscription = this.apollo
-      .watchQuery({
-        query: GET_DEGREES,
-        fetchPolicy: 'network-only',
-        variables: {
-          type: 'DEGREE',
-          status: this.selectedTable,
-        },
-      })
+    this.subscription = this.dataService
+      .watchDegrees(this.selectedTable)
       .valueChanges.subscribe(({ data }: any) => {
         this.searchDocObject = data;
       });
   }
+
   ngOnChanges() {
     try {
       this.searchDocObject = JSON.parse(this.searchDoc);

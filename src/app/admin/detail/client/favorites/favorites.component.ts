@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Apollo, QueryRef } from 'apollo-angular';
-import {
-  VIEW_FAVOURTIES,
-  ADD_FAVOURITES,
-  DELETE_FAVOURITE,
-} from 'src/graphql/favoris';
+import { QueryRef } from 'apollo-angular';
+import { DataServiceService } from 'src/app/admin/services/data-service.service';
 
 interface MarinFavori {
   id: string;
@@ -28,8 +24,8 @@ export class FavorisComponent implements OnInit {
   private queryRef: QueryRef<any> | undefined;
 
   constructor(
-    private apollo: Apollo,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataService: DataServiceService
   ) {}
 
   ngOnInit() {
@@ -40,11 +36,7 @@ export class FavorisComponent implements OnInit {
   }
 
   initializeFavouritesWatcher(userId: string) {
-    this.queryRef = this.apollo.watchQuery<any>({
-      query: VIEW_FAVOURTIES,
-      variables: { favoriteUser: userId },
-    });
-
+    this.queryRef = this.dataService.watchViewFavoritesQuery(userId);
     this.queryRef.valueChanges.subscribe(({ data }) => {
       this.favoris = data.user.favourites.nodes.map((node: any) => ({
         id: node.id,
@@ -67,40 +59,23 @@ export class FavorisComponent implements OnInit {
       pFavouriteUserId: favouriteUserId,
       pUserId: this.userId,
     };
-
-    this.apollo
-      .mutate({
-        mutation: ADD_FAVOURITES,
-        variables: { favoritesinput: favoriteInput },
-        refetchQueries: [
-          { query: VIEW_FAVOURTIES, variables: { favoriteUser: this.userId } },
-        ],
-      })
-      .subscribe({
-        next: (response) => {
-          console.log('Favori ajouté', response);
-          this.newFavouriteId = ''; // Réinitialiser l'ID du nouveau favori
-        },
-        error: (error) =>
-          console.error("Erreur lors de l'ajout du favori", error),
-      });
+    this.dataService.addFavorites(this.userId, favoriteInput).subscribe({
+      next: (response) => {
+        console.log('Favori ajouté', response);
+        this.newFavouriteId = ''; // Réinitialiser l'ID du nouveau favori
+      },
+      error: (error) =>
+        console.error("Erreur lors de l'ajout du favori", error),
+    });
   }
 
   deleteFavourite(favouriteId: string): void {
-    this.apollo
-      .mutate({
-        mutation: DELETE_FAVOURITE,
-        variables: { favoriteId: favouriteId },
-        refetchQueries: [
-          { query: VIEW_FAVOURTIES, variables: { favoriteUser: this.userId } },
-        ],
-      })
-      .subscribe({
-        next: (response) => {
-          console.log('Favori supprimé', response);
-        },
-        error: (error) =>
-          console.error('Erreur lors de la suppression du favori', error),
-      });
+    this.dataService.deleteFavorites(favouriteId, this.userId).subscribe({
+      next: (response) => {
+        console.log('Favori supprimé', response);
+      },
+      error: (error) =>
+        console.error('Erreur lors de la suppression du favori', error),
+    });
   }
 }
