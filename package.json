@@ -8,7 +8,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,html}\"",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s",
+    "compodoc": "npx compodoc -p tsconfig.doc.json"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +51,7 @@
     "@angular/cli": "~16.1.4",
     "@angular/compiler-cli": "^16.1.6",
     "@angular/localize": "^16.1.6",
+    "@compodoc/compodoc": "^1.1.23",
     "@types/body-parser": "^1.19.2",
     "@types/jasmine": "~4.3.5",
     "eslint": "^8.56.0",

@@ -1,0 +1,1239 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  BoatComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/detail/boat/boat.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-boat</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./boat.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./boat.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#boat" >boat</a>
+                            </li>
+                            <li>
+                                <a href="#boatForm" >boatForm</a>
+                            </li>
+                            <li>
+                                <a href="#countries" >countries</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#modalConfirmed" >modalConfirmed</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deletePic" >deletePic</a>
+                            </li>
+                            <li>
+                                <a href="#fileChangeEvent" >fileChangeEvent</a>
+                            </li>
+                            <li>
+                                <a href="#handleModelSelection" >handleModelSelection</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#startHarborSelection" >startHarborSelection</a>
+                            </li>
+                            <li>
+                                <a href="#updateBoat" >updateBoat</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: FormBuilder, apollo: Apollo, route: ActivatedRoute)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deletePic"></a>
+                    <span class="name">
+                        <span ><b>deletePic</b></span>
+                        <a href="#deletePic"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deletePic(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fileChangeEvent"></a>
+                    <span class="name">
+                        <span ><b>fileChangeEvent</b></span>
+                        <a href="#fileChangeEvent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fileChangeEvent(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleModelSelection"></a>
+                    <span class="name">
+                        <span ><b>handleModelSelection</b></span>
+                        <a href="#handleModelSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleModelSelection(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startHarborSelection"></a>
+                    <span class="name">
+                        <span ><b>startHarborSelection</b></span>
+                        <a href="#startHarborSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startHarborSelection(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateBoat"></a>
+                    <span class="name">
+                        <span ><b>updateBoat</b></span>
+                        <a href="#updateBoat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateBoat()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="boat"></a>
+                    <span class="name">
+                        <span ><b>boat</b></span>
+                        <a href="#boat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="boatForm"></a>
+                    <span class="name">
+                        <span ><b>boatForm</b></span>
+                        <a href="#boatForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    name: [null, []],
+    registrationNumber: [null, []],
+    flagId: [null, []],
+    modelId: [null, []],
+    model: [null, []],
+    homeHarborId: [null, []],
+    homeHarbor: [null, []],
+    aisUrl: [null, []],
+    commercialUsage: [null, []],
+    mmsiNumber: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countries"></a>
+                    <span class="name">
+                        <span ><b>countries</b></span>
+                        <a href="#countries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalConfirmed"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>modalConfirmed</b></span>
+                        <a href="#modalConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalConfirmedComponent.html" target="_self" >ModalConfirmedComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(ModalConfirmedComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/admin/detail/boat/boat.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+import {
+  BOAT,
+  CREATE_BOAT_PICTURE,
+  DELETE_BOAT_PICTURE,
+  GENERATE_URL,
+  UPDATE_BOAT,
+} from &#x27;src/graphql/boat&#x27;;
+
+@Component({
+  selector: &#x27;app-boat&#x27;,
+  templateUrl: &#x27;./boat.component.html&#x27;,
+  styleUrls: [&#x27;./boat.component.css&#x27;],
+})
+export class BoatComponent {
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+
+  boat: any;
+  countries: any &#x3D; new Array&lt;any&gt;();
+
+  boatForm: FormGroup &#x3D; this.formBuilder.group({
+    name: [null, []],
+    registrationNumber: [null, []],
+    flagId: [null, []],
+    modelId: [null, []],
+    model: [null, []],
+    homeHarborId: [null, []],
+    homeHarbor: [null, []],
+    aisUrl: [null, []],
+    commercialUsage: [null, []],
+    mmsiNumber: [null, []],
+  });
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private apollo: Apollo,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.route.paramMap.subscribe((params) &#x3D;&gt; {
+      this.apollo
+        .query({
+          query: BOAT,
+          variables: {
+            boatId: params.get(&#x27;id&#x27;),
+          },
+        })
+        .subscribe(({ data }: any) &#x3D;&gt; {
+          this.boat &#x3D; data.boat;
+          this.boatForm.patchValue({
+            name: data.boat.name,
+            registrationNumber: data.boat.registrationNumber,
+            flagId: data.boat.flagId,
+            modelId: data.boat.model?.id,
+            model: data.boat.model?.name,
+            homeHarborId: data.boat.homeHarbor?.id,
+            homeHarbor: data.boat.homeHarbor?.name,
+            aisUrl: data.boat.aisUrl,
+            commercialUsage: data.boat.commercialUsage,
+            mmsiNumber: data.boat.mmsiNumber,
+          });
+          this.countries &#x3D; data.countries.nodes;
+        });
+    });
+  }
+
+  handleModelSelection(e: any) {
+    this.boatForm.controls[&#x27;modelId&#x27;].setValue(e.id);
+    this.boatForm.controls[&#x27;model&#x27;].setValue(e.name);
+  }
+  startHarborSelection(e: any) {
+    this.boatForm.controls[&#x27;homeHarborId&#x27;].setValue(e.id);
+    this.boatForm.controls[&#x27;homeHarbor&#x27;].setValue(e.name);
+  }
+
+  updateBoat() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_BOAT,
+        variables: {
+          boatPatch: {
+            id: this.boat.id,
+            patch: {
+              name: this.boatForm.value.name,
+              registrationNumber: this.boatForm.value.registrationNumber,
+              flagId: this.boatForm.value.flagId,
+              modelId: this.boatForm.value.modelId,
+              homeHarborId: this.boatForm.value.homeHarborId,
+              aisUrl: this.boatForm.value.aisUrl,
+              commercialUsage: this.boatForm.value.commercialUsage,
+              mmsiNumber: parseInt(this.boatForm.value.mmsiNumber),
+            },
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          console.log(&#x27;les infos ont bien été mise a jours&#x27;);
+          this.modalConfirmed.openModal();
+        },
+        (err: any) &#x3D;&gt; {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
+  }
+
+  fileChangeEvent(event: any): void {
+    const file &#x3D; event.target.files[0];
+    this.apollo
+      .mutate({
+        mutation: GENERATE_URL,
+        variables: {
+          keyInput: {
+            key: file.name,
+          },
+        },
+      })
+      .subscribe(async ({ data }: any) &#x3D;&gt; {
+        const formData &#x3D; new FormData();
+        formData.append(&#x27;Content-Type&#x27;, file.type);
+        Object.entries(data.generatePresignedPost.fields).forEach(
+          ([k, value]: any) &#x3D;&gt; {
+            formData.append(k, value);
+          }
+        );
+        formData.append(&#x27;file&#x27;, file);
+
+        await fetch(data.generatePresignedPost.url, {
+          method: &#x27;POST&#x27;,
+          body: formData,
+        });
+        this.apollo
+          .mutate({
+            mutation: CREATE_BOAT_PICTURE,
+            variables: {
+              boatPictureInput: {
+                boatPicture: {
+                  boatId: this.boat.id,
+                  url:
+                    data.generatePresignedPost.url +
+                    &#x27;/&#x27; +
+                    data.generatePresignedPost.fields.key,
+                },
+              },
+            },
+            refetchQueries: [
+              {
+                query: BOAT,
+              },
+            ],
+          })
+          .subscribe(({ data }: any) &#x3D;&gt; {
+            console.log(&#x27;created&#x27;);
+          });
+      });
+  }
+
+  deletePic(e: any) {
+    this.apollo
+      .mutate({
+        mutation: DELETE_BOAT_PICTURE,
+        variables: {
+          boatPicture: {
+            boatPictureId: e.id,
+          },
+        },
+        refetchQueries: [
+          {
+            query: BOAT,
+          },
+        ],
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        console.log(data);
+      });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;boatForm&quot;&gt;
+  &lt;h1&gt;Informations du bateau&lt;/h1&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Nom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;name&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Immatriculation&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;text&quot;
+        class&#x3D;&quot;form-control&quot;
+        formControlName&#x3D;&quot;registrationNumber&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+      &lt;mat-label&gt;Pavillon&lt;/mat-label&gt;
+      &lt;mat-select id&#x3D;&quot;country&quot; formControlName&#x3D;&quot;flagId&quot;&gt;
+        &lt;mat-option *ngFor&#x3D;&quot;let country of countries&quot; [value]&#x3D;&quot;country.id&quot;&gt;
+          {{ country.name }}
+        &lt;/mat-option&gt;
+      &lt;/mat-select&gt;
+    &lt;/mat-form-field&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Model (actuel: {{ boatForm.value.model }})&lt;/label&gt;
+      &lt;app-autocomplete-model
+        style&#x3D;&quot;min-width: 350px&quot;
+        (onModelSelected)&#x3D;&quot;handleModelSelection($event)&quot;
+      &gt;&lt;/app-autocomplete-model&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;
+        &gt;Port de départ (actuel: {{ boatForm.value.homeHarbor }})&lt;/label
+      &gt;
+      &lt;app-autocomplete-harbor
+        style&#x3D;&quot;min-width: 350px&quot;
+        (onPortSelected)&#x3D;&quot;startHarborSelection($event)&quot;
+      &gt;&lt;/app-autocomplete-harbor&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;AIS url&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;aisUrl&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;commercialUsage&lt;/label&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;commercialUsage&quot;
+      &gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;true&quot;&gt;Oui&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;false&quot;&gt;Non&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;mmsiNumber&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;mmsiNumber&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;updateBoat()&quot;&gt;
+    Update Bateau
+  &lt;/button&gt;
+  &lt;h1&gt;Photos&lt;/h1&gt;
+  &lt;label class&#x3D;&quot;file-input-label&quot;&gt;
+    &lt;i class&#x3D;&quot;bi bi-pencil pointer hoverColor icon-large&quot;&gt;&lt;/i&gt;
+    &lt;input type&#x3D;&quot;file&quot; (change)&#x3D;&quot;fileChangeEvent($event)&quot; /&gt;
+  &lt;/label&gt;
+  &lt;div
+    *ngFor&#x3D;&quot;let picture of this.boat?.boatPictures?.nodes; let index &#x3D; index&quot;
+  &gt;
+    &lt;div&gt;
+      &lt;i
+        class&#x3D;&quot;bi bi-trash-fill pointer hoverColor icon-large&quot;
+        (click)&#x3D;&quot;deletePic(picture)&quot;
+      &gt;&lt;/i&gt;
+    &lt;/div&gt;
+    &lt;img
+      *ngIf&#x3D;&quot;picture.resizedImages&quot;
+      src&#x3D;&quot;{{ picture?.resizedImages[1]?.url }}&quot;
+      alt&#x3D;&quot;&quot;
+    /&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;!-- MODAL CONFIRMED --&gt;
+&lt;app-modal-confirmed /&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./boat.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.hoverColor:hover {
+  background-color: rgb(255, 186, 141);
+}
+.icon-large {
+  font-size: 24px;
+  color: chocolate;
+}
+.file-input-label {
+  position: relative;
+  display: inline-block;
+}
+
+.file-input-label input[type&#x3D;&#x27;file&#x27;] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="boatForm">  <h1>Informations du bateau</h1>  <div class="form-row">    <div class="col">      <label for="phone">Nom</label>      <input type="text" class="form-control" formControlName="name" />    </div>    <div class="col">      <label for="phone">Immatriculation</label>      <input        type="text"        class="form-control"        formControlName="registrationNumber"      />    </div>  </div>  <div class="form-row">    <mat-form-field class="matFormLong" id="select">      <mat-label>Pavillon</mat-label>      <mat-select id="country" formControlName="flagId">        <mat-option *ngFor="let country of countries" [value]="country.id">          {{ country.name }}        </mat-option>      </mat-select>    </mat-form-field>    <div class="col">      <label for="phone">Model (actuel: {{ boatForm.value.model }})</label>      <app-autocomplete-model        style="min-width: 350px"        (onModelSelected)="handleModelSelection($event)"      ></app-autocomplete-model>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone"        >Port de départ (actuel: {{ boatForm.value.homeHarbor }})</label      >      <app-autocomplete-harbor        style="min-width: 350px"        (onPortSelected)="startHarborSelection($event)"      ></app-autocomplete-harbor>    </div>    <div class="col">      <label for="phone">AIS url</label>      <input type="text" class="form-control" formControlName="aisUrl" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">commercialUsage</label>      <mat-radio-group        aria-label="Select an option"        formControlName="commercialUsage"      >        <mat-radio-button [value]="true">Oui</mat-radio-button>        <mat-radio-button [value]="false">Non</mat-radio-button>      </mat-radio-group>    </div>    <div class="col">      <label for="phone">mmsiNumber</label>      <input type="text" class="form-control" formControlName="mmsiNumber" />    </div>  </div>  <button type="button" class="btn btn-primary" (click)="updateBoat()">    Update Bateau  </button>  <h1>Photos</h1>  <label class="file-input-label">    <i class="bi bi-pencil pointer hoverColor icon-large"></i>    <input type="file" (change)="fileChangeEvent($event)" />  </label>  <div    *ngFor="let picture of this.boat?.boatPictures?.nodes; let index = index"  >    <div>      <i        class="bi bi-trash-fill pointer hoverColor icon-large"        (click)="deletePic(picture)"      ></i>    </div>    <img      *ngIf="picture.resizedImages"      src="{{ picture?.resizedImages[1]?.url }}"      alt=""    />  </div></form><!-- MODAL CONFIRMED --><app-modal-confirmed /></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'BoatComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'BoatComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

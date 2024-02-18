@@ -1,0 +1,1348 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ClientPersonalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/detail/client/client-personal/client-personal.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-client-personal</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./client-personal.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./client-personal.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#commercials" >commercials</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#imageInput" >imageInput</a>
+                            </li>
+                            <li>
+                                <a href="#languages" >languages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#modalConfirmed" >modalConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#nationalities" >nationalities</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                            <li>
+                                <a href="#userForm" >userForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#initFormWithUserData" >initFormWithUserData</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onImageChange" >onImageChange</a>
+                            </li>
+                            <li>
+                                <a href="#onStatusChange" >onStatusChange</a>
+                            </li>
+                            <li>
+                                <a href="#openImageUpload" >openImageUpload</a>
+                            </li>
+                            <li>
+                                <a href="#updateUser" >updateUser</a>
+                            </li>
+                            <li>
+                                <a href="#updateUserAvatar" >updateUserAvatar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: FormBuilder, apollo: Apollo, route: ActivatedRoute)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="initFormWithUserData"></a>
+                    <span class="name">
+                        <span ><b>initFormWithUserData</b></span>
+                        <a href="#initFormWithUserData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>initFormWithUserData()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onImageChange"></a>
+                    <span class="name">
+                        <span ><b>onImageChange</b></span>
+                        <a href="#onImageChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onImageChange(event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onStatusChange"></a>
+                    <span class="name">
+                        <span ><b>onStatusChange</b></span>
+                        <a href="#onStatusChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onStatusChange()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="20"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openImageUpload"></a>
+                    <span class="name">
+                        <span ><b>openImageUpload</b></span>
+                        <a href="#openImageUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openImageUpload()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="89"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:89</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUser()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUserAvatar"></a>
+                    <span class="name">
+                        <span ><b>updateUserAvatar</b></span>
+                        <a href="#updateUserAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUserAvatar(imageUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>imageUrl</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commercials"></a>
+                    <span class="name">
+                        <span ><b>commercials</b></span>
+                        <a href="#commercials"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="imageInput"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>imageInput</b></span>
+                        <a href="#imageInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;imageInput&#x27;)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="languages"></a>
+                    <span class="name">
+                        <span ><b>languages</b></span>
+                        <a href="#languages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalConfirmed"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>modalConfirmed</b></span>
+                        <a href="#modalConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalConfirmedComponent.html" target="_self" >ModalConfirmedComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(ModalConfirmedComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:23</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nationalities"></a>
+                    <span class="name">
+                        <span ><b>nationalities</b></span>
+                        <a href="#nationalities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userForm"></a>
+                    <span class="name">
+                        <span ><b>userForm</b></span>
+                        <a href="#userForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/admin/detail/client/client-personal/client-personal.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+import {
+  USER_CLIENT,
+  UPDATE_USER,
+  UPDATE_USER_DETAIL,
+  GENERATE_URL,
+  USER_AVATAR_UPLOAD,
+} from &#x27;src/graphql/client&#x27;;
+
+@Component({
+  selector: &#x27;app-client-personal&#x27;,
+  templateUrl: &#x27;./client-personal.component.html&#x27;,
+  styleUrls: [&#x27;./client-personal.component.css&#x27;],
+})
+export class ClientPersonalComponent {
+  onStatusChange() {
+    console.log(&#x27;Statut changé en:&#x27;, this.userForm.value.userStatus);
+  }
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+  @ViewChild(&#x27;imageInput&#x27;) imageInput!: ElementRef;
+  userForm: FormGroup;
+
+  user: any;
+  nationalities: any[] &#x3D; [];
+  languages: any[] &#x3D; [];
+  commercials: any[] &#x3D; [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private apollo: Apollo,
+    private route: ActivatedRoute
+  ) {
+    this.userForm &#x3D; this.formBuilder.group({
+      firstname: [null, []],
+      birthday: [null, []],
+      civility: [null, []],
+      nationality: [null, []],
+      nativeLanguage: [null, []],
+      favoriteCurrency: [null, []],
+      userStatus: [null, []],
+      pipeDriveId: [null, []],
+      commissionRate: [null, []],
+      phoneNumber: [null, []],
+      lastname: [null, []],
+      email: [null, []],
+      commercialId: [null, []],
+    });
+  }
+
+  ngOnInit() {
+    this.route.parent?.paramMap.subscribe((param) &#x3D;&gt; {
+      const userId &#x3D; param.get(&#x27;id&#x27;);
+      if (userId) {
+        this.apollo
+          .query({ query: USER_CLIENT, variables: { userId } })
+          .subscribe(({ data }: any) &#x3D;&gt; {
+            this.user &#x3D; data.user;
+            this.nationalities &#x3D; data.nationalities.nodes;
+            this.languages &#x3D; data.languages.nodes;
+            this.commercials &#x3D; data.commercials.nodes;
+            this.initFormWithUserData();
+          });
+      }
+    });
+  }
+
+  initFormWithUserData() {
+    this.userForm.patchValue({
+      firstname: this.user.firstname,
+      birthday: this.user.birthday,
+      civility: this.user.civility,
+      nationality: this.user.nationality1Id,
+      nativeLanguage: this.user.nativeLanguageId,
+      favoriteCurrency: this.user.favoriteCurrency,
+      userStatus: this.user.userStatus,
+      pipeDriveId: this.user.pipeDriveId,
+      commissionRate: this.user.commissionRate,
+      commercialId: this.user.commercialId,
+      phoneNumber: this.user.userDetailById.phoneNumber,
+      lastname: this.user.userDetailById.lastname,
+      email: this.user.userDetailById.email,
+    });
+  }
+
+  openImageUpload() {
+    this.imageInput.nativeElement.click();
+  }
+
+  onImageChange(event: any) {
+    const file &#x3D; event.target.files[0];
+    if (file) {
+      this.apollo
+        .mutate({
+          mutation: GENERATE_URL,
+          variables: { keyInput: { key: file.name } },
+        })
+        .subscribe(async ({ data }: any) &#x3D;&gt; {
+          const formData &#x3D; new FormData();
+          formData.append(&#x27;Content-Type&#x27;, file.type);
+          Object.entries(data.generatePresignedPost.fields).forEach(
+            ([k, value]) &#x3D;&gt; {
+              formData.append(k, value as string);
+            }
+          );
+          formData.append(&#x27;file&#x27;, file);
+
+          try {
+            await fetch(data.generatePresignedPost.url, {
+              method: &#x27;POST&#x27;,
+              body: formData,
+            });
+            const imageUrl &#x3D;
+              data.generatePresignedPost.url +
+              &#x27;/&#x27; +
+              data.generatePresignedPost.fields.key;
+            this.updateUserAvatar(imageUrl);
+          } catch (error) {
+            console.error(&quot;Erreur lors de l&#x27;envoi de l&#x27;image:&quot;, error);
+          }
+        });
+    }
+  }
+  updateUserAvatar(imageUrl: string) {
+    const userInput &#x3D; { id: this.user.id, patch: { avatarUrl: imageUrl } };
+    this.apollo
+      .mutate({
+        mutation: USER_AVATAR_UPLOAD,
+        variables: { pfpupload: userInput },
+      })
+      .subscribe(
+        () &#x3D;&gt; {
+          // Créer une nouvelle instance de l&#x27;objet user avec la nouvelle URL de l&#x27;avatar
+          this.user &#x3D; { ...this.user, avatarUrl: imageUrl };
+          console.log(&#x27;Avatar mis à jour&#x27;);
+        },
+        (error) &#x3D;&gt; {
+          console.error(&quot;Erreur lors de la mise à jour de l&#x27;avatar:&quot;, error);
+        }
+      );
+  }
+
+  updateUser() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_USER,
+        variables: {
+          userPayload: {
+            id: this.user.id,
+            patch: {
+              firstname: this.userForm.value.firstname,
+              birthday: this.userForm.value.birthday,
+              civility: this.userForm.value.civility,
+              nationality1Id: this.userForm.value.nationality,
+              nativeLanguageId: this.userForm.value.nativeLanguage,
+              favoriteCurrency: this.userForm.value.favoriteCurrency,
+              userStatus: this.userForm.value.userStatus,
+              pipeDriveId: this.userForm.value.pipeDriveId,
+              commissionRate: this.userForm.value.commissionRate,
+              commercialId: this.userForm.value.commercialId,
+            },
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.apollo
+            .mutate({
+              mutation: UPDATE_USER_DETAIL,
+              variables: {
+                userDetailPayload: {
+                  id: this.user.id,
+                  patch: {
+                    phoneNumber: this.userForm.value.phoneNumber,
+                    lastname: this.userForm.value.lastname,
+                    email: this.userForm.value.email,
+                  },
+                },
+              },
+            })
+            .subscribe(
+              ({ data }: any) &#x3D;&gt; {
+                this.modalConfirmed.openModal();
+                console.log(&#x27;le update job reussi&#x27;);
+              },
+              (error) &#x3D;&gt; {
+                console.log(&#x27;error update details&#x27;, error);
+              }
+            );
+        },
+        (error) &#x3D;&gt; {
+          console.log(&#x27;update user error&#x27;, error);
+        }
+      );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;a&gt;Photo de profil&lt;/a&gt;
+&lt;form [formGroup]&#x3D;&quot;userForm&quot; (ngSubmit)&#x3D;&quot;updateUser()&quot;&gt;
+  &lt;div *ngIf&#x3D;&quot;user &amp;&amp; user.avatarUrl&quot;&gt;
+    &lt;img [src]&#x3D;&quot;user.avatarUrl&quot; alt&#x3D;&quot;Photo de profil&quot; class&#x3D;&quot;profile-img&quot; /&gt;
+    &lt;!-- Ajout du bouton pour modifier la photo --&gt;
+    &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;openImageUpload()&quot;&gt;Modifier&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+&lt;input type&#x3D;&quot;file&quot; #imageInput hidden (change)&#x3D;&quot;onImageChange($event)&quot; /&gt;
+&lt;form [formGroup]&#x3D;&quot;userForm&quot;&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Prénom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;firstname&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Nom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;lastname&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;civility&lt;/label&gt;
+      &lt;mat-radio-group aria-label&#x3D;&quot;Select an option&quot; formControlName&#x3D;&quot;civility&quot;&gt;
+        &lt;mat-radio-button value&#x3D;&quot;FEMALE&quot;&gt;Femme&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button value&#x3D;&quot;MALE&quot;&gt;Homme&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Date de naissance&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthday&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Email&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Numéro de téléphone&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;phoneNumber&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;nationalité&lt;/label&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-select id&#x3D;&quot;nationality&quot; formControlName&#x3D;&quot;nationality&quot;&gt;
+          &lt;mat-option
+            *ngFor&#x3D;&quot;let nationality of nationalities&quot;
+            [value]&#x3D;&quot;nationality.id&quot;
+          &gt;
+            {{ nationality.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;langue préféré&lt;/label&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-select id&#x3D;&quot;nativeLanguage&quot; formControlName&#x3D;&quot;nativeLanguage&quot;&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let language of languages&quot; [value]&#x3D;&quot;language.id&quot;&gt;
+            {{ language.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Devis préféré&lt;/label&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-select formControlName&#x3D;&quot;favoriteCurrency&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;EUR&quot;&gt;EUR&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;USD&quot;&gt;USD&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;GBP&quot;&gt;GBP&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;UND&quot;&gt;UND&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;h1&gt;Admin&lt;/h1&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-label&gt;Commercial&lt;/mat-label&gt;
+        &lt;mat-select id&#x3D;&quot;nationality&quot; formControlName&#x3D;&quot;commercialId&quot;&gt;
+          &lt;mat-option [value]&#x3D;&quot;null&quot;&gt; Supprimer commercial &lt;/mat-option&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let com of commercials&quot; [value]&#x3D;&quot;com.id&quot;&gt;
+            {{ com.firstname }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Modifier le Statut de l&#x27;Utilisateur&lt;/mat-label&gt;
+        &lt;mat-select
+          formControlName&#x3D;&quot;userStatus&quot;
+          (selectionChange)&#x3D;&quot;onStatusChange()&quot;
+        &gt;
+          &lt;mat-option value&#x3D;&quot;REGISTERED&quot;&gt;Enregistré&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;VALIDATED&quot;&gt;Validé&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;BANNED&quot;&gt;Banni&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;DELETED&quot;&gt;Supprimé&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;email&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Pipe id&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;pipeDriveId&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Taux de commission en %&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;number&quot;
+        class&#x3D;&quot;form-control&quot;
+        formControlName&#x3D;&quot;commissionRate&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;button class&#x3D;&quot;btn-primary&quot; (click)&#x3D;&quot;updateUser()&quot;&gt;Update Client&lt;/button&gt;
+
+&lt;!-- MODAL CONFIRMED --&gt;
+&lt;app-modal-confirmed&gt;&lt;app-modal-confirmed /&gt; &lt;/app-modal-confirmed&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./client-personal.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><a>Photo de profil</a><form [formGroup]="userForm" (ngSubmit)="updateUser()">  <div *ngIf="user && user.avatarUrl">    <img [src]="user.avatarUrl" alt="Photo de profil" class="profile-img" />    <!-- Ajout du bouton pour modifier la photo -->    <button type="button" (click)="openImageUpload()">Modifier</button>  </div></form><input type="file" #imageInput hidden (change)="onImageChange($event)" /><form [formGroup]="userForm">  <div class="form-row">    <div class="col">      <label for="phone">Prénom</label>      <input type="text" class="form-control" formControlName="firstname" />    </div>    <div class="col">      <label for="phone">Nom</label>      <input type="text" class="form-control" formControlName="lastname" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">civility</label>      <mat-radio-group aria-label="Select an option" formControlName="civility">        <mat-radio-button value="FEMALE">Femme</mat-radio-button>        <mat-radio-button value="MALE">Homme</mat-radio-button>      </mat-radio-group>    </div>    <div class="col">      <label for="phone">Date de naissance</label>      <input type="text" class="form-control" formControlName="birthday" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Email</label>      <input type="text" class="form-control" formControlName="email" />    </div>    <div class="col">      <label for="phone">Numéro de téléphone</label>      <input type="text" class="form-control" formControlName="phoneNumber" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">nationalité</label>      <mat-form-field class="matFormLong" id="select">        <mat-select id="nationality" formControlName="nationality">          <mat-option            *ngFor="let nationality of nationalities"            [value]="nationality.id"          >            {{ nationality.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <label for="phone">langue préféré</label>      <mat-form-field class="matFormLong" id="select">        <mat-select id="nativeLanguage" formControlName="nativeLanguage">          <mat-option *ngFor="let language of languages" [value]="language.id">            {{ language.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Devis préféré</label>      <mat-form-field class="matFormLong" id="select">        <mat-select formControlName="favoriteCurrency">          <mat-option value="EUR">EUR</mat-option>          <mat-option value="USD">USD</mat-option>          <mat-option value="GBP">GBP</mat-option>          <mat-option value="UND">UND</mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <h1>Admin</h1>  <div class="form-row">    <div class="col">      <mat-form-field class="matFormLong" id="select">        <mat-label>Commercial</mat-label>        <mat-select id="nationality" formControlName="commercialId">          <mat-option [value]="null"> Supprimer commercial </mat-option>          <mat-option *ngFor="let com of commercials" [value]="com.id">            {{ com.firstname }}          </mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <mat-form-field>        <mat-label>Modifier le Statut de l\'Utilisateur</mat-label>        <mat-select          formControlName="userStatus"          (selectionChange)="onStatusChange()"        >          <mat-option value="REGISTERED">Enregistré</mat-option>          <mat-option value="VALIDATED">Validé</mat-option>          <mat-option value="BANNED">Banni</mat-option>          <mat-option value="DELETED">Supprimé</mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">email</label>      <input type="text" class="form-control" formControlName="email" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Pipe id</label>      <input type="text" class="form-control" formControlName="pipeDriveId" />    </div>    <div class="col">      <label for="phone">Taux de commission en %</label>      <input        type="number"        class="form-control"        formControlName="commissionRate"      />    </div>  </div></form><button class="btn-primary" (click)="updateUser()">Update Client</button><!-- MODAL CONFIRMED --><app-modal-confirmed><app-modal-confirmed /> </app-modal-confirmed></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ClientPersonalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ClientPersonalComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

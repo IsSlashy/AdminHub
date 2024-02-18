@@ -1,0 +1,1252 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  PersonalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/detail/sailor/personal/personal.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-personal</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./personal.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./personal.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#commercials" >commercials</a>
+                            </li>
+                            <li>
+                                <a href="#countries" >countries</a>
+                            </li>
+                            <li>
+                                <a href="#languages" >languages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#modalConfirmed" >modalConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#nationalities" >nationalities</a>
+                            </li>
+                            <li>
+                                <a href="#personalForm" >personalForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscription" >subscription</a>
+                            </li>
+                            <li>
+                                <a href="#user" >user</a>
+                            </li>
+                            <li>
+                                <a href="#userId" >userId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleAddressChange" >handleAddressChange</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#updateUser" >updateUser</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: FormBuilder, route: ActivatedRoute, apollo: Apollo)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:57</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleAddressChange"></a>
+                    <span class="name">
+                        <span ><b>handleAddressChange</b></span>
+                        <a href="#handleAddressChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleAddressChange(event: <a href="../interfaces/AddressData.html" target="_self">AddressData</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="109"
+                                    class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:109</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="../interfaces/AddressData.html" target="_self" >AddressData</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateUser"></a>
+                    <span class="name">
+                        <span ><b>updateUser</b></span>
+                        <a href="#updateUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateUser()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="commercials"></a>
+                    <span class="name">
+                        <span ><b>commercials</b></span>
+                        <a href="#commercials"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countries"></a>
+                    <span class="name">
+                        <span ><b>countries</b></span>
+                        <a href="#countries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="languages"></a>
+                    <span class="name">
+                        <span ><b>languages</b></span>
+                        <a href="#languages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalConfirmed"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>modalConfirmed</b></span>
+                        <a href="#modalConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalConfirmedComponent.html" target="_self" >ModalConfirmedComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(ModalConfirmedComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nationalities"></a>
+                    <span class="name">
+                        <span ><b>nationalities</b></span>
+                        <a href="#nationalities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="personalForm"></a>
+                    <span class="name">
+                        <span ><b>personalForm</b></span>
+                        <a href="#personalForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    firstName: [null, []],
+    lastName: [null, []],
+    civility: [null, []],
+    email: [null, []],
+    birthDay: [null, []],
+    sailorNumber: [null, []],
+    phoneNumber: [null, []],
+    nationality: [null, []],
+    nativeLanguage: [null, []],
+    favoriteCurrency: [null, []],
+    userStatus: [null, []],
+    commercialId: [null, []],
+    spokenLanguages: [null, []],
+    birthCountry: [null, []],
+    birthPlace: [null, []],
+    addressId: [null, []],
+    formattedAddress: [null, []],
+    birthName: [null, []],
+    rib: [null, []],
+    socialSecurityNumber: [null, []],
+    taxDomicil: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:50</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="user"></a>
+                    <span class="name">
+                        <span ><b>user</b></span>
+                        <a href="#user"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userId"></a>
+                    <span class="name">
+                        <span ><b>userId</b></span>
+                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/admin/detail/sailor/personal/personal.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+import {
+  SAILOR_PERSONNAL,
+  UPDATE_DETAIL_SAILOR,
+  UPDATE_SAILOR,
+} from &#x27;src/graphql/sailor&#x27;;
+
+interface AddressData {
+  id: string;
+  formattedAddress: string;
+}
+
+@Component({
+  selector: &#x27;app-personal&#x27;,
+  templateUrl: &#x27;./personal.component.html&#x27;,
+  styleUrls: [&#x27;./personal.component.css&#x27;],
+})
+export class PersonalComponent {
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+
+  personalForm: FormGroup &#x3D; this.formBuilder.group({
+    firstName: [null, []],
+    lastName: [null, []],
+    civility: [null, []],
+    email: [null, []],
+    birthDay: [null, []],
+    sailorNumber: [null, []],
+    phoneNumber: [null, []],
+    nationality: [null, []],
+    nativeLanguage: [null, []],
+    favoriteCurrency: [null, []],
+    userStatus: [null, []],
+    commercialId: [null, []],
+    spokenLanguages: [null, []],
+    birthCountry: [null, []],
+    birthPlace: [null, []],
+    addressId: [null, []],
+    formattedAddress: [null, []],
+    birthName: [null, []],
+    rib: [null, []],
+    socialSecurityNumber: [null, []],
+    taxDomicil: [null, []],
+  });
+
+  private subscription: Subscription | undefined;
+
+  userId: string | null &#x3D; &#x27;&#x27;;
+  user: any;
+  nationalities: any &#x3D; new Array&lt;any&gt;();
+  languages: any &#x3D; new Array&lt;any&gt;();
+  countries: any &#x3D; new Array&lt;any&gt;();
+  commercials: any[] &#x3D; [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private apollo: Apollo
+  ) {}
+
+  ngOnInit() {
+    this.route.parent?.paramMap.subscribe((param) &#x3D;&gt; {
+      this.userId &#x3D; param.get(&#x27;id&#x27;);
+
+      this.subscription &#x3D; this.apollo
+        .watchQuery&lt;any&gt;({
+          query: SAILOR_PERSONNAL,
+          variables: { userId: this.userId },
+        })
+        .valueChanges.subscribe(({ data }: any) &#x3D;&gt; {
+          this.user &#x3D; data.user;
+          this.nationalities &#x3D; data.nationalities.nodes;
+          this.languages &#x3D; data.languages.nodes;
+          this.countries &#x3D; data.countries.nodes;
+          this.commercials &#x3D; data.commercials.nodes;
+          this.personalForm.patchValue({
+            firstName: data.user.firstname,
+            civility: data.user.civility,
+            birthDay: data.user.birthday,
+            favoriteCurrency: data.user.favoriteCurrency,
+            nationality: data.user.nationality1Id,
+            nativeLanguage: data.user.nativeLanguageId,
+            userStatus: data.user.userStatus,
+            commercialId: data.user.commercialId,
+
+            lastName: data.user.userDetailById.lastname,
+            email: data.user.userDetailById.email,
+            sailorNumber: data.user.userDetailById.sailorNumber,
+            phoneNumber: data.user.userDetailById.phoneNumber,
+            birthCountry: data.user.userDetailById.birthCountry,
+            birthPlace: data.user.userDetailById.birthPlace,
+            birthName: data.user.userDetailById.birthName,
+            rib: data.user.userDetailById.rib,
+            socialSecurityNumber: data.user.userDetailById.socialSecurityNumber,
+            taxDomicil: data.user.userDetailById.taxDomicil,
+            addressId: data.user.userDetailById.personnalAddress?.id,
+            formattedAddress:
+              data.user.userDetailById.personnalAddress?.formattedAddress,
+            // spokenLanguages: data.user.spokenLanguages,
+          });
+        });
+    });
+  }
+
+  handleAddressChange(event: AddressData) {
+    this.personalForm.controls[&#x27;addressId&#x27;].setValue(event);
+  }
+
+  updateUser() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_SAILOR,
+        variables: {
+          sailorPayload: {
+            id: this.userId,
+            patch: {
+              firstname: this.personalForm.value.firstName,
+              civility: this.personalForm.value.civility,
+              birthday: this.personalForm.value.birthDay,
+              favoriteCurrency: this.personalForm.value.favoriteCurrency,
+              nationality1Id: this.personalForm.value.nationality,
+              nativeLanguageId: this.personalForm.value.nativeLanguage,
+              userStatus: this.personalForm.value.userStatus,
+              commercialId: this.personalForm.value.commercialId,
+            },
+          },
+        },
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        console.log(&#x27;Update user a foncitonné&#x27;);
+        this.apollo
+          .mutate({
+            mutation: UPDATE_DETAIL_SAILOR,
+            refetchQueries: [
+              { query: SAILOR_PERSONNAL, variables: { userId: this.userId } },
+            ],
+            variables: {
+              sailorPayload: {
+                id: this.userId,
+                patch: {
+                  lastname: this.personalForm.value.lastName,
+                  email: this.personalForm.value.email,
+                  sailorNumber: this.personalForm.value.sailorNumber,
+                  phoneNumber: this.personalForm.value.phoneNumber,
+                  birthCountry: this.personalForm.value.birthCountry,
+                  birthPlace: this.personalForm.value.birthPlace,
+                  birthName: this.personalForm.value.birthName,
+                  rib: this.personalForm.value.rib,
+                  socialSecurityNumber:
+                    this.personalForm.value.socialSecurityNumber,
+                  taxDomicil: this.personalForm.value.taxDomicil,
+                  personnalAddressId: this.personalForm.value.addressId,
+                },
+              },
+            },
+          })
+          .subscribe(
+            ({ data }: any) &#x3D;&gt; {
+              this.modalConfirmed.openModal();
+              console.log(&#x27;le update job reussi &#x27;);
+            },
+            (err: any) &#x3D;&gt; {
+              console.log(err);
+              this.modalConfirmed.modalRejected();
+            }
+          );
+      });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;form [formGroup]&#x3D;&quot;personalForm&quot; (ngSubmit)&#x3D;&quot;updateUser()&quot;&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Prénom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;firstName&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Nom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;lastName&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;civility&lt;/label&gt;
+      &lt;mat-radio-group aria-label&#x3D;&quot;Select an option&quot; formControlName&#x3D;&quot;civility&quot;&gt;
+        &lt;mat-radio-button value&#x3D;&quot;FEMALE&quot;&gt;Femme&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button value&#x3D;&quot;MALE&quot;&gt;Homme&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Date de naissance&lt;/mat-label&gt;
+        &lt;input matInput [matDatepicker]&#x3D;&quot;picker&quot; formControlName&#x3D;&quot;birthDay&quot; /&gt;
+        &lt;mat-hint&gt;MM/DD/YYYY&lt;/mat-hint&gt;
+        &lt;mat-datepicker-toggle
+          matIconSuffix
+          [for]&#x3D;&quot;picker&quot;
+        &gt;&lt;/mat-datepicker-toggle&gt;
+        &lt;mat-datepicker #picker&gt;&lt;/mat-datepicker&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Email&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Numéro de téléphone&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;phoneNumber&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-label&gt;nationalité&lt;/mat-label&gt;
+        &lt;mat-select id&#x3D;&quot;nationality&quot; formControlName&#x3D;&quot;nationality&quot;&gt;
+          &lt;mat-option
+            *ngFor&#x3D;&quot;let nationality of nationalities&quot;
+            [value]&#x3D;&quot;nationality.id&quot;
+          &gt;
+            {{ nationality.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-label&gt;langue préféré&lt;/mat-label&gt;
+        &lt;mat-select id&#x3D;&quot;nativeLanguage&quot; formControlName&#x3D;&quot;nativeLanguage&quot;&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let language of languages&quot; [value]&#x3D;&quot;language.id&quot;&gt;
+            {{ language.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-label&gt;Devis préféré&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;favoriteCurrency&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;EUR&quot;&gt;EUR&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;USD&quot;&gt;USD&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;GBP&quot;&gt;GBP&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;UND&quot;&gt;UND&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;h1&gt;Admin&lt;/h1&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;div class&#x3D;&quot;col&quot;&gt;
+        &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+          &lt;mat-label&gt;Commercial&lt;/mat-label&gt;
+          &lt;mat-select id&#x3D;&quot;nationality&quot; formControlName&#x3D;&quot;commercialId&quot;&gt;
+            &lt;mat-option [value]&#x3D;&quot;null&quot;&gt; Supprimer commercial &lt;/mat-option&gt;
+            &lt;mat-option *ngFor&#x3D;&quot;let com of commercials&quot; [value]&#x3D;&quot;com.id&quot;&gt;
+              {{ com.firstname }}
+            &lt;/mat-option&gt;
+          &lt;/mat-select&gt;
+        &lt;/mat-form-field&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Statut de l&#x27;Utilisateur&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;userStatus&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;REGISTERED&quot;&gt;Enregistré&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;VALIDATED&quot;&gt;Validé&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;BANNED&quot;&gt;Banni&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;DELETED&quot;&gt;Supprimé&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;col&quot;&gt;
+    &lt;label for&#x3D;&quot;phone&quot;&gt;Numéro Marin&lt;/label&gt;
+    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;sailorNumber&quot; /&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;birthCountry&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthCountry&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;birthPlace&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthPlace&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;iban&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;rib&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;secu&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;text&quot;
+        class&#x3D;&quot;form-control&quot;
+        formControlName&#x3D;&quot;socialSecurityNumber&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;app-google-places-autocomplete
+        [setAddresse]&#x3D;&quot;personalForm.value.formattedAddress&quot;
+        (selectedAddress)&#x3D;&quot;handleAddressChange($event)&quot;
+      /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-label&gt;tax domicil&lt;/mat-label&gt;
+        &lt;mat-select id&#x3D;&quot;country&quot; formControlName&#x3D;&quot;taxDomicil&quot;&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let country of countries&quot; [value]&#x3D;&quot;country.id&quot;&gt;
+            {{ country.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;birthName&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthName&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary btn-lg m-auto&quot;&gt;
+      Enregistrer
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;!-- MODAL CONFIRMED --&gt;
+&lt;app-modal-confirmed /&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./personal.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><form [formGroup]="personalForm" (ngSubmit)="updateUser()">  <div class="form-row">    <div class="col">      <label for="phone">Prénom</label>      <input type="text" class="form-control" formControlName="firstName" />    </div>    <div class="col">      <label for="phone">Nom</label>      <input type="text" class="form-control" formControlName="lastName" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">civility</label>      <mat-radio-group aria-label="Select an option" formControlName="civility">        <mat-radio-button value="FEMALE">Femme</mat-radio-button>        <mat-radio-button value="MALE">Homme</mat-radio-button>      </mat-radio-group>    </div>    <div class="col">      <mat-form-field>        <mat-label>Date de naissance</mat-label>        <input matInput [matDatepicker]="picker" formControlName="birthDay" />        <mat-hint>MM/DD/YYYY</mat-hint>        <mat-datepicker-toggle          matIconSuffix          [for]="picker"        ></mat-datepicker-toggle>        <mat-datepicker #picker></mat-datepicker>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Email</label>      <input type="text" class="form-control" formControlName="email" />    </div>    <div class="col">      <label for="phone">Numéro de téléphone</label>      <input type="text" class="form-control" formControlName="phoneNumber" />    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field class="matFormLong" id="select">        <mat-label>nationalité</mat-label>        <mat-select id="nationality" formControlName="nationality">          <mat-option            *ngFor="let nationality of nationalities"            [value]="nationality.id"          >            {{ nationality.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <mat-form-field class="matFormLong" id="select">        <mat-label>langue préféré</mat-label>        <mat-select id="nativeLanguage" formControlName="nativeLanguage">          <mat-option *ngFor="let language of languages" [value]="language.id">            {{ language.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field class="matFormLong" id="select">        <mat-label>Devis préféré</mat-label>        <mat-select formControlName="favoriteCurrency">          <mat-option value="EUR">EUR</mat-option>          <mat-option value="USD">USD</mat-option>          <mat-option value="GBP">GBP</mat-option>          <mat-option value="UND">UND</mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <h1>Admin</h1>  <div class="form-row">    <div class="col">      <div class="col">        <mat-form-field class="matFormLong" id="select">          <mat-label>Commercial</mat-label>          <mat-select id="nationality" formControlName="commercialId">            <mat-option [value]="null"> Supprimer commercial </mat-option>            <mat-option *ngFor="let com of commercials" [value]="com.id">              {{ com.firstname }}            </mat-option>          </mat-select>        </mat-form-field>      </div>    </div>    <div class="col">      <mat-form-field>        <mat-label>Statut de l\'Utilisateur</mat-label>        <mat-select formControlName="userStatus">          <mat-option value="REGISTERED">Enregistré</mat-option>          <mat-option value="VALIDATED">Validé</mat-option>          <mat-option value="BANNED">Banni</mat-option>          <mat-option value="DELETED">Supprimé</mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="col">    <label for="phone">Numéro Marin</label>    <input type="text" class="form-control" formControlName="sailorNumber" />  </div>  <div class="form-row">    <div class="col">      <label for="phone">birthCountry</label>      <input type="text" class="form-control" formControlName="birthCountry" />    </div>    <div class="col">      <label for="phone">birthPlace</label>      <input type="text" class="form-control" formControlName="birthPlace" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">iban</label>      <input type="text" class="form-control" formControlName="rib" />    </div>    <div class="col">      <label for="phone">secu</label>      <input        type="text"        class="form-control"        formControlName="socialSecurityNumber"      />    </div>  </div>  <div class="form-row">    <div class="col">      <app-google-places-autocomplete        [setAddresse]="personalForm.value.formattedAddress"        (selectedAddress)="handleAddressChange($event)"      />    </div>    <div class="col">      <mat-form-field class="matFormLong" id="select">        <mat-label>tax domicil</mat-label>        <mat-select id="country" formControlName="taxDomicil">          <mat-option *ngFor="let country of countries" [value]="country.id">            {{ country.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">birthName</label>      <input type="text" class="form-control" formControlName="birthName" />    </div>  </div>  <div class="form-row">    <button type="submit" class="btn btn-primary btn-lg m-auto">      Enregistrer    </button>  </div></form><!-- MODAL CONFIRMED --><app-modal-confirmed /></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'PersonalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'PersonalComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

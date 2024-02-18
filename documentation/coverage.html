@@ -1,0 +1,2955 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	   <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="./" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content coverage">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Documentation coverage</li>
+</ol>
+
+<div>
+    <img src="./images/coverage-badge-documentation.svg">
+</div>
+
+<table class="table table-bordered coverage" id="coverage-table">
+    <thead class="coverage-header">
+        <tr>
+            <th>File</th>
+            <th>Type</th>
+            <th>Identifier</th>
+            <th style="text-align:right" class="statements" data-sort-default>Statements</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/AuthGuard.html">src/app/_guard/auth.guard.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>AuthGuard</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/AquaplotService.html">src/app/_service/aquaplot.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>AquaplotService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AdminPlusComponent.html">src/app/admin/admin-plus/admin-plus.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AdminPlusComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AdminComponent.html">src/app/admin/admin.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AdminComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ApprovalComponent.html">src/app/admin/approval/approval.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ApprovalComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DegreesComponent.html">src/app/admin/approval/degrees/degrees.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DegreesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/35)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/User.html">src/app/admin/approval/degrees/degrees.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>User</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ResumesComponent.html">src/app/admin/approval/resumes/resumes.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ResumesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/31)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/TrainingsComponent.html">src/app/admin/approval/trainings/trainings.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>TrainingsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/37)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/User.html">src/app/admin/approval/trainings/trainings.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>User</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ChatComponent.html">src/app/admin/chat/chat.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ChatComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/25)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ChessComponent.html">src/app/admin/chess/chess.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ChessComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DetailComponent.html">src/app/admin/chess/detail/detail.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DetailComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/AddressData.html">src/app/admin/chess/detail/detail.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddressData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ConnectionComponent.html">src/app/admin/connection/connection.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ConnectionComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/AuthResponse.html">src/app/admin/connection/connection.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AuthResponse</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CreationComponent.html">src/app/admin/creation/creation.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CreationComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/NewBoatComponent.html">src/app/admin/creation/new-boat/new-boat.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NewBoatComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/24)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/NewCompleteJobComponent.html">src/app/admin/creation/new-complete-job/new-complete-job.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NewCompleteJobComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/27)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/NewJobComponent.html">src/app/admin/creation/new-job/new-job.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NewJobComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/NewOfferComponent.html">src/app/admin/creation/new-offer/new-offer.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NewOfferComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AlertDocumentComponent.html">src/app/admin/dashboard/alert-document/alert-document.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AlertDocumentComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DashboardComponent.html">src/app/admin/dashboard/dashboard.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DashboardComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DevisComponent.html">src/app/admin/dashboard/devis/devis.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DevisComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/JobsComponent.html">src/app/admin/dashboard/jobs/jobs.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>JobsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/StatistiquesComponent.html">src/app/admin/dashboard/statistiques/statistiques.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>StatistiquesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DataComponent.html">src/app/admin/data/data.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DataComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/HarborComponent.html">src/app/admin/data/harbor/harbor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>HarborComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ModelComponent.html">src/app/admin/data/model/model.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ModelComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/VariablesComponent.html">src/app/admin/data/variables/variables.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>VariablesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/BoatComponent.html">src/app/admin/detail/boat/boat.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BoatComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/12)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/BoatsComponent.html">src/app/admin/detail/client/boats/boats.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BoatsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ClientJobsComponent.html">src/app/admin/detail/client/client-jobs/client-jobs.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ClientJobsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ClientPersonalComponent.html">src/app/admin/detail/client/client-personal/client-personal.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ClientPersonalComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ClientComponent.html">src/app/admin/detail/client/client.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ClientComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/FavorisComponent.html">src/app/admin/detail/client/favorites/favorites.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>FavorisComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/MarinFavori.html">src/app/admin/detail/client/favorites/favorites.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>MarinFavori</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PaimentsComponent.html">src/app/admin/detail/client/paiments/paiments.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PaimentsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/BillingComponent.html">src/app/admin/detail/job/billing/billing.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>BillingComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/AddressData.html">src/app/admin/detail/job/billing/billing.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddressData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/InfoComponent.html">src/app/admin/detail/job/info/info.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>InfoComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/18)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/JobComponent.html">src/app/admin/detail/job/job.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>JobComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/MatchingComponent.html">src/app/admin/detail/job/matching/matching.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>MatchingComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/15)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/OffersComponent.html">src/app/admin/detail/job/offers/offers.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>OffersComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/NotationComponent.html">src/app/admin/detail/notation/notation.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NotationComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/OfferComponent.html">src/app/admin/detail/offer/offer.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>OfferComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/DocumentsComponent.html">src/app/admin/detail/sailor/documents/documents.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>DocumentsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/24)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/DocType.html">src/app/admin/detail/sailor/documents/documents.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>DocType</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/FinanceComponent.html">src/app/admin/detail/sailor/finance/finance.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>FinanceComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/PersonalComponent.html">src/app/admin/detail/sailor/personal/personal.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>PersonalComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/14)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/AddressData.html">src/app/admin/detail/sailor/personal/personal.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>AddressData</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ProfilComponent.html">src/app/admin/detail/sailor/profil/profil.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ProfilComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/16)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SailorJobsComponent.html">src/app/admin/detail/sailor/sailor-jobs/sailor-jobs.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SailorJobsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/20)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SailorComponent.html">src/app/admin/detail/sailor/sailor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SailorComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SettingsComponent.html">src/app/admin/detail/sailor/settings/settings.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SettingsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/FollowUpComponent.html">src/app/admin/follow-up/follow-up.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>FollowUpComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/37)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/KPIComponent.html">src/app/admin/kpi/kpi.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>KPIComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ManagementComponent.html">src/app/admin/management/management.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ManagementComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/27)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/User.html">src/app/admin/management/management.component.ts</a>
+            </td>
+            <td>interface</td>
+            <td>User</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/NotationsComponent.html">src/app/admin/notations/notations.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>NotationsComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SearchMissionComponent.html">src/app/admin/search-mission/search-mission.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SearchMissionComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/SearchSkipperComponent.html">src/app/admin/search-skipper/search-skipper.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>SearchSkipperComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/DataServiceService.html">src/app/admin/services/data-service.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>DataServiceService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AppComponent.html">src/app/app.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AppComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AutocompleteHarborComponent.html">src/app/components/autocomplete-harbor/autocomplete-harbor.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AutocompleteHarborComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/13)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AutocompleteModelComponent.html">src/app/components/autocomplete-model/autocomplete-model.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AutocompleteModelComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/AutocompletePlaceComponent.html">src/app/components/autocomplete-place/autocomplete-place.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>AutocompletePlaceComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/CalculesComponent.html">src/app/components/calcules/calcules.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>CalculesComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/GooglePlacesAutocompleteComponent.html">src/app/components/google-places-autocomplete/google-places-autocomplete.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>GooglePlacesAutocompleteComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#google">src/app/components/google-places-autocomplete/google-places-autocomplete.component.ts</a>
+            </td>
+            <td>variable</td>
+            <td>google</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPSERT_ADDRESS">src/app/components/google-places-autocomplete/google-places-autocomplete.component.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPSERT_ADDRESS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ModalAssigneOfferComponent.html">src/app/components/modal-assigne-offer/modal-assigne-offer.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ModalAssigneOfferComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/8)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./components/ModalConfirmedComponent.html">src/app/components/modal-confirmed/modal-confirmed.component.ts</a>
+            </td>
+            <td>component</td>
+            <td>ModalConfirmedComponent</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/functions.html#createApollo">src/app/graphql.module.ts</a>
+            </td>
+            <td>function</td>
+            <td>createApollo</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#uri">src/app/graphql.module.ts</a>
+            </td>
+            <td>variable</td>
+            <td>uri</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./pipes/FilterPipe.html">src/app/pipes/filter.pipe.ts</a>
+            </td>
+            <td>pipe</td>
+            <td>FilterPipe</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/PortService.html">src/app/services/port.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>PortService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/4)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./interfaces/Port.html">src/app/services/port.service.ts</a>
+            </td>
+            <td>interface</td>
+            <td>Port</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#environment">src/environments/environment.prod.ts</a>
+            </td>
+            <td>variable</td>
+            <td>environment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#environment">src/environments/environment.ts</a>
+            </td>
+            <td>variable</td>
+            <td>environment</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ARCHIVE_DOCUMENT">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ARCHIVE_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DELETE_RESUME">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DELETE_RESUME</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_URL">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_URL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_DEGREES">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_DEGREES</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_DOCUMENTS">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_DOCUMENTS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_NO_RESUME">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_NO_RESUME</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_RESUMES">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_RESUMES</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_TRAININGS">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_TRAININGS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#REFUSE_DOCUMENT">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>REFUSE_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#REFUSE_RESUME">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>REFUSE_RESUME</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_DETAILS">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_DETAILS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_DOCUMENT">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_USER">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_USER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPLOAD_RESUME">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPLOAD_RESUME</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDE_DOCUMENT">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDE_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDE_RESUME">src/graphql/approval.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDE_RESUME</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#BOAT">src/graphql/boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>BOAT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_BOAT_PICTURE">src/graphql/boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_BOAT_PICTURE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DELETE_BOAT_PICTURE">src/graphql/boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DELETE_BOAT_PICTURE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_URL">src/graphql/boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_URL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_BOAT">src/graphql/boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_BOAT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_BOATMODEL">src/graphql/boats.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_BOATMODEL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_BOATMODEL">src/graphql/boats.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_BOATMODEL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_BOATMODEL">src/graphql/boats.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_BOATMODEL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ADMIN_CONVERSATION">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ADMIN_CONVERSATION</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ADMIN_CONVERSATIONS">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ADMIN_CONVERSATIONS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ADMIN_MAIL_OFFER">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ADMIN_MAIL_OFFER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ARCHIVE">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ARCHIVE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ARCHIVE_MESSAGE">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ARCHIVE_MESSAGE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANCEL_APPLICATION">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANCEL_APPLICATION</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SEND_MESSAGE_ADMIN">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SEND_MESSAGE_ADMIN</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SUBSCRIPTION_MESSAGE">src/graphql/chat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SUBSCRIPTION_MESSAGE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DETAIL_CHESS">src/graphql/chess.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DETAIL_CHESS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#OFFER_CHESS">src/graphql/chess.ts</a>
+            </td>
+            <td>variable</td>
+            <td>OFFER_CHESS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#RECORD_CHESS">src/graphql/chess.ts</a>
+            </td>
+            <td>variable</td>
+            <td>RECORD_CHESS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_BILLING">src/graphql/chess.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_BILLING</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_DETAIL_SAILOR">src/graphql/chess.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_DETAIL_SAILOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_SAILOR">src/graphql/chess.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_SAILOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANCELED">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANCELED</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CLIENT_PAIMENTS">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CLIENT_PAIMENTS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CONFIRMED">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CONFIRMED</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_URL">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_URL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#PAID">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>PAID</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#PUBLISHED">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>PUBLISHED</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_USER">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_USER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_USER_DETAIL">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_USER_DETAIL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#USER">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>USER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#USER_AVATAR_UPLOAD">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>USER_AVATAR_UPLOAD</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#USER_BOATS">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>USER_BOATS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#USER_CLIENT">src/graphql/client.ts</a>
+            </td>
+            <td>variable</td>
+            <td>USER_CLIENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#AUTHENTICATE">src/graphql/connexion.ts</a>
+            </td>
+            <td>variable</td>
+            <td>AUTHENTICATE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#BOATS_USER">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>BOATS_USER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CHESS_PRICE">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CHESS_PRICE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_AD">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_AD</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_COMPLETE_JOB">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_COMPLETE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_JOB">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ESTIMATED_PRICE">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ESTIMATED_PRICE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_AD">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_AD</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_HARBOR">src/graphql/creation.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_HARBOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_BOAT">src/graphql/creation/new-boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_BOAT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_BOAT_PICTURE">src/graphql/creation/new-boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_BOAT_PICTURE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DATA_BOAT">src/graphql/creation/new-boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DATA_BOAT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_URL">src/graphql/creation/new-boat.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_URL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANCEL_OFFER_MUTATION">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANCEL_OFFER_MUTATION</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#COMMERCIAL_JOBS">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>COMMERCIAL_JOBS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CURRENT_ADMIN">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CURRENT_ADMIN</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_DOCUMENT_NUMBER">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_DOCUMENT_NUMBER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_RESUMES_NUMBER">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_RESUMES_NUMBER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#QUERY_DEVIS">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>QUERY_DEVIS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_DEVI">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_DEVI</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_JOB">src/graphql/dashboard.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#QUERY_VARIABLE">src/graphql/data.ts</a>
+            </td>
+            <td>variable</td>
+            <td>QUERY_VARIABLE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#update_Variable">src/graphql/data.ts</a>
+            </td>
+            <td>variable</td>
+            <td>update_Variable</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_VALID_DOCUMENTS">src/graphql/expired.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_VALID_DOCUMENTS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ADD_FAVOURITES">src/graphql/favoris.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ADD_FAVOURITES</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DELETE_FAVOURITE">src/graphql/favoris.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DELETE_FAVOURITE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VIEW_FAVOURTIES">src/graphql/favoris.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VIEW_FAVOURTIES</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANCEL_JOB">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANCEL_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_BILLING">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_BILLING</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_JOBS">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_JOBS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SEND_MAIL_OPPORTUNITY">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SEND_MAIL_OPPORTUNITY</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_JOB">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_OFFER">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_OFFER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDATE_JOB">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDE_PAYMENT">src/graphql/follow-up.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDE_PAYMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./injectables/GraphqlService.html">src/graphql/graphql.service.ts</a>
+            </td>
+            <td>injectable</td>
+            <td>GraphqlService</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CREATE_HARBOR">src/graphql/harbor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CREATE_HARBOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_HARBOR">src/graphql/harbor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_HARBOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_HARBOR">src/graphql/harbor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_HARBOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ADMIN_MAIL_OPPORTUNITY">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ADMIN_MAIL_OPPORTUNITY</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#BILLING">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>BILLING</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANCEL_JOB">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANCEL_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CORRESPONDANT">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CORRESPONDANT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_CONTRACT">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_CONTRACT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#JOB">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#JOB_OFFERS">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>JOB_OFFERS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#OPEN_CONV">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>OPEN_CONV</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#PREVIEW_JOB">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>PREVIEW_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#RE_PUBLISH_JOB">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>RE_PUBLISH_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_AD">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_AD</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_JOB">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_SPOKENN_LANGUAGE">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_SPOKENN_LANGUAGE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPSERT_BILLING">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPSERT_BILLING</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDATE_JOB">src/graphql/job.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CONFIRM_EMAIL">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CONFIRM_EMAIL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DELETE_CLIENT">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DELETE_CLIENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DELETE_SAILOR">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DELETE_SAILOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#FORGOT_PASSWORD">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>FORGOT_PASSWORD</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#MANAGEMENT_QUERY">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>MANAGEMENT_QUERY</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_USER_DETAILS">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_USER_DETAILS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_USERS">src/graphql/management.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_USERS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#JOBS_OFFERS">src/graphql/modal.ts</a>
+            </td>
+            <td>variable</td>
+            <td>JOBS_OFFERS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDE_PAYMENT">src/graphql/modal.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDE_PAYMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ALL_NOTATIONS">src/graphql/notations.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ALL_NOTATIONS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#NOTATION_Mutation">src/graphql/notations.ts</a>
+            </td>
+            <td>variable</td>
+            <td>NOTATION_Mutation</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#NOTATION_Query">src/graphql/notations.ts</a>
+            </td>
+            <td>variable</td>
+            <td>NOTATION_Query</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_SIGNATURE">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_SIGNATURE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#INFO_SAILOR">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>INFO_SAILOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#JOB">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#OFFER">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>OFFER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#OFFER_CREATE">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>OFFER_CREATE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#OFFER_UPDATE">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>OFFER_UPDATE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#RE_PUBLISH_JOB">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>RE_PUBLISH_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SEND_EMAIL_OFFER">src/graphql/offer.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SEND_EMAIL_OFFER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#ADD_DOCUMENT">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>ADD_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANCEL_OFFER">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANCEL_OFFER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#CANDIDATE_JOB">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>CANDIDATE_JOB</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#DELETE_DOCUMENT">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>DELETE_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GENERATE_URL">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GENERATE_URL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_FAVORITES_JOBS">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_FAVORITES_JOBS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_SKIPPER_ASSIGNED_JOBS">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_SKIPPER_ASSIGNED_JOBS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_SKIPPER_CONFIRMED_JOBS">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_SKIPPER_CONFIRMED_JOBS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#IBAN_EDIT">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>IBAN_EDIT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#OPPORTUNITIES">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>OPPORTUNITIES</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SAILOR_DOCS">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SAILOR_DOCS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SAILOR_FINANCE">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SAILOR_FINANCE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SAILOR_PERSONNAL">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SAILOR_PERSONNAL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#SAILOR_PROFIL">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>SAILOR_PROFIL</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#STRIPE_FACTURATION">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>STRIPE_FACTURATION</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_DETAIL_SAILOR">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_DETAIL_SAILOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_LANGAGE">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_LANGAGE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_SAILOR">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_SAILOR</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPLOAD_RESUME">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPLOAD_RESUME</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPSERT_PREF">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPSERT_PREF</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPSERT_VISAS">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPSERT_VISAS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#USER">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>USER</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#VALIDE_DOCUMENT">src/graphql/sailor.ts</a>
+            </td>
+            <td>variable</td>
+            <td>VALIDE_DOCUMENT</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#GET_USER_SETTINGS">src/graphql/settings.ts</a>
+            </td>
+            <td>variable</td>
+            <td>GET_USER_SETTINGS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#UPDATE_USER_NOTIFICATIONS">src/graphql/settings.ts</a>
+            </td>
+            <td>variable</td>
+            <td>UPDATE_USER_NOTIFICATIONS</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <!-- miscellaneous -->
+                <a href="./miscellaneous/variables.html#STRUCTURE">src/graphql/structure.ts</a>
+            </td>
+            <td>variable</td>
+            <td>STRUCTURE</td>
+            <td align="right" data-sort="0">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="js/libs/tablesort.min.js"></script>
+<script src="js/libs/tablesort.number.min.js"></script>
+<script>
+    new Tablesort(document.getElementById('coverage-table'));
+</script>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'coverage';
+            var COMPODOC_CURRENT_PAGE_URL = 'coverage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+
+       <script src="./js/menu-wc.js" defer></script>
+       <script nomodule src="./js/menu-wc_es5.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

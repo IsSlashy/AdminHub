@@ -1,0 +1,2171 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NewCompleteJobComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/creation/new-complete-job/new-complete-job.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-new-complete-job</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./new-complete-job.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./new-complete-job.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#boat" >boat</a>
+                            </li>
+                            <li>
+                                <a href="#boatsSelect" >boatsSelect</a>
+                            </li>
+                            <li>
+                                <a href="#chessParam" >chessParam</a>
+                            </li>
+                            <li>
+                                <a href="#chessPriceQuery" >chessPriceQuery</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#chessPriceSubscription" >chessPriceSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#countries" >countries</a>
+                            </li>
+                            <li>
+                                <a href="#daysCalcul" >daysCalcul</a>
+                            </li>
+                            <li>
+                                <a href="#endDate" >endDate</a>
+                            </li>
+                            <li>
+                                <a href="#endHarbor" >endHarbor</a>
+                            </li>
+                            <li>
+                                <a href="#estimatePriceQuery" >estimatePriceQuery</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#estimatePriceSubscription" >estimatePriceSubscription</a>
+                            </li>
+                            <li>
+                                <a href="#estimationParam" >estimationParam</a>
+                            </li>
+                            <li>
+                                <a href="#jobForm" >jobForm</a>
+                            </li>
+                            <li>
+                                <a href="#languages" >languages</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#modalConfirmed" >modalConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#owner" >owner</a>
+                            </li>
+                            <li>
+                                <a href="#startDate" >startDate</a>
+                            </li>
+                            <li>
+                                <a href="#startHarbor" >startHarbor</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#_daysCalcul" >_daysCalcul</a>
+                            </li>
+                            <li>
+                                <a href="#calculateDistance" >calculateDistance</a>
+                            </li>
+                            <li>
+                                <a href="#changeBoat" >changeBoat</a>
+                            </li>
+                            <li>
+                                <a href="#createJob" >createJob</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#theoriqueTime" >theoriqueTime</a>
+                            </li>
+                            <li>
+                                <a href="#updateHarbours" >updateHarbours</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: FormBuilder, route: ActivatedRoute, apollo: Apollo, aquaplotService: <a href="../injectables/AquaplotService.html" target="_self">AquaplotService</a>, router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:124</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>aquaplotService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AquaplotService.html" target="_self" >AquaplotService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_daysCalcul"></a>
+                    <span class="name">
+                        <span ><b>_daysCalcul</b></span>
+                        <a href="#_daysCalcul"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>_daysCalcul()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="calculateDistance"></a>
+                    <span class="name">
+                        <span ><b>calculateDistance</b></span>
+                        <a href="#calculateDistance"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>calculateDistance()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="287"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:287</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeBoat"></a>
+                    <span class="name">
+                        <span ><b>changeBoat</b></span>
+                        <a href="#changeBoat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeBoat(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="271"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:271</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createJob"></a>
+                    <span class="name">
+                        <span ><b>createJob</b></span>
+                        <a href="#createJob"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createJob()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="368"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:368</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="133"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:133</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="theoriqueTime"></a>
+                    <span class="name">
+                        <span ><b>theoriqueTime</b></span>
+                        <a href="#theoriqueTime"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>theoriqueTime()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="317"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:317</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateHarbours"></a>
+                    <span class="name">
+                        <span ><b>updateHarbours</b></span>
+                        <a href="#updateHarbours"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateHarbours(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, start: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="347"
+                                    class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:347</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                                <td>start</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="boat"></a>
+                    <span class="name">
+                        <span ><b>boat</b></span>
+                        <a href="#boat"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="boatsSelect"></a>
+                    <span class="name">
+                        <span ><b>boatsSelect</b></span>
+                        <a href="#boatsSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chessParam"></a>
+                    <span class="name">
+                        <span ><b>chessParam</b></span>
+                        <a href="#chessParam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    positionType: null,
+    price: null,
+    adType: null,
+    startHarbor: null,
+    endHarbor: null,
+    coastDistance: null,
+    duration: null,
+    estimatedDays: 0,
+    boatFlag: null,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chessPriceQuery"></a>
+                    <span class="name">
+                        <span ><b>chessPriceQuery</b></span>
+                        <a href="#chessPriceQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="chessPriceSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>chessPriceSubscription</b></span>
+                        <a href="#chessPriceSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:95</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countries"></a>
+                    <span class="name">
+                        <span ><b>countries</b></span>
+                        <a href="#countries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="daysCalcul"></a>
+                    <span class="name">
+                        <span ><b>daysCalcul</b></span>
+                        <a href="#daysCalcul"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:122</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="endDate"></a>
+                    <span class="name">
+                        <span ><b>endDate</b></span>
+                        <a href="#endDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="endHarbor"></a>
+                    <span class="name">
+                        <span ><b>endHarbor</b></span>
+                        <a href="#endHarbor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:121</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estimatePriceQuery"></a>
+                    <span class="name">
+                        <span ><b>estimatePriceQuery</b></span>
+                        <a href="#estimatePriceQuery"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>QueryRef&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estimatePriceSubscription"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>estimatePriceSubscription</b></span>
+                        <a href="#estimatePriceSubscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="estimationParam"></a>
+                    <span class="name">
+                        <span ><b>estimationParam</b></span>
+                        <a href="#estimationParam"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{
+    duration: null,
+    hullLength: null,
+    boatType: null,
+    autoPilote: true,
+    adType: null,
+    endHarborLattitude: null,
+    endHarborLongitude: null,
+    startHarborLattitude: null,
+    startHarborLongitude: null,
+    positionType: null,
+    estimatedTime: 0,
+    distance: null,
+  }</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jobForm"></a>
+                    <span class="name">
+                        <span ><b>jobForm</b></span>
+                        <a href="#jobForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    ownerId: [&#x27;&#x27;, []],
+    fee: [null, []],
+    remuneration: [null, []],
+    estimatedTime: [null, []],
+
+    boatId: [null, []],
+    coastDistance: [null, []],
+    startDate: [null, Validators.required],
+    endDate: [null, Validators.required],
+    startHarbor: [null, []],
+    endHarbor: [null, []],
+    adType: [null, []],
+    spokenLanguages: [null, []],
+    description: [null, []],
+    distance: [null, []],
+    estimatedDays: [null, []],
+
+    positionType: [null, []],
+    commissionRate: [18, []],
+    contractType: [null, []],
+    monthlyRemuneration: [false, []],
+    initialPrice: [null, []],
+    chessRemuneration: [null, []],
+    travelFee: [null, []],
+    onboardFee: [null, []],
+    sleepOnBoardLastNight: [null, []],
+    sleepOnBoardNightBefore: [null, []],
+    sleeping: [null, []],
+    sendEmail: [true, []],
+    isCaptain: [null, []],
+    reserved: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="languages"></a>
+                    <span class="name">
+                        <span ><b>languages</b></span>
+                        <a href="#languages"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalConfirmed"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>modalConfirmed</b></span>
+                        <a href="#modalConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalConfirmedComponent.html" target="_self" >ModalConfirmedComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(ModalConfirmedComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="owner"></a>
+                    <span class="name">
+                        <span ><b>owner</b></span>
+                        <a href="#owner"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:118</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startDate"></a>
+                    <span class="name">
+                        <span ><b>startDate</b></span>
+                        <a href="#startDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startHarbor"></a>
+                    <span class="name">
+                        <span ><b>startHarbor</b></span>
+                        <a href="#startHarbor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/app/admin/creation/new-complete-job/new-complete-job.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo, QueryRef } from &#x27;apollo-angular&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+import { AquaplotService } from &#x27;src/app/_service/aquaplot.service&#x27;;
+import {
+  BOATS_USER,
+  CHESS_PRICE,
+  CREATE_AD,
+  CREATE_JOB,
+  ESTIMATED_PRICE,
+  GET_HARBOR,
+} from &#x27;src/graphql/creation&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+
+@Component({
+  selector: &#x27;app-new-complete-job&#x27;,
+  templateUrl: &#x27;./new-complete-job.component.html&#x27;,
+  styleUrls: [&#x27;./new-complete-job.component.css&#x27;],
+})
+export class NewCompleteJobComponent {
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+
+  jobForm: FormGroup &#x3D; this.formBuilder.group({
+    ownerId: [&#x27;&#x27;, []],
+    fee: [null, []],
+    remuneration: [null, []],
+    estimatedTime: [null, []],
+
+    boatId: [null, []],
+    coastDistance: [null, []],
+    startDate: [null, Validators.required],
+    endDate: [null, Validators.required],
+    startHarbor: [null, []],
+    endHarbor: [null, []],
+    adType: [null, []],
+    spokenLanguages: [null, []],
+    description: [null, []],
+    distance: [null, []],
+    estimatedDays: [null, []],
+
+    positionType: [null, []],
+    commissionRate: [18, []],
+    contractType: [null, []],
+    monthlyRemuneration: [false, []],
+    initialPrice: [null, []],
+    chessRemuneration: [null, []],
+    travelFee: [null, []],
+    onboardFee: [null, []],
+    sleepOnBoardLastNight: [null, []],
+    sleepOnBoardNightBefore: [null, []],
+    sleeping: [null, []],
+    sendEmail: [true, []],
+    isCaptain: [null, []],
+    reserved: [null, []],
+  });
+
+  languages: any &#x3D; new Array&lt;any&gt;();
+  countries: any &#x3D; new Array&lt;any&gt;();
+  boatsSelect: any &#x3D; new Array&lt;any&gt;();
+
+  estimatePriceQuery!: QueryRef&lt;any&gt;;
+  private estimatePriceSubscription!: Subscription;
+  estimationParam: {
+    duration: number | null;
+    hullLength: number | null;
+    boatType: string | null;
+    autoPilote: boolean;
+    adType: string | null;
+    endHarborLattitude: number | null;
+    endHarborLongitude: number | null;
+    startHarborLattitude: number | null;
+    startHarborLongitude: number | null;
+    positionType: string | null;
+    estimatedTime: number | null;
+    distance: number | null;
+  } &#x3D; {
+    duration: null,
+    hullLength: null,
+    boatType: null,
+    autoPilote: true,
+    adType: null,
+    endHarborLattitude: null,
+    endHarborLongitude: null,
+    startHarborLattitude: null,
+    startHarborLongitude: null,
+    positionType: null,
+    estimatedTime: 0,
+    distance: null,
+  };
+
+  chessPriceQuery!: QueryRef&lt;any&gt;;
+  private chessPriceSubscription!: Subscription;
+  chessParam: {
+    positionType: string | null;
+    price: string | null;
+    adType: string | null;
+    startHarbor: string | null;
+    endHarbor: string | null;
+    coastDistance: string | null;
+    duration: number | null;
+    estimatedDays: number | null;
+    boatFlag: string | null;
+  } &#x3D; {
+    positionType: null,
+    price: null,
+    adType: null,
+    startHarbor: null,
+    endHarbor: null,
+    coastDistance: null,
+    duration: null,
+    estimatedDays: 0,
+    boatFlag: null,
+  };
+
+  owner: any;
+  boat: any;
+  startHarbor: any &#x3D; null;
+  endHarbor: any &#x3D; null;
+  daysCalcul: number &#x3D; 0;
+  startDate: any;
+  endDate: any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private apollo: Apollo,
+    private aquaplotService: AquaplotService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    // initial inforamtions
+    this.route.queryParamMap.subscribe((param) &#x3D;&gt; {
+      this.jobForm.patchValue({ ownerId: param.get(&#x27;ownerId&#x27;) });
+      this.apollo
+        .query({
+          query: BOATS_USER,
+          variables: {
+            userId: this.jobForm.value.ownerId,
+          },
+        })
+        .subscribe(({ data }: any) &#x3D;&gt; {
+          this.owner &#x3D; data.user;
+          this.countries &#x3D; data.countries.nodes;
+          this.languages &#x3D; data.languages.nodes;
+          this.boatsSelect &#x3D; data.user.boatsByOwnerId.nodes;
+        });
+    });
+
+    //subscription extimated price
+    this.estimatePriceQuery &#x3D; this.apollo.watchQuery&lt;any&gt;({
+      query: ESTIMATED_PRICE,
+      fetchPolicy: &#x27;network-only&#x27;,
+      variables: this.estimationParam,
+    });
+
+    this.estimatePriceSubscription &#x3D;
+      this.estimatePriceQuery.valueChanges.subscribe(({ data }) &#x3D;&gt; {
+        this.jobForm.patchValue({ initialPrice: data.estimatedPrice });
+      });
+
+    // subscription chess price
+    this.chessPriceQuery &#x3D; this.apollo.watchQuery&lt;any&gt;({
+      query: CHESS_PRICE,
+      fetchPolicy: &#x27;network-only&#x27;,
+      variables: this.chessParam,
+    });
+
+    this.chessPriceSubscription &#x3D; this.chessPriceQuery.valueChanges.subscribe(
+      ({ data }) &#x3D;&gt; {
+        this.jobForm.patchValue({
+          chessRemuneration: data.apiCalculeRemuChess,
+        });
+      }
+    );
+
+    this.jobForm.get(&#x27;ownerId&#x27;)?.valueChanges.subscribe(() &#x3D;&gt; {
+      this.apollo
+        .query({
+          query: BOATS_USER,
+          variables: {
+            userId: this.jobForm.value.ownerId,
+          },
+        })
+        .subscribe(({ data }: any) &#x3D;&gt; {
+          this.owner &#x3D; data.user;
+          this.countries &#x3D; data.countries.nodes;
+          this.languages &#x3D; data.languages.nodes;
+          this.boatsSelect &#x3D; data.user.boatsByOwnerId.nodes;
+        });
+    });
+    this.jobForm.get(&#x27;initialPrice&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      const fee &#x3D; Math.ceil(
+        (val * this.jobForm.value.commisionRate) /
+          (this.jobForm.value.commisionRate + 100)
+      );
+      this.jobForm.patchValue({
+        fee: fee,
+        remunearion: val - fee,
+      });
+      this.chessParam.price &#x3D; val;
+      this.chessPriceQuery.refetch(this.chessParam);
+    });
+    this.jobForm.get(&#x27;monthlyRemuneration&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      this.chessParam.price &#x3D; this.jobForm.value.initialPrice;
+      if (val) {
+        this.chessParam.duration &#x3D; 25;
+        this.estimationParam.duration &#x3D; 25;
+      } else {
+        this.chessParam.duration &#x3D; this.daysCalcul;
+        this.estimationParam.duration &#x3D; this.daysCalcul;
+      }
+      this.chessPriceQuery.refetch(this.chessParam);
+      this.estimatePriceQuery.refetch(this.estimationParam);
+    });
+
+    this.jobForm.get(&#x27;positionType&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      this.estimationParam.positionType &#x3D; val;
+      this.estimatePriceQuery.refetch(this.estimationParam);
+      this.chessParam.positionType &#x3D; val;
+    });
+    this.jobForm.get(&#x27;adType&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      this.estimationParam.adType &#x3D; val;
+      this.chessParam.adType &#x3D; val;
+
+      this.chessPriceQuery.refetch(this.chessParam);
+      this.estimatePriceQuery.refetch(this.estimationParam);
+    });
+    this.jobForm.get(&#x27;coastDistance&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      this.chessParam.coastDistance &#x3D; val;
+      this.chessPriceQuery.refetch(this.chessParam);
+    });
+    this.jobForm.get(&#x27;startDate&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      setTimeout(() &#x3D;&gt; {
+        this._daysCalcul();
+      }, 300);
+    });
+    this.jobForm.get(&#x27;endDate&#x27;)?.valueChanges.subscribe((val) &#x3D;&gt; {
+      setTimeout(() &#x3D;&gt; {
+        this._daysCalcul();
+      }, 300);
+    });
+  }
+
+  _daysCalcul() {
+    const startDate &#x3D; new Date(this.jobForm.value.startDate);
+    const endDate &#x3D; new Date(this.jobForm.value.endDate);
+
+    // différence des heures
+    var time_diff &#x3D; endDate.getTime() - startDate.getTime();
+    // différence de jours
+
+    this.daysCalcul &#x3D; Math.round(time_diff / (1000 * 3600 * 24)) + 1;
+    this.estimationParam.duration &#x3D; this.daysCalcul;
+    this.chessParam.duration &#x3D; this.daysCalcul;
+
+    if (this.jobForm.value.monthlyRemuneration &amp;&amp; time_diff &gt; 90) {
+      this.chessParam.duration &#x3D; 25;
+      this.estimationParam.duration &#x3D; 25;
+
+      this.chessPriceQuery.refetch(this.chessParam);
+      this.estimatePriceQuery.refetch(this.estimationParam);
+    } else {
+      this.chessPriceQuery.refetch(this.chessParam);
+      this.estimatePriceQuery.refetch(this.estimationParam);
+    }
+  }
+
+  changeBoat(e: any) {
+    this.boat &#x3D; e.value;
+    this.jobForm.patchValue({ boatId: e.value.id });
+    this.estimationParam.autoPilote &#x3D; this.boat.equipmentsList.some(
+      (equipment: any) &#x3D;&gt; equipment.name &#x3D;&#x3D;&#x3D; &#x27;autopilot&#x27;
+    )
+      ? true
+      : false;
+
+    this.estimationParam.boatType &#x3D; this.boat.model.boatType;
+    this.estimationParam.hullLength &#x3D; this.boat.model.hullLength;
+
+    this.chessParam.boatFlag &#x3D; this.boat.flag.id;
+    this.chessPriceQuery.refetch(this.chessParam);
+  }
+
+  calculateDistance(): void {
+    if (this.startHarbor &amp;&amp; this.endHarbor) {
+      let distance: number &#x3D; 0;
+      this.aquaplotService
+        .getRoute(
+          {
+            lat: this.startHarbor.lat,
+            lng: this.startHarbor.lng,
+          },
+          {
+            lat: this.endHarbor.lat,
+            lng: this.endHarbor.lng,
+          }
+        )
+        .subscribe(
+          (response) &#x3D;&gt; {
+            distance &#x3D; response.features[0].properties.total_length;
+          },
+          (error) &#x3D;&gt; {
+            console.log(&#x27;Http request failed (GET route) : &#x27;, error);
+          },
+          () &#x3D;&gt; {
+            this.jobForm.patchValue({ distance: distance });
+            this.theoriqueTime();
+          }
+        );
+      this.theoriqueTime();
+    }
+  }
+
+  theoriqueTime() {
+    const formValue &#x3D; this.jobForm.value;
+    if (this.boat?.model.boatType &#x3D;&#x3D;&#x3D; &#x27;MOTORBOAT&#x27;) {
+      const time &#x3D;
+        Math.round(formValue.distance / 240) &gt; 1
+          ? Math.round(formValue.distance / 240)
+          : 1;
+      this.jobForm.patchValue({ estimatedTime: time });
+    } else {
+      const time &#x3D;
+        Math.round(formValue.distance / 120) &gt; 1
+          ? Math.round(formValue.distance / 120)
+          : 1;
+      this.jobForm.patchValue({ estimatedTime: time });
+    }
+
+    this.estimationParam.startHarborLattitude &#x3D; this.startHarbor.lat;
+    this.estimationParam.startHarborLongitude &#x3D; this.startHarbor.lng;
+    this.estimationParam.endHarborLattitude &#x3D; this.endHarbor.lat;
+    this.estimationParam.endHarborLongitude &#x3D; this.endHarbor.lng;
+    this.estimationParam.estimatedTime &#x3D; this.jobForm.value.estimatedTime;
+    this.estimationParam.distance &#x3D; this.jobForm.value.distance;
+    this.estimatePriceQuery.refetch(this.estimationParam);
+
+    this.chessParam.startHarbor &#x3D; this.startHarbor.id;
+    this.chessParam.endHarbor &#x3D; this.endHarbor.id;
+    this.chessParam.estimatedDays &#x3D; this.jobForm.value.estimatedTime;
+    this.chessPriceQuery.refetch(this.chessParam);
+  }
+
+  updateHarbours(e: any, start: boolean) {
+    this.apollo
+      .query({
+        query: GET_HARBOR,
+        variables: {
+          harborInput: e.id,
+        },
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        if (start) {
+          this.startHarbor &#x3D; data.harbor;
+          this.jobForm.patchValue({ startHarbor: this.startHarbor.id });
+          this.calculateDistance();
+        } else {
+          this.endHarbor &#x3D; data.harbor;
+          this.jobForm.patchValue({ endHarbor: this.endHarbor.id });
+          this.calculateDistance();
+        }
+      });
+  }
+
+  createJob() {
+    const startDateValue &#x3D; this.jobForm.get(&#x27;startDate&#x27;)?.value;
+    const endDateValue &#x3D; this.jobForm.get(&#x27;endDate&#x27;)?.value;
+
+    if (!startDateValue || !endDateValue) {
+      console.error(&#x27;Start date or end date is missing&#x27;);
+      return;
+    }
+
+    const toLocalISO &#x3D; (dateString: string | number | Date) &#x3D;&gt; {
+      const date &#x3D; new Date(dateString);
+      const offset &#x3D; date.getTimezoneOffset() * 60000;
+      return new Date(date.getTime() - offset).toISOString();
+    };
+
+    const startDateISO &#x3D; toLocalISO(startDateValue);
+    const endDateISO &#x3D; toLocalISO(endDateValue);
+    this.apollo
+      .mutate({
+        mutation: CREATE_AD,
+        variables: {
+          adInput: {
+            adType: this.jobForm.value.adType,
+            boatId: this.jobForm.value.boatId,
+            coastDistance: this.jobForm.value.coastDistance,
+            distance: this.jobForm.value.distance,
+            endHarbor: this.jobForm.value.endHarbor,
+            estimatedDays: this.jobForm.value.estimatedDays,
+            spokenLanguage: this.jobForm.value.spokenLanguages,
+            startDate: startDateISO,
+            endDate: endDateISO,
+            startHarbor: this.jobForm.value.startHarbor,
+            description: this.jobForm.value.description,
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          console.log(&#x27;Ad created with ID:&#x27;, data.createCompleteAd.ad.id);
+
+          this.apollo
+            .mutate({
+              mutation: CREATE_JOB,
+              variables: {
+                jobInput: {
+                  adId: data.createCompleteAd.ad.id,
+                  startDate: startDateISO,
+                  positionType: this.jobForm.value.positionType,
+                  commissionRate: this.jobForm.value.commissionRate,
+                  endDate: endDateISO,
+                  initialPrice: this.jobForm.value.initialPrice * 100,
+                  travelFee: this.jobForm.value.travelFee,
+                  chessRemuneration: this.jobForm.value.chessRemuneration,
+                  onboardFee: this.jobForm.value.onboardFee,
+                  contractType: this.jobForm.value.contractType,
+                  isCaptain: false,
+                  sendEmail: this.jobForm.value.sendEmail,
+                  reserved: this.jobForm.value.reserved,
+                },
+              },
+            })
+            .subscribe(
+              ({ data }: any) &#x3D;&gt; {
+                console.log(
+                  &#x27;Job created with ID:&#x27;,
+                  data.createCompleteJobAdmin.job.id
+                );
+                this.router.navigate([
+                  &#x27;admin/job/&#x27; + data.createCompleteJobAdmin.job.id,
+                ]);
+              },
+              (error) &#x3D;&gt; {
+                console.error(&#x27;Error creating job:&#x27;, error);
+                this.modalConfirmed.modalRejected();
+              }
+            );
+        },
+        (error) &#x3D;&gt; {
+          console.error(&#x27;Error creating ad:&#x27;, error);
+        }
+      );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;{{ owner?.firstname }} {{ owner?.userDetailById.lastname }}&lt;/h1&gt;
+
+&lt;form [formGroup]&#x3D;&quot;jobForm&quot;&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Owner Id&lt;/mat-label&gt;
+        &lt;input matInput text&#x3D;&quot;text&quot; formControlName&#x3D;&quot;ownerId&quot; /&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Bateau&lt;/mat-label&gt;
+        &lt;mat-select id&#x3D;&quot;boat-id&quot; (selectionChange)&#x3D;&quot;changeBoat($event)&quot;&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let boat of boatsSelect&quot; [value]&#x3D;&quot;boat&quot;&gt;
+            {{ boat.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field id&#x3D;&quot;select&quot; class&#x3D;&quot;matFormLong&quot;&gt;
+        &lt;mat-label for&#x3D;&quot;coast-distance&quot; id&#x3D;&quot;coastDistance&quot;
+          &gt;Éloignement des côtes&lt;/mat-label
+        &gt;
+        &lt;mat-select
+          style&#x3D;&quot;height: 30px&quot;
+          placeholder&#x3D;&quot;Eloignement des cotes&quot;
+          id&#x3D;&quot;coastDistance&quot;
+          formControlName&#x3D;&quot;coastDistance&quot;
+        &gt;
+          &lt;mat-option [value]&#x3D;&quot;2&quot;&gt; - 2 Nm &lt;/mat-option&gt;
+          &lt;mat-option [value]&#x3D;&quot;6&quot;&gt; - 6 Nm &lt;/mat-option&gt;
+          &lt;mat-option [value]&#x3D;&quot;20&quot;&gt; - 20 Nm &lt;/mat-option&gt;
+          &lt;mat-option [value]&#x3D;&quot;60&quot;&gt; - 60 Nm &lt;/mat-option&gt;
+          &lt;mat-option [value]&#x3D;&quot;150&quot;&gt; - 150 Nm &lt;/mat-option&gt;
+          &lt;mat-option [value]&#x3D;&quot;200&quot;&gt; - 200 Nm &lt;/mat-option&gt;
+          &lt;mat-option [value]&#x3D;&quot;250&quot;&gt; + 200 Nm &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Start Date&lt;/mat-label&gt;
+        &lt;input
+          matInput
+          [matDatepicker]&#x3D;&quot;startPicker&quot;
+          formControlName&#x3D;&quot;startDate&quot;
+        /&gt;
+        &lt;mat-datepicker-toggle
+          matSuffix
+          [for]&#x3D;&quot;startPicker&quot;
+        &gt;&lt;/mat-datepicker-toggle&gt;
+        &lt;mat-datepicker #startPicker&gt;&lt;/mat-datepicker&gt;
+      &lt;/mat-form-field&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;End Date&lt;/mat-label&gt;
+        &lt;input matInput [matDatepicker]&#x3D;&quot;endPicker&quot; formControlName&#x3D;&quot;endDate&quot; /&gt;
+        &lt;mat-datepicker-toggle
+          matSuffix
+          [for]&#x3D;&quot;endPicker&quot;
+        &gt;&lt;/mat-datepicker-toggle&gt;
+        &lt;mat-datepicker #endPicker&gt;&lt;/mat-datepicker&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label&gt;Prot de départ&lt;/label&gt;
+      &lt;app-autocomplete-harbor
+        style&#x3D;&quot;min-width: 350px&quot;
+        (onPortSelected)&#x3D;&quot;updateHarbours($event, true)&quot;
+      &gt;&lt;/app-autocomplete-harbor&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label&gt;Prot d&#x27;arrivée&lt;/label&gt;
+      &lt;app-autocomplete-harbor
+        style&#x3D;&quot;min-width: 350px&quot;
+        (onPortSelected)&#x3D;&quot;updateHarbours($event, false)&quot;
+      &gt;&lt;/app-autocomplete-harbor&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;select_material&quot;&gt;
+        &lt;mat-label&gt;Type de mission&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;adType&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;DELIVERY&quot;&gt;Convoyage&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;CHARTER&quot;&gt;Charter&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;SUPPORT&quot;&gt;Accompagnement&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;COACHING&quot;&gt;Coaching&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;RIVER&quot;&gt;Fluvial&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong select_material&quot;&gt;
+        &lt;mat-label for&#x3D;&quot;langues&quot; class&#x3D;&quot;label control-label&quot;
+          &gt;Langues parlées&lt;/mat-label
+        &gt;
+        &lt;mat-select id&#x3D;&quot;totalMilles&quot; formControlName&#x3D;&quot;spokenLanguages&quot; multiple&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let langue of languages&quot; [value]&#x3D;&quot;langue.id&quot;&gt;
+            {{ langue.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label&gt;Description&lt;/label&gt;
+      &lt;mat-form-field class&#x3D;&quot;w-100&quot;&gt;
+        &lt;textarea
+          matInput
+          class&#x3D;&quot;form-control&quot;
+          id&#x3D;&quot;floatingTextarea2&quot;
+          formControlName&#x3D;&quot;description&quot;
+        &gt;&lt;/textarea&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;select_material&quot;&gt;
+        &lt;mat-label&gt;Poste&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;positionType&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;SKIPPER&quot;&gt;Skipper / Capitaine&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;HOTESSE&quot;&gt;Hôtesse / Steward&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;HOTESSE_COOK&quot;&gt;Hôtesse Cook&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;SECOND&quot;&gt;Second&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;MATELOT&quot;&gt;Matelot&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;CHEF&quot;&gt;Chef&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;MECANICIEN&quot;&gt;Mecanicien&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;CHEF_DE_QUART&quot;&gt;Chef de quart&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Pourcentage commission&lt;/mat-label&gt;
+        &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;commissionRate&quot; /&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;select_material&quot;&gt;
+        &lt;mat-label&gt;Type de contrat&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;contractType&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;FREELANCE&quot;&gt;Freelance&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;EMPLOYEE&quot;&gt;Enrolé&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;monthlyRemuneration&quot;
+      &gt;
+        &lt;mat-label&gt;Type de rémunération&lt;/mat-label&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;true&quot;&gt;Mensuelle&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;false&quot;&gt;Total&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Prix initial (en euro)&lt;/mat-label&gt;
+        &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;initialPrice&quot; /&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field&gt;
+        &lt;mat-label&gt;Remuneration chess&lt;/mat-label&gt;
+        &lt;input matInput type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;chessRemuneration&quot; /&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;dépense a bord&lt;/label&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;onboardFee&quot;
+      &gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;&#x27;SKIPPER&#x27;&quot;&gt;Skipper&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;&#x27;OWNER&#x27;&quot;&gt;Onwer&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;frais de transport&lt;/label&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;travelFee&quot;
+      &gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;&#x27;SKIPPER&#x27;&quot;&gt;Skipper&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;&#x27;OWNER&#x27;&quot;&gt;Onwer&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;
+        &gt;Possibilité de dormir à bord la veille de l&#x27;embarquement&lt;/label
+      &gt;&lt;br /&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;sleepOnBoardNightBefore&quot;
+      &gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;true&quot;&gt;Oui&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;false&quot;&gt;Non&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;
+        &gt;Possibilité de dormir à bord le soir du débarquement&lt;/label
+      &gt;&lt;br /&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;sleepOnBoardLastNight&quot;
+      &gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;true&quot;&gt;Oui&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;false&quot;&gt;Non&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field id&#x3D;&quot;select&quot; class&#x3D;&quot;matFormLong&quot;&gt;
+        &lt;mat-label for&#x3D;&quot;coast-distance&quot;&gt;couchage&lt;/mat-label&gt;
+        &lt;mat-select style&#x3D;&quot;height: 30px&quot; formControlName&#x3D;&quot;sleeping&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;POINTE_AVANT&quot;&gt; Pointe avant &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;CABINE_PERSO&quot;&gt; Cabine personnelle &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;CABINE_PARTAGE&quot;&gt; Cabine partagée &lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;CARRE&quot;&gt; Carré &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Envoyer l&#x27;email opportunité au skipper ?&lt;/label&gt;&lt;br /&gt;
+      &lt;mat-radio-group
+        aria-label&#x3D;&quot;Select an option&quot;
+        formControlName&#x3D;&quot;sendEmail&quot;
+      &gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;true&quot;&gt;Oui&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button [value]&#x3D;&quot;false&quot;&gt;Non&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Restriction de candidature&lt;/label&gt;&lt;br /&gt;
+      &lt;mat-radio-group aria-label&#x3D;&quot;Select an option&quot; formControlName&#x3D;&quot;reserved&quot;&gt;
+        &lt;mat-radio-button value&#x3D;&quot;ALL&quot;&gt;Sans restriction&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button value&#x3D;&quot;APPROVED&quot;
+          &gt;Skipper approved et favoris&lt;/mat-radio-button
+        &gt;
+        &lt;mat-radio-button value&#x3D;&quot;FAVOURITES&quot;&gt;Skipper favoris&lt;/mat-radio-button&gt;
+        &lt;mat-radio-button value&#x3D;&quot;RESERVED&quot;&gt;Skipper trouvé&lt;/mat-radio-button&gt;
+      &lt;/mat-radio-group&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;createJob()&quot;&gt;
+    Créer la mission
+  &lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./new-complete-job.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1>{{ owner?.firstname }} {{ owner?.userDetailById.lastname }}</h1><form [formGroup]="jobForm">  <div class="form-row">    <div class="col">      <mat-form-field>        <mat-label>Owner Id</mat-label>        <input matInput text="text" formControlName="ownerId" />      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field>        <mat-label>Bateau</mat-label>        <mat-select id="boat-id" (selectionChange)="changeBoat($event)">          <mat-option *ngFor="let boat of boatsSelect" [value]="boat">            {{ boat.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <mat-form-field id="select" class="matFormLong">        <mat-label for="coast-distance" id="coastDistance"          >Éloignement des côtes</mat-label        >        <mat-select          style="height: 30px"          placeholder="Eloignement des cotes"          id="coastDistance"          formControlName="coastDistance"        >          <mat-option [value]="2"> - 2 Nm </mat-option>          <mat-option [value]="6"> - 6 Nm </mat-option>          <mat-option [value]="20"> - 20 Nm </mat-option>          <mat-option [value]="60"> - 60 Nm </mat-option>          <mat-option [value]="150"> - 150 Nm </mat-option>          <mat-option [value]="200"> - 200 Nm </mat-option>          <mat-option [value]="250"> + 200 Nm </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field>        <mat-label>Start Date</mat-label>        <input          matInput          [matDatepicker]="startPicker"          formControlName="startDate"        />        <mat-datepicker-toggle          matSuffix          [for]="startPicker"        ></mat-datepicker-toggle>        <mat-datepicker #startPicker></mat-datepicker>      </mat-form-field>      <mat-form-field>        <mat-label>End Date</mat-label>        <input matInput [matDatepicker]="endPicker" formControlName="endDate" />        <mat-datepicker-toggle          matSuffix          [for]="endPicker"        ></mat-datepicker-toggle>        <mat-datepicker #endPicker></mat-datepicker>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label>Prot de départ</label>      <app-autocomplete-harbor        style="min-width: 350px"        (onPortSelected)="updateHarbours($event, true)"      ></app-autocomplete-harbor>    </div>    <div class="col">      <label>Prot d\'arrivée</label>      <app-autocomplete-harbor        style="min-width: 350px"        (onPortSelected)="updateHarbours($event, false)"      ></app-autocomplete-harbor>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field class="select_material">        <mat-label>Type de mission</mat-label>        <mat-select formControlName="adType">          <mat-option value="DELIVERY">Convoyage</mat-option>          <mat-option value="CHARTER">Charter</mat-option>          <mat-option value="SUPPORT">Accompagnement</mat-option>          <mat-option value="COACHING">Coaching</mat-option>          <mat-option value="RIVER">Fluvial</mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <mat-form-field class="matFormLong select_material">        <mat-label for="langues" class="label control-label"          >Langues parlées</mat-label        >        <mat-select id="totalMilles" formControlName="spokenLanguages" multiple>          <mat-option *ngFor="let langue of languages" [value]="langue.id">            {{ langue.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label>Description</label>      <mat-form-field class="w-100">        <textarea          matInput          class="form-control"          id="floatingTextarea2"          formControlName="description"        ></textarea>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field class="select_material">        <mat-label>Poste</mat-label>        <mat-select formControlName="positionType">          <mat-option value="SKIPPER">Skipper / Capitaine</mat-option>          <mat-option value="HOTESSE">Hôtesse / Steward</mat-option>          <mat-option value="HOTESSE_COOK">Hôtesse Cook</mat-option>          <mat-option value="SECOND">Second</mat-option>          <mat-option value="MATELOT">Matelot</mat-option>          <mat-option value="CHEF">Chef</mat-option>          <mat-option value="MECANICIEN">Mecanicien</mat-option>          <mat-option value="CHEF_DE_QUART">Chef de quart</mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <mat-form-field>        <mat-label>Pourcentage commission</mat-label>        <input matInput type="number" formControlName="commissionRate" />      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field class="select_material">        <mat-label>Type de contrat</mat-label>        <mat-select formControlName="contractType">          <mat-option value="FREELANCE">Freelance</mat-option>          <mat-option value="EMPLOYEE">Enrolé</mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <mat-radio-group        aria-label="Select an option"        formControlName="monthlyRemuneration"      >        <mat-label>Type de rémunération</mat-label>        <mat-radio-button [value]="true">Mensuelle</mat-radio-button>        <mat-radio-button [value]="false">Total</mat-radio-button>      </mat-radio-group>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field>        <mat-label>Prix initial (en euro)</mat-label>        <input matInput type="number" formControlName="initialPrice" />      </mat-form-field>    </div>    <div class="col">      <mat-form-field>        <mat-label>Remuneration chess</mat-label>        <input matInput type="number" formControlName="chessRemuneration" />      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">dépense a bord</label>      <mat-radio-group        aria-label="Select an option"        formControlName="onboardFee"      >        <mat-radio-button [value]="\'SKIPPER\'">Skipper</mat-radio-button>        <mat-radio-button [value]="\'OWNER\'">Onwer</mat-radio-button>      </mat-radio-group>    </div>    <div class="col">      <label for="phone">frais de transport</label>      <mat-radio-group        aria-label="Select an option"        formControlName="travelFee"      >        <mat-radio-button [value]="\'SKIPPER\'">Skipper</mat-radio-button>        <mat-radio-button [value]="\'OWNER\'">Onwer</mat-radio-button>      </mat-radio-group>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone"        >Possibilité de dormir à bord la veille de l\'embarquement</label      ><br />      <mat-radio-group        aria-label="Select an option"        formControlName="sleepOnBoardNightBefore"      >        <mat-radio-button [value]="true">Oui</mat-radio-button>        <mat-radio-button [value]="false">Non</mat-radio-button>      </mat-radio-group>    </div>    <div class="col">      <label for="phone"        >Possibilité de dormir à bord le soir du débarquement</label      ><br />      <mat-radio-group        aria-label="Select an option"        formControlName="sleepOnBoardLastNight"      >        <mat-radio-button [value]="true">Oui</mat-radio-button>        <mat-radio-button [value]="false">Non</mat-radio-button>      </mat-radio-group>    </div>  </div>  <div class="form-row">    <div class="col">      <mat-form-field id="select" class="matFormLong">        <mat-label for="coast-distance">couchage</mat-label>        <mat-select style="height: 30px" formControlName="sleeping">          <mat-option value="POINTE_AVANT"> Pointe avant </mat-option>          <mat-option value="CABINE_PERSO"> Cabine personnelle </mat-option>          <mat-option value="CABINE_PARTAGE"> Cabine partagée </mat-option>          <mat-option value="CARRE"> Carré </mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <label for="phone">Envoyer l\'email opportunité au skipper ?</label><br />      <mat-radio-group        aria-label="Select an option"        formControlName="sendEmail"      >        <mat-radio-button [value]="true">Oui</mat-radio-button>        <mat-radio-button [value]="false">Non</mat-radio-button>      </mat-radio-group>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Restriction de candidature</label><br />      <mat-radio-group aria-label="Select an option" formControlName="reserved">        <mat-radio-button value="ALL">Sans restriction</mat-radio-button>        <mat-radio-button value="APPROVED"          >Skipper approved et favoris</mat-radio-button        >        <mat-radio-button value="FAVOURITES">Skipper favoris</mat-radio-button>        <mat-radio-button value="RESERVED">Skipper trouvé</mat-radio-button>      </mat-radio-group>    </div>  </div>  <button class="btn btn-primary" (click)="createJob()">    Créer la mission  </button></form></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NewCompleteJobComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NewCompleteJobComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

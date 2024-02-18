@@ -1,0 +1,382 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Modules</li>
+    <li class="breadcrumb-item" >AdminRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+        <a href="#info" 
+            class="nav-link"
+            class="nav-link active"
+            role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li class="nav-item">
+        <a href="#source" 
+            class="nav-link"
+            
+            role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/admin/admin-routing.module.ts</code>
+        </p>
+
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
+import { ConnectionComponent } from &#x27;./connection/connection.component&#x27;;
+import { AdminComponent } from &#x27;./admin.component&#x27;;
+import { DashboardComponent } from &#x27;./dashboard/dashboard.component&#x27;;
+import { ManagementComponent } from &#x27;./management/management.component&#x27;;
+import { ChessComponent } from &#x27;./chess/chess.component&#x27;;
+import { DetailComponent } from &#x27;./chess/detail/detail.component&#x27;;
+import { ApprovalComponent } from &#x27;./approval/approval.component&#x27;;
+import { StatistiquesComponent } from &#x27;./dashboard/statistiques/statistiques.component&#x27;;
+import { JobsComponent } from &#x27;./dashboard/jobs/jobs.component&#x27;;
+import { DevisComponent } from &#x27;./dashboard/devis/devis.component&#x27;;
+import { JobComponent } from &#x27;./detail/job/job.component&#x27;;
+import { BillingComponent } from &#x27;./detail/job/billing/billing.component&#x27;;
+import { InfoComponent } from &#x27;./detail/job/info/info.component&#x27;;
+import { MatchingComponent } from &#x27;./detail/job/matching/matching.component&#x27;;
+import { SailorComponent } from &#x27;./detail/sailor/sailor.component&#x27;;
+import { ProfilComponent } from &#x27;./detail/sailor/profil/profil.component&#x27;;
+import { DocumentsComponent } from &#x27;./detail/sailor/documents/documents.component&#x27;;
+import { PersonalComponent } from &#x27;./detail/sailor/personal/personal.component&#x27;;
+import { ClientComponent } from &#x27;./detail/client/client.component&#x27;;
+import { ClientJobsComponent } from &#x27;./detail/client/client-jobs/client-jobs.component&#x27;;
+import { BoatsComponent } from &#x27;./detail/client/boats/boats.component&#x27;;
+import { BoatComponent } from &#x27;./detail/boat/boat.component&#x27;;
+import { ClientPersonalComponent } from &#x27;./detail/client/client-personal/client-personal.component&#x27;;
+import { SearchMissionComponent } from &#x27;./search-mission/search-mission.component&#x27;;
+import { ChatComponent } from &#x27;./chat/chat.component&#x27;;
+import { DataComponent } from &#x27;./data/data.component&#x27;;
+import { PaimentsComponent } from &#x27;./detail/client/paiments/paiments.component&#x27;;
+import { SailorJobsComponent } from &#x27;./detail/sailor/sailor-jobs/sailor-jobs.component&#x27;;
+import { FinanceComponent } from &#x27;./detail/sailor/finance/finance.component&#x27;;
+import { FollowUpComponent } from &#x27;./follow-up/follow-up.component&#x27;;
+import { OffersComponent } from &#x27;./detail/job/offers/offers.component&#x27;;
+import { OfferComponent } from &#x27;./detail/offer/offer.component&#x27;;
+import { CreationComponent } from &#x27;./creation/creation.component&#x27;;
+import { NewCompleteJobComponent } from &#x27;./creation/new-complete-job/new-complete-job.component&#x27;;
+import { NewJobComponent } from &#x27;./creation/new-job/new-job.component&#x27;;
+import { NewOfferComponent } from &#x27;./creation/new-offer/new-offer.component&#x27;;
+import { NewBoatComponent } from &#x27;./creation/new-boat/new-boat.component&#x27;;
+import { AuthGuard } from &#x27;../_guard/auth.guard&#x27;;
+import { VariablesComponent } from &#x27;./data/variables/variables.component&#x27;;
+import { HarborComponent } from &#x27;./data/harbor/harbor.component&#x27;;
+import { NotationsComponent } from &#x27;./notations/notations.component&#x27;;
+import { NotationComponent } from &#x27;./detail/notation/notation.component&#x27;;
+import { ModelComponent } from &#x27;./data/model/model.component&#x27;;
+import { DegreesComponent } from &#x27;./approval/degrees/degrees.component&#x27;;
+import { TrainingsComponent } from &#x27;./approval/trainings/trainings.component&#x27;;
+import { ResumesComponent } from &#x27;./approval/resumes/resumes.component&#x27;;
+import { SettingsComponent } from &#x27;./detail/sailor/settings/settings.component&#x27;;
+import { FavorisComponent } from &#x27;./detail/client/favorites/favorites.component&#x27;;
+import { AlertDocumentComponent } from &#x27;./dashboard/alert-document/alert-document.component&#x27;;
+
+const routes: Routes &#x3D; [
+  { path: &#x27;&#x27;, redirectTo: &#x27;connection&#x27;, pathMatch: &#x27;full&#x27; },
+  { path: &#x27;connection&#x27;, component: ConnectionComponent },
+  {
+    path: &#x27;admin&#x27;,
+    component: AdminComponent,
+    children: [
+      { path: &#x27;&#x27;, redirectTo: &#x27;dashboard&#x27;, pathMatch: &#x27;full&#x27; },
+      {
+        path: &#x27;dashboard&#x27;,
+        component: DashboardComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;statistiques&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;statistiques&#x27;, component: StatistiquesComponent },
+          { path: &#x27;jobs&#x27;, component: JobsComponent },
+          { path: &#x27;devis&#x27;, component: DevisComponent },
+          { path: &#x27;alert-document&#x27;, component: AlertDocumentComponent },
+          { path: &#x27;profil/:id&#x27;, component: ProfilComponent },
+        ],
+      },
+      {
+        path: &#x27;approval&#x27;,
+        component: ApprovalComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;degree&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;degree&#x27;, component: DegreesComponent },
+          { path: &#x27;training&#x27;, component: TrainingsComponent },
+          { path: &#x27;resume&#x27;, component: ResumesComponent },
+        ],
+      },
+      { path: &#x27;management&#x27;, component: ManagementComponent },
+      { path: &#x27;chess&#x27;, component: ChessComponent },
+      { path: &#x27;chat&#x27;, component: ChatComponent },
+      { path: &#x27;follow-up&#x27;, component: FollowUpComponent },
+      { path: &#x27;search-mission&#x27;, component: SearchMissionComponent },
+      { path: &#x27;notations&#x27;, component: NotationsComponent },
+      { path: &#x27;notation/:id&#x27;, component: NotationComponent },
+      {
+        path: &#x27;data&#x27;,
+        component: DataComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;variables&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;port&#x27;, component: HarborComponent },
+          { path: &#x27;variables&#x27;, component: VariablesComponent },
+          { path: &#x27;model&#x27;, component: ModelComponent },
+        ],
+      },
+
+      // PAGE CREATION
+      {
+        path: &#x27;creation&#x27;,
+        component: CreationComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;complete-job&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;complete-job&#x27;, component: NewCompleteJobComponent },
+          { path: &#x27;job&#x27;, component: NewJobComponent },
+          { path: &#x27;offer&#x27;, component: NewOfferComponent },
+          { path: &#x27;boat/:id&#x27;, component: NewBoatComponent },
+        ],
+      },
+
+      // PAGE DETAILS
+      { path: &#x27;chess/:id&#x27;, component: DetailComponent },
+      { path: &#x27;boat/:id&#x27;, component: BoatComponent },
+      { path: &#x27;offer/:id&#x27;, component: OfferComponent },
+      {
+        path: &#x27;job/:id&#x27;,
+        component: JobComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;info&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;info&#x27;, component: InfoComponent },
+          { path: &#x27;billing&#x27;, component: BillingComponent },
+          { path: &#x27;matching&#x27;, component: MatchingComponent },
+          { path: &#x27;offers&#x27;, component: OffersComponent },
+        ],
+      },
+      {
+        path: &#x27;sailor/:id&#x27;,
+        component: SailorComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;profil&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;profil&#x27;, component: ProfilComponent },
+          { path: &#x27;documents&#x27;, component: DocumentsComponent },
+          { path: &#x27;perso&#x27;, component: PersonalComponent },
+          { path: &#x27;jobs&#x27;, component: SailorJobsComponent },
+          { path: &#x27;finance&#x27;, component: FinanceComponent },
+          { path: &#x27;settings&#x27;, component: SettingsComponent },
+          { path: &#x27;favoris&#x27;, component: FavorisComponent },
+        ],
+      },
+      {
+        path: &#x27;client/:id&#x27;,
+        component: ClientComponent,
+        children: [
+          { path: &#x27;&#x27;, redirectTo: &#x27;profil&#x27;, pathMatch: &#x27;full&#x27; },
+          { path: &#x27;profil&#x27;, component: ClientPersonalComponent },
+          { path: &#x27;boats&#x27;, component: BoatsComponent },
+          { path: &#x27;jobs&#x27;, component: ClientJobsComponent },
+          { path: &#x27;paiments&#x27;, component: PaimentsComponent },
+          { path: &#x27;settings&#x27;, component: SettingsComponent },
+          { path: &#x27;favoris&#x27;, component: FavorisComponent },
+        ],
+      },
+    ],
+    canActivate: [AuthGuard],
+  },
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class AdminRoutingModule {}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

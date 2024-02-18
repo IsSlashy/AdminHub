@@ -1,0 +1,2761 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DegreesComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/approval/degrees/degrees.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-degrees</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./degrees.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./degrees.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#file" >file</a>
+                            </li>
+                            <li>
+                                <a href="#filteredOptions" >filteredOptions</a>
+                            </li>
+                            <li>
+                                <a href="#holderNumberCanUpdate" >holderNumberCanUpdate</a>
+                            </li>
+                            <li>
+                                <a href="#modifyForm" >modifyForm</a>
+                            </li>
+                            <li>
+                                <a href="#myControl" >myControl</a>
+                            </li>
+                            <li>
+                                <a href="#options" >options</a>
+                            </li>
+                            <li>
+                                <a href="#reason" >reason</a>
+                            </li>
+                            <li>
+                                <a href="#searchDocObject" >searchDocObject</a>
+                            </li>
+                            <li>
+                                <a href="#selectedReason" >selectedReason</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTable" >selectedTable</a>
+                            </li>
+                            <li>
+                                <a href="#selectedTraining" >selectedTraining</a>
+                            </li>
+                            <li>
+                                <a href="#subscription" >subscription</a>
+                            </li>
+                            <li>
+                                <a href="#urlDocument" >urlDocument</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#_filter" >_filter</a>
+                            </li>
+                            <li>
+                                <a href="#changeDocument" >changeDocument</a>
+                            </li>
+                            <li>
+                                <a href="#closeModal" >closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#confirmModification" >confirmModification</a>
+                            </li>
+                            <li>
+                                <a href="#deleteDocument" >deleteDocument</a>
+                            </li>
+                            <li>
+                                <a href="#displayFn" >displayFn</a>
+                            </li>
+                            <li>
+                                <a href="#downloadImage" >downloadImage</a>
+                            </li>
+                            <li>
+                                <a href="#getDegrees" >getDegrees</a>
+                            </li>
+                            <li>
+                                <a href="#handleFileInput" >handleFileInput</a>
+                            </li>
+                            <li>
+                                <a href="#invalidate" >invalidate</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges" >ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onReasonSelected" >onReasonSelected</a>
+                            </li>
+                            <li>
+                                <a href="#openDocUrl" >openDocUrl</a>
+                            </li>
+                            <li>
+                                <a href="#openModal" >openModal</a>
+                            </li>
+                            <li>
+                                <a href="#openRejectModal" >openRejectModal</a>
+                            </li>
+                            <li>
+                                <a href="#patchFunction" >patchFunction</a>
+                            </li>
+                            <li>
+                                <a href="#selectTable" >selectTable</a>
+                            </li>
+                            <li>
+                                <a href="#validation" >validation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#searchDoc" >searchDoc</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(cdRef: ChangeDetectorRef, formBuilder: UntypedFormBuilder, apollo: Apollo, sanitizer: DomSanitizer)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:58</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>cdRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>ChangeDetectorRef</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>UntypedFormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sanitizer</td>
+                                                  
+                                                        <td>
+                                                                    <code>DomSanitizer</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section data-compodoc="block-inputs">
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchDoc"></a>
+                        <b>searchDoc</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:35</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="_filter"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>_filter</b></span>
+                        <a href="#_filter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>_filter(name: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>name</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>User[]</code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeDocument"></a>
+                    <span class="name">
+                        <span ><b>changeDocument</b></span>
+                        <a href="#changeDocument"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>changeDocument(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="138"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:138</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModal"></a>
+                    <span class="name">
+                        <span ><b>closeModal</b></span>
+                        <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeModal(modalId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>modalId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmModification"></a>
+                    <span class="name">
+                        <span ><b>confirmModification</b></span>
+                        <a href="#confirmModification"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmModification(selectedTraining: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="313"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:313</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selectedTraining</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteDocument"></a>
+                    <span class="name">
+                        <span ><b>deleteDocument</b></span>
+                        <a href="#deleteDocument"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteDocument()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="252"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:252</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="displayFn"></a>
+                    <span class="name">
+                        <span ><b>displayFn</b></span>
+                        <a href="#displayFn"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>displayFn(user: <a href="../interfaces/User.html" target="_self">User</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:142</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>user</td>
+                                            <td>
+                                                            <code><a href="../interfaces/User.html" target="_self" >User</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="downloadImage"></a>
+                    <span class="name">
+                        <span ><b>downloadImage</b></span>
+                        <a href="#downloadImage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>downloadImage(url: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="211"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:211</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>url</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDegrees"></a>
+                    <span class="name">
+                        <span ><b>getDegrees</b></span>
+                        <a href="#getDegrees"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDegrees()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:124</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleFileInput"></a>
+                    <span class="name">
+                        <span ><b>handleFileInput</b></span>
+                        <a href="#handleFileInput"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleFileInput(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="202"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:202</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="invalidate"></a>
+                    <span class="name">
+                        <span ><b>invalidate</b></span>
+                        <a href="#invalidate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>invalidate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="277"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:277</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnChanges"></a>
+                    <span class="name">
+                        <span ><b>ngOnChanges</b></span>
+                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnChanges()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onReasonSelected"></a>
+                    <span class="name">
+                        <span ><b>onReasonSelected</b></span>
+                        <a href="#onReasonSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onReasonSelected(reason: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="504"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:504</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>reason</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openDocUrl"></a>
+                    <span class="name">
+                        <span ><b>openDocUrl</b></span>
+                        <a href="#openDocUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openDocUrl(url: SafeResourceUrl)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="182"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:182</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>url</td>
+                                            <td>
+                                                        <code>SafeResourceUrl</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openModal"></a>
+                    <span class="name">
+                        <span ><b>openModal</b></span>
+                        <a href="#openModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openModal(training: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>training</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openRejectModal"></a>
+                    <span class="name">
+                        <span ><b>openRejectModal</b></span>
+                        <a href="#openRejectModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openRejectModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="147"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:147</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patchFunction"></a>
+                    <span class="name">
+                        <span ><b>patchFunction</b></span>
+                        <a href="#patchFunction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>patchFunction(data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="190"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:190</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>data</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectTable"></a>
+                    <span class="name">
+                        <span ><b>selectTable</b></span>
+                        <a href="#selectTable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectTable(table: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="119"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:119</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>table</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="validation"></a>
+                    <span class="name">
+                        <span ><b>validation</b></span>
+                        <a href="#validation"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>validation(degree: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="224"
+                                    class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:224</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>degree</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="file"></a>
+                    <span class="name">
+                        <span ><b>file</b></span>
+                        <a href="#file"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:54</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="filteredOptions"></a>
+                    <span class="name">
+                        <span ><b>filteredOptions</b></span>
+                        <a href="#filteredOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Observable&lt;User[]&gt; | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="holderNumberCanUpdate"></a>
+                    <span class="name">
+                        <span ><b>holderNumberCanUpdate</b></span>
+                        <a href="#holderNumberCanUpdate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:55</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modifyForm"></a>
+                    <span class="name">
+                        <span ><b>modifyForm</b></span>
+                        <a href="#modifyForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    type: [null, []],
+    name: null,
+    serial: null,
+    holderName: [null, []],
+    holderNumber: [null, []],
+    date: [null, []],
+    endDate: [null, []],
+    birthday: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="myControl"></a>
+                    <span class="name">
+                        <span ><b>myControl</b></span>
+                        <a href="#myControl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormControl()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options"></a>
+                    <span class="name">
+                        <span ><b>options</b></span>
+                        <a href="#options"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Array&lt;User&gt;</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="reason"></a>
+                    <span class="name">
+                        <span ><b>reason</b></span>
+                        <a href="#reason"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="searchDocObject"></a>
+                    <span class="name">
+                        <span ><b>searchDocObject</b></span>
+                        <a href="#searchDocObject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedReason"></a>
+                    <span class="name">
+                        <span ><b>selectedReason</b></span>
+                        <a href="#selectedReason"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:56</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTable"></a>
+                    <span class="name">
+                        <span ><b>selectedTable</b></span>
+                        <a href="#selectedTable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;WAITING&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedTraining"></a>
+                    <span class="name">
+                        <span ><b>selectedTraining</b></span>
+                        <a href="#selectedTraining"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="subscription"></a>
+                    <span class="name">
+                        <span ><b>subscription</b></span>
+                        <a href="#subscription"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>Subscription</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="urlDocument"></a>
+                    <span class="name">
+                        <span ><b>urlDocument</b></span>
+                        <a href="#urlDocument"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>SafeResourceUrl</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/admin/approval/degrees/degrees.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  SecurityContext,
+} from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, UntypedFormBuilder } from &#x27;@angular/forms&#x27;;
+import { DomSanitizer, SafeResourceUrl } from &#x27;@angular/platform-browser&#x27;;
+import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { Observable, Subscription, map, startWith } from &#x27;rxjs&#x27;;
+import {
+  ARCHIVE_DOCUMENT,
+  GENERATE_URL,
+  GET_DEGREES,
+  GET_DOCUMENTS,
+  REFUSE_DOCUMENT,
+  UPDATE_DETAILS,
+  UPDATE_DOCUMENT,
+  UPDATE_USER,
+  VALIDE_DOCUMENT,
+} from &#x27;src/graphql/approval&#x27;;
+
+export interface User {
+  name: string;
+  id: string;
+  shortName: string;
+}
+@Component({
+  selector: &#x27;app-degrees&#x27;,
+  templateUrl: &#x27;./degrees.component.html&#x27;,
+  styleUrls: [&#x27;./degrees.component.css&#x27;],
+})
+export class DegreesComponent {
+  @Input() searchDoc: any;
+  searchDocObject: any;
+  selectedTraining: any;
+  filteredOptions: Observable&lt;User[]&gt; | undefined;
+  options: Array&lt;User&gt; &#x3D; [];
+  myControl &#x3D; new FormControl();
+  urlDocument: SafeResourceUrl &#x3D; &#x27;&#x27;;
+  subscription!: Subscription;
+
+  modifyForm: FormGroup &#x3D; this.formBuilder.group({
+    type: [null, []],
+    name: null,
+    serial: null,
+    holderName: [null, []],
+    holderNumber: [null, []],
+    date: [null, []],
+    endDate: [null, []],
+    birthday: [null, []],
+  });
+  file: any;
+  holderNumberCanUpdate: boolean &#x3D; false;
+  selectedReason: string &#x3D; &#x27;&#x27;;
+  reason: string &#x3D; &#x27;&#x27;;
+  selectedTable: string &#x3D; &#x27;WAITING&#x27;;
+
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private formBuilder: UntypedFormBuilder,
+    private apollo: Apollo,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit() {
+    this.apollo
+      .query({
+        query: GET_DOCUMENTS,
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        data.documentTypes.nodes.forEach((element: any) &#x3D;&gt; {
+          const user: User &#x3D; {
+            name: element.name,
+            id: element.id,
+            shortName: element.country?.shortName,
+          };
+          this.options.push(user);
+        });
+        this.filteredOptions &#x3D; this.myControl.valueChanges.pipe(
+          startWith(&#x27;&#x27;),
+          map((value) &#x3D;&gt; (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? value : value.name)),
+          map((name) &#x3D;&gt; (name ? this._filter(name) : this.options.slice()))
+        );
+      });
+
+    //GET degrees
+
+    this.subscription &#x3D; this.apollo
+      .watchQuery({
+        query: GET_DEGREES,
+        fetchPolicy: &#x27;network-only&#x27;,
+        variables: {
+          type: &#x27;DEGREE&#x27;,
+          status: this.selectedTable,
+        },
+      })
+      .valueChanges.subscribe(({ data }: any) &#x3D;&gt; {
+        this.searchDocObject &#x3D; data;
+      });
+  }
+  ngOnChanges() {
+    try {
+      this.searchDocObject &#x3D; JSON.parse(this.searchDoc);
+    } catch (error) {
+      console.error(&quot;Erreur lors de l&#x27;analyse JSON :&quot;, error);
+      this.searchDocObject &#x3D; null;
+    }
+    this.cdRef.detectChanges();
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue &#x3D; name.toLowerCase();
+    return this.options.filter((option) &#x3D;&gt;
+      option.name.toLowerCase().includes(filterValue)
+    );
+  }
+  selectTable(table: string) {
+    this.selectedTable &#x3D; table;
+    this.getDegrees();
+  }
+  //GET degrees
+  getDegrees() {
+    this.apollo
+      .query({
+        query: GET_DEGREES,
+        fetchPolicy: &#x27;network-only&#x27;,
+        variables: {
+          type: &#x27;DEGREE&#x27;,
+          status: this.selectedTable,
+        },
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.searchDocObject &#x3D; data;
+      });
+  }
+  changeDocument(e: any) {
+    console.log(&#x27;levent&#x27;, e.option.value.id);
+    this.modifyForm.controls[&#x27;type&#x27;].setValue(e.option.value.id);
+  }
+  displayFn(user: User): string {
+    return user &amp;&amp; user.name ? user.name : &#x27;&#x27;;
+  }
+
+  //MODAL
+  openRejectModal() {
+    const modal &#x3D; document.getElementById(&#x27;modal-rejected&#x27;);
+    if (modal) {
+      modal.style.display &#x3D; &#x27;block&#x27;;
+      modal.style.opacity &#x3D; &#x27;1&#x27;;
+    }
+  }
+
+  openModal(training: any) {
+    if (training) {
+      this.patchFunction(training);
+      if (
+        this.modifyForm.value.holderNumber &#x3D;&#x3D;&#x3D; undefined ||
+        this.modifyForm.value.holderNumber
+      ) {
+        console.log(&#x27;value is null&#x27;);
+        this.holderNumberCanUpdate &#x3D; true;
+      }
+    }
+    this.selectedTraining &#x3D; training;
+    this.urlDocument &#x3D; this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.selectedTraining.documentUrl
+    );
+    const modal &#x3D; document.getElementById(&#x27;myModal&#x27;);
+    if (modal) {
+      modal.style.display &#x3D; &#x27;block&#x27;;
+      modal.style.opacity &#x3D; &#x27;1&#x27;;
+    }
+  }
+  closeModal(modalId: string) {
+    this.selectedTraining &#x3D; null;
+    const modal &#x3D; document.getElementById(modalId);
+    if (modal) modal.style.display &#x3D; &#x27;none&#x27;;
+  }
+  //OUVRIR LE DOCUMENT
+  openDocUrl(url: SafeResourceUrl) {
+    const urlAsString: string | null &#x3D; this.sanitizer.sanitize(
+      SecurityContext.URL,
+      url
+    );
+    if (urlAsString) window.open(urlAsString, &#x27;_blank&#x27;);
+  }
+  //PATCH VALUE
+  patchFunction(data: any) {
+    this.myControl.patchValue(data.documentType);
+    this.modifyForm.patchValue({
+      type: data.documentType?.id,
+      name: data.documentType?.name,
+      serial: data.serial,
+      holderNumber: data.sailorId,
+      endDate: data.expirationDate,
+      birthday: data.user.birthday,
+    });
+  }
+  //UPLOAD NEW IMAGE
+  handleFileInput(event: Event) {
+    console.log(event);
+    const inputElement &#x3D; event.target as HTMLInputElement;
+    if (inputElement.files &amp;&amp; inputElement.files.length &gt; 0) {
+      this.file &#x3D; inputElement.files[0];
+    }
+  }
+
+  //DONWLOAD DOC
+  downloadImage(url: any) {
+    const urlAsString: string | null &#x3D; this.sanitizer.sanitize(
+      SecurityContext.URL,
+      url
+    );
+    const link &#x3D; document.createElement(&#x27;a&#x27;);
+    if (urlAsString) link.href &#x3D; urlAsString;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  //VALIDATION DU DOCUMENT
+  validation(degree: any) {
+    console.log(degree);
+
+    this.apollo
+      .mutate({
+        mutation: VALIDE_DOCUMENT,
+        variables: {
+          validedocument: {
+            pDocumentId: degree.id || this.selectedTraining.id,
+          },
+        },
+        refetchQueries: [
+          {
+            query: GET_DEGREES,
+            fetchPolicy: &#x27;network-only&#x27;,
+            variables: {
+              type: &#x27;DEGREE&#x27;,
+              status: this.selectedTable,
+            },
+          },
+        ],
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        console.log(&#x27;La modif à été faite&#x27;);
+        this.closeModal(&#x27;myModal&#x27;);
+      });
+  }
+  //DELETE DOCUMENT
+  deleteDocument() {
+    this.apollo
+      .mutate({
+        mutation: ARCHIVE_DOCUMENT,
+        variables: {
+          docInput: {
+            pDocumentId: this.selectedTraining.id,
+          },
+        },
+        refetchQueries: [
+          {
+            query: GET_DEGREES,
+            fetchPolicy: &#x27;network-only&#x27;,
+            variables: {
+              type: &#x27;DEGREE&#x27;,
+              status: this.selectedTable,
+            },
+          },
+        ],
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        this.closeModal(&#x27;myModal&#x27;);
+      });
+  }
+  // Refuse document
+  invalidate() {
+    if (this.reason &#x3D;&#x3D;&#x3D; &#x27;AUTRE&#x27;) {
+      const autreInput &#x3D; document.getElementById(&#x27;autre&#x27;) as HTMLInputElement;
+      if (autreInput) {
+        this.selectedReason &#x3D; autreInput.value;
+      }
+    } else {
+      this.selectedReason &#x3D; this.reason;
+    }
+    this.apollo
+      .mutate({
+        mutation: REFUSE_DOCUMENT,
+        variables: {
+          refuseinput: {
+            pDocumentId: this.selectedTraining.id,
+            pReason: this.selectedReason,
+          },
+        },
+        refetchQueries: [
+          {
+            query: GET_DEGREES,
+            fetchPolicy: &#x27;network-only&#x27;,
+            variables: {
+              type: &#x27;DEGREE&#x27;,
+              status: this.selectedTable,
+            },
+          },
+        ],
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        console.log(&#x27;La modif à été faite&#x27;);
+      });
+    this.closeModal(&#x27;myModal&#x27;);
+    this.closeModal(&#x27;modal-rejected&#x27;);
+  }
+  //ACCEPTER MODIFICATION
+  confirmModification(selectedTraining: any) {
+    const val &#x3D; new Date(this.modifyForm.controls[&#x27;endDate&#x27;].value);
+    const jour &#x3D; val?.getDate();
+    const mois &#x3D; val?.getMonth() + 1;
+    const annee &#x3D; val?.getFullYear();
+    this.modifyForm.controls[&#x27;endDate&#x27;].setValue(
+      &#x60;${annee}/${mois.toString().padStart(2, &#x27;0&#x27;)}/${jour.toString().padStart(2, &#x27;0&#x27;)}&#x60;
+    );
+    if (this.modifyForm.controls[&#x27;endDate&#x27;].value &#x3D;&#x3D;&#x3D; &#x27;1970/01/01&#x27;) {
+      this.modifyForm.controls[&#x27;endDate&#x27;].setValue(null);
+    }
+    var regex &#x3D; /^\s*$/;
+    console.log(
+      &#x27;holdernumber&#x27;,
+      this.modifyForm.value.holderNumber,
+      &#x27;selected doc &#x3D;&gt;&#x27;,
+      selectedTraining
+    );
+    if (regex.test(this.modifyForm.controls[&#x27;holderNumber&#x27;].value)) {
+      var sailorNumber: string | null &#x3D; null;
+    } else {
+      sailorNumber &#x3D; this.modifyForm.controls[&#x27;holderNumber&#x27;].value;
+    }
+    console.log(this.file);
+
+    if (this.file?.name !&#x3D;&#x3D; null &amp;&amp; this.file?.name !&#x3D;&#x3D; undefined) {
+      this.apollo
+        .mutate({
+          mutation: GENERATE_URL,
+          variables: {
+            keyInput: {
+              key: this.file.name,
+            },
+          },
+        })
+        .subscribe(async ({ data }: any) &#x3D;&gt; {
+          const formData &#x3D; new FormData();
+          formData.append(&#x27;Content-Type&#x27;, this.file.type);
+          Object.entries(data.generatePresignedPost.fields).forEach(
+            ([k, value]: any) &#x3D;&gt; {
+              formData.append(k, value);
+            }
+          );
+          formData.append(&#x27;file&#x27;, this.file);
+          await fetch(data.generatePresignedPost.url, {
+            method: &#x27;POST&#x27;,
+            body: formData,
+          });
+          this.closeModal(&#x27;myModal&#x27;);
+          const controls &#x3D; this.modifyForm.controls;
+
+          this.apollo
+            .mutate({
+              mutation: UPDATE_DOCUMENT,
+              variables: {
+                documentInput: {
+                  pDocumentId: selectedTraining.id,
+                  pDocumentPatch: {
+                    serial: controls[&#x27;serial&#x27;].value,
+                    sailorId: sailorNumber,
+                    documentUrl:
+                      data.generatePresignedPost.url +
+                      &#x27;/&#x27; +
+                      data.generatePresignedPost.fields.key,
+                    expirationDate: controls[&#x27;endDate&#x27;].value,
+                    documentTypeId: controls[&#x27;type&#x27;].value,
+                  },
+                },
+              },
+              refetchQueries: [
+                {
+                  query: GET_DEGREES,
+                  fetchPolicy: &#x27;network-only&#x27;,
+                  variables: {
+                    type: &#x27;DEGREE&#x27;,
+                    status: this.selectedTable,
+                  },
+                },
+              ],
+            })
+            .subscribe(({ data, loading }: any) &#x3D;&gt; {
+              console.log(&#x27;La modif à été faite&#x27;, data);
+              if (this.holderNumberCanUpdate) {
+                this.apollo
+                  .mutate({
+                    mutation: UPDATE_DETAILS,
+                    variables: {
+                      detailsInput: {
+                        id: selectedTraining.user.id,
+                        patch: {
+                          sailorNumber: controls[&#x27;holderNumber&#x27;].value,
+                        },
+                      },
+                    },
+                  })
+                  .subscribe(({ data, loading }: any) &#x3D;&gt; {
+                    console.log(&#x27;mutation good &#x3D;&#x3D;&gt; mtn update user&#x27;, data);
+                    this.apollo.mutate({
+                      mutation: UPDATE_USER,
+                      variables: {
+                        userinput: selectedTraining.user.id,
+                        patch: {
+                          birthday:
+                            controls[&#x27;birthday&#x27;].value
+                              ?.toString()
+                              .slice(0, 24) + &#x27;UTC&#x27;,
+                        },
+                      },
+                    });
+                  });
+              }
+              this.closeModal(&#x27;myModal&#x27;);
+              this.myControl &#x3D; new FormControl();
+              this.modifyForm.value.holderNumber;
+            });
+        });
+    } else {
+      const controls &#x3D; this.modifyForm.controls;
+
+      this.apollo
+        .mutate({
+          mutation: UPDATE_DOCUMENT,
+          variables: {
+            documentInput: {
+              pDocumentId: selectedTraining.id,
+              pDocumentPatch: {
+                serial: controls[&#x27;serial&#x27;].value,
+                sailorId: sailorNumber,
+                documentUrl: selectedTraining.documentUrl,
+                expirationDate: controls[&#x27;endDate&#x27;].value,
+                documentTypeId: controls[&#x27;type&#x27;].value,
+              },
+            },
+          },
+          refetchQueries: [
+            {
+              query: GET_DEGREES,
+              fetchPolicy: &#x27;network-only&#x27;,
+              variables: {
+                type: &#x27;DEGREE&#x27;,
+                status: this.selectedTable,
+              },
+            },
+          ],
+        })
+        .subscribe(({ data, loading }: any) &#x3D;&gt; {
+          console.log(&#x27;La modif à été faite&#x27;, data);
+          if (this.modifyForm.value.holderNumber) {
+            this.apollo
+              .mutate({
+                mutation: UPDATE_DETAILS,
+                variables: {
+                  detailsInput: {
+                    id: selectedTraining.user.id,
+                    patch: {
+                      sailorNumber: sailorNumber,
+                    },
+                  },
+                },
+              })
+              .subscribe(({ data, loading }: any) &#x3D;&gt; {
+                console.log(&#x27;mutation good &#x3D;&#x3D;&gt; 2&#x27;, data, this.selectedTraining);
+                this.apollo
+                  .mutate({
+                    mutation: UPDATE_USER,
+                    variables: {
+                      userinput: {
+                        id: selectedTraining.user.id,
+                        patch: {
+                          birthday:
+                            controls[&#x27;birthday&#x27;].value
+                              ?.toString()
+                              .slice(0, 24) + &#x27;UTC&#x27;,
+                        },
+                      },
+                    },
+                  })
+                  .subscribe(
+                    ({ data, loading }: any) &#x3D;&gt; {},
+                    (error) &#x3D;&gt; {
+                      console.log(error);
+                    }
+                  );
+              });
+          }
+          this.closeModal(&#x27;myModal&#x27;);
+          this.myControl &#x3D; new FormControl();
+          this.modifyForm.value.holderNumber;
+        });
+    }
+  }
+  onReasonSelected(reason: string) {
+    this.reason &#x3D; reason;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">
+
+&lt;ul class&#x3D;&quot;nav nav-tabs&quot; role&#x3D;&quot;tablist&quot;&gt;
+  &lt;li class&#x3D;&quot;nav-item&quot;&gt;
+    &lt;a class&#x3D;&quot;nav-link pointer&quot; routerLinkActive&#x3D;&quot;active&quot;  (click)&#x3D;&quot;selectTable(&#x27;WAITING&#x27;)&quot;&gt;Waiting&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class&#x3D;&quot;nav-item pointer&quot;&gt;
+    &lt;a class&#x3D;&quot;nav-link&quot; routerLinkActive&#x3D;&quot;active&quot; (click)&#x3D;&quot;selectTable(&#x27;INVALID&#x27;)&quot;&gt;Refused&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li class&#x3D;&quot;nav-item pointer&quot;&gt;
+    &lt;a class&#x3D;&quot;nav-link&quot; routerLinkActive&#x3D;&quot;active&quot;  (click)&#x3D;&quot;selectTable(&#x27;VALID&#x27;)&quot;&gt;Validat&lt;/a&gt;
+  &lt;/li&gt;
+
+&lt;/ul&gt;
+
+
+&lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+    &lt;table class&#x3D;&quot;table&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Titulaire&lt;/th&gt;
+          &lt;th&gt;Diplome&lt;/th&gt;
+          &lt;th&gt;Date d&#x27;ajout&lt;/th&gt;
+          &lt;th&gt;Date d&#x27;expiration&lt;/th&gt;
+          &lt;th&gt;Document&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr style&#x3D;&quot;cursor: pointer;&quot; *ngFor&#x3D;&quot;let degree of searchDocObject?.documents?.nodes&quot; &gt;
+          &lt;td routerLink&#x3D;&quot;{{&#x27;/admin/sailor/&#x27;+degree.user.id+&#x27;/profil&#x27;}}&quot;&gt;
+            {{degree?.user?.firstname}}
+            {{degree?.user?.userDetailById?.lastname}}
+            &lt;/td&gt;
+          &lt;td&gt;{{degree?.documentType?.name}}&lt;/td&gt;
+          &lt;td&gt;{{degree?.createdAt | date:&#x27;dd/MM/yyyy&#x27;}}&lt;/td&gt;
+          &lt;td&gt;{{degree?.expirationDate | date:&#x27;dd/MM/yyyy&#x27;}}&lt;/td&gt;
+          &lt;td &gt;
+            &lt;img matTooltip&#x3D;&quot;Visualiser&quot; (click)&#x3D;&quot;openModal(degree)&quot; class&#x3D;&quot;icon--action cursor width35px&quot; src&#x3D;&quot;assets/images/icon-doc.svg&quot; alt&#x3D;&quot;Voir&quot;&gt;
+            &lt;img matTooltip&#x3D;&quot;Accepter&quot; (click)&#x3D;&quot;validation(degree)&quot; class&#x3D;&quot;icon--action cursor width35px&quot; src&#x3D;&quot;assets/images/icon-tick.svg&quot; alt&#x3D;&quot;Accepter&quot;&gt;
+           &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+
+
+
+&lt;!-- Modal (popup) --&gt;
+&lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+  &lt;form [formGroup]&#x3D;&quot;modifyForm&quot;&gt;
+  &lt;div id&#x3D;&quot;myModal&quot; class&#x3D;&quot;modal&quot;&gt;
+    &lt;div class&#x3D;&quot;modal-content large-modal&quot;&gt;
+      &lt;span class&#x3D;&quot;close&quot; (click)&#x3D;&quot;closeModal(&#x27;myModal&#x27;)&quot;&gt;&amp;times;&lt;/span&gt;
+      &lt;h2&gt;Ajout de diplôme&lt;/h2&gt;
+      &lt;div class&#x3D;&quot;content&quot;&gt;
+
+        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+          &lt;p&gt;Titulaire:
+            {{ selectedTraining?.user?.firstname }}
+            {{ selectedTraining?.user?.userDetailById?.lastname }}
+            &lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+            &lt;label for&#x3D;&quot;holderNumber&quot;&gt;N° du titulaire&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;titulaire-number&quot; formControlName&#x3D;&quot;holderNumber&quot;&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+            &lt;label for&#x3D;&quot;serial&quot;&gt;N° Titre&lt;/label&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;titulaire-number&quot; formControlName&#x3D;&quot;serial&quot;&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+          &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+            &lt;label for&#x3D;&quot;endDate&quot;&gt;Date d&#x27;expiration&lt;/label&gt;
+            &lt;mat-form-field appearance&#x3D;&quot;fill&quot;&gt;
+              &lt;input #minInput matInput
+              [matDatepicker]&#x3D;&quot;picker2&quot; id&#x3D;&quot;endDate&quot; formControlName&#x3D;&quot;endDate&quot; &gt;
+              &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;picker2&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+              &lt;mat-datepicker #picker2&gt;&lt;/mat-datepicker&gt;
+            &lt;/mat-form-field&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+            &lt;label for&#x3D;&quot;birthday&quot;&gt;Birthday&lt;/label&gt;
+            &lt;mat-form-field appearance&#x3D;&quot;fill&quot;&gt;
+              &lt;input #minInput matInput
+              [matDatepicker]&#x3D;&quot;picker&quot; id&#x3D;&quot;birthday&quot; formControlName&#x3D;&quot;birthday&quot; &gt;
+              &lt;mat-datepicker-toggle matSuffix [for]&#x3D;&quot;picker&quot;&gt;&lt;/mat-datepicker-toggle&gt;
+              &lt;mat-datepicker #picker&gt;&lt;/mat-datepicker&gt;
+            &lt;/mat-form-field&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+
+
+
+        &lt;div class&#x3D;&quot;container&quot;&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              Formation:
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;mat-form-field class&#x3D;&quot;example-full-width&quot;&gt;
+                &lt;mat-label&gt;Document&lt;/mat-label&gt;
+                &lt;input type&#x3D;&quot;text&quot;
+                       placeholder&#x3D;&quot;Pick one&quot;
+                       matInput
+                       [formControl]&#x3D;&quot;myControl&quot;
+                       [matAutocomplete]&#x3D;&quot;auto&quot;
+                       class&#x3D;&quot;inputValidation&quot;
+                       &gt;
+                &lt;mat-autocomplete #auto&#x3D;&quot;matAutocomplete&quot; (optionSelected)&#x3D;&quot;changeDocument($event)&quot; [displayWith]&#x3D;&quot;displayFn&quot; [panelWidth]&#x3D;&quot;&#x27;auto&#x27;&quot;&gt;
+                  &lt;mat-option *ngFor&#x3D;&quot;let document of filteredOptions | async&quot;   [value]&#x3D;&quot;document&quot;&gt;
+                    {{document.name}} &lt;span style&#x3D;&quot;margin-top: 3px;margin-left: 3px;&quot; [ngClass]&#x3D;&quot;[&#x27;flag-icon&#x27;, &#x27;flag-icon-&#x27; + document.shortName?.toLocaleLowerCase()  ,&#x27;flag-icon-squared&#x27;]&quot;&gt;&lt;/span&gt;
+                  &lt;/mat-option&gt;
+                &lt;/mat-autocomplete&gt;
+              &lt;/mat-form-field&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;row bottom-10&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;button class&#x3D;&quot;button&quot; (click)&#x3D;&quot;openDocUrl(urlDocument)&quot;&gt; Voir&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;div class&#x3D;&quot;custom-file col-sm&quot;&gt;
+                &lt;input type&#x3D;&quot;file&quot; class&#x3D;&quot;custom-file-input&quot; id&#x3D;&quot;inputFile&quot; (change)&#x3D;&quot;handleFileInput($event)&quot; &gt;
+                &lt;label class&#x3D;&quot;custom-file-label&quot; for&#x3D;&quot;inputFile&quot;&gt;document&lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;button class&#x3D;&quot;button&quot; (click)&#x3D;&quot;confirmModification(selectedTraining)&quot;&gt;Accepter les modifications&lt;/button&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+              &lt;iframe  height&#x3D;&quot;400&quot; width&#x3D;&quot;400&quot; [src]&#x3D;&quot;urlDocument&quot; frameborder&#x3D;&quot;0&quot;&gt;&lt;/iframe&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;button (click)&#x3D;&quot;downloadImage(urlDocument)&quot; class&#x3D;&quot;button&quot;&gt;Télécharger&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;button (click)&#x3D;&quot;validation(selectedTraining)&quot; class&#x3D;&quot;button&quot;&gt;Valider&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;button  class&#x3D;&quot;button&quot; (click)&#x3D;&quot;openRejectModal()&quot;&gt;Refuser&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-sm&quot;&gt;
+              &lt;button (click)&#x3D;&quot;deleteDocument()&quot; class&#x3D;&quot;button&quot;&gt;Supprimer&lt;/button&gt;
+            &lt;/div&gt;
+
+        &lt;/div&gt;
+        &lt;button (click)&#x3D;&quot;closeModal(&#x27;myModal&#x27;)&quot;&gt;Fermer&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+&lt;/div&gt;
+
+
+&lt;!-- REJECTED MODAL --&gt;
+&lt;div class&#x3D;&quot;modal-rejected modal&quot; id&#x3D;&quot;modal-rejected&quot;&gt;
+  &lt;div class&#x3D;&quot;modal-content large-modal&quot;&gt;
+
+    &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+      &lt;h4 class&#x3D;&quot;modal-title&quot;&gt;Refuser le document&lt;/h4&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close&quot; aria-label&#x3D;&quot;Close&quot; (click)&#x3D;&quot;closeModal(&#x27;modal-rejected&#x27;)&quot;&gt;
+        &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+      &lt;div class&#x3D;&quot;col-md-9&quot;&gt;
+        &lt;mat-select (selectionChange)&#x3D;&quot;onReasonSelected($event.value)&quot; &gt;
+          &lt;mat-option value&#x3D;&quot;NOT_ANONYME&quot;&gt;Votre CV doit être anonymisé&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;FORMATION_MARITIME&quot;&gt;Les attestations de formation doivent être enregistrées auprès des affaires maritimes et ne permettent pas de travailler. Merci de nous fournir un titre émit par les affaires maritimes.&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;RECYCLE&quot;&gt;Votre &quot;document type&quot; nécessite d&#x27;être recyclé&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;ALGORITHME_PROBLEM&quot;&gt;Votre document n&#x27;est pas encore pris en charge par notre algorithme, nous travaillons à développer celui-ci.&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;NOT_UPLOAD&quot;&gt;Votre document n&#x27;a pas été correctement uploadé. En cas de problème vous pouvez nous l&#x27;envoyer à l&#x27;adresse contact@captnboat.com.&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;AUTRE&quot;&gt;Autre&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+        &lt;div *ngIf&#x3D;&quot;reason &#x3D;&#x3D;&#x3D; &#x27;AUTRE&#x27;&quot;&gt;
+          &lt;input id&#x3D;&quot;autre&quot; type&#x3D;&quot;text&quot;&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;modal-footer&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;closeModal(&#x27;modal-rejected&#x27;)&quot;&gt;Close&lt;/button&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;invalidate()&quot;&gt;Confirmer&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./degrees.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ul class="nav nav-tabs" role="tablist">  <li class="nav-item">    <a class="nav-link pointer" routerLinkActive="active"  (click)="selectTable(\'WAITING\')">Waiting</a>  </li>  <li class="nav-item pointer">    <a class="nav-link" routerLinkActive="active" (click)="selectTable(\'INVALID\')">Refused</a>  </li>  <li class="nav-item pointer">    <a class="nav-link" routerLinkActive="active"  (click)="selectTable(\'VALID\')">Validat</a>  </li></ul><div class="table-responsive">    <table class="table">      <thead>        <tr>          <th>Titulaire</th>          <th>Diplome</th>          <th>Date d\'ajout</th>          <th>Date d\'expiration</th>          <th>Document</th>        </tr>      </thead>      <tbody>        <tr style="cursor: pointer;" *ngFor="let degree of searchDocObject?.documents?.nodes" >          <td routerLink="{{\'/admin/sailor/\'+degree.user.id+\'/profil\'}}">            {{degree?.user?.firstname}}            {{degree?.user?.userDetailById?.lastname}}            </td>          <td>{{degree?.documentType?.name}}</td>          <td>{{degree?.createdAt | date:\'dd/MM/yyyy\'}}</td>          <td>{{degree?.expirationDate | date:\'dd/MM/yyyy\'}}</td>          <td >            <img matTooltip="Visualiser" (click)="openModal(degree)" class="icon--action cursor width35px" src="assets/images/icon-doc.svg" alt="Voir">            <img matTooltip="Accepter" (click)="validation(degree)" class="icon--action cursor width35px" src="assets/images/icon-tick.svg" alt="Accepter">           </td>        </tr>      </tbody>    </table>  </div><!-- Modal (popup) --><div class="table-responsive">  <form [formGroup]="modifyForm">  <div id="myModal" class="modal">    <div class="modal-content large-modal">      <span class="close" (click)="closeModal(\'myModal\')">&times;</span>      <h2>Ajout de diplôme</h2>      <div class="content">        <div class="form-group">          <p>Titulaire:            {{ selectedTraining?.user?.firstname }}            {{ selectedTraining?.user?.userDetailById?.lastname }}            </p>        </div>        <div class="row">          <div class="col-sm">            <label for="holderNumber">N° du titulaire</label>            <input type="text" class="form-control" id="titulaire-number" formControlName="holderNumber">          </div>          <div class="col-sm">            <label for="serial">N° Titre</label>            <input type="text" class="form-control" id="titulaire-number" formControlName="serial">          </div>        </div>        <div class="row">          <div class="col-sm">            <label for="endDate">Date d\'expiration</label>            <mat-form-field appearance="fill">              <input #minInput matInput              [matDatepicker]="picker2" id="endDate" formControlName="endDate" >              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>              <mat-datepicker #picker2></mat-datepicker>            </mat-form-field>          </div>          <div class="col-sm">            <label for="birthday">Birthday</label>            <mat-form-field appearance="fill">              <input #minInput matInput              [matDatepicker]="picker" id="birthday" formControlName="birthday" >              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>              <mat-datepicker #picker></mat-datepicker>            </mat-form-field>          </div>        </div>        <div class="container">          <div class="row">            <div class="col-sm">              Formation:            </div>            <div class="col-sm">              <mat-form-field class="example-full-width">                <mat-label>Document</mat-label>                <input type="text"                       placeholder="Pick one"                       matInput                       [formControl]="myControl"                       [matAutocomplete]="auto"                       class="inputValidation"                       >                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="changeDocument($event)" [displayWith]="displayFn" [panelWidth]="\'auto\'">                  <mat-option *ngFor="let document of filteredOptions | async"   [value]="document">                    {{document.name}} <span style="margin-top: 3px;margin-left: 3px;" [ngClass]="[\'flag-icon\', \'flag-icon-\' + document.shortName?.toLocaleLowerCase()  ,\'flag-icon-squared\']"></span>                  </mat-option>                </mat-autocomplete>              </mat-form-field>            </div>          </div>          <div class="row bottom-10">            <div class="col-sm">              <button class="button" (click)="openDocUrl(urlDocument)"> Voir</button>            </div>            <div class="col-sm">              <div class="custom-file col-sm">                <input type="file" class="custom-file-input" id="inputFile" (change)="handleFileInput($event)" >                <label class="custom-file-label" for="inputFile">document</label>              </div>            </div>            <div class="col-sm">              <button class="button" (click)="confirmModification(selectedTraining)">Accepter les modifications</button>            </div>          </div>          <div class="row">              <iframe  height="400" width="400" [src]="urlDocument" frameborder="0"></iframe>          </div>        </div>        <div class="row">            <div class="col-sm">              <button (click)="downloadImage(urlDocument)" class="button">Télécharger</button>            </div>            <div class="col-sm">              <button (click)="validation(selectedTraining)" class="button">Valider</button>            </div>            <div class="col-sm">              <button  class="button" (click)="openRejectModal()">Refuser</button>            </div>            <div class="col-sm">              <button (click)="deleteDocument()" class="button">Supprimer</button>            </div>        </div>        <button (click)="closeModal(\'myModal\')">Fermer</button>      </div>    </div>  </div></form></div><!-- REJECTED MODAL --><div class="modal-rejected modal" id="modal-rejected">  <div class="modal-content large-modal">    <div class="modal-header">      <h4 class="modal-title">Refuser le document</h4>      <button type="button" class="close" aria-label="Close" (click)="closeModal(\'modal-rejected\')">        <span aria-hidden="true">&times;</span>      </button>    </div>    <div class="modal-body">    <div class="row">      <div class="col-md-9">        <mat-select (selectionChange)="onReasonSelected($event.value)" >          <mat-option value="NOT_ANONYME">Votre CV doit être anonymisé</mat-option>          <mat-option value="FORMATION_MARITIME">Les attestations de formation doivent être enregistrées auprès des affaires maritimes et ne permettent pas de travailler. Merci de nous fournir un titre émit par les affaires maritimes.</mat-option>          <mat-option value="RECYCLE">Votre "document type" nécessite d\'être recyclé</mat-option>          <mat-option value="ALGORITHME_PROBLEM">Votre document n\'est pas encore pris en charge par notre algorithme, nous travaillons à développer celui-ci.</mat-option>          <mat-option value="NOT_UPLOAD">Votre document n\'a pas été correctement uploadé. En cas de problème vous pouvez nous l\'envoyer à l\'adresse contact@captnboat.com.</mat-option>          <mat-option value="AUTRE">Autre</mat-option>        </mat-select>        <div *ngIf="reason === \'AUTRE\'">          <input id="autre" type="text">        </div>      </div>    </div>    <div class="modal-footer">      <button type="button" class="btn btn-secondary" (click)="closeModal(\'modal-rejected\')">Close</button>      <button type="button" class="btn btn-primary" (click)="invalidate()">Confirmer</button>    </div>  </div></div></div></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DegreesComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DegreesComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
