@@ -1,22 +1,11 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Input,
-  SecurityContext,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, SecurityContext } from '@angular/core';
 import { FormControl, FormGroup, UntypedFormBuilder } from '@angular/forms';
-import {
-  DomSanitizer,
-  SafeResourceUrl,
-  SafeUrl,
-} from '@angular/platform-browser';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Apollo } from 'apollo-angular';
 import { Observable, Subscription, map, startWith } from 'rxjs';
 import {
   ARCHIVE_DOCUMENT,
   GENERATE_URL,
-  GET_DOCUMENTS,
   GET_TRAININGS,
   REFUSE_DOCUMENT,
   UPDATE_DETAILS,
@@ -24,6 +13,7 @@ import {
   UPDATE_USER,
   VALIDE_DOCUMENT,
 } from 'src/graphql/approval';
+import { DataServiceService } from '../../services/data-service.service';
 
 export interface User {
   name: string;
@@ -68,43 +58,32 @@ export class TrainingsComponent {
   subscription!: Subscription;
   constructor(
     private cdRef: ChangeDetectorRef,
-    private modalService: NgbModal,
     private formBuilder: UntypedFormBuilder,
     private apollo: Apollo,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private dataService: DataServiceService
   ) {}
   ngOnInit() {
     this.options = [];
-    this.apollo
-      .query({
-        query: GET_DOCUMENTS,
-      })
-      .subscribe(({ data, loading }: any) => {
-        data.documentTypes.nodes.forEach((element: any) => {
-          const user: User = {
-            name: element.name,
-            id: element.id,
-            shortName: element.country?.shortName,
-          };
-          this.options.push(user);
-        });
-        this.filteredOptions = this.myControl.valueChanges.pipe(
-          startWith(''),
-          map((value) => (typeof value === 'string' ? value : value.name)),
-          map((name) => (name ? this._filter(name) : this.options.slice()))
-        );
+    this.dataService.getDocuments().subscribe(({ data }: any) => {
+      data.documentTypes.nodes.forEach((element: any) => {
+        const user: User = {
+          name: element.name,
+          id: element.id,
+          shortName: element.country?.shortName,
+        };
+        this.options.push(user);
       });
+      this.filteredOptions = this.myControl.valueChanges.pipe(
+        startWith(''),
+        map((value) => (typeof value === 'string' ? value : value.name)),
+        map((name) => (name ? this._filter(name) : this.options.slice()))
+      );
+    });
 
     //GET TRAININGS
-    this.subscription = this.apollo
-      .watchQuery({
-        query: GET_TRAININGS,
-        fetchPolicy: 'network-only',
-        variables: {
-          type: 'TRAINING',
-          status: 'WAITING',
-        },
-      })
+    this.subscription = this.dataService
+      .watchTrainings()
       .valueChanges.subscribe(({ data }: any) => {
         this.searchTraining = data;
         if (this.selectedTable === 'WAITING') {
@@ -112,6 +91,7 @@ export class TrainingsComponent {
         }
       });
   }
+
   ngOnChanges() {
     this.searchDocObject = JSON.parse(this.searchTraining);
     this.cdRef.detectChanges();
@@ -223,7 +203,7 @@ export class TrainingsComponent {
     }
     console.log(this.modifyForm.controls['endDate'].value);
 
-    var regex = /^\s*$/;
+    let regex = /^\s*$/;
     console.log(
       'holdernumber',
       this.modifyForm.value.holderNumber,
@@ -263,50 +243,19 @@ export class TrainingsComponent {
           this.closeModal('myModal');
           const controls = this.modifyForm.controls;
 
-          this.apollo
-            .mutate({
-              mutation: UPDATE_DOCUMENT,
-              variables: {
-                documentInput: {
-                  pDocumentId: selectedTraining.id,
-                  pDocumentPatch: {
-                    serial: controls['serial'].value,
-                    sailorId: sailorNumber,
-                    documentUrl:
-                      data.generatePresignedPost.url +
-                      '/' +
-                      data.generatePresignedPost.fields.key,
-                    expirationDate: controls['endDate'].value,
-                    documentTypeId: controls['type'].value,
-                  },
-                },
-              },
-              refetchQueries: [
-                {
-                  query: GET_TRAININGS,
-                  fetchPolicy: 'network-only',
-                  variables: {
-                    type: 'TRAINING',
-                    status: this.selectedTable,
-                  },
-                },
-              ],
-            })
+          this.dataService
+            .updateDocument(
+              controls,
+              sailorNumber,
+              selectedTraining,
+              data,
+              this.selectTable
+            )
             .subscribe(({ data, loading }: any) => {
               console.log('La modif à été faite', data);
               if (this.holderNumberCanUpdate) {
-                this.apollo
-                  .mutate({
-                    mutation: UPDATE_DETAILS,
-                    variables: {
-                      detailsInput: {
-                        id: selectedTraining.user.id,
-                        patch: {
-                          sailorNumber: controls['holderNumber'].value,
-                        },
-                      },
-                    },
-                  })
+                this.dataService
+                  .updateDetails(selectedTraining, controls)
                   .subscribe(({ data, loading }: any) => {
                     console.log('mutation good ==> mtn update user', data);
                     this.apollo.mutate({
@@ -325,7 +274,6 @@ export class TrainingsComponent {
               }
               this.closeModal('myModal');
               this.myControl = new FormControl();
-              this.modifyForm.value.holderNumber;
             });
         });
     } else {

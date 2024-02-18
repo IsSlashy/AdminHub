@@ -1,19 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Apollo, QueryRef } from 'apollo-angular';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { QueryRef } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { AquaplotService } from 'src/app/_service/aquaplot.service';
-import {
-  BOATS_USER,
-  CHESS_PRICE,
-  CREATE_AD,
-  CREATE_JOB,
-  ESTIMATED_PRICE,
-  GET_HARBOR,
-} from 'src/graphql/creation';
 import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
+import { DataServiceService } from '../../services/data-service.service';
 
 @Component({
   selector: 'app-new-complete-job',
@@ -125,7 +117,7 @@ export class NewCompleteJobComponent {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private apollo: Apollo,
+    private dataService: DataServiceService,
     private aquaplotService: AquaplotService,
     private router: Router
   ) {}
@@ -134,13 +126,8 @@ export class NewCompleteJobComponent {
     // initial inforamtions
     this.route.queryParamMap.subscribe((param) => {
       this.jobForm.patchValue({ ownerId: param.get('ownerId') });
-      this.apollo
-        .query({
-          query: BOATS_USER,
-          variables: {
-            userId: this.jobForm.value.ownerId,
-          },
-        })
+      this.dataService
+        .getBoatUser(this.jobForm.value.ownerId)
         .subscribe(({ data }: any) => {
           this.owner = data.user;
           this.countries = data.countries.nodes;
@@ -150,11 +137,9 @@ export class NewCompleteJobComponent {
     });
 
     //subscription extimated price
-    this.estimatePriceQuery = this.apollo.watchQuery<any>({
-      query: ESTIMATED_PRICE,
-      fetchPolicy: 'network-only',
-      variables: this.estimationParam,
-    });
+    this.estimatePriceQuery = this.dataService.watchEstimatedPriceQuery(
+      this.estimationParam
+    );
 
     this.estimatePriceSubscription =
       this.estimatePriceQuery.valueChanges.subscribe(({ data }) => {
@@ -162,11 +147,9 @@ export class NewCompleteJobComponent {
       });
 
     // subscription chess price
-    this.chessPriceQuery = this.apollo.watchQuery<any>({
-      query: CHESS_PRICE,
-      fetchPolicy: 'network-only',
-      variables: this.chessParam,
-    });
+    this.chessPriceQuery = this.dataService.watchChessPriceQuery(
+      this.chessParam
+    );
 
     this.chessPriceSubscription = this.chessPriceQuery.valueChanges.subscribe(
       ({ data }) => {
@@ -177,13 +160,8 @@ export class NewCompleteJobComponent {
     );
 
     this.jobForm.get('ownerId')?.valueChanges.subscribe(() => {
-      this.apollo
-        .query({
-          query: BOATS_USER,
-          variables: {
-            userId: this.jobForm.value.ownerId,
-          },
-        })
+      this.dataService
+        .getBoatUser(this.jobForm.value.ownerId)
         .subscribe(({ data }: any) => {
           this.owner = data.user;
           this.countries = data.countries.nodes;
@@ -345,24 +323,17 @@ export class NewCompleteJobComponent {
   }
 
   updateHarbours(e: any, start: boolean) {
-    this.apollo
-      .query({
-        query: GET_HARBOR,
-        variables: {
-          harborInput: e.id,
-        },
-      })
-      .subscribe(({ data, loading }: any) => {
-        if (start) {
-          this.startHarbor = data.harbor;
-          this.jobForm.patchValue({ startHarbor: this.startHarbor.id });
-          this.calculateDistance();
-        } else {
-          this.endHarbor = data.harbor;
-          this.jobForm.patchValue({ endHarbor: this.endHarbor.id });
-          this.calculateDistance();
-        }
-      });
+    this.dataService.getHarbor(e.id).subscribe(({ data, loading }: any) => {
+      if (start) {
+        this.startHarbor = data.harbor;
+        this.jobForm.patchValue({ startHarbor: this.startHarbor.id });
+        this.calculateDistance();
+      } else {
+        this.endHarbor = data.harbor;
+        this.jobForm.patchValue({ endHarbor: this.endHarbor.id });
+        this.calculateDistance();
+      }
+    });
   }
 
   createJob() {
@@ -382,69 +353,31 @@ export class NewCompleteJobComponent {
 
     const startDateISO = toLocalISO(startDateValue);
     const endDateISO = toLocalISO(endDateValue);
-    this.apollo
-      .mutate({
-        mutation: CREATE_AD,
-        variables: {
-          adInput: {
-            adType: this.jobForm.value.adType,
-            boatId: this.jobForm.value.boatId,
-            coastDistance: this.jobForm.value.coastDistance,
-            distance: this.jobForm.value.distance,
-            endHarbor: this.jobForm.value.endHarbor,
-            estimatedDays: this.jobForm.value.estimatedDays,
-            spokenLanguage: this.jobForm.value.spokenLanguages,
-            startDate: startDateISO,
-            endDate: endDateISO,
-            startHarbor: this.jobForm.value.startHarbor,
-            description: this.jobForm.value.description,
-          },
-        },
-      })
-      .subscribe(
-        ({ data }: any) => {
-          console.log('Ad created with ID:', data.createCompleteAd.ad.id);
+    this.dataService.createAd(startDateISO, endDateISO, this.jobForm).subscribe(
+      ({ data }: any) => {
+        console.log('Ad created with ID:', data.createCompleteAd.ad.id);
 
-          this.apollo
-            .mutate({
-              mutation: CREATE_JOB,
-              variables: {
-                jobInput: {
-                  adId: data.createCompleteAd.ad.id,
-                  startDate: startDateISO,
-                  positionType: this.jobForm.value.positionType,
-                  commissionRate: this.jobForm.value.commissionRate,
-                  endDate: endDateISO,
-                  initialPrice: this.jobForm.value.initialPrice * 100,
-                  travelFee: this.jobForm.value.travelFee,
-                  chessRemuneration: this.jobForm.value.chessRemuneration,
-                  onboardFee: this.jobForm.value.onboardFee,
-                  contractType: this.jobForm.value.contractType,
-                  isCaptain: false,
-                  sendEmail: this.jobForm.value.sendEmail,
-                  reserved: this.jobForm.value.reserved,
-                },
-              },
-            })
-            .subscribe(
-              ({ data }: any) => {
-                console.log(
-                  'Job created with ID:',
-                  data.createCompleteJobAdmin.job.id
-                );
-                this.router.navigate([
-                  'admin/job/' + data.createCompleteJobAdmin.job.id,
-                ]);
-              },
-              (error) => {
-                console.error('Error creating job:', error);
-                this.modalConfirmed.modalRejected();
-              }
-            );
-        },
-        (error) => {
-          console.error('Error creating ad:', error);
-        }
-      );
+        this.dataService
+          .createJob(startDateISO, endDateISO, this.jobForm, data)
+          .subscribe(
+            ({ data }: any) => {
+              console.log(
+                'Job created with ID:',
+                data.createCompleteJobAdmin.job.id
+              );
+              this.router.navigate([
+                'admin/job/' + data.createCompleteJobAdmin.job.id,
+              ]);
+            },
+            (error) => {
+              console.error('Error creating job:', error);
+              this.modalConfirmed.modalRejected();
+            }
+          );
+      },
+      (error) => {
+        console.error('Error creating ad:', error);
+      }
+    );
   }
 }

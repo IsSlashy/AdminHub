@@ -1,0 +1,573 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  AddressData</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/admin/detail/job/billing/billing.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#formattedAddress" 
+>
+                                            formattedAddress
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#id" 
+>
+                                            id
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="formattedAddress"></a>
+                                        <span class="name "><b>formattedAddress</b>
+                                            <a href="#formattedAddress">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>formattedAddress:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormControl, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { BILLING, UPSERT_BILLING, GENERATE_CONTRACT } from &#x27;src/graphql/job&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+
+interface AddressData {
+  id: string;
+  formattedAddress: string;
+}
+
+@Component({
+  selector: &#x27;app-billing&#x27;,
+  templateUrl: &#x27;./billing.component.html&#x27;,
+  styleUrls: [&#x27;./billing.component.css&#x27;],
+})
+export class BillingComponent {
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+
+  billing: any;
+
+  languagesStripe: Array&lt;{ value: string; name: string }&gt; &#x3D; [
+    { value: &#x27;ar&#x27;, name: &#x27;Arabic&#x27; },
+    { value: &#x27;bg&#x27;, name: &#x27;Bulgarian (Bulgaria)&#x27; },
+    { value: &#x27;cs&#x27;, name: &#x27;Czech (Czech Republic)&#x27; },
+    { value: &#x27;da&#x27;, name: &#x27;Danish (Denmark)&#x27; },
+    { value: &#x27;de&#x27;, name: &#x27;German (Germany)&#x27; },
+    { value: &#x27;el&#x27;, name: &#x27;Greek (Greece)&#x27; },
+    { value: &#x27;en&#x27;, name: &#x27;English&#x27; },
+    { value: &#x27;en-GB&#x27;, name: &#x27;English (United Kingdom)&#x27; },
+    { value: &#x27;es&#x27;, name: &#x27;Spanish (Spain)&#x27; },
+    { value: &#x27;es-419&#x27;, name: &#x27;Spanish (Latin America)&#x27; },
+    { value: &#x27;et&#x27;, name: &#x27;Estonian (Estonia)&#x27; },
+    { value: &#x27;fi&#x27;, name: &#x27;Finnish (Finland)&#x27; },
+    { value: &#x27;fil&#x27;, name: &#x27;Filipino (Philipines)&#x27; },
+    { value: &#x27;fr&#x27;, name: &#x27;French (France)&#x27; },
+    { value: &#x27;fr-CA&#x27;, name: &#x27;French (Canada)&#x27; },
+    { value: &#x27;he&#x27;, name: &#x27;Hebrew (Israel&#x27; },
+    { value: &#x27;hr&#x27;, name: &#x27;Croatian (Croatia)&#x27; },
+    { value: &#x27;hu&#x27;, name: &#x27;Hungarian (Hungary)&#x27; },
+    { value: &#x27;id&#x27;, name: &#x27;Indonesian (Indonesia)&#x27; },
+    { value: &#x27;it&#x27;, name: &#x27;Italian (Italy)&#x27; },
+    { value: &#x27;ja&#x27;, name: &#x27;Japanese (Japan)&#x27; },
+    { value: &#x27;ko&#x27;, name: &#x27;Korean (Korea)&#x27; },
+    { value: &#x27;lt&#x27;, name: &#x27;Lithuanian (Lithuania)&#x27; },
+    { value: &#x27;lv&#x27;, name: &#x27;Latvian (Latvia)&#x27; },
+    { value: &#x27;ms&#x27;, name: &#x27;Malay (Malaysia)&#x27; },
+    { value: &#x27;mt&#x27;, name: &#x27;Maltese (Malta)&#x27; },
+    { value: &#x27;nb&#x27;, name: &#x27;Norwegian Bokmål&#x27; },
+    { value: &#x27;nl&#x27;, name: &#x27;Dutch (Netherlands)&#x27; },
+    { value: &#x27;pl&#x27;, name: &#x27;Polish (Poland)&#x27; },
+    { value: &#x27;pt-BR&#x27;, name: &#x27;Portuguese (Brazil)&#x27; },
+    { value: &#x27;pt&#x27;, name: &#x27;Portuguese&#x27; },
+    { value: &#x27;ro&#x27;, name: &#x27;Romanian (Romania)&#x27; },
+    { value: &#x27;ru&#x27;, name: &#x27;Russian (Russia)&#x27; },
+    { value: &#x27;sk&#x27;, name: &#x27;Slovak (Slovakia)&#x27; },
+    { value: &#x27;sl&#x27;, name: &#x27;Slovenian (Slovenia)&#x27; },
+    { value: &#x27;sv&#x27;, name: &#x27;Swedish (Sweden)&#x27; },
+    { value: &#x27;th&#x27;, name: &#x27;Thai (Thailand)&#x27; },
+    { value: &#x27;tr&#x27;, name: &#x27;Turkish (Turkey)&#x27; },
+    { value: &#x27;vi&#x27;, name: &#x27;Vietnamese (Vietnam)&#x27; },
+    { value: &#x27;zh&#x27;, name: &#x27;Chinese Simplified (China)&#x27; },
+    { value: &#x27;zh-HK&#x27;, name: &#x27;Chinese Traditional (Hong Kong)&#x27; },
+    { value: &#x27;zh-TW&#x27;, name: &#x27;Chinese Traditional (Taiwan)&#x27; },
+  ];
+  billingForm: FormGroup &#x3D; this.formBuilder.group({
+    //client
+    language: [null, []],
+    clientType: [null, []],
+    adType: [null, []],
+    address: [null, []],
+    addressId: [null, []],
+    siret: [null, []],
+    phoneNumber: [null, []],
+    lastname: [null, []],
+    firstname: [null, []],
+    email: [&#x27;&#x27;, []],
+    corporateName: [null, []],
+    //marin
+    sailorStatus: [null, []],
+    sailorSiret: [null, []],
+    sailorPhoneNumber: [null, []],
+    sailorLastname: [null, []],
+    sailorFirstname: [null, []],
+    sailorEmail: [null, []],
+    sailorCorporateName: [null, []],
+    sailorBirthday: [null, []],
+    sailorAddressId: [null, []],
+    sailorAddress: [null, []],
+    //mission
+    boatName: [null, []],
+    Immatriculation: [null, []],
+    startHarborId: [null, []],
+    startHarbor: [null, []],
+    endHarborId: [null, []],
+    endHarbor: [null, []],
+    startDate: [null, []],
+    registrationNumber: [null, []],
+    price: [null, []],
+    position: [null, []],
+    model: [null, []],
+    modelId: [null, []],
+    flagId: [null, []],
+    endDate: [null, []],
+  });
+
+  countries: any &#x3D; new Array&lt;any&gt;();
+  job: any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private apollo: Apollo
+  ) {}
+
+  ngOnInit() {
+    this.route.parent?.paramMap.subscribe((param) &#x3D;&gt; {
+      this.apollo
+        .query({
+          query: BILLING,
+          variables: {
+            jobId: param.get(&#x27;id&#x27;),
+          },
+        })
+        .subscribe(({ data }: any) &#x3D;&gt; {
+          this.job &#x3D; data.job;
+          this.countries &#x3D; data.countries.nodes;
+          this.billing &#x3D; data.job.billing;
+          this.billingForm.patchValue({
+            // Client
+            clientType: data.job.billing?.clientType,
+            language: data.job.billing?.language,
+            firstname: data.job.billing?.firstname,
+            lastname: data.job.billing?.lastname,
+            email: data.job.billing?.email,
+            phoneNumber: data.job.billing?.phoneNumber,
+            address: data.job.billing?.address?.formattedAddress,
+            addressId: data.job.billing?.address?.id,
+            siret: data.job.billing?.siret,
+            corporateName: data.job.billing?.corporateName,
+            // Marin
+            sailorStatus: data.job.billing?.sailorStatus,
+            sailorSiret: data.job.billing?.sailorSiret,
+            sailorPhoneNumber: data.job.billing?.sailorPhoneNumber,
+            sailorLastname: data.job.billing?.sailorLastname,
+            sailorFirstname: data.job.billing?.sailorFirstname,
+            sailorEmail: data.job.billing?.sailorEmail,
+            sailorCorporateName: data.job.billing?.sailorCorporateName,
+            sailorBirthday: data.job.billing?.sailorBirthday,
+            sailorAddressId: data.job.billing?.sailorAddress?.id,
+            sailorAddress: data.job.billing?.sailorAddress?.formattedAddress,
+            // Mission
+            adType: data.job.billing?.adType,
+            boatName: data.job.billing?.boatName,
+            startHarborId: data.job.billing?.startHarbor?.id,
+            startHarbor: data.job.billing?.startHarbor?.nameFr,
+            endHarborId: data.job.billing?.endHarbor?.id,
+            endHarbor: data.job.billing?.endHarbor?.nameFr,
+            startDate: data.job.billing?.startDate,
+            Immatriculation: data.job.billing?.registrationNumber,
+            price: data.job.billing?.price,
+            position: data.job.billing?.position,
+            model: data.job.billing?.model?.name,
+            pModelId: data.job.billing?.model?.id,
+            flagId: data.job.billing?.flagId,
+            endDate: data.job.billing?.endDate,
+          });
+        });
+    });
+  }
+  handleSailorAddressChange(event: AddressData) {
+    this.billingForm.controls[&#x27;sailorAddressId&#x27;].setValue(event);
+  }
+  handleAddressChange(event: AddressData) {
+    this.billingForm.controls[&#x27;addressId&#x27;].setValue(event);
+  }
+  handleModelSelection(e: any) {
+    this.billingForm.controls[&#x27;modelId&#x27;].setValue(e.id);
+    this.billingForm.controls[&#x27;model&#x27;].setValue(e.name);
+  }
+  startHarborSelection(e: any) {
+    this.billingForm.controls[&#x27;startHarborId&#x27;].setValue(e.id);
+    this.billingForm.controls[&#x27;startHarbor&#x27;].setValue(e.name);
+  }
+  endHarborSelection(e: any) {
+    this.billingForm.controls[&#x27;endHarborId&#x27;].setValue(e.id);
+    this.billingForm.controls[&#x27;endHarbor&#x27;].setValue(e.name);
+  }
+
+  generateContractPdf() {
+    console.log(&#x27;le job&#x27;, this.job);
+    this.apollo
+      .mutate({
+        mutation: GENERATE_CONTRACT,
+        variables: {
+          offerId: this.job.finalOffer.id,
+        },
+        refetchQueries: [{ query: BILLING }],
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.modalConfirmed.openModal();
+        },
+        (error) &#x3D;&gt; {
+          console.log(&#x27;error a la génération du contrat&#x27;, error);
+        }
+      );
+  }
+
+  updateBilling() {
+    this.apollo
+      .mutate({
+        mutation: UPSERT_BILLING,
+        variables: {
+          billingPayload: {
+            pAdType: this.billingForm.value.adType,
+            pAddressId: this.billingForm.value.addressId,
+            pBoatName: this.billingForm.value.boatName,
+            pClientType: this.billingForm.value.clientType,
+            pStartHarborId: this.billingForm.value.startHarborId,
+            pStartDate: this.billingForm.value.startDate,
+            pSiret: this.billingForm.value.siret,
+            pSailorStatus: this.billingForm.value.sailorStatus,
+            pSailorSiret: this.billingForm.value.sailorSiret,
+            pSailorPhoneNumber: this.billingForm.value.sailorPhoneNumber,
+            pSailorLastname: this.billingForm.value.sailorLastname,
+            pSailorFirstname: this.billingForm.value.sailorFirstname,
+            pSailorEmail: this.billingForm.value.sailorEmail,
+            pSailorCorporateName: this.billingForm.value.sailorCorporateName,
+            pSailorBirthday: this.billingForm.value.sailorBirthday,
+            pSailorAddressId: this.billingForm.value.sailorAddressId,
+            pRegistrationNumber: this.billingForm.value.Immatriculation,
+            pPrice: this.billingForm.value.price,
+            pPosition: this.billingForm.value.position,
+            pPhoneNumber: this.billingForm.value.phoneNumber,
+            pModelId: this.billingForm.value.modelId,
+            pLastname: this.billingForm.value.lastname,
+            pLanguage: this.billingForm.value.language,
+            pJobId: this.job.id,
+            pFlagId: this.billingForm.value.flagId,
+            pFirstname: this.billingForm.value.firstname,
+            pEndHarborId: this.billingForm.value.endHarborId,
+            pEndDate: this.billingForm.value.endDate,
+            pEmail: this.billingForm.value.email,
+            pCorporateName: this.billingForm.value.corporateName,
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.modalConfirmed.openModal();
+          console.log(&#x27;le update job reussi &#x27;);
+        },
+        (err: any) &#x3D;&gt; {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'AddressData-1.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

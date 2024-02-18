@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { OFFER_CHESS } from 'src/graphql/chess';
 
@@ -12,10 +11,7 @@ export class ChessComponent {
   offers: any = new Array<any>();
   tabWatting: boolean = true;
 
-  constructor(
-    private route: ActivatedRoute,
-    private apollo: Apollo
-  ) {}
+  constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {
     this.loadOffers(false);

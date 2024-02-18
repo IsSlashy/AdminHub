@@ -13,4 +13,8 @@ describe('PortService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should get ports', () => {
+    expect(service.getPorts().length).toBe(2);
+  });
 });

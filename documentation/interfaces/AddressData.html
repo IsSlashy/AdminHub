@@ -1,0 +1,578 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  AddressData</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/admin/chess/detail/detail.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#formattedAddress" 
+>
+                                            formattedAddress
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#id" 
+>
+                                            id
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="formattedAddress"></a>
+                                        <span class="name "><b>formattedAddress</b>
+                                            <a href="#formattedAddress">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>formattedAddress:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+import {
+  DETAIL_CHESS,
+  RECORD_CHESS,
+  UPDATE_BILLING,
+  UPDATE_DETAIL_SAILOR,
+  UPDATE_SAILOR,
+} from &#x27;src/graphql/chess&#x27;;
+
+interface AddressData {
+  id: string;
+  formattedAddress: string;
+}
+
+@Component({
+  selector: &#x27;app-detail&#x27;,
+  templateUrl: &#x27;./detail.component.html&#x27;,
+  styleUrls: [&#x27;./detail.component.css&#x27;],
+})
+export class DetailComponent {
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+
+  nationalities: any;
+  countries: any;
+
+  missionForm: FormGroup &#x3D; this.formBuilder.group({
+    startDate: [null, []],
+    endDate: [null, []],
+    startHarbor: [null, []],
+    endHarbor: [null, []],
+    price: [null, []],
+    position: [null, []],
+  });
+
+  sailorForm: FormGroup &#x3D; this.formBuilder.group({
+    lastname: [null, []],
+    firstname: [null, []],
+    birthday: [null, []],
+    nationality: [null, []],
+    birthPlace: [null, []],
+    birthCountry: [null, []],
+    socialNumber: [null, []],
+    rib: [null, []],
+    personalAddress: [null, []],
+    personalAddressId: [null, []],
+    addressId: [null, []],
+    phoneNumber: [null, []],
+    email: [null, []],
+    sailorNumber: [null, []],
+    taxDom: [null, []],
+    civility: [null, []],
+  });
+
+  billingForm: FormGroup &#x3D; this.formBuilder.group({
+    clientType: [null, []],
+    firstname: [null, []],
+    lastname: [null, []],
+    phoneNumber: [null, []],
+    email: [null, []],
+    address: [null, []],
+    addressId: [null, []],
+    model: [null, []],
+    modelId: [null, []],
+    boatName: [null, []],
+    registrationNumber: [null, []],
+    flagId: [null, []],
+  });
+
+  constructor(
+    private route: ActivatedRoute,
+    private apollo: Apollo,
+    private formBuilder: FormBuilder
+  ) {}
+  id: any;
+  offer: any;
+
+  ngOnInit(): void {
+    // Accéder au paramètre &quot;id&quot;
+    this.route.paramMap.subscribe((params) &#x3D;&gt; {
+      this.apollo
+        .query({
+          query: DETAIL_CHESS,
+          variables: {
+            offerId: params.get(&#x27;id&#x27;),
+          },
+        })
+        .subscribe(({ data }: any) &#x3D;&gt; {
+          console.log(&#x27;la data&#x27;, data);
+          this.offer &#x3D; data.offer;
+          this.nationalities &#x3D; data.nationalities.nodes;
+          this.countries &#x3D; data.places.nodes;
+
+          this.patchForm();
+        });
+    });
+  }
+
+  patchForm() {
+    this.sailorForm.patchValue({
+      birthday: this.offer.sailor.birthday,
+      firstname: this.offer.sailor.firstname,
+      nationality: this.offer.sailor.nationality1.id,
+      civility: this.offer.sailor.civility,
+
+      lastname: this.offer.sailor.userDetailById.lastname,
+      birthPlace: this.offer.sailor.userDetailById.birthPlace,
+      birthCountry: this.offer.sailor.userDetailById.birthCountry,
+      socialNumber: this.offer.sailor.userDetailById.socialSecurityNumber,
+      rib: this.offer.sailor.userDetailById.rib,
+      personalAddress:
+        this.offer.sailor.userDetailById.personnalAddress?.formattedAddress,
+      personalAddressId: this.offer.sailor.userDetailById.personnalAddress?.id,
+      phoneNumber: this.offer.sailor.userDetailById.phoneNumber,
+      email: this.offer.sailor.userDetailById.email,
+      sailorNumber: this.offer.sailor.userDetailById.sailorNumber,
+      taxDom: this.offer.sailor.userDetailById.placeByTaxDomicil.id,
+    });
+
+    this.missionForm.patchValue({
+      startDate: this.offer.job.ad.startDate,
+      endDate: this.offer.job.ad.endDate,
+      startHarbor: this.offer.job.ad.harborByStartHarbor.nameFr,
+      endHarbor: this.offer.job.ad.harborByEndHarbor.nameFr,
+      price: this.offer.chessRemuneration,
+      position: this.offer.job.position,
+    });
+
+    this.billingForm.patchValue({
+      clientType: this.offer.job.billing.clientType,
+      firstname: this.offer.job.billing.firstname,
+      lastname: this.offer.job.billing.lastname,
+      phoneNumber: this.offer.job.billing.phoneNumber,
+      email: this.offer.job.billing.email,
+      address: this.offer.job.billing.address?.formattedAddress,
+      addressId: this.offer.job.billing.address?.id,
+      model: this.offer.job.billing.model?.name,
+      modelId: this.offer.job.billing.model?.id,
+      boatName: this.offer.job.billing.boatName,
+      registrationNumber: this.offer.job.billing.registrationNumber,
+      flagId: this.offer.job.billing.flag?.id,
+    });
+
+    console.log(&#x27;le from&#x27;, this.billingForm.value);
+  }
+
+  handleAddressChange(event: AddressData) {
+    this.billingForm.controls[&#x27;addressId&#x27;].setValue(event);
+    console.log(&#x27;le from&#x27;, this.billingForm.value);
+  }
+  handleAddressSailorChange(event: AddressData) {
+    this.sailorForm.controls[&#x27;personalAddressId&#x27;].setValue(event);
+  }
+
+  handleModelSelection(e: any) {
+    this.billingForm.controls[&#x27;modelId&#x27;].setValue(e.id);
+    this.billingForm.controls[&#x27;model&#x27;].setValue(e.name);
+  }
+
+  updateSailor() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_SAILOR,
+        variables: {
+          sailorPayload: {
+            id: this.offer.sailor.id,
+            patch: {
+              firstname: this.sailorForm.value.firstname,
+              birthday: this.sailorForm.value.birthday,
+              nationality1Id: this.sailorForm.value.nationality,
+              civility: this.sailorForm.value.civility,
+            },
+          },
+        },
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.apollo
+          .mutate({
+            mutation: UPDATE_DETAIL_SAILOR,
+            refetchQueries: [
+              { query: DETAIL_CHESS, variables: { offerId: this.offer.id } },
+            ],
+            variables: {
+              sailorPayload: {
+                id: this.offer.sailor.id,
+                patch: {
+                  lastname: this.sailorForm.value.lastname,
+                  birthPlace: this.sailorForm.value.birthPlace,
+                  birthCountry: this.sailorForm.value.birthCountry,
+                  socialSecurityNumber: this.sailorForm.value.socialNumber,
+                  rib: this.sailorForm.value.rib,
+                  personnalAddressId: this.sailorForm.value.personalAddressId,
+                  phoneNumber: this.sailorForm.value.phoneNumber,
+                  email: this.sailorForm.value.email,
+                  sailorNumber: this.sailorForm.value.sailorNumber,
+                  taxDomicil: this.sailorForm.value.taxDom,
+                },
+              },
+            },
+          })
+          .subscribe(
+            ({ data }: any) &#x3D;&gt; {
+              this.modalConfirmed.openModal();
+            },
+            (err: any) &#x3D;&gt; {
+              console.log(err);
+              this.modalConfirmed.modalRejected();
+            }
+          );
+      });
+  }
+
+  updateClient() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_BILLING,
+        variables: {
+          billingPayload: {
+            pJobId: this.offer.job.id,
+            pClientType: this.billingForm.value.clientType,
+            pFirstname: this.billingForm.value.firstname,
+            pLastname: this.billingForm.value.lastname,
+            pPhoneNumber: this.billingForm.value.phoneNumber,
+            pEmail: this.billingForm.value.email,
+            pAddressId: this.billingForm.value.addressId,
+            pModelId: this.billingForm.value.modelId,
+            pBoatName: this.billingForm.value.boatName,
+            pRegistrationNumber: this.billingForm.value.registrationNumber,
+            pFlagId: this.billingForm.value.flagId,
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) &#x3D;&gt; {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
+  }
+
+  sendApiChess() {
+    this.apollo
+      .mutate({
+        mutation: RECORD_CHESS,
+        variables: {
+          jobId: this.offer.job.id,
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) &#x3D;&gt; {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'AddressData.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

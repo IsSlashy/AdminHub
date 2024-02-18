@@ -29,8 +29,6 @@ export class PortService {
     },
   ];
 
-  constructor() {}
-
   getPorts(): Port[] {
     return this.ports;
   }

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Apollo } from 'apollo-angular';
-import { CLIENT_PAIMENTS } from 'src/graphql/client';
+import { DataServiceService } from 'src/app/admin/services/data-service.service';
 
 @Component({
   selector: 'app-paiments',
@@ -13,18 +12,13 @@ export class PaimentsComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private apollo: Apollo
+    private dataService: DataServiceService
   ) {}
 
   ngOnInit() {
     this.route.parent?.paramMap.subscribe((param) => {
-      this.apollo
-        .query({
-          query: CLIENT_PAIMENTS,
-          variables: {
-            userId: param.get('id'),
-          },
-        })
+      this.dataService
+        .clientPaiementById(param.get('id'))
         .subscribe(({ data }: any) => {
           this.jobs = data.user.jobsAsClientPaid.nodes;
           console.log('les paiments', this.jobs);

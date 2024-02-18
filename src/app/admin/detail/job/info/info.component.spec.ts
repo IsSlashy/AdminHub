@@ -9,6 +9,15 @@ import { Apollo } from 'apollo-angular';
 import { ActivatedRoute, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
 import { InfoComponent } from './info.component';
+import { AutocompleteHarborComponent } from 'src/app/components/autocomplete-harbor/autocomplete-harbor.component';
+import {
+  MatDatepickerInput,
+  MatDatepickerModule,
+} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ModalConfirmedComponent } from 'src/app/components/modal-confirmed/modal-confirmed.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('InfoComponent', () => {
   let component: InfoComponent;
@@ -23,8 +32,13 @@ describe('InfoComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [InfoComponent],
+      declarations: [
+        InfoComponent,
+        AutocompleteHarborComponent,
+        ModalConfirmedComponent,
+      ],
       imports: [
+        MatAutocompleteModule,
         ReactiveFormsModule,
         FormsModule,
         MatFormFieldModule,
@@ -32,6 +46,9 @@ describe('InfoComponent', () => {
         MatSelectModule,
         MatRadioModule,
         BrowserAnimationsModule,
+        RouterTestingModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
       ],
       providers: [
         { provide: Apollo, useValue: apolloMock },

@@ -1,0 +1,1080 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ClientJobsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/detail/client/client-jobs/client-jobs.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-client-jobs</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./client-jobs.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./client-jobs.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeTab" >activeTab</a>
+                            </li>
+                            <li>
+                                <a href="#ads" >ads</a>
+                            </li>
+                            <li>
+                                <a href="#assignedCount" >assignedCount</a>
+                            </li>
+                            <li>
+                                <a href="#canceledCount" >canceledCount</a>
+                            </li>
+                            <li>
+                                <a href="#confirmdedCount" >confirmdedCount</a>
+                            </li>
+                            <li>
+                                <a href="#publishedCount" >publishedCount</a>
+                            </li>
+                            <li>
+                                <a href="#userId" >userId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#selectCanceled" >selectCanceled</a>
+                            </li>
+                            <li>
+                                <a href="#selectConfirmed" >selectConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#selectPaid" >selectPaid</a>
+                            </li>
+                            <li>
+                                <a href="#selectPublished" >selectPublished</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, apollo: Apollo)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="26"
+                                    class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectCanceled"></a>
+                    <span class="name">
+                        <span ><b>selectCanceled</b></span>
+                        <a href="#selectCanceled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectCanceled()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:90</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectConfirmed"></a>
+                    <span class="name">
+                        <span ><b>selectConfirmed</b></span>
+                        <a href="#selectConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectConfirmed()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectPaid"></a>
+                    <span class="name">
+                        <span ><b>selectPaid</b></span>
+                        <a href="#selectPaid"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectPaid()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="52"
+                                    class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:52</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectPublished"></a>
+                    <span class="name">
+                        <span ><b>selectPublished</b></span>
+                        <a href="#selectPublished"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectPublished()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="33"
+                                    class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeTab"></a>
+                    <span class="name">
+                        <span ><b>activeTab</b></span>
+                        <a href="#activeTab"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:14</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ads"></a>
+                    <span class="name">
+                        <span ><b>ads</b></span>
+                        <a href="#ads"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new Array&lt;any&gt;()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:13</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="assignedCount"></a>
+                    <span class="name">
+                        <span ><b>assignedCount</b></span>
+                        <a href="#assignedCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="canceledCount"></a>
+                    <span class="name">
+                        <span ><b>canceledCount</b></span>
+                        <a href="#canceledCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmdedCount"></a>
+                    <span class="name">
+                        <span ><b>confirmdedCount</b></span>
+                        <a href="#confirmdedCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="publishedCount"></a>
+                    <span class="name">
+                        <span ><b>publishedCount</b></span>
+                        <a href="#publishedCount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="userId"></a>
+                    <span class="name">
+                        <span ><b>userId</b></span>
+                        <a href="#userId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/admin/detail/client/client-jobs/client-jobs.component.ts:12</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { CANCELED, CONFIRMED, PAID, PUBLISHED } from &#x27;src/graphql/client&#x27;;
+
+@Component({
+  selector: &#x27;app-client-jobs&#x27;,
+  templateUrl: &#x27;./client-jobs.component.html&#x27;,
+  styleUrls: [&#x27;./client-jobs.component.css&#x27;],
+})
+export class ClientJobsComponent {
+  userId: string | null &#x3D; &#x27;&#x27;;
+  ads: any &#x3D; new Array&lt;any&gt;();
+  activeTab: string &#x3D; &#x27;&#x27;;
+
+  publishedCount: number | null &#x3D; 0;
+  assignedCount: number | null &#x3D; 0;
+  confirmdedCount: number | null &#x3D; 0;
+  canceledCount: number | null &#x3D; 0;
+
+  constructor(
+    private route: ActivatedRoute,
+    private apollo: Apollo
+  ) {}
+
+  ngOnInit() {
+    this.route.parent?.paramMap.subscribe((param) &#x3D;&gt; {
+      this.userId &#x3D; param.get(&#x27;id&#x27;);
+      this.selectPublished();
+    });
+  }
+
+  selectPublished() {
+    this.activeTab &#x3D; &#x27;published&#x27;;
+    this.apollo
+      .query({
+        query: PUBLISHED,
+        variables: {
+          userId: this.userId,
+        },
+        fetchPolicy: &#x27;network-only&#x27;,
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.ads &#x3D; data.user.adsAsClient.nodes;
+        this.publishedCount &#x3D; data.user.adsAsClient.totalCount;
+        this.assignedCount &#x3D; data.user.adsAsClientPaid.totalCount;
+        this.confirmdedCount &#x3D; data.user.adsAsClientConfirmed.totalCount;
+        this.canceledCount &#x3D; data.user.adsAsClientArchived.totalCount;
+      });
+  }
+
+  selectPaid() {
+    this.activeTab &#x3D; &#x27;paid&#x27;;
+    this.apollo
+      .query({
+        query: PAID,
+        variables: {
+          userId: this.userId,
+        },
+        fetchPolicy: &#x27;network-only&#x27;,
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.ads &#x3D; data.user.adsAsClientPaid.nodes;
+        this.publishedCount &#x3D; data.user.adsAsClient.totalCount;
+        this.assignedCount &#x3D; data.user.adsAsClientPaid.totalCount;
+        this.confirmdedCount &#x3D; data.user.adsAsClientConfirmed.totalCount;
+        this.canceledCount &#x3D; data.user.adsAsClientArchived.totalCount;
+      });
+  }
+
+  selectConfirmed() {
+    this.activeTab &#x3D; &#x27;confirmed&#x27;;
+    this.apollo
+      .query({
+        query: CONFIRMED,
+        variables: {
+          userId: this.userId,
+        },
+        fetchPolicy: &#x27;network-only&#x27;,
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.ads &#x3D; data.user.adsAsClientConfirmed.nodes;
+        this.publishedCount &#x3D; data.user.adsAsClient.totalCount;
+        this.assignedCount &#x3D; data.user.adsAsClientPaid.totalCount;
+        this.confirmdedCount &#x3D; data.user.adsAsClientConfirmed.totalCount;
+        this.canceledCount &#x3D; data.user.adsAsClientArchived.totalCount;
+      });
+  }
+
+  selectCanceled() {
+    this.activeTab &#x3D; &#x27;canceled&#x27;;
+    this.apollo
+      .query({
+        query: CANCELED,
+        variables: {
+          userId: this.userId,
+        },
+        fetchPolicy: &#x27;network-only&#x27;,
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.ads &#x3D; data.user.adsAsClientArchived.nodes;
+        this.publishedCount &#x3D; data.user.adsAsClient.totalCount;
+        this.assignedCount &#x3D; data.user.adsAsClientPaid.totalCount;
+        this.confirmdedCount &#x3D; data.user.adsAsClientConfirmed.totalCount;
+        this.canceledCount &#x3D; data.user.adsAsClientArchived.totalCount;
+      });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container mt-10&quot;&gt;
+  &lt;div class&#x3D;&quot;tabs--missions-header&quot;&gt;
+    &lt;div class&#x3D;&quot;tabs--missions-filters&quot;&gt;
+      &lt;button
+        class&#x3D;&quot;btn btn-outline-primary btn--tabs-filter&quot;
+        [class.active]&#x3D;&quot;activeTab &#x3D;&#x3D;&#x3D; &#x27;published&#x27;&quot;
+        type&#x3D;&quot;button&quot;
+        (click)&#x3D;&quot;selectPublished()&quot;
+      &gt;
+        En Ligne{{ publishedCount }}
+      &lt;/button&gt;
+      &lt;button
+        class&#x3D;&quot;btn btn-outline-primary btn--tabs-filter&quot;
+        [class.active]&#x3D;&quot;activeTab &#x3D;&#x3D;&#x3D; &#x27;paid&#x27;&quot;
+        type&#x3D;&quot;button&quot;
+        (click)&#x3D;&quot;selectPaid()&quot;
+      &gt;
+        Pourvues {{ assignedCount }}
+      &lt;/button&gt;
+      &lt;button
+        class&#x3D;&quot;btn btn-outline-primary btn--tabs-filter&quot;
+        [class.active]&#x3D;&quot;activeTab &#x3D;&#x3D;&#x3D; &#x27;confirmed&#x27;&quot;
+        type&#x3D;&quot;button&quot;
+        (click)&#x3D;&quot;selectConfirmed()&quot;
+      &gt;
+        Terminées {{ confirmdedCount }}
+      &lt;/button&gt;
+      &lt;button
+        class&#x3D;&quot;btn btn-outline-primary btn--tabs-filter&quot;
+        [class.active]&#x3D;&quot;activeTab &#x3D;&#x3D;&#x3D; &#x27;canceled&#x27;&quot;
+        type&#x3D;&quot;button&quot;
+        (click)&#x3D;&quot;selectCanceled()&quot;
+      &gt;
+        Annulées {{ canceledCount }}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;table class&#x3D;&quot;table table-striped&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Bateau&lt;/th&gt;
+      &lt;th&gt;Date&lt;/th&gt;
+      &lt;th&gt;Lieux&lt;/th&gt;
+      &lt;th&gt;Jobs&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr *ngFor&#x3D;&quot;let ad of ads&quot;&gt;
+      &lt;td&gt;
+        &lt;img
+          style&#x3D;&quot;max-width: 75px; max-height: 75px&quot;
+          src&#x3D;&quot;{{ ad.boat.boatPictures.nodes[0]?.url }}&quot;
+        /&gt;
+      &lt;/td&gt;
+      &lt;td&gt;
+        {{ ad.boat.model.name }} &lt;br /&gt;
+        {{ ad.boat.model.boatType }}
+      &lt;/td&gt;
+      &lt;td&gt;
+        {{ ad.startDate }} &lt;br /&gt;
+        {{ ad.endDate }}
+      &lt;/td&gt;
+      &lt;td&gt;
+        {{ ad.harborByStartHarbor.nameFr }} &lt;br /&gt;
+        {{ ad.harborByEndHarbor.nameFr }}
+      &lt;/td&gt;
+      &lt;td&gt;
+        &lt;div class&#x3D;&quot;nested-table&quot;&gt;
+          &lt;div
+            *ngFor&#x3D;&quot;let job of ad.jobs.nodes&quot;
+            style&#x3D;&quot;cursor: pointer&quot;
+            routerLink&#x3D;&quot;/admin/job/{{ job.id }}&quot;
+          &gt;
+            {{ job.position }} - {{ job.realPrice }} - {{ job.jobStatus }}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./client-jobs.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.nested-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.nested-table div {
+  display: table-row;
+}
+
+.nested-table div:last-child {
+  border-bottom: none;
+}
+
+.nested-table div::before {
+  content: &#x27;&#x27;;
+  display: table-cell;
+  width: 30%;
+  padding: 5px;
+}
+
+.nested-table div:last-child::before {
+  border-bottom: none;
+}
+
+.nested-table div span {
+  display: table-cell;
+  padding: 5px;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container mt-10">  <div class="tabs--missions-header">    <div class="tabs--missions-filters">      <button        class="btn btn-outline-primary btn--tabs-filter"        [class.active]="activeTab === \'published\'"        type="button"        (click)="selectPublished()"      >        En Ligne{{ publishedCount }}      </button>      <button        class="btn btn-outline-primary btn--tabs-filter"        [class.active]="activeTab === \'paid\'"        type="button"        (click)="selectPaid()"      >        Pourvues {{ assignedCount }}      </button>      <button        class="btn btn-outline-primary btn--tabs-filter"        [class.active]="activeTab === \'confirmed\'"        type="button"        (click)="selectConfirmed()"      >        Terminées {{ confirmdedCount }}      </button>      <button        class="btn btn-outline-primary btn--tabs-filter"        [class.active]="activeTab === \'canceled\'"        type="button"        (click)="selectCanceled()"      >        Annulées {{ canceledCount }}      </button>    </div>  </div></div><table class="table table-striped">  <thead>    <tr>      <th></th>      <th>Bateau</th>      <th>Date</th>      <th>Lieux</th>      <th>Jobs</th>    </tr>  </thead>  <tbody>    <tr *ngFor="let ad of ads">      <td>        <img          style="max-width: 75px; max-height: 75px"          src="{{ ad.boat.boatPictures.nodes[0]?.url }}"        />      </td>      <td>        {{ ad.boat.model.name }} <br />        {{ ad.boat.model.boatType }}      </td>      <td>        {{ ad.startDate }} <br />        {{ ad.endDate }}      </td>      <td>        {{ ad.harborByStartHarbor.nameFr }} <br />        {{ ad.harborByEndHarbor.nameFr }}      </td>      <td>        <div class="nested-table">          <div            *ngFor="let job of ad.jobs.nodes"            style="cursor: pointer"            routerLink="/admin/job/{{ job.id }}"          >            {{ job.position }} - {{ job.realPrice }} - {{ job.jobStatus }}          </div>        </div>      </td>    </tr>  </tbody></table></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ClientJobsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ClientJobsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

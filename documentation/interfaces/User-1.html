@@ -1,0 +1,859 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content interface">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Interfaces</li>
+  <li class="breadcrumb-item"
+  >
+  User</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/admin/approval/degrees/degrees.component.ts</code>
+        </p>
+
+
+
+
+        <section data-compodoc="block-index">
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#id" 
+>
+                                            id
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#name" 
+>
+                                            name
+                                        </a>
+                                </li>
+                                <li>
+                                        <a href="#shortName" 
+>
+                                            shortName
+                                        </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section data-compodoc="block-properties">
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="id"></a>
+                                        <span class="name "><b>id</b>
+                                            <a href="#id">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>id:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="name"></a>
+                                        <span class="name "><b>name</b>
+                                            <a href="#name">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>name:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="shortName"></a>
+                                        <span class="name "><b>shortName</b>
+                                            <a href="#shortName">
+                                                <span class="icon ion-ios-link"></span>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>shortName:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+
+
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  ChangeDetectorRef,
+  Component,
+  Input,
+  SecurityContext,
+} from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, UntypedFormBuilder } from &#x27;@angular/forms&#x27;;
+import { DomSanitizer, SafeResourceUrl } from &#x27;@angular/platform-browser&#x27;;
+import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { Observable, Subscription, map, startWith } from &#x27;rxjs&#x27;;
+import {
+  ARCHIVE_DOCUMENT,
+  GENERATE_URL,
+  GET_DEGREES,
+  GET_DOCUMENTS,
+  REFUSE_DOCUMENT,
+  UPDATE_DETAILS,
+  UPDATE_DOCUMENT,
+  UPDATE_USER,
+  VALIDE_DOCUMENT,
+} from &#x27;src/graphql/approval&#x27;;
+
+export interface User {
+  name: string;
+  id: string;
+  shortName: string;
+}
+@Component({
+  selector: &#x27;app-degrees&#x27;,
+  templateUrl: &#x27;./degrees.component.html&#x27;,
+  styleUrls: [&#x27;./degrees.component.css&#x27;],
+})
+export class DegreesComponent {
+  @Input() searchDoc: any;
+  searchDocObject: any;
+  selectedTraining: any;
+  filteredOptions: Observable&lt;User[]&gt; | undefined;
+  options: Array&lt;User&gt; &#x3D; [];
+  myControl &#x3D; new FormControl();
+  urlDocument: SafeResourceUrl &#x3D; &#x27;&#x27;;
+  subscription!: Subscription;
+
+  modifyForm: FormGroup &#x3D; this.formBuilder.group({
+    type: [null, []],
+    name: null,
+    serial: null,
+    holderName: [null, []],
+    holderNumber: [null, []],
+    date: [null, []],
+    endDate: [null, []],
+    birthday: [null, []],
+  });
+  file: any;
+  holderNumberCanUpdate: boolean &#x3D; false;
+  selectedReason: string &#x3D; &#x27;&#x27;;
+  reason: string &#x3D; &#x27;&#x27;;
+  selectedTable: string &#x3D; &#x27;WAITING&#x27;;
+
+  constructor(
+    private cdRef: ChangeDetectorRef,
+    private formBuilder: UntypedFormBuilder,
+    private apollo: Apollo,
+    private sanitizer: DomSanitizer
+  ) {}
+
+  ngOnInit() {
+    this.apollo
+      .query({
+        query: GET_DOCUMENTS,
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        data.documentTypes.nodes.forEach((element: any) &#x3D;&gt; {
+          const user: User &#x3D; {
+            name: element.name,
+            id: element.id,
+            shortName: element.country?.shortName,
+          };
+          this.options.push(user);
+        });
+        this.filteredOptions &#x3D; this.myControl.valueChanges.pipe(
+          startWith(&#x27;&#x27;),
+          map((value) &#x3D;&gt; (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? value : value.name)),
+          map((name) &#x3D;&gt; (name ? this._filter(name) : this.options.slice()))
+        );
+      });
+
+    //GET degrees
+
+    this.subscription &#x3D; this.apollo
+      .watchQuery({
+        query: GET_DEGREES,
+        fetchPolicy: &#x27;network-only&#x27;,
+        variables: {
+          type: &#x27;DEGREE&#x27;,
+          status: this.selectedTable,
+        },
+      })
+      .valueChanges.subscribe(({ data }: any) &#x3D;&gt; {
+        this.searchDocObject &#x3D; data;
+      });
+  }
+  ngOnChanges() {
+    try {
+      this.searchDocObject &#x3D; JSON.parse(this.searchDoc);
+    } catch (error) {
+      console.error(&quot;Erreur lors de l&#x27;analyse JSON :&quot;, error);
+      this.searchDocObject &#x3D; null;
+    }
+    this.cdRef.detectChanges();
+  }
+
+  private _filter(name: string): User[] {
+    const filterValue &#x3D; name.toLowerCase();
+    return this.options.filter((option) &#x3D;&gt;
+      option.name.toLowerCase().includes(filterValue)
+    );
+  }
+  selectTable(table: string) {
+    this.selectedTable &#x3D; table;
+    this.getDegrees();
+  }
+  //GET degrees
+  getDegrees() {
+    this.apollo
+      .query({
+        query: GET_DEGREES,
+        fetchPolicy: &#x27;network-only&#x27;,
+        variables: {
+          type: &#x27;DEGREE&#x27;,
+          status: this.selectedTable,
+        },
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.searchDocObject &#x3D; data;
+      });
+  }
+  changeDocument(e: any) {
+    console.log(&#x27;levent&#x27;, e.option.value.id);
+    this.modifyForm.controls[&#x27;type&#x27;].setValue(e.option.value.id);
+  }
+  displayFn(user: User): string {
+    return user &amp;&amp; user.name ? user.name : &#x27;&#x27;;
+  }
+
+  //MODAL
+  openRejectModal() {
+    const modal &#x3D; document.getElementById(&#x27;modal-rejected&#x27;);
+    if (modal) {
+      modal.style.display &#x3D; &#x27;block&#x27;;
+      modal.style.opacity &#x3D; &#x27;1&#x27;;
+    }
+  }
+
+  openModal(training: any) {
+    if (training) {
+      this.patchFunction(training);
+      if (
+        this.modifyForm.value.holderNumber &#x3D;&#x3D;&#x3D; undefined ||
+        this.modifyForm.value.holderNumber
+      ) {
+        console.log(&#x27;value is null&#x27;);
+        this.holderNumberCanUpdate &#x3D; true;
+      }
+    }
+    this.selectedTraining &#x3D; training;
+    this.urlDocument &#x3D; this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.selectedTraining.documentUrl
+    );
+    const modal &#x3D; document.getElementById(&#x27;myModal&#x27;);
+    if (modal) {
+      modal.style.display &#x3D; &#x27;block&#x27;;
+      modal.style.opacity &#x3D; &#x27;1&#x27;;
+    }
+  }
+  closeModal(modalId: string) {
+    this.selectedTraining &#x3D; null;
+    const modal &#x3D; document.getElementById(modalId);
+    if (modal) modal.style.display &#x3D; &#x27;none&#x27;;
+  }
+  //OUVRIR LE DOCUMENT
+  openDocUrl(url: SafeResourceUrl) {
+    const urlAsString: string | null &#x3D; this.sanitizer.sanitize(
+      SecurityContext.URL,
+      url
+    );
+    if (urlAsString) window.open(urlAsString, &#x27;_blank&#x27;);
+  }
+  //PATCH VALUE
+  patchFunction(data: any) {
+    this.myControl.patchValue(data.documentType);
+    this.modifyForm.patchValue({
+      type: data.documentType?.id,
+      name: data.documentType?.name,
+      serial: data.serial,
+      holderNumber: data.sailorId,
+      endDate: data.expirationDate,
+      birthday: data.user.birthday,
+    });
+  }
+  //UPLOAD NEW IMAGE
+  handleFileInput(event: Event) {
+    console.log(event);
+    const inputElement &#x3D; event.target as HTMLInputElement;
+    if (inputElement.files &amp;&amp; inputElement.files.length &gt; 0) {
+      this.file &#x3D; inputElement.files[0];
+    }
+  }
+
+  //DONWLOAD DOC
+  downloadImage(url: any) {
+    const urlAsString: string | null &#x3D; this.sanitizer.sanitize(
+      SecurityContext.URL,
+      url
+    );
+    const link &#x3D; document.createElement(&#x27;a&#x27;);
+    if (urlAsString) link.href &#x3D; urlAsString;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  //VALIDATION DU DOCUMENT
+  validation(degree: any) {
+    console.log(degree);
+
+    this.apollo
+      .mutate({
+        mutation: VALIDE_DOCUMENT,
+        variables: {
+          validedocument: {
+            pDocumentId: degree.id || this.selectedTraining.id,
+          },
+        },
+        refetchQueries: [
+          {
+            query: GET_DEGREES,
+            fetchPolicy: &#x27;network-only&#x27;,
+            variables: {
+              type: &#x27;DEGREE&#x27;,
+              status: this.selectedTable,
+            },
+          },
+        ],
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        console.log(&#x27;La modif à été faite&#x27;);
+        this.closeModal(&#x27;myModal&#x27;);
+      });
+  }
+  //DELETE DOCUMENT
+  deleteDocument() {
+    this.apollo
+      .mutate({
+        mutation: ARCHIVE_DOCUMENT,
+        variables: {
+          docInput: {
+            pDocumentId: this.selectedTraining.id,
+          },
+        },
+        refetchQueries: [
+          {
+            query: GET_DEGREES,
+            fetchPolicy: &#x27;network-only&#x27;,
+            variables: {
+              type: &#x27;DEGREE&#x27;,
+              status: this.selectedTable,
+            },
+          },
+        ],
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        this.closeModal(&#x27;myModal&#x27;);
+      });
+  }
+  // Refuse document
+  invalidate() {
+    if (this.reason &#x3D;&#x3D;&#x3D; &#x27;AUTRE&#x27;) {
+      const autreInput &#x3D; document.getElementById(&#x27;autre&#x27;) as HTMLInputElement;
+      if (autreInput) {
+        this.selectedReason &#x3D; autreInput.value;
+      }
+    } else {
+      this.selectedReason &#x3D; this.reason;
+    }
+    this.apollo
+      .mutate({
+        mutation: REFUSE_DOCUMENT,
+        variables: {
+          refuseinput: {
+            pDocumentId: this.selectedTraining.id,
+            pReason: this.selectedReason,
+          },
+        },
+        refetchQueries: [
+          {
+            query: GET_DEGREES,
+            fetchPolicy: &#x27;network-only&#x27;,
+            variables: {
+              type: &#x27;DEGREE&#x27;,
+              status: this.selectedTable,
+            },
+          },
+        ],
+      })
+      .subscribe(({ data, loading }: any) &#x3D;&gt; {
+        console.log(&#x27;La modif à été faite&#x27;);
+      });
+    this.closeModal(&#x27;myModal&#x27;);
+    this.closeModal(&#x27;modal-rejected&#x27;);
+  }
+  //ACCEPTER MODIFICATION
+  confirmModification(selectedTraining: any) {
+    const val &#x3D; new Date(this.modifyForm.controls[&#x27;endDate&#x27;].value);
+    const jour &#x3D; val?.getDate();
+    const mois &#x3D; val?.getMonth() + 1;
+    const annee &#x3D; val?.getFullYear();
+    this.modifyForm.controls[&#x27;endDate&#x27;].setValue(
+      &#x60;${annee}/${mois.toString().padStart(2, &#x27;0&#x27;)}/${jour.toString().padStart(2, &#x27;0&#x27;)}&#x60;
+    );
+    if (this.modifyForm.controls[&#x27;endDate&#x27;].value &#x3D;&#x3D;&#x3D; &#x27;1970/01/01&#x27;) {
+      this.modifyForm.controls[&#x27;endDate&#x27;].setValue(null);
+    }
+    var regex &#x3D; /^\s*$/;
+    console.log(
+      &#x27;holdernumber&#x27;,
+      this.modifyForm.value.holderNumber,
+      &#x27;selected doc &#x3D;&gt;&#x27;,
+      selectedTraining
+    );
+    if (regex.test(this.modifyForm.controls[&#x27;holderNumber&#x27;].value)) {
+      var sailorNumber: string | null &#x3D; null;
+    } else {
+      sailorNumber &#x3D; this.modifyForm.controls[&#x27;holderNumber&#x27;].value;
+    }
+    console.log(this.file);
+
+    if (this.file?.name !&#x3D;&#x3D; null &amp;&amp; this.file?.name !&#x3D;&#x3D; undefined) {
+      this.apollo
+        .mutate({
+          mutation: GENERATE_URL,
+          variables: {
+            keyInput: {
+              key: this.file.name,
+            },
+          },
+        })
+        .subscribe(async ({ data }: any) &#x3D;&gt; {
+          const formData &#x3D; new FormData();
+          formData.append(&#x27;Content-Type&#x27;, this.file.type);
+          Object.entries(data.generatePresignedPost.fields).forEach(
+            ([k, value]: any) &#x3D;&gt; {
+              formData.append(k, value);
+            }
+          );
+          formData.append(&#x27;file&#x27;, this.file);
+          await fetch(data.generatePresignedPost.url, {
+            method: &#x27;POST&#x27;,
+            body: formData,
+          });
+          this.closeModal(&#x27;myModal&#x27;);
+          const controls &#x3D; this.modifyForm.controls;
+
+          this.apollo
+            .mutate({
+              mutation: UPDATE_DOCUMENT,
+              variables: {
+                documentInput: {
+                  pDocumentId: selectedTraining.id,
+                  pDocumentPatch: {
+                    serial: controls[&#x27;serial&#x27;].value,
+                    sailorId: sailorNumber,
+                    documentUrl:
+                      data.generatePresignedPost.url +
+                      &#x27;/&#x27; +
+                      data.generatePresignedPost.fields.key,
+                    expirationDate: controls[&#x27;endDate&#x27;].value,
+                    documentTypeId: controls[&#x27;type&#x27;].value,
+                  },
+                },
+              },
+              refetchQueries: [
+                {
+                  query: GET_DEGREES,
+                  fetchPolicy: &#x27;network-only&#x27;,
+                  variables: {
+                    type: &#x27;DEGREE&#x27;,
+                    status: this.selectedTable,
+                  },
+                },
+              ],
+            })
+            .subscribe(({ data, loading }: any) &#x3D;&gt; {
+              console.log(&#x27;La modif à été faite&#x27;, data);
+              if (this.holderNumberCanUpdate) {
+                this.apollo
+                  .mutate({
+                    mutation: UPDATE_DETAILS,
+                    variables: {
+                      detailsInput: {
+                        id: selectedTraining.user.id,
+                        patch: {
+                          sailorNumber: controls[&#x27;holderNumber&#x27;].value,
+                        },
+                      },
+                    },
+                  })
+                  .subscribe(({ data, loading }: any) &#x3D;&gt; {
+                    console.log(&#x27;mutation good &#x3D;&#x3D;&gt; mtn update user&#x27;, data);
+                    this.apollo.mutate({
+                      mutation: UPDATE_USER,
+                      variables: {
+                        userinput: selectedTraining.user.id,
+                        patch: {
+                          birthday:
+                            controls[&#x27;birthday&#x27;].value
+                              ?.toString()
+                              .slice(0, 24) + &#x27;UTC&#x27;,
+                        },
+                      },
+                    });
+                  });
+              }
+              this.closeModal(&#x27;myModal&#x27;);
+              this.myControl &#x3D; new FormControl();
+              this.modifyForm.value.holderNumber;
+            });
+        });
+    } else {
+      const controls &#x3D; this.modifyForm.controls;
+
+      this.apollo
+        .mutate({
+          mutation: UPDATE_DOCUMENT,
+          variables: {
+            documentInput: {
+              pDocumentId: selectedTraining.id,
+              pDocumentPatch: {
+                serial: controls[&#x27;serial&#x27;].value,
+                sailorId: sailorNumber,
+                documentUrl: selectedTraining.documentUrl,
+                expirationDate: controls[&#x27;endDate&#x27;].value,
+                documentTypeId: controls[&#x27;type&#x27;].value,
+              },
+            },
+          },
+          refetchQueries: [
+            {
+              query: GET_DEGREES,
+              fetchPolicy: &#x27;network-only&#x27;,
+              variables: {
+                type: &#x27;DEGREE&#x27;,
+                status: this.selectedTable,
+              },
+            },
+          ],
+        })
+        .subscribe(({ data, loading }: any) &#x3D;&gt; {
+          console.log(&#x27;La modif à été faite&#x27;, data);
+          if (this.modifyForm.value.holderNumber) {
+            this.apollo
+              .mutate({
+                mutation: UPDATE_DETAILS,
+                variables: {
+                  detailsInput: {
+                    id: selectedTraining.user.id,
+                    patch: {
+                      sailorNumber: sailorNumber,
+                    },
+                  },
+                },
+              })
+              .subscribe(({ data, loading }: any) &#x3D;&gt; {
+                console.log(&#x27;mutation good &#x3D;&#x3D;&gt; 2&#x27;, data, this.selectedTraining);
+                this.apollo
+                  .mutate({
+                    mutation: UPDATE_USER,
+                    variables: {
+                      userinput: {
+                        id: selectedTraining.user.id,
+                        patch: {
+                          birthday:
+                            controls[&#x27;birthday&#x27;].value
+                              ?.toString()
+                              .slice(0, 24) + &#x27;UTC&#x27;,
+                        },
+                      },
+                    },
+                  })
+                  .subscribe(
+                    ({ data, loading }: any) &#x3D;&gt; {},
+                    (error) &#x3D;&gt; {
+                      console.log(error);
+                    }
+                  );
+              });
+          }
+          this.closeModal(&#x27;myModal&#x27;);
+          this.myControl &#x3D; new FormControl();
+          this.modifyForm.value.holderNumber;
+        });
+    }
+  }
+  onReasonSelected(reason: string) {
+    this.reason &#x3D; reason;
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'User-1.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

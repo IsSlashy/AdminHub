@@ -1,0 +1,1652 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">admin documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DetailComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/admin/chess/detail/detail.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-detail</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./detail.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./detail.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#billingForm" >billingForm</a>
+                            </li>
+                            <li>
+                                <a href="#countries" >countries</a>
+                            </li>
+                            <li>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#missionForm" >missionForm</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#modalConfirmed" >modalConfirmed</a>
+                            </li>
+                            <li>
+                                <a href="#nationalities" >nationalities</a>
+                            </li>
+                            <li>
+                                <a href="#offer" >offer</a>
+                            </li>
+                            <li>
+                                <a href="#sailorForm" >sailorForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#handleAddressChange" >handleAddressChange</a>
+                            </li>
+                            <li>
+                                <a href="#handleAddressSailorChange" >handleAddressSailorChange</a>
+                            </li>
+                            <li>
+                                <a href="#handleModelSelection" >handleModelSelection</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#patchForm" >patchForm</a>
+                            </li>
+                            <li>
+                                <a href="#sendApiChess" >sendApiChess</a>
+                            </li>
+                            <li>
+                                <a href="#updateClient" >updateClient</a>
+                            </li>
+                            <li>
+                                <a href="#updateSailor" >updateSailor</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, apollo: Apollo, formBuilder: FormBuilder)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:71</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>apollo</td>
+                                                  
+                                                        <td>
+                                                                    <code>Apollo</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleAddressChange"></a>
+                    <span class="name">
+                        <span ><b>handleAddressChange</b></span>
+                        <a href="#handleAddressChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleAddressChange(event: <a href="../interfaces/AddressData.html" target="_self">AddressData</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="150"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:150</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="../interfaces/AddressData.html" target="_self" >AddressData</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleAddressSailorChange"></a>
+                    <span class="name">
+                        <span ><b>handleAddressSailorChange</b></span>
+                        <a href="#handleAddressSailorChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleAddressSailorChange(event: <a href="../interfaces/AddressData.html" target="_self">AddressData</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                            <code><a href="../interfaces/AddressData.html" target="_self" >AddressData</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleModelSelection"></a>
+                    <span class="name">
+                        <span ><b>handleModelSelection</b></span>
+                        <a href="#handleModelSelection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleModelSelection(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="158"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:158</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>e</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:81</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="patchForm"></a>
+                    <span class="name">
+                        <span ><b>patchForm</b></span>
+                        <a href="#patchForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>patchForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="102"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:102</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendApiChess"></a>
+                    <span class="name">
+                        <span ><b>sendApiChess</b></span>
+                        <a href="#sendApiChess"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendApiChess()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="247"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:247</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateClient"></a>
+                    <span class="name">
+                        <span ><b>updateClient</b></span>
+                        <a href="#updateClient"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateClient()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="216"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:216</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSailor"></a>
+                    <span class="name">
+                        <span ><b>updateSailor</b></span>
+                        <a href="#updateSailor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSailor()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="163"
+                                    class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:163</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="billingForm"></a>
+                    <span class="name">
+                        <span ><b>billingForm</b></span>
+                        <a href="#billingForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    clientType: [null, []],
+    firstname: [null, []],
+    lastname: [null, []],
+    phoneNumber: [null, []],
+    email: [null, []],
+    address: [null, []],
+    addressId: [null, []],
+    model: [null, []],
+    modelId: [null, []],
+    boatName: [null, []],
+    registrationNumber: [null, []],
+    flagId: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="countries"></a>
+                    <span class="name">
+                        <span ><b>countries</b></span>
+                        <a href="#countries"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="id"></a>
+                    <span class="name">
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="missionForm"></a>
+                    <span class="name">
+                        <span ><b>missionForm</b></span>
+                        <a href="#missionForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    startDate: [null, []],
+    endDate: [null, []],
+    startHarbor: [null, []],
+    endHarbor: [null, []],
+    price: [null, []],
+    position: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:30</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="modalConfirmed"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>modalConfirmed</b></span>
+                        <a href="#modalConfirmed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../components/ModalConfirmedComponent.html" target="_self" >ModalConfirmedComponent</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(ModalConfirmedComponent)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="nationalities"></a>
+                    <span class="name">
+                        <span ><b>nationalities</b></span>
+                        <a href="#nationalities"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="offer"></a>
+                    <span class="name">
+                        <span ><b>offer</b></span>
+                        <a href="#offer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:79</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sailorForm"></a>
+                    <span class="name">
+                        <span ><b>sailorForm</b></span>
+                        <a href="#sailorForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.formBuilder.group({
+    lastname: [null, []],
+    firstname: [null, []],
+    birthday: [null, []],
+    nationality: [null, []],
+    birthPlace: [null, []],
+    birthCountry: [null, []],
+    socialNumber: [null, []],
+    rib: [null, []],
+    personalAddress: [null, []],
+    personalAddressId: [null, []],
+    addressId: [null, []],
+    phoneNumber: [null, []],
+    email: [null, []],
+    sailorNumber: [null, []],
+    taxDom: [null, []],
+    civility: [null, []],
+  })</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/admin/chess/detail/detail.component.ts:39</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ViewChild } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Apollo } from &#x27;apollo-angular&#x27;;
+import { ModalConfirmedComponent } from &#x27;src/app/components/modal-confirmed/modal-confirmed.component&#x27;;
+import {
+  DETAIL_CHESS,
+  RECORD_CHESS,
+  UPDATE_BILLING,
+  UPDATE_DETAIL_SAILOR,
+  UPDATE_SAILOR,
+} from &#x27;src/graphql/chess&#x27;;
+
+interface AddressData {
+  id: string;
+  formattedAddress: string;
+}
+
+@Component({
+  selector: &#x27;app-detail&#x27;,
+  templateUrl: &#x27;./detail.component.html&#x27;,
+  styleUrls: [&#x27;./detail.component.css&#x27;],
+})
+export class DetailComponent {
+  @ViewChild(ModalConfirmedComponent) modalConfirmed!: ModalConfirmedComponent;
+
+  nationalities: any;
+  countries: any;
+
+  missionForm: FormGroup &#x3D; this.formBuilder.group({
+    startDate: [null, []],
+    endDate: [null, []],
+    startHarbor: [null, []],
+    endHarbor: [null, []],
+    price: [null, []],
+    position: [null, []],
+  });
+
+  sailorForm: FormGroup &#x3D; this.formBuilder.group({
+    lastname: [null, []],
+    firstname: [null, []],
+    birthday: [null, []],
+    nationality: [null, []],
+    birthPlace: [null, []],
+    birthCountry: [null, []],
+    socialNumber: [null, []],
+    rib: [null, []],
+    personalAddress: [null, []],
+    personalAddressId: [null, []],
+    addressId: [null, []],
+    phoneNumber: [null, []],
+    email: [null, []],
+    sailorNumber: [null, []],
+    taxDom: [null, []],
+    civility: [null, []],
+  });
+
+  billingForm: FormGroup &#x3D; this.formBuilder.group({
+    clientType: [null, []],
+    firstname: [null, []],
+    lastname: [null, []],
+    phoneNumber: [null, []],
+    email: [null, []],
+    address: [null, []],
+    addressId: [null, []],
+    model: [null, []],
+    modelId: [null, []],
+    boatName: [null, []],
+    registrationNumber: [null, []],
+    flagId: [null, []],
+  });
+
+  constructor(
+    private route: ActivatedRoute,
+    private apollo: Apollo,
+    private formBuilder: FormBuilder
+  ) {}
+  id: any;
+  offer: any;
+
+  ngOnInit(): void {
+    // Accéder au paramètre &quot;id&quot;
+    this.route.paramMap.subscribe((params) &#x3D;&gt; {
+      this.apollo
+        .query({
+          query: DETAIL_CHESS,
+          variables: {
+            offerId: params.get(&#x27;id&#x27;),
+          },
+        })
+        .subscribe(({ data }: any) &#x3D;&gt; {
+          console.log(&#x27;la data&#x27;, data);
+          this.offer &#x3D; data.offer;
+          this.nationalities &#x3D; data.nationalities.nodes;
+          this.countries &#x3D; data.places.nodes;
+
+          this.patchForm();
+        });
+    });
+  }
+
+  patchForm() {
+    this.sailorForm.patchValue({
+      birthday: this.offer.sailor.birthday,
+      firstname: this.offer.sailor.firstname,
+      nationality: this.offer.sailor.nationality1.id,
+      civility: this.offer.sailor.civility,
+
+      lastname: this.offer.sailor.userDetailById.lastname,
+      birthPlace: this.offer.sailor.userDetailById.birthPlace,
+      birthCountry: this.offer.sailor.userDetailById.birthCountry,
+      socialNumber: this.offer.sailor.userDetailById.socialSecurityNumber,
+      rib: this.offer.sailor.userDetailById.rib,
+      personalAddress:
+        this.offer.sailor.userDetailById.personnalAddress?.formattedAddress,
+      personalAddressId: this.offer.sailor.userDetailById.personnalAddress?.id,
+      phoneNumber: this.offer.sailor.userDetailById.phoneNumber,
+      email: this.offer.sailor.userDetailById.email,
+      sailorNumber: this.offer.sailor.userDetailById.sailorNumber,
+      taxDom: this.offer.sailor.userDetailById.placeByTaxDomicil.id,
+    });
+
+    this.missionForm.patchValue({
+      startDate: this.offer.job.ad.startDate,
+      endDate: this.offer.job.ad.endDate,
+      startHarbor: this.offer.job.ad.harborByStartHarbor.nameFr,
+      endHarbor: this.offer.job.ad.harborByEndHarbor.nameFr,
+      price: this.offer.chessRemuneration,
+      position: this.offer.job.position,
+    });
+
+    this.billingForm.patchValue({
+      clientType: this.offer.job.billing.clientType,
+      firstname: this.offer.job.billing.firstname,
+      lastname: this.offer.job.billing.lastname,
+      phoneNumber: this.offer.job.billing.phoneNumber,
+      email: this.offer.job.billing.email,
+      address: this.offer.job.billing.address?.formattedAddress,
+      addressId: this.offer.job.billing.address?.id,
+      model: this.offer.job.billing.model?.name,
+      modelId: this.offer.job.billing.model?.id,
+      boatName: this.offer.job.billing.boatName,
+      registrationNumber: this.offer.job.billing.registrationNumber,
+      flagId: this.offer.job.billing.flag?.id,
+    });
+
+    console.log(&#x27;le from&#x27;, this.billingForm.value);
+  }
+
+  handleAddressChange(event: AddressData) {
+    this.billingForm.controls[&#x27;addressId&#x27;].setValue(event);
+    console.log(&#x27;le from&#x27;, this.billingForm.value);
+  }
+  handleAddressSailorChange(event: AddressData) {
+    this.sailorForm.controls[&#x27;personalAddressId&#x27;].setValue(event);
+  }
+
+  handleModelSelection(e: any) {
+    this.billingForm.controls[&#x27;modelId&#x27;].setValue(e.id);
+    this.billingForm.controls[&#x27;model&#x27;].setValue(e.name);
+  }
+
+  updateSailor() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_SAILOR,
+        variables: {
+          sailorPayload: {
+            id: this.offer.sailor.id,
+            patch: {
+              firstname: this.sailorForm.value.firstname,
+              birthday: this.sailorForm.value.birthday,
+              nationality1Id: this.sailorForm.value.nationality,
+              civility: this.sailorForm.value.civility,
+            },
+          },
+        },
+      })
+      .subscribe(({ data }: any) &#x3D;&gt; {
+        this.apollo
+          .mutate({
+            mutation: UPDATE_DETAIL_SAILOR,
+            refetchQueries: [
+              { query: DETAIL_CHESS, variables: { offerId: this.offer.id } },
+            ],
+            variables: {
+              sailorPayload: {
+                id: this.offer.sailor.id,
+                patch: {
+                  lastname: this.sailorForm.value.lastname,
+                  birthPlace: this.sailorForm.value.birthPlace,
+                  birthCountry: this.sailorForm.value.birthCountry,
+                  socialSecurityNumber: this.sailorForm.value.socialNumber,
+                  rib: this.sailorForm.value.rib,
+                  personnalAddressId: this.sailorForm.value.personalAddressId,
+                  phoneNumber: this.sailorForm.value.phoneNumber,
+                  email: this.sailorForm.value.email,
+                  sailorNumber: this.sailorForm.value.sailorNumber,
+                  taxDomicil: this.sailorForm.value.taxDom,
+                },
+              },
+            },
+          })
+          .subscribe(
+            ({ data }: any) &#x3D;&gt; {
+              this.modalConfirmed.openModal();
+            },
+            (err: any) &#x3D;&gt; {
+              console.log(err);
+              this.modalConfirmed.modalRejected();
+            }
+          );
+      });
+  }
+
+  updateClient() {
+    this.apollo
+      .mutate({
+        mutation: UPDATE_BILLING,
+        variables: {
+          billingPayload: {
+            pJobId: this.offer.job.id,
+            pClientType: this.billingForm.value.clientType,
+            pFirstname: this.billingForm.value.firstname,
+            pLastname: this.billingForm.value.lastname,
+            pPhoneNumber: this.billingForm.value.phoneNumber,
+            pEmail: this.billingForm.value.email,
+            pAddressId: this.billingForm.value.addressId,
+            pModelId: this.billingForm.value.modelId,
+            pBoatName: this.billingForm.value.boatName,
+            pRegistrationNumber: this.billingForm.value.registrationNumber,
+            pFlagId: this.billingForm.value.flagId,
+          },
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) &#x3D;&gt; {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
+  }
+
+  sendApiChess() {
+    this.apollo
+      .mutate({
+        mutation: RECORD_CHESS,
+        variables: {
+          jobId: this.offer.job.id,
+        },
+      })
+      .subscribe(
+        ({ data }: any) &#x3D;&gt; {
+          this.modalConfirmed.openModal();
+        },
+        (err: any) &#x3D;&gt; {
+          console.log(err);
+          this.modalConfirmed.modalRejected();
+        }
+      );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;Client&lt;/h1&gt;
+&lt;form [formGroup]&#x3D;&quot;billingForm&quot;&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;mat-form-field class&#x3D;&quot;select_material&quot;&gt;
+        &lt;mat-label&gt;client type&lt;/mat-label&gt;
+        &lt;mat-select formControlName&#x3D;&quot;clientType&quot;&gt;
+          &lt;mat-option value&#x3D;&quot;PARTICULIER&quot;&gt;Propriétaire particulier&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;LOCATAIRE_DE_BATEAU&quot;&gt;Locataire&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;LOUEUR&quot;&gt;Loueur pro&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;PLATEFORM_DE_LOCATION&quot;
+            &gt;Agence de location&lt;/mat-option
+          &gt;
+          &lt;mat-option value&#x3D;&quot;CHANTIER&quot;&gt;Chantier&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;BROOKER&quot;&gt;Broker&lt;/mat-option&gt;
+          &lt;mat-option value&#x3D;&quot;AUTRE&quot;&gt;Autre&lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;sendApiChess()&quot;&gt;
+        Envoyer la demande
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Prénom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;firstname&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Nom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;lastname&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;numéro de téléphone&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;phoneNumber&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;email&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;addresse&lt;/label&gt;
+      &lt;app-google-places-autocomplete
+        [setAddresse]&#x3D;&quot;billingForm.value.address&quot;
+        (selectedAddress)&#x3D;&quot;handleAddressChange($event)&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;
+        &gt;Model (actuel: {{ offer?.job.billing.model?.name }})&lt;/label
+      &gt;
+      &lt;app-autocomplete-model
+        style&#x3D;&quot;min-width: 350px&quot;
+        (onModelSelected)&#x3D;&quot;handleModelSelection($event)&quot;
+      &gt;&lt;/app-autocomplete-model&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Immatriculation&lt;/label&gt;
+      &lt;input
+        type&#x3D;&quot;text&quot;
+        class&#x3D;&quot;form-control&quot;
+        formControlName&#x3D;&quot;registrationNumber&quot;
+      /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Nom du bateau&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;boatName&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Pavillon&lt;/label&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-select id&#x3D;&quot;country&quot; formControlName&#x3D;&quot;flagId&quot;&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let country of countries&quot; [value]&#x3D;&quot;country.id&quot;&gt;
+            {{ country?.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;updateClient()&quot;&gt;
+    Update Client
+  &lt;/button&gt;
+&lt;/form&gt;
+&lt;form [formGroup]&#x3D;&quot;missionForm&quot;&gt;
+  &lt;h1&gt;Mission&lt;/h1&gt;
+  &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Port de départ&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;startHarbor&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Port d&#x27;arrivée&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;endHarbor&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Remu chess&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;price&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Catégorie enim&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Position&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;position&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;row mb-3&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Date de début&lt;/label&gt;
+      {{ offer?.job.startDate }}
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Date de fin&lt;/label&gt;
+      {{ offer?.job.endDate }}
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Update Client&lt;/button&gt;
+&lt;/form&gt;
+&lt;form [formGroup]&#x3D;&quot;sailorForm&quot;&gt;
+  &lt;h1&gt;Sailor&lt;/h1&gt;
+  &lt;h2&gt;
+    (attention les informations sont mise a jours sur le profil du skipper ici)
+  &lt;/h2&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Prenom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;firstname&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Nom&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;lastname&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Date de naissance&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthday&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;nationalité&lt;/label&gt;
+      &lt;!--&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;nationality&quot;&gt; --&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-select id&#x3D;&quot;nationality&quot; formControlName&#x3D;&quot;nationality&quot;&gt;
+          &lt;mat-option
+            *ngFor&#x3D;&quot;let nationality of nationalities&quot;
+            [value]&#x3D;&quot;nationality.id&quot;
+          &gt;
+            {{ nationality?.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;lieu de naissance&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthPlace&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;Pays de naissance&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;birthCountry&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;N° Secu&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;socialNumber&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;RIB&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;rib&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;addresse&lt;/label&gt;
+      &lt;app-google-places-autocomplete
+        [setAddresse]&#x3D;&quot;sailorForm.value.personalAddress&quot;
+        (selectedAddress)&#x3D;&quot;handleAddressSailorChange($event)&quot;
+      /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;numéro de téléphone&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;phoneNumber&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;email&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;email&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;ID Marin&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;sailorNumber&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;tax domicil&lt;/label&gt;
+      &lt;!--&lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;taxDom&quot;&gt; --&gt;
+      &lt;mat-form-field class&#x3D;&quot;matFormLong&quot; id&#x3D;&quot;select&quot;&gt;
+        &lt;mat-select id&#x3D;&quot;country&quot; formControlName&#x3D;&quot;taxDom&quot;&gt;
+          &lt;mat-option *ngFor&#x3D;&quot;let country of countries&quot; [value]&#x3D;&quot;country.id&quot;&gt;
+            {{ country?.name }}
+          &lt;/mat-option&gt;
+        &lt;/mat-select&gt;
+      &lt;/mat-form-field&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;civility&lt;/label&gt;
+      &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; formControlName&#x3D;&quot;civility&quot; /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-row&quot;&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;main Doc: &lt;/label&gt;
+      &lt;a href&#x3D;&quot;{{ offer?.job.billing.mainDocumentUrl }}&quot; target&#x3D;&quot;_blank&quot;&gt;{{
+        offer?.job.billing.mainDocumentUrl
+      }}&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;col&quot;&gt;
+      &lt;label for&#x3D;&quot;phone&quot;&gt;CG: &lt;/label&gt;
+      &lt;a href&#x3D;&quot;{{ offer?.clientContract }}&quot; target&#x3D;&quot;_blank&quot;&gt;{{
+        offer?.clientContract
+      }}&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn-primary&quot; (click)&#x3D;&quot;updateSailor()&quot;&gt;
+    Update Sailor
+  &lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- MODAL CONFIRMED --&gt;
+&lt;app-modal-confirmed /&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./detail.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1>Client</h1><form [formGroup]="billingForm">  <div class="form-row">    <div class="col">      <mat-form-field class="select_material">        <mat-label>client type</mat-label>        <mat-select formControlName="clientType">          <mat-option value="PARTICULIER">Propriétaire particulier</mat-option>          <mat-option value="LOCATAIRE_DE_BATEAU">Locataire</mat-option>          <mat-option value="LOUEUR">Loueur pro</mat-option>          <mat-option value="PLATEFORM_DE_LOCATION"            >Agence de location</mat-option          >          <mat-option value="CHANTIER">Chantier</mat-option>          <mat-option value="BROOKER">Broker</mat-option>          <mat-option value="AUTRE">Autre</mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <button type="button" class="btn btn-primary" (click)="sendApiChess()">        Envoyer la demande      </button>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Prénom</label>      <input type="text" class="form-control" formControlName="firstname" />    </div>    <div class="col">      <label for="phone">Nom</label>      <input type="text" class="form-control" formControlName="lastname" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">numéro de téléphone</label>      <input type="text" class="form-control" formControlName="phoneNumber" />    </div>    <div class="col">      <label for="phone">email</label>      <input type="text" class="form-control" formControlName="email" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">addresse</label>      <app-google-places-autocomplete        [setAddresse]="billingForm.value.address"        (selectedAddress)="handleAddressChange($event)"      />    </div>  </div>  <div class="row mb-3">    <div class="col">      <label for="phone"        >Model (actuel: {{ offer?.job.billing.model?.name }})</label      >      <app-autocomplete-model        style="min-width: 350px"        (onModelSelected)="handleModelSelection($event)"      ></app-autocomplete-model>    </div>    <div class="col">      <label for="phone">Immatriculation</label>      <input        type="text"        class="form-control"        formControlName="registrationNumber"      />    </div>  </div>  <div class="row mb-3">    <div class="col">      <label for="phone">Nom du bateau</label>      <input type="text" class="form-control" formControlName="boatName" />    </div>    <div class="col">      <label for="phone">Pavillon</label>      <mat-form-field class="matFormLong" id="select">        <mat-select id="country" formControlName="flagId">          <mat-option *ngFor="let country of countries" [value]="country.id">            {{ country?.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <button type="button" class="btn btn-primary" (click)="updateClient()">    Update Client  </button></form><form [formGroup]="missionForm">  <h1>Mission</h1>  <div class="row mb-3">    <div class="col">      <label for="phone">Port de départ</label>      <input type="text" class="form-control" formControlName="startHarbor" />    </div>    <div class="col">      <label for="phone">Port d\'arrivée</label>      <input type="text" class="form-control" formControlName="endHarbor" />    </div>  </div>  <div class="row mb-3">    <div class="col">      <label for="phone">Remu chess</label>      <input type="text" class="form-control" formControlName="price" />    </div>    <div class="col">      <label for="phone">Catégorie enim</label>    </div>  </div>  <div class="row mb-3">    <div class="col">      <label for="phone">Position</label>      <input type="text" class="form-control" formControlName="position" />    </div>  </div>  <div class="row mb-3">    <div class="col">      <label for="phone">Date de début</label>      {{ offer?.job.startDate }}    </div>    <div class="col">      <label for="phone">Date de fin</label>      {{ offer?.job.endDate }}    </div>  </div>  <button type="button" class="btn btn-primary">Update Client</button></form><form [formGroup]="sailorForm">  <h1>Sailor</h1>  <h2>    (attention les informations sont mise a jours sur le profil du skipper ici)  </h2>  <div class="form-row">    <div class="col">      <label for="phone">Prenom</label>      <input type="text" class="form-control" formControlName="firstname" />    </div>    <div class="col">      <label for="phone">Nom</label>      <input type="text" class="form-control" formControlName="lastname" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">Date de naissance</label>      <input type="text" class="form-control" formControlName="birthday" />    </div>    <div class="col">      <label for="phone">nationalité</label>      <!--<input type="text" class="form-control" formControlName="nationality"> -->      <mat-form-field class="matFormLong" id="select">        <mat-select id="nationality" formControlName="nationality">          <mat-option            *ngFor="let nationality of nationalities"            [value]="nationality.id"          >            {{ nationality?.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">lieu de naissance</label>      <input type="text" class="form-control" formControlName="birthPlace" />    </div>    <div class="col">      <label for="phone">Pays de naissance</label>      <input type="text" class="form-control" formControlName="birthCountry" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">N° Secu</label>      <input type="text" class="form-control" formControlName="socialNumber" />    </div>    <div class="col">      <label for="phone">RIB</label>      <input type="text" class="form-control" formControlName="rib" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">addresse</label>      <app-google-places-autocomplete        [setAddresse]="sailorForm.value.personalAddress"        (selectedAddress)="handleAddressSailorChange($event)"      />    </div>    <div class="col">      <label for="phone">numéro de téléphone</label>      <input type="text" class="form-control" formControlName="phoneNumber" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">email</label>      <input type="text" class="form-control" formControlName="email" />    </div>    <div class="col">      <label for="phone">ID Marin</label>      <input type="text" class="form-control" formControlName="sailorNumber" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">tax domicil</label>      <!--<input type="text" class="form-control" formControlName="taxDom"> -->      <mat-form-field class="matFormLong" id="select">        <mat-select id="country" formControlName="taxDom">          <mat-option *ngFor="let country of countries" [value]="country.id">            {{ country?.name }}          </mat-option>        </mat-select>      </mat-form-field>    </div>    <div class="col">      <label for="phone">civility</label>      <input type="text" class="form-control" formControlName="civility" />    </div>  </div>  <div class="form-row">    <div class="col">      <label for="phone">main Doc: </label>      <a href="{{ offer?.job.billing.mainDocumentUrl }}" target="_blank">{{        offer?.job.billing.mainDocumentUrl      }}</a>    </div>    <div class="col">      <label for="phone">CG: </label>      <a href="{{ offer?.clientContract }}" target="_blank">{{        offer?.clientContract      }}</a>    </div>  </div>  <button type="button" class="btn btn-primary" (click)="updateSailor()">    Update Sailor  </button></form><!-- MODAL CONFIRMED --><app-modal-confirmed /></div>'
+    var COMPONENTS = [{'name': 'AdminComponent', 'selector': 'app-admin'},{'name': 'AdminPlusComponent', 'selector': 'app-admin-plus'},{'name': 'AlertDocumentComponent', 'selector': 'app-alert-document'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApprovalComponent', 'selector': 'app-approval'},{'name': 'AutocompleteHarborComponent', 'selector': 'app-autocomplete-harbor'},{'name': 'AutocompleteModelComponent', 'selector': 'app-autocomplete-model'},{'name': 'AutocompletePlaceComponent', 'selector': 'app-autocomplete-place'},{'name': 'BillingComponent', 'selector': 'app-billing'},{'name': 'BoatComponent', 'selector': 'app-boat'},{'name': 'BoatsComponent', 'selector': 'app-boats'},{'name': 'CalculesComponent', 'selector': 'app-calcules'},{'name': 'ChatComponent', 'selector': 'app-chat'},{'name': 'ChessComponent', 'selector': 'app-chess'},{'name': 'ClientComponent', 'selector': 'app-client'},{'name': 'ClientJobsComponent', 'selector': 'app-client-jobs'},{'name': 'ClientPersonalComponent', 'selector': 'app-client-personal'},{'name': 'ConnectionComponent', 'selector': 'app-connection'},{'name': 'CreationComponent', 'selector': 'app-creation'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DataComponent', 'selector': 'app-data'},{'name': 'DegreesComponent', 'selector': 'app-degrees'},{'name': 'DetailComponent', 'selector': 'app-detail'},{'name': 'DevisComponent', 'selector': 'app-devis'},{'name': 'DocumentsComponent', 'selector': 'app-documents'},{'name': 'FavorisComponent', 'selector': 'app-favoris'},{'name': 'FinanceComponent', 'selector': 'app-finance'},{'name': 'FollowUpComponent', 'selector': 'app-follow-up'},{'name': 'GooglePlacesAutocompleteComponent', 'selector': 'app-google-places-autocomplete'},{'name': 'HarborComponent', 'selector': 'app-harbor'},{'name': 'InfoComponent', 'selector': 'app-info'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobsComponent', 'selector': 'app-jobs'},{'name': 'KPIComponent', 'selector': 'app-kpi'},{'name': 'ManagementComponent', 'selector': 'app-management'},{'name': 'MatchingComponent', 'selector': 'app-matching'},{'name': 'ModalAssigneOfferComponent', 'selector': 'app-modal-assigne-offer'},{'name': 'ModalConfirmedComponent', 'selector': 'app-modal-confirmed'},{'name': 'ModelComponent', 'selector': 'app-model'},{'name': 'NewBoatComponent', 'selector': 'app-new-boat'},{'name': 'NewCompleteJobComponent', 'selector': 'app-new-complete-job'},{'name': 'NewJobComponent', 'selector': 'app-new-job'},{'name': 'NewOfferComponent', 'selector': 'app-new-offer'},{'name': 'NotationComponent', 'selector': 'app-notation'},{'name': 'NotationsComponent', 'selector': 'app-notations'},{'name': 'OfferComponent', 'selector': 'app-offer'},{'name': 'OffersComponent', 'selector': 'app-offers'},{'name': 'PaimentsComponent', 'selector': 'app-paiments'},{'name': 'PersonalComponent', 'selector': 'app-personal'},{'name': 'ProfilComponent', 'selector': 'app-profil'},{'name': 'ResumesComponent', 'selector': 'app-resumes'},{'name': 'SailorComponent', 'selector': 'app-sailor'},{'name': 'SailorJobsComponent', 'selector': 'app-sailor-jobs'},{'name': 'SearchMissionComponent', 'selector': 'app-search-mission'},{'name': 'SearchSkipperComponent', 'selector': 'app-search-skipper'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'StatistiquesComponent', 'selector': 'app-statistiques'},{'name': 'TrainingsComponent', 'selector': 'app-trainings'},{'name': 'VariablesComponent', 'selector': 'app-variables'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DetailComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DetailComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

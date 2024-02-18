@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchMissionComponent } from './search-mission.component';
+import { Apollo } from 'apollo-angular';
 
 describe('SearchMissionComponent', () => {
   let component: SearchMissionComponent;
@@ -9,6 +10,7 @@ describe('SearchMissionComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SearchMissionComponent],
+      providers: [Apollo],
     });
     fixture = TestBed.createComponent(SearchMissionComponent);
     component = fixture.componentInstance;
