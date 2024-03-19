@@ -29,10 +29,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as document title 'Admin app is running!'`, () => {
+  it(`should have as document title 'Captnboat Control Panel'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges(); // Déclenche la détection de changement pour initialiser le composant
     const titleService = TestBed.inject(Title); // Injectez le service Title pour accéder au titre actuel
-    expect(titleService.getTitle()).toEqual('Admin app is running!'); // Vérifiez que le titre du document a été défini correctement
+    expect(titleService.getTitle()).toEqual('Captnboat Control Panel'); // Vérifiez que le titre du document a été défini correctement
   });
 });

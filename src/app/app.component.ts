@@ -11,7 +11,7 @@ export class AppComponent {
   // title = 'Admin';
 
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Admin app is running!'); // Définissez le titre du document
+    this.titleService.setTitle('Captnboat Control Panel'); // Définissez le titre du document
   }
 
   // Le reste de votre code...
